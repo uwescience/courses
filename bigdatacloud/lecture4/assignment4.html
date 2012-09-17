@@ -1,0 +1,132 @@
+<html>
+
+<h2>Assignment 4: Cloud Databases for Ad Hoc Analysis</h2>
+
+<p>
+Relational databases are often carefully engineered by large teams to be tightly coupled to one or more applications.  But today, relational database management systems (RDBMS) may increasingly play a role for ad hoc collaborative data analysis, where a database is created quickly, on demand, to provide interactive query capabilities in support of a particular task.  These databases may be thrown out or completely redesigned after the initial analysis task is completed.  
+</p>
+<p>
+Cloud computing offers an ideal platform for these transient, ad hoc, task-specific collaborative databases, since it neatly sidesteps questions of hardware, licensing, maintenance, and integration with existing infrastructure.  
+</p>
+<p>
+In this assignment, you will create an ad hoc database in two cloud platforms and use it to analyze the logs of a hadoop cluster.  You will be given data in a raw format and be expected to create a schema, load the data, and answer some questions using SQL.
+</p>
+
+<h3> The datasets </h3>
+The datasets we will use represent log information from a Hadoop cluster.  
+
+There are two datasets, both in tab-separated value format: 
+<ol>
+<li><a href="hadoop_jobs.tsv">hadoop_jobs.tsv</a></li>
+<li><a href="hadoop_tasks_fixed.tsv">hadoop_tasks.tsv</a></li>
+</ol>
+
+In CSV:
+<ol>
+<li><a href="hadoop_jobs.csv">hadoop_jobs.csv</a></li>
+<li><a href="hadoop_tasks.csv">hadoop_tasks.csv</a></li>
+</ol>
+The first line of each file provides column names.  The type of each column is up to you to determine.  One approach that I find useful in practice is to just assume that everything is a string to simplify data loading, then use views (saved, named queries) to cast the data to the appropriate data type.  This approach gives you more control, lets you experiment with different schemas, and helps minimize painful loading errors.  However, feel free to use whatever schema you find appropriate.
+
+
+<h3>Part 1: Microsoft SQL Azure</h3>
+
+<ul>
+<li><strong>Set up Microsoft SQL Azure instance</strong></li>
+
+<p><a href="http://msdn.microsoft.com/en-us/wazplatformtrainingcourse_introtosqlazureforvs2010developers_topic2">Create a new server following the instructions here</a>
+</p>
+<p>
+<a href="http://msdn.microsoft.com/en-us/wazplatformtrainingcourse_introtosqlazureforvs2010developers_topic3">Create a database following Task 1 here</a>
+</p>
+<li><strong>Create a schema to hold our test dataset</strong></li> 
+
+<p>
+<a href="http://msdn.microsoft.com/en-us/wazplatformtrainingcourse_introtosqlazureforvs2010developers_topic3">You may choose to use the Database Manager for SQL Azure, as described in Task 2 here</a>
+</p>
+<p>
+<a href="http://msdn.microsoft.com/en-us/wazplatformtrainingcourse_introtosqlazureforvs2010developers_topic3">Or you can use SQL Management Studio, as described in Task 3 of the same exercise</a>
+</p>
+<li><strong>Load the data</strong></li> 
+
+
+On windows, you can use SQL Management Studio to import the data from a file.  You can also write a program in C#.
+
+On linux, you have several options:
+
+<ul>
+
+<li>You can try these <a href="http://msdn.microsoft.com/en-us/library/windowsazure/ee621784.aspx">tools that work with SQL Azure</a></li>
+<li>You can launch a Windows instance on Amazon, copy the data there, and load using SQL Server Management Studio.</li>
+
+<li>Alternatively, I use <a href="http://code.google.com/p/pymssql/">pymssql to talk to SQL Server databases</a>.  Sometimes there are some version incompatibilities, however.  </li>
+
+<li>Another choice is to use <a href="http://johnjianfang.blogspot.com/2011/04/freetds-linux-client-for-ms-sql-server.html">freetds directly</a>, which is the library underlying pymssql, and includes a sql client.</li>
+
+<li>Another choice is to use an <a href="http://www.microsoft.com/download/en/details.aspx?id=28160">ODBC driver for linux</a>, then use any database library you prefer that can talk through ODBC.</li>
+
+</ul>
+
+</ul>
+
+<h3>Part 2: Set up an Amazon RDS instance</h3>
+
+<ul>
+<li><strong>Launch an RDS instance.</strong></li>
+You can use this <a href="http://docs.amazonwebservices.com/AmazonRDS/latest/GettingStartedGuide/Welcome.html?r=8678">getting started guide.</a></li>
+
+<li><strong>Create a schema using your favorite MySQL client.</strong>  </li>
+Clients exist for both Windows and Linux.
+
+<li><strong>Load the data</strong></li>
+Using your favorite mechanism. Ask other students for help if you need it.
+
+</ul>
+
+
+<h3>Part 3: Data analysis</h3>
+
+<ul>
+<li>What timespan does this set of jobs cover?</li>
+
+One solution, depending on how you've organized your schema:
+<pre>SELECT min(submitTime), max(submitTime) FROM hadoopjobs;</pre>
+
+<li>What proportion of jobs failed? (status != 0)</li>
+
+<li>What is the average number of mappers and reducers per job (tasktype=m vs. tasktype=r), ignoring failed tasks? (Join the two tables on jobid)</li>
+
+<li>What is the average number of failed tasks per successful job?  (status = 0 means success for both tasks and jobs)</li>
+
+<li>OPTIONAL: How long did the top 10 longest-running jobs take to run?</li>
+
+<li>OPTIONAL: For each of the top 10 longest-running jobs, how long did its longest-running task take to run?</li>
+
+<li>OPTIONAL: What was the maximum number of concurrently running jobs? (One naive solution: For each job, count up the number of jobs that overlap it in time.)</li>
+
+</ul>
+
+<h3>Part 3: OPTIONAL: Fusion Tables</h3>
+
+Try to upload the data to <a href="http://www.google.com/fusiontables/Home/">Google Fusion Tables</a> and express as many of the queries above as you can. 
+
+<h3>Part 4: What to turn in</h3>
+
+<ol>
+<li>Answers to the above questions.</li>
+<li>Three bullets comparing and contrasting Amazon RDS and SQL Azure. What problems did you run into with one or the other? Was anything surprising?</li>
+<li>OPTIONAL: Measure the performance of data loading and/or one or more queries above and report results between SQL Azure and Amazon RDS</li>
+<li>OPTIONAL: 1-2 sentences about your experience with fusion tables. Did the data upload cleanly?  Were you able to answer the queries?  Is fusion tables a viable option for these ad hoc data analysis tasks?</li>
+</ol>
+
+</ul>
+
+
+<h3> Other Resources</h3>
+
+<a href="http://sites.computer.org/debull/A11dec/azure2.pdf">Paper describing SQL Azure</a>
+<br>
+<a href="http://msdn.microsoft.com/en-us/magazine/gg309175.aspx">Overview of Getting Started with SQL Azure</a>
+<br>
+<a href="http://msdn.microsoft.com/en-us/wazplatformtrainingcourse_introtosqlazureforvs2010developers_topic2">Tools that work with SQL Azure</a>
+</html>

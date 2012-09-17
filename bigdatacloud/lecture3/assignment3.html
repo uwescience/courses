@@ -1,0 +1,154 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Assignment 3: Iterative MapReduce</h1>
+
+In this assignment, you'll be using the Daytona system. Daytona extends MapReduce with an iterative capability that allows efficient evaluation of more complex analytics that require a repeating sequence of MapReduce jobs until some termination condition is met.
+
+note: If you do not have access to a Windows machine, you can launch one on AWS and connect remotely.
+
+Download the Daytona project from http://research.microsoft.com/en-us/projects/daytona/
+
+<h3>Part 1: Set up Azure</h3>
+
+<ol>
+</li>Get a free storage account at https://www.windowsazure.com/ (90 day trial)</li>
+
+<li>Go to https://windows.azure.com/default.aspx and login</li>
+
+<li>Create a new storage account</li>
+
+<li>Get the primary and secondary access keys of this account</li>
+
+<li>Create a new Hosted Service</li>
+
+<li>Publish and deploy service using windows azure management portal</li>
+
+ [no need to use visual studio]
+
+<li>Verify that hosted service is ready</li>
+
+Please refer to Daytona - Deployment guide.pdf in the documentation for details on specific steps.
+</ol>
+
+
+<h3>Part 2: Set up Dev Environment</h3>
+<ol>
+
+<li> Install free Visual Studio Express 2010 (Visual C#)</li>
+
+<li>  Modify app.config. Replace the words 'SomeAccount' and 'SomeKey' with values from your account.</li>
+<br>
+    &lt;!--Replace 'SomeAccount' and 'SomeKey' with valid values before running the sample.&gt;
+<br>
+    &lt;add key="MasterConnectionString" value="DefaultEndpointsProtocol=http;AccountName=SomeAccount;AccountKey=SomeKey"/&gt;
+<br>
+    &lt;add key="StorageConnectionString" value="DefaultEndpointsProtocol=http;AccountName=SomeAccount;AccountKey=SomeKey"/&gt;
+<br>
+<p>
+     MasterConnectionString: This should be the same as the storage account used by the Daytona runtime deployment.
+</p>
+<p>
+     StorageConnectionString: This should be the storage account intended for uploading the input dataset
+     and writing the output of the job(s) as well as the final result. 
+     It can be the same as the MasterConnectionString if both accounts belong to the current user.
+     This value is automatically set as the value of the controller parameter StorageAccountString by 'MapReduceClient'
+     which looks for this specific key in the 'appSettings' and sends it as a controller argument
+     irrespective of whether the user has specified any controller arguments or not.
+</p>
+
+<li>      Compile the sample app. You may face issues related to references.
+        The mapreduce related references are in the 'binaries' folder.
+
+<br>
+
+        MapReduce related references:
+        Go to the menu item "Project-&gt; Add Reference" in visual Studio.
+        Browse to the 'Binaries' folder on your machine that had been installed in
+        your Daytona directory  add 'Research.MapReduce.Core.dll' and
+        'Research.MapReduce.Library.dll' to add the missing daytona references.
+        
+<br>
+        
+        'Microsoft.WindowsAzure.Storageclient.dll' can be added in a similar fashion,
+         if the corresponding reference is missing.
+<br>
+        Other references (if missing) can be added from
+         "Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\" in the
+         programFiles directory.
+
+</li> 
+
+<li> Run and submit sample app</li>
+
+</ol>
+<p style="color:red">To turn in: the output that is printed by running the program.</p>
+
+
+<h3>Part 3: Performance Experiments</h3>
+
+Read K-means algorithm users guide.
+
+
+DataSet: Here , instead of the sampleinput in the resources, we will be using the following dataset.
+http://uwcsedaytonastorage561.blob.core.windows.net/clustering-input-mrsgrchi/sampleinput.csv
+
+The columns are
+<ul>
+<li>Julian Day</li>
+<li>file number (ordinal representing a 3-minute window)</li>
+<li>row number (ordered by time, but cannot be mapped into a known time instant)</li>
+<li>pulse width</li>
+<li>D1 (intensity of light at left sensor)</li>
+<li>D2 (intensity of light at right sensor)</li>
+<li>FSCsmall (scatter at aligned sensor)</li>
+<li>FSCperp  (scatter at perpendicular sensor)</li>
+<li>FSCbig </li>
+<li>PE</li>
+<li>CHLsmall (Detected light at chlorophyll wavelength)</li>
+<li>CHLbig (Chlorophyll again, difference between big and small is unclear)</li>
+</ul>
+(reference: http://www.cs.washington.edu/homes/billhowe/escience_datasets/seaflow/README
+
+Select two numeric columns(PE, CHLSmall) that can be used in the sample program.
+
+Make appropriate changes in the code to use these columns and also the change
+related to the new sample input data.
+You may have to refer to documentation for CloudBlobContainer and CloudBlob from msdn.
+For the column name changes, please make changes as required by the code.
+
+other changes:
+<ol>
+<li> Set the maximum iterations to 6. </li>
+<li>In the part of code that random picks initial clusters by sampling the input dataset, set the seed of the math.random function to 10 (Instead of default)</li>
+</ol>
+<p>
+Run performance experiment, varying the number of mappers (20,40,60, 100,120). 
+Note: This may take several minutes to run.
+To save time, you can remove the Math.sqrt function in MethodExtensions.cs.
+</p>
+
+<p style="color:red">To Turn In: output of the program in one case
+            and a plot showing # of mappers on the x-axis,runtime(in seconds) on the y-axis.</p>
+
+
+
+<h3>Part 4 (Optional): 3D K-Means</h3>
+
+This will be similar to part 3, but we will be using 3 columns instead of two.
+Change the code to compute 3D distance. 
+The columns to be used are "FSCsmall, PE, CHLsmall".
+
+Change the code to use these columns and follow part 3.
+
+You'll need to change the distance function calculation in particular.
+
+<p style="color:red">To Turn In: output of the program in one case
+            and a plot showing # of mappers on the x-axis,runtime(in seconds) on the y-axis.</p>
+
+<p style="color:red">To Turn In: a plot showing # of mappers on the x-axis,runtime(in seconds) on the y-axis.</p>
+
+
+</body>
+</html>

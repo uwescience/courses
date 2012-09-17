@@ -1,0 +1,116 @@
+<html>
+<head>
+</head>
+
+<body>
+
+<h2>Assignment 2: MapReduce, Elastic MapReduce, and Declarative Languages</h2>
+
+<p>
+<strong>Overview</strong> You will run multiple jobs on Elastic MapReduce and compare the performance 
+of various parameters.  
+</p>
+<p>
+<strong>Due Date</strong> Monday April 16, 6pm 
+</p>
+<p>
+<strong>What to turn in</strong> Responses to the items labeled <strong style="color:red">QUESTION X:</strong>. These will be conceptual or quantitative questions.  In some cases, you may be asked to create a plot to visualize some data.  
+</p>
+
+<h3>Part 0: Design MapReduce Algorithms</h3>
+
+Based on what you learned in class, design a MapReduce algorithm for 2 out of the following tasks.  
+You can describe the algorithm in any combination of english and pseudocode.  The idea is to describe the basic roles
+of the Map function and Reduce function, not to fret about details.  Be brief and convincing.
+
+<ol>
+<li>Inverted index. Given a set of documents, an inverted index is a dataset with key = word and value = list of document ids.  Assume you are given a dataset where key = document id and value = document text.</li>
+<li>Relational join.  i.e., SELECT * FROM Order, LineItem WHERE Order.order_id = LineItem.order_id (Hint: Treat the two tables Order and LineItem as one big concatenated bag of records.)</li>
+<li>Social Network.  Consider a simple social network dataset, where key = person and value = some friend of that person.  Describe a MapReduce algorithm to count he number of friends each person has.</li>
+<li>Social Network (harder).  Use the same dataset as the previous task. The relationship "friend" is often symmetric, meaning that I am your friend, you are my friend. Describe a MapReduce algorithm to check whether this property holds.  Generate a list of all non-symmetric friend relationships.</li>
+<li>Bioinformatics.  Consider a set of sequences where key = sequence id and value = a string of nucleotides, e.g., GCTTCCGAAATGCTCGAA.... Describe an algorithm to trim the last 10 characters from each read, then remove any duplicates generated. (Hint: It's not all that different from the Social Network example.)</li>  
+</ol>
+
+<strong style="color:red">QUESTION 0.0: Briefly describe a MapReduce algorithm for one of the tasks above.  Use the form below.</strong>
+<strong style="color:red">QUESTION 0.1: Briefly describe a MapReduce algorithm for another one of the tasks above.  Use the form below.</strong>
+
+<dl>
+<dt>Map:</dt>
+  <dl>
+<dt>Input Key:</dt><dd></dd>
+<dt>Input Value:</dt><dd></dd>
+<dt>Output Key:</dt><dd></dd>
+<dt>Output Value:</dt><dd></dd>
+<dt>Description:</dt><dd></dd>
+</dl>
+<dt>Reduce:</dt>
+<dl>
+<dt>Input Key:</dt><dd></dd>
+<dt>Input Value:</dt><dd></dd>
+<dt>Output Key:</dt><dd></dd>
+<dt>Output Value:</dt><dd></dd>
+<dt>Description:</dt><dd></dd>
+</dl>
+</dl>
+</strong>
+
+<h3>Part 1: Run a Job using Elastic MapReduce and Pig</h3>
+Steps:
+<ol>
+<li> Create a bucket to hold the results. </li>
+
+<ol>
+<li>Log in to the AWS console. </li>
+<li>Click the S3 tab.</li>
+<li>Click "Create Bucket" at the upper left.</li>
+<li>follow the instructions.</li>
+</ol>
+
+(Alternatively, and perhaps preferably, do this programmatically using Python and boto! The loaddata_s3.py script from assignment 1 includes the code to create a bucket.  If you take this route, let me know when you turn in the assignment.)
+
+<li> Create and Execute the Job Flow</li>
+
+If you run into trouble or want more detail, see <a href="http://docs.amazonwebservices.com/ElasticMapReduce/latest/DeveloperGuide/CLI_CreatingaJobFlowUsingPig.html">these detailed instructions from Amazon</a>
+
+<ol>
+<li>In the AWS console, click the ElasticMapReduce tab.</li>
+<li>Click Create New Job Flow</li>
+<li>Enter a name for the job flow ("Assignment 2, test")</li>
+<li>Select "Run a sample application", then select "Apache Log Reports", click Continue</li>
+<li>Leave Script Location and Input Location with the default values. Modify Output Location to replace "&lt;yourbucket&gt;" with the name of the bucket you created in the first step. Click Continue.</li>
+<li>Leave Master Instance Group, Core Instance Group, and Task Instance Group with their default values. Click Continue.</li>
+
+<div><strong style="color:red">QUESTION 1:</strong> <span style="color:red">Question: The Task Instance Group Instance Count defaults to 0.  What kind of applications would benefit from a non-zero value?  Why do you think the default is 0?</span></div>
+
+<li>On the next page, leave all the defaults. Click Continue.</li>
+
+<li>On the next page, leave all the defaults (Proceed with No Bootstrap Actions). Click Continue.</li>
+<li>Click Create Job Flow</li>
+
+</ol>
+
+<li>Inspect the Results</li>
+
+Click Refresh in the Job Flows tab. The State will be STARTING.
+Once it finishes, record the elapsed time.
+<div><strong style="color:red">QUESTION 2:</strong> <span style="color:red">How long did your job take?</span></div>
+<!--<div><strong style="color:red">QUESTION 3:</strong> <span style="color:red">The input data is 6 files of about 9 MB each. Calculate the effective IO</span></div>-->
+
+</ol>
+<h3>Part 2: Repeat the experiment, scaling out</h3>
+<ol>
+<li> Repeat the experiment, but increase Core Instance Group Instance Count to 8 in step 6. <strong>Important: Change the output location to a unique name, or your job will fail! For example, append "/scaleout" to the end of the path.</strong></li>
+<div><strong style="color:red">QUESTION 3:</strong> <span style="color:red">How long did the scale out job take?</span></div>
+</ol>
+
+<h3>Part 3: Repeat the experiment, scaling up</h3>
+<ol>
+<li> Repeat the experiment, but increase Core Instance Group Instance <i>Type</i> to "m1.large". <strong>Important: Change the output location to a unique name, or your job will fail! For example, append "/scaleup" to the end of the path.</strong></li>
+<div><strong style="color:red">QUESTION 4:</strong> <span style="color:red">How long did the scale up job take?</span></div>
+<div><strong style="color:red">QUESTION 5:</strong> <span style="color:red">Which method seems improve performance? Why?</span></div>
+</ol>
+
+
+</body>
+
+</html>

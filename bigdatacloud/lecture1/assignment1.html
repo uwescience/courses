@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0125)https://mail.google.com/mail/u/0/?ui=2&ik=793bbdecf5&view=att&th=13675434a741ac71&attid=0.1&disp=vah&realattid=f_h0k48kxy0&zw -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>assignment1.docx</title><style type="text/css" media="print">.hide{display:none}</style></head><body>
+
+
+
+<div>
+
+
+<p><span style="font-size:14pt">Assignment 1: Cloud Storage Speed Test</span></p>
+<p>&nbsp;</p>
+<p><span style="font-style:italic">Due Date: </span> Monday, April 9</p>
+<p>&nbsp;</p>
+<p><span style="font-style:italic">Goals: </span></p>
+<ul style="list-style:disc">
+  <li style="margin-left:0pt">Debug 
+  any connectivity issues with your AWS and Azure accounts</li>
+  <li style="margin-left:0pt">Evaluate 
+  the upload performance of Amazon S3 and Microsoft Azure Blob Storage</li>
+  <li style="margin-left:0pt">Assess 
+  the effect of uploading files in parallel (and other configuration altenratives)</li>
+  <li style="margin-left:0pt">As 
+  a class: Assess the effect of network connectivity by comparing results </li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="font-style:italic">Secondary Goals:</span></p>
+<ul style="list-style:disc">
+  <li style="margin-left:0pt">Gain 
+  exposure to Python</li>
+  <li style="margin-left:0pt">Gain 
+  exposure to python libraries for working with AWS and Azure</li>
+</ul>
+<p>&nbsp;</p>
+<p><span style="font-style:italic">Overview:</span></p>
+<p>You will run a series of Python programs to upload 
+a medium-size file to AWS and Azure, recording the performance.&nbsp; 
+You will create a plot illustrating your results.&nbsp; </p>
+<p>&nbsp;</p>
+<p><span style="font-style:italic">What to turn in:</span></p>
+<ol style="list-style:decimal">
+  <li style="margin-left:0pt">A 
+  plot of the times for all experiments you ran.&nbsp; (Suggestion: a 
+  simple bar chart, with one bar for each experiment, will suffice.&nbsp; 
+  Other visualizations are possible.)</li>
+  <li style="margin-left:0pt">The 
+  data you collected as a text file with records of the form (cloud_vendor, 
+  file_size, number of chunks, time_in seconds), where “cloud_vendor” 
+  is one of “AWS” or “Azure”</li>
+</ol>
+<p>&nbsp;</p>
+<ol style="list-style:decimal">
+  <li style="margin-left:0pt"><span style="font-size:14pt;font-weight:bold">Get Access to Amazon Web Services</span></li>
+</ol>
+<p>&nbsp;</p>
+<p>Using these resources as a guide, sign up for Amazon 
+Web Services and make sure you are familiar with the EC2 and S3 services.&nbsp; 
+Make sure you know how to use the AWS Console to launch an instance 
+and work with S3 buckets.</p>
+<p>&nbsp;</p>
+<p><span style="font-size:11pt"><a href="http://escience.washington.edu/get-help-now/get-started-amazon-web-services" target="_blank">http://escience.washington.<wbr>edu/get-help-now/get-started-<wbr>amazon-web-services</a></span></p>
+<p>&nbsp;</p>
+<ol style="list-style:decimal" start="2">
+  <li style="margin-left:0pt"><span style="font-size:14pt;font-weight:bold">Get Access to Windows Azure</span></li>
+</ol>
+<p>&nbsp;</p>
+<p>Sign up for a free trial for Windows Azure.&nbsp; 
+Make sure you know how to access the Windows Azure console to review 
+storage resources.</p>
+<p>&nbsp;</p>
+<p><a href="http://www.windowsazure.com/en-us/pricing/free-trial/" target="_blank"><span><span style="font-size:11pt;text-decoration:underline">http://www.windowsazure.com/<wbr>en-us/pricing/free-trial/</span></span></a></p>
+<p>&nbsp;</p>
+<p><span style="font-size:11pt">Create a storage account</span></p>
+<p>&nbsp;</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/windowsazure/gg433066.aspx" target="_blank"><span><span style="font-size:11pt;text-decoration:underline">http://msdn.microsoft.com/en-<wbr>us/library/windowsazure/<wbr>gg433066.aspx</span></span></a><span style="font-size:11pt"> </span></p>
+<p>&nbsp;</p>
+<p><span style="font-size:11pt">record the name; you’ll need it later.</span></p>
+<p>&nbsp;</p>
+<ol style="list-style:decimal" start="3">
+  <li style="margin-left:0pt"><span style="font-size:14pt;font-weight:bold">Run upload performance experiment</span></li>
+</ol>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha">
+  <li style="margin-left:0pt">Install 
+  Python&nbsp; </li>
+</ol>
+<p style="margin-left:18pt">Windows: <a href="http://www.python.org/getit/windows/" target="_blank"><span><span style="text-decoration:underline">http://www.python.org/getit/<wbr>windows/</span></span></a> </p>
+<p style="margin-left:18pt">Mac: you have it, but 
+make sure you have 2.7</p>
+<p style="margin-left:18pt">Linux: you have it, but 
+make sure you have 2.7</p>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="2">
+  <li style="margin-left:0pt">Install 
+  boto: <a href="https://github.com/boto/boto" target="_blank"><span><span style="text-decoration:underline">https://github.com/boto/boto</span></span></a> </li>
+</ol>
+<p style="margin-left:18pt">Click the "Zip" button
+button to download a zip file</p>
+<p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="3">
+  <li style="margin-left:0pt">Download 
+  the sample code from <a href="http://www.cs.washington.edu/homes/billhowe/bigdatacloud/lecture1/code" target="_blank"><span><span style="font-size:11pt;text-decoration:underline">http://www.cs.washington.edu/<wbr>homes/billhowe/bigdatacloud/<wbr>lecture1/</span><span style="font-size:11pt;text-decoration:underline">code</span></span></a></li>
+</ol>
+<p>&nbsp;</p>
+<p>You will get four files:</p>
+<p>&nbsp;</p>
+<a name="0.1_table01"></a>
+<div style="text-align:left">
+<table width="590" style="border-collapse:collapse">
+<tbody><tr valign="top"><td width="111"><p>gendata.py</p></td>
+  <td width="331"><p><span style="font-weight:normal">generate data files to use to test upload</span></p></td></tr>
+<tr valign="top"><td><p>loaddata_s3.py</p></td>
+  <td><p>upload 
+  a file to S3, optionally in parallel</p></td></tr>
+<tr valign="top"><td><p>loaddata_azure.py</p></td>
+  <td><p>upload 
+  a file to azure, optionally in parallel</p></td></tr>
+<tr valign="top"><td><p>winazurestorage.py</p></td>
+  <td><p>a 
+  library for working with windows azure from python (see [1])</p></td></tr>
+<tr valign="top"><td><p>azure_unit_test<span style="font-family:&#39;Times New Roman&#39;,&#39;Arial&#39;;font-size:12pt">.py</span></p></td>
+  <td><p>a 
+  set of simple test cases for debugging azure access&nbsp; </p></td></tr>
+</tbody></table>
+</div>
+<p>&nbsp;</p>
+<p>gendata.py</p>
+<p>loaddata_s3.py</p>
+<p>loaddata_azure.py</p>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="4">
+  <li style="margin-left:0pt">Run 
+  gendata.py</li>
+</ol>
+<p>&nbsp;</p>
+<p>Linux/Mac: Open a terminal, navigate to the directory 
+where these files are located, type</p>
+<div style="border-width:1pt 1pt 1pt 1pt;border-color:#7ca1ce #7ca1ce #7ca1ce #7ca1ce;border-style:solid solid solid solid;padding-top:1pt;padding-left:4pt;padding-right:4pt;padding-bottom:1pt">
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;">$ python gendata.py </span></p>
+</div>
+<p>&nbsp;</p>
+<p>This program will create a file “200mb.dat”&nbsp;
+to use for testing.</p>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="5">
+  <li style="margin-left:0pt">Run 
+  loaddata_s3.py</li>
+</ol>
+<p>&nbsp;</p>
+<p>Linux/Mac: Open a terminal, navigate to the directory 
+where these files are located, type</p>
+<div style="border-width:1pt 1pt 1pt 1pt;border-color:#7ca1ce #7ca1ce #7ca1ce #7ca1ce;border-style:solid solid solid solid;padding-top:1pt;padding-left:4pt;padding-right:4pt;padding-bottom:1pt">
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;">$ python loaddata_s3.py </span></p>
+</div>
+<p>&nbsp;</p>
+<p style="margin-left:18pt">Answer the questions when 
+you are prompted:</p>
+<p>&nbsp;</p>
+<div style="border-width:1pt 1pt 1pt 1pt;border-color:#7ca1ce #7ca1ce #7ca1ce #7ca1ce;border-style:solid solid solid solid;padding-top:1pt;padding-left:4pt;padding-right:4pt;padding-bottom:1pt">
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;;font-size:11pt">Enter AWS access key: </span><span style="font-size:11pt">&lt;Your AWS access key&gt;</span></p>
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;;font-size:11pt">Enter AWS secret key: </span><span style="font-size:11pt">&lt;Your AWS secret key&gt;</span></p>
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;;font-size:11pt">Enter bucket name: escience.washington.edu.<wbr>cloudcourse.lecture1</span></p>
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;;font-size:11pt">Enter file name to upload: 200mb.dat</span></p>
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;;font-size:11pt">Enter number of chunks to upload in parallel: 1</span></p>
+</div>
+<p>&nbsp;</p>
+<p style="margin-left:18pt">You can also provide these 
+on the command line in the same order.&nbsp; Make sure to wrap your 
+secret key in double quotes, as it may contain characters that will 
+be misinterpreted by the shell.</p>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="6">
+  <li style="margin-left:0pt">Record 
+  the time:</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="7">
+  <li style="margin-left:0pt">Repeat 
+  the experiment, but set the number of chunks to 4</li>
+</ol>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="8">
+  <li style="margin-left:0pt"><span style="font-weight:bold;font-style:italic">(</span><span style="font-weight:bold;font-style:italic">Optional</span><span style="font-weight:bold;font-style:italic">)</span><span style="font-style:italic"> </span>Run additional experiments with different numbers of chunks</li>
+</ol>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="9">
+  <li style="margin-left:0pt">(<span style="font-weight:bold;font-style:italic">Optional</span><span style="font-weight:bold">)</span> Run additional experiments with different file sizes by modifying 
+  gendata.py</li>
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p><span style="color:red"><b>NOTE: The Azure part of the assignment is not working currently.  It may or may not be fixed in time to work on it by Monday.  If it doesn't work for you, that's ok.</b></span></p>
+<p>&nbsp;</p>
+<ol style="list-style:lower-alpha" start="10">
+  <li style="margin-left:0pt">Now 
+  test the Windows Azure connection and try the Azure experiment</li>
+</ol>
+<p>&nbsp;</p>
+<div style="border-width:1pt 1pt 1pt 1pt;border-color:#7ca1ce #7ca1ce #7ca1ce #7ca1ce;border-style:solid solid solid solid;padding-top:1pt;padding-left:4pt;padding-right:4pt;padding-bottom:1pt">
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;">$ python azure_unit_test.py </span></p>
+</div>
+<p>&nbsp;</p>
+<p style="margin-left:18pt">Enter your credentials 
+from the right hand panel</p>
+<p>&nbsp;</p>
+<div style="border-width:1pt 1pt 1pt 1pt;border-color:#7ca1ce #7ca1ce #7ca1ce #7ca1ce;border-style:solid solid solid solid;padding-top:1pt;padding-left:4pt;padding-right:4pt;padding-bottom:1pt">
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;;font-size:11pt">Enter Azure storage account: </span><span style="font-size:11pt">&lt;Your Azure storage account name&gt;</span></p>
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;;font-size:11pt">Enter Azure Primary (secret) key: </span><span style="font-size:11pt">&lt;Your Azure primary secret key&gt;</span></p>
+</div>
+<p>&nbsp;</p>
+<p style="margin-left:18pt">Now try the Windows Azure 
+experiment</p>
+<p>&nbsp;</p>
+<div style="border-width:1pt 1pt 1pt 1pt;border-color:#7ca1ce #7ca1ce #7ca1ce #7ca1ce;border-style:solid solid solid solid;padding-top:1pt;padding-left:4pt;padding-right:4pt;padding-bottom:1pt">
+<p><span style="font-family:&#39;Courier New&#39;,&#39;Arial&#39;">$ python loaddata_azure.py </span></p>
+</div>
+<p>&nbsp;</p>
+<p><span style="font-size:14pt;font-style:italic;color:#ff0000">Warning: there may be a problem 
+with this script.&nbsp; It was generating spurious errors at the time 
+of class.</span></p>
+<p>&nbsp;</p>
+<p><a name="0.1__GoBack"></a><span style="font-size:14pt;font-weight:bold">References</span></p>
+<p>[1] <a href="http://sriramk.com/blog/2008/11/python-wrapper-for-windows-azure.html" target="_blank">http://sriramk.com/blog/2008/<wbr>11/python-wrapper-for-windows-<wbr>azure.html</a></p>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div></body></html>
