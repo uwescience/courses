@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.style10 {color: #006600;
+	font-weight: bold;
+}
+.style12 {color: #990033;
+	font-weight: bold;
+}
+.style13 {color: #9900CC}
+.style14 {color: #FFFFFF}
+.style16 {color: #9900CC; font-weight: bold; }
+.style9 {color: #0000CC;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<center>
+  <h2 align="left">CSE 344: Sections</h2>
+  <p align="left">&nbsp; </p>
+  <table width="419" border="1" align="left" cellpadding="5" cellspacing="5">
+    <tr bgcolor="#000066">
+      <td width="191"><div align="center" class="style8 style14">Date</div></td>
+      <td width="187"><div align="center"><span class="style8 style14">Section</span></div></td>
+    </tr>
+    <!-- styles are style1, style4, style9, style11, style12, style13 -->
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">3/31/2011</div></td>
+      <td><div align="center"><a href="./sections/section1/section1.txt" target="_blank"></a>sqlite <a href="./sections/section1/section1.txt" target="_blank">notes</a> <a href="./sections/section1/section1.sql" target="_blank">sql queries</a></div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">4/7/2011</div></td>
+      <td><div align="center">SQL 
+      	<a href="./sections/section2/section2.txt" target="_blank">notes</a> 
+        <a href="./sections/section2/section2-schema.sql" target="_blank">schema</a>
+	<a href="./sections/section2/section2-solution.sql" target="_blank">solution</a></div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">4/14/2011</div></td>
+      <td><div align="center">Relational algebra and Postgres
+        <a href="./sections/section3/section3.txt" target="_blank">notes</a>
+      </div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">4/21/2011</div></td>
+      <td><div align="center">XPath
+        <a href="./sections/section4/section4.txt" target="_blank">notes</a>,
+        <a href="./sections/section4/section4-solution.txt" target="_blank">solution</a>
+      </div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">4/28/2011</div></td>
+      <td><div align="center">From XML to relations
+        <a href="./sections/section5/section5.txt" target="_blank">notes</a>,
+        <a href="./sections/section5/section5-solution.txt" target="_blank">SQL solution</a>
+      </div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">5/5/2011</div></td>
+      <td><div align="center">JDBC for homework 5
+        <a href="./sections/section6/section6.txt" target="_blank">notes</a>
+      </div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">5/12/2011</div></td>
+      <td><div align="center">Transactions in Java<br />
+        <a href="./sections/section7/section7.txt" target="_blank">notes</a>,
+        <a href="./sections/section7/Section7.java" target="_blank">Java code</a>,<br />
+        conflicting transactions:
+	<a href="./sections/section7/Section7_T1.java" target="_blank">T1</a>,
+	<a href="./sections/section7/Section7_T2.java" target="_blank">T2</a>,
+	<a href="./sections/section7/Section7Conflicting.java" target="_blank">common code</a>
+      </div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">5/19/2011</div></td>
+      <td><div align="center">MapReduce examples
+        <a href="./sections/section8/section8-mapreduce-blank.pdf" target="_blank">worksheet</a>,
+        <a href="./sections/section8/section8-mapreduce-solution.pdf" target="_blank">solution</a>
+      </div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">5/26/2011</div></td>
+      <td><div align="center">Topics for 
+	  <a href="./hw/hw6/hw6.html" target="_blank">homework 6</a>
+      </div></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFF99"><div align="center">6/2/2011</div></td>
+      <td><div align="center">Finding similar items
+        <a href="./sections/section10/section10-similar-items-blank.pdf" target="_blank">worksheet</a>,
+        <a href="./sections/section10/section10-similar-items-solution.pdf" target="_blank">solution</a>
+      </div></td>
+    </tr>
+  </table>
+  <p align="left">&nbsp;</p>
+</center>
+</body>
+</html>

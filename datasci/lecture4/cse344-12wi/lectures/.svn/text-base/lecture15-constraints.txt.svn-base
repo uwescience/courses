@@ -1,0 +1,76 @@
+================================================================
+CSE 344 -- Fall 2011
+Lecture 15:  Constraints
+
+================================================================
+
+Constraints in SQL
+
+----------------------
+1. Keys and Foreign Keys
+
+create table R (A int PRIMARY KEY, B varchar(20))
+
+create table R (A int, B varchar(20), C int, PRIMARY KEY (A,B))
+
+Notice: we can also use UNIQUE:
+
+create table R (A int PRIMARY KEY, B varchar(20), C int, D int, UNIQUE(B,D))
+   *** what does this mean ?
+
+create table Q(C int REFERENCES R, D varchar(20))
+
+create table Q(C int REFERENCES R(A), D varchar(20))  -- same thing
+
+create table Q(C int, D varchar(20), FOREIGN KEY C REFERENCES R(A))  -- same thing
+
+create table Q(C int, D varchar(20), E int, FOREIGN KEY (C,D) REFERENCES R(A,B))
+        -- note: the key in R must be A,B
+
+**** in class: WHAT HAPPENS DURING UPDATES ?  insert/delete in or to R/Q
+     discuss: REJECT, CASCADE, SET NULL policies
+
+
+----------------------
+
+2. Attribute-level and Tuple-level constraints
+
+create table R (A int NOT NULL, 
+                B int CHECK (B < 50 or B > 100), 
+                C varchar(20), 
+                CHECK (C >= 'd' and C < 'e'))
+
+****  in class: what does this mean ?
+
+create table Q (C int, D varchar(20), CHECK (C in select A from R))
+
+**** in class: what does this means ?  What is the relationshiop to
+     foreign key ?
+
+----------------------
+
+3. General assertions
+
+CREATE ASSERTION myAssert 
+CHECK  NOT EXISTS(
+	SELECT Product.name
+	FROM Product, Purchase
+	WHERE Product.name = Purchase.prodName
+	GROUP BY Product.name
+	HAVING count(*) > 200)
+
+================================================================
+Semantic optimizations using constratins.
+
+Consider:
+
+     Customer(cid, name, address)
+     Product(pid, name, price)
+     Purchase(pid, cid, date)  -- pid, cid are foreign keys
+
+select y.date
+from Product x, Purchase y
+where x.pid = y.pid
+
+**** In class: this query can be simplified (and an advanced optimizer
+     will do that).  To what ?  And under what conditions ?

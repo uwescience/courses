@@ -1,0 +1,300 @@
+CSE 344 section 06 -- Topics for homework 5
+=================================================
+
+ABOUT JDBC
+
+In homework 5, you will extend a Java program that connects to a 
+database using Java Database Connectivity, or JDBC.  JDBC is part
+of the Java libraries; the docs on JDBC are here:
+  http://download.oracle.com/javase/6/docs/technotes/guides/jdbc/
+
+By using JDBC objects and methods, you can talk to your database
+server, sending SQL queries and updates as Java strings, and retrieving 
+the results.  JDBC does not know how to connect to any DBMS by itself;
+each DBMS vendor provides a "JDBC driver" as a Java library archive 
+(.jar file), which you load into the Java VM so that JDBC can use it
+to connect to your database system.
+
+====================
+THE HW5 STARTER CODE
+
+The starter code for homework 5 consists of 4 items:
+- Query.java and VideoStore.java, the starter source files
+- postgresql-8.4-701.jdbc4.jar, the Postgres JDBC driver
+- dbconn.properties
+
+dbconn.properties is a Java "properties file", which is just a fancy name
+for a file with one key-value pair on each line, like so:
+
+# This is a comment. Comment lines must have # or ! as the first 
+# non-whitespace character.
+firstKey = 123string
+secondKey=another string, which can have any punctuation
+prefix.thirdKey = Key prefixes are often used by convention; Java ignores them
+
+(The exact syntax can be found at:
+ http://download.oracle.com/javase/6/docs/api/java/util/Properties.html )
+
+Query.java loads the properties file into a java.util.Properties object.
+It uses the Properties object to get various configuration info:
+- videostore.jdbc_driver - the class name of the JDBC driver for Postgres
+- videostore.imdb_url - Where to find the IMDB database on Postgres (see below)
+- videostore.postgres_username - Username to log into Postgres
+- videostore.postgres_password - Password for Postgres
+
+imdb_url is a JDBC "connection URL", which tells JDBC how to find your database.
+The JDBC URL syntax is:
+  jdbc:DRIVER_IDENTIFIER:DRIVER_SPECIFIC
+where DRIVER_IDENTIFIER identifies what JDBC driver to use, and 
+DRIVER_SPECIFIC is some information interpreted by the driver alone.
+For Postgres, the DRIVER_IDENTIFIER is "postgresql".  To connect
+to a local Postgres database, you give the database name for
+the DRIVER_SPECIFIC string, hence you will have a URL like this:
+  jdbc:postgresql:YOUR_DATABASE_NAME
+
+========================
+RUNNING THE STARTER CODE
+
+First, we need to modify dbconn.properties with the right config info
+for our Postgres install, by changing imdb_url, postgres_username,
+and postgres_password properties.  On my machine:
+  videostore.imdb_url = jdbc:postgresql:imdb
+  videostore.postgres_username = michaelr
+  videostore.postgres_password = 123456
+(123456 is not my real password, by the way :)
+
+If you run Postgres on your own computer, you will probably
+have "postgres" for the username, and the same password you used
+in homework 3.  If you run it from the basement lab, you should use
+your CSE username, and the password can be anything as Postgres ignores it.
+
+Now start up Postgres if needed.  Once that is done, you are ready
+to open a command line.  First you need to change to the folder where
+you unzipped the starter code.  
+
+Then you need to set the CLASSPATH variable,
+which Java uses to find pre-compiled classes.  You need to have Java
+look in the current folder (a dot, ".") and the .jar file in the 
+starter code ("postgresql-8.4-701.jdbc4.jar").  (The .jar file is 
+in the current folder too, but Java customarily ignores it unless
+you specify it directly, or specify "./*" instead of plain ".".)
+
+On Windows, you do:
+  set CLASSPATH=.;postgresql-8.4-701.jdbc4.jar
+(Note the semicolon ; separating the two entries.)
+
+On Linux or Mac OSX, you do: 
+  export CLASSPATH=.:postgresql-8.4-701.jdbc4.jar
+(Note the colon : separator.)
+
+Now that you've set the CLASSPATH, you can compile the source files:
+  javac -g VideoStore.java Query.java
+
+and run the starter code:
+  java VideoStore
+
+But the program errors out, saying it needs a username and password.
+We can just enter a dummy one at this point, because the starter program
+doesn't check usernames or passwords anyway:
+  java VideoStore alice password
+
+And hooray!  You get a list of possible commands.  Type "quit" to quit.
+
+=========================================
+CONNECTING TO A DATABASE SERVER WITH JDBC
+
+Connecting to a database is a two-step process.  First, you make sure
+that the JDBC driver for your DBMS is loaded.  In all recent versions
+of Java, adding the driver to the CLASSPATH is enough, but in very old
+versions, you need to explicitly reference the driver's top-level Java
+class to load it, as we do in Query.openConnection():
+
+  postgreSQLDriver   = configProps.getProperty("videostore.jdbc_driver");
+  /* load other properties from configProps... */
+  Class.forName(postgreSQLDriver).newInstance();
+
+Then we can use the JDBC Java.sql.DriverManager class to create
+the connection, giving the connection URL, username, and password:
+
+  conn = DriverManager.getConnection(postgreSQLUrl, // database
+                                     postgreSQLUser, // user
+                                     postgreSQLPassword); // password
+
+This returns a java.sql.Connection object called `conn', which we keep
+around as an instance field of the Query object.
+
+===============
+RUNNING A QUERY
+
+The search transaction, in Query.transaction_search(), runs several
+SQL queries; the first one is always the one referred to by
+the local variable searchSql.  This builds a SQL command string 
+`searchSql' by concatenating together various pieces.  Then, it does:
+
+  Statement searchStatement = conn.createStatement();
+  ResultSet movie_set = searchStatement.executeQuery(searchSql);
+
+First, we ask the Connection to create a Statement object that will
+run SQL against that connection.  Then we call the Statement's
+executeQuery() method, passing in the SQL string `searchSql'.
+This returns a ResultSet object, which represents an iterator
+over the tuples of the result table for the SQL query in `searchSql'.
+
+To obtain data from the ResultSet, transaction_search() does this:
+
+  while (movie_set.next()) {
+    int mid = movie_set.getInt(1);
+    System.out.println("ID: " + mid + " NAME: "
+      + movie_set.getString(2) + " YEAR: "
+      + movie_set.getString(3));
+    // ...
+  }
+
+Initially, the ResultSet iterator points to "just before" the first
+result tuple.  We use ResultSet.next() to advance to the next tuple;
+it returns true until there are no more tuples to read, then it returns false.
+
+To access the attributes of the current tuple, we use the getX() functions.
+getInt(N) returns the value of attribute N (numbering from left to right,
+starting at 1 - not 0!), assuming it is an integer that fits in the range 
+of Java `int'.  Similarly for getString(), getLong(), and so on.
+
+===========================================
+PREPAREDSTATEMENT AND PARAMETERIZED QUERIES
+
+The first query run by search incorporates a variable parameter by 
+interpolating its value through string concatenation:
+
+  /* Interpolate the movie title into the SQL string */
+  String searchSql = SEARCH_SQL_BEGIN + movie_title + SEARCH_SQL_END;
+
+search() also demonstrates another way to work with variable parameters.
+Notice that the DIRECTOR_MID_SQL SQL code has a ? mark in it:
+  private static final String DIRECTOR_MID_SQL = 
+    "SELECT y.* "
+  + "FROM movie_directors x, directors y "
+  + "WHERE x.mid = ? and x.did = y.id";
+(Also notice the spaces after each line; remember that we are building
+ this string by concatenating together other string literals, which *don't*
+ include the newlines!)
+
+The ? denotes a parameter which will be substituted later, but
+the substitution will be done by Java itself, not by us through
+string interpolation.
+
+To use SQL strings with ? marks, we need to use a PreparedStatement
+object instead of a Statement object.  In prepareStatements(), we ask
+the database connection to give us a PreparedStatement corresponding
+to DIRECTOR_MID_SQL: 
+
+  directorMidStatement = conn.prepareStatement(DIRECTOR_MID_SQL);
+
+Then, in transaction_search(), we can interpolate the parameter
+and then run the statement as follows: 
+
+  directorMidStatement.clearParameters();
+  directorMidStatement.setInt(1, mid);
+  ResultSet director_set = directorMidStatement.executeQuery();
+
+After clearing the old parameter set, if any, we tell the PreparedStatement
+to set its 1st parameter (again, 1-based) to our value `mid'.  Java 
+will take care of interpolating this parameter into the SQL code for us.
+(Actually, what usually happens is that the JDBC driver sends the 
+parameter separately from the SQL, using features in the DBMS wire protocol.)
+Then we run the query by calling the executeQuery() method (but without 
+a SQL string; we already supplied it when we created the PreparedStatement).
+
+In addition to parameters, PreparedStatements have another advantage
+over Statements - they can be reused without having to provide the SQL
+code all over again.  This saves typing, obviously, and may also be 
+faster for the DBMS, which doesn't have to compile the same SQL code
+over and over.
+
+====================
+ADDING OUR OWN QUERY
+
+Enough of seeing how other people write queries.  Let's add our own query 
+to Query.java.  For convenience, we hijack the transaction printPersonalData().
+This gets run each time the program's command-line prompt is shown.  It's
+supposed to show some information about the logged-in customer, but because
+we have no customers yet, let's hijack it to show some information
+about a random movie.  Add the following to the body:
+
+  PreparedStatement pstmt = 
+    conn.prepareStatement("SELECT name, year FROM Movie WHERE id = ?");
+  pstmt.setInt(1, 147577);
+		
+  ResultSet results = pstmt.executeQuery();
+  while (results.next()) {
+    System.out.println("name=" + results.getString(1));
+    System.out.println("year=" + results.getInt("year"));
+    System.out.println();
+  }
+  results.close();
+
+All of this we have seen before, with two exceptions:
+- You can pass strings to ResultSet.getX(); this gets the attribute
+  with the given name, as opposed to the one with the given column
+  position.
+- After exiting the loop, we close() the ResultSet.  It's generally
+  a good practice to close any JDBC objects once we're done with them.
+  It lets the DBMS free up the resources associated with that 
+  prepared SQL command, or that query result set, or that connection.
+
+=======================
+DATABASE UPDATES IN SQL
+
+We haven't really covered how to make changes to a database
+using SQL; you've seen it in passing in class and section,
+and it was covered in homework 1.  For reference, there are
+four types of database updates to existing tables:
+
+Inserting a single new tuple into a table:
+  INSERT INTO R(x,y,z)
+  VALUES ('the X value', 42, 32.7);
+
+  * If attributes in table R aren't specified after R's name
+    in the INSERT, their values default to null.
+  * You don't need to have the attribute names in parentheses
+    at all, if you give the attribute values in the same order
+    as the names appear in CREATE TABLE. (sqlite .schema,
+    postgres \dt)
+
+Inserting a query result set into a table:
+  INSERT INTO R(x,y,z)
+    SELECT a, b, c 
+    FROM [...];
+  
+  The full query statement replaces the single VALUES expression.
+
+Updating existing tuples in a table:
+  UPDATE R
+  SET x = 'quick brown fox', z = 25.3
+  WHERE y = 42;
+  
+  The WHERE clause works as it does in a query, selecting
+  the tuples in R whose values are to be updated per the SET clause.
+
+Deleting tuples from a table:
+  DELETE FROM R
+  WHERE y <> 1000;
+  
+You can omit the WHERE clause from both UPDATE and DELETE statements.
+But you probably *really* don't want to do that, because then every
+tuple will be changed or deleted.
+
+==========================
+DATABASE UPDATES FROM JAVA
+
+Last, and maybe most, we discuss how to run database updates from Java.
+There are methods in Statement and PreparedStatement for this purpose:
+
+  Statement.executeUpdate(updateSQLString)
+  PreparedStatement.executeUpdate()
+
+Instead of returning a iterator over matching tuples (because updates don't
+return a tuple set), these methods return the number of tuples that
+were affected by the update.  They are otherwise similar to queries.
+N.B.: executeUpdate() will throw an exception if the SQL code
+returns a tuple set, while the earlier executeQuery() will throw
+if the SQL code *does not* return a tuple set!

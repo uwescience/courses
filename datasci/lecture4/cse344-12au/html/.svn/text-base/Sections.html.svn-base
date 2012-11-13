@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.style10 {color: #006600;
+	font-weight: bold;
+}
+.style12 {color: #990033;
+	font-weight: bold;
+}
+.style13 {color: #9900CC}
+.style14 {color: #FFFFFF}
+.style16 {color: #9900CC; font-weight: bold; }
+.style9 {color: #0000CC;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<center>
+  <h2 align="left">CSE 344: Sections</h2>
+  <p align="left">&nbsp; </p>
+  <table width="419" border="1" align="left" cellpadding="5" cellspacing="5">
+    <tr bgcolor="#000066">
+      <td width="191"><div align="center" class="style8 style14">Date</div></td>
+      <td width="187"><div align="center"><span class="style8 style14">Section</span></div></td>
+    </tr>
+    <!-- styles are style1, style4, style9, style11, style12, style13 -->
+    <tr>
+      <td bgcolor="#FFFF99">&nbsp;</td>
+      <td><div align="center"></div></td>
+    </tr>
+  </table>
+  <p align="left">&nbsp;</p>
+</center>
+</body>
+</html>

@@ -1,0 +1,46 @@
+====================================================================
+W3 Markup Validator Instructions 
+=====================================================================
+The W3 Markup Validator takes in 3 forms of input for validation. We
+only focus on two, file upload and direct input. Feel free to use
+either.
+
+----------------------------------------------
+To check that your results are well-formed:
+----------------------------------------------
+
+1. Copy your results into the input form under the direct input tab, 
+or save your results to a file and select this file under the file upload tab.
+Make sure your copied results include an XML declaration at the top: 
+<?xml version="1.0" encoding="UTF-8"?>
+(XQuery automatically prints this at the beginning of your query results,
+just make sure that you copy it)
+
+2. Click on the "check" button. You will see a red bar if there were errors,
+and a green bar if the check was successful (no errors, but there may still be
+warnings). The errors and warnings will be at the bottom of the page.
+
+----------------------------------------------
+To check that your results follow a given DTD:
+----------------------------------------------
+
+Follow instructions above. In addition, add a DOCTYPE declaration after the
+XML declaration and before the rest of the XML content in the following form:
+
+<!DOCTYPE [name of root element as specified by DTD] [
+...
+[rules of DTD as specified for the problem]
+...
+]>
+
+For example, the following would be a DOCTYPE declaration for problem 1:
+
+<!DOCTYPE result [
+<!ELEMENT result (country)>
+<!ELEMENT country (name, city+)>
+<!ELEMENT city (name)>
+<!ELEMENT name (#PCDATA)>
+]>
+
+The rules are a copy of the DTD specified for problem 1.
+

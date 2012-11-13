@@ -1,0 +1,45 @@
+These are practice problems for the midterm.  If you need help with
+any of them, please come to office hours, or make a separate
+appointment.
+
+Schema:
+
+Likes(drinker, beer)
+Frequents(drinker, bar)
+Serves(bar, beer)
+
+AGGREGATE QUERIES
+
+* for each bar, count the number of drinkers that frequent it, and
+  that like both 'heineken' and 'bud'
+
+* for each bar that serve both 'heineken' and 'bud' count the number
+  of drinkers that frequent that bar
+
+* for each bar that serve 'heineken' count the number of drinkers that
+  frequent that bar and that like 'bud'
+
+EXISTENTIAL AND UNIVERSAL QUANTIFIER
+
+* find all drinkers that frequent some bar that serves some beer that
+  they like
+
+* find all drinkers that frequent only bars that serve some beer that
+  they like
+
+* find all drinkers that frequent some bar that serves only beer that
+  they like
+
+* find all drinkers that frequent some bar that serves some beer that
+  they don't like
+
+* find all drinkers that frequent some bar that serves only beer that
+  they don't like
+
+* find all drinkers that frequent only bars that serve some beer that
+  they don't like
+
+* find all drinkers that frequent only bars that serve only beer that
+  they don't like
+
+

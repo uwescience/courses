@@ -1,0 +1,478 @@
+% Section 10 worksheet --- finding similar items
+% CSE 344, spring 2011
+% June 2, 2011
+% Michael Ratanapintha
+
+\documentclass[letterpaper,12pt]{article}
+\usepackage{fullpage}
+\usepackage[sc]{mathpazo}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{IEEEtrantools}
+\usepackage{color}
+\usepackage{versions}
+
+\newcommand\mytitle{Finding similar items}
+\newcommand\myauthor{Michael Ratanapintha}
+\newcommand\mysubject{CSE 344, section 10}
+\newcommand\mydate{June 2, 2011}
+
+\usepackage[pdftex]{hyperref}
+\hypersetup{
+pdftitle = \mytitle,
+pdfsubject = \mysubject,
+pdfauthor = \myauthor,
+pdfstartview = {FitH},
+bookmarksnumbered,
+colorlinks,
+}
+
+\newenvironment{solution}{\color{red}\textbf{Solution:}\\}{}
+\newenvironment{whitespace}{}{}
+\excludeversion{\excluded}
+
+\DeclareMathOperator\sumfn{sum}
+
+\title\mytitle
+\author\mysubject
+\date\mydate
+
+%%------
+\begin{document}
+\maketitle
+
+In this section, we'll go through some examples of finding similar item sets.
+We'll directly compare all pairs of sets being considered using the 
+Jaccard similarity.  We'll also see small examples of  
+minhashing and locality-sensitive hashing methods, which are intended to
+help make the similarity pairing tractable for many possible sets.
+
+The examples we'll see in this assignment are taken from your textbook,
+specifically the exercises for Garcia-Molina section 22.3 (pages 1115-6)
+and section 22.4 (page 1122).
+
+\section{Jaccard similarity and minhashing}
+
+\begin{enumerate}
+
+\item
+Compute the Jaccard similarity of each pair of the following sets:
+\{1, 2, 3, 4, 5\}, \{1, 6, 7\}, \{2, 4, 6, 8\} .
+
+\
+
+\begin{solution}
+Recall the general formula for the Jaccard similarity of two sets:
+\begin{equation*}
+J (A, B) = \frac{|A \cap B|}{|A \cup B|}
+\end{equation*}
+
+For the three combinations of pairs above, we have
+
+\begin{IEEEeqnarray*}{rCl}
+J (\{1, 2, 3, 4, 5\}, \{1, 6, 7\}) & = & \frac{1}{7} \\
+J (\{1, 2, 3, 4, 5\}, \{2, 4, 6, 8\}) & = & \frac{2}{7} \\
+J (\{1, 6, 7\}, \{2, 4, 6, 8\}) & = & \frac{1}{6}
+\end{IEEEeqnarray*}
+\end{solution}
+
+\vfill
+
+\clearpage
+\item
+What are all the 4-grams of the following string?
+\begin{verbatim*}
+abc def ghi
+\end{verbatim*}
+Remember that white space (denoted by \verb*| |) counts!
+
+\
+
+\begin{solution}
+\begin{itemize}
+\item \verb*|abc |
+\item \verb*|bc d|
+\item \verb*|c de|
+\item \verb*| def|
+\item \verb*|def |
+\item \verb*|ef g|
+\item \verb*|f gh|
+\item \verb*| ghi|
+\end{itemize}
+\end{solution}
+
+\vfill
+\item
+Suppose that our universal item set is $\{1, 2, \ldots, 10\}$,
+and signatures for sets are constructed using the following list 
+of permuations for the universal set:
+\begin{itemize}
+\item $( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 )$
+\item $( 10, 8, 6, 4, 2, 9, 7, 5, 3, 1 )$
+\item $( 4, 7, 2, 9, 1, 5, 3, 10, 6, 8 )$
+\end{itemize}
+Construct minhash signatures for the following sets:
+\begin{enumerate}
+\item $\{ 3, 6, 9 \}$
+\item $\{ 2, 4, 6, 8 \}$
+\item $\{ 2, 3, 4 \}$
+\end{enumerate}
+
+\
+
+\begin{solution}
+Each set's signature consists of one minhash value from each permutation
+of the universal set; this value is the first value in the permutation that
+appears in the subset.  Hence our three signatures are:
+\begin{enumerate}
+\item $( 3, 6, 9 )$
+\item $( 2, 8, 4 )$
+\item $( 2, 4, 4 )$
+\end{enumerate}
+\end{solution}
+
+\vfill
+
+\clearpage
+\item
+Suppose that instead of using particular permutations to construct
+signatures for the three sets of the previous problem, we use hash functions
+to construct the signatures.  The three hash functions we use are:
+\begin{IEEEeqnarray*}{rCl}
+f(x) & = & x \mod 10 \\
+g(x) & = & (2x + 1) \mod 10 \\
+h(x) & = & (3x + 2) \mod 10
+\end{IEEEeqnarray*}
+Compute the signatures for the three sets, and compare the resulting estimate
+of the Jaccard similarity of each pair with the true Jaccard similarity.
+
+\
+
+\begin{solution}
+Instead of finding the first value in the permutation that appears in the
+subset, we compute the minhash as the smallest value of the hash function
+in the whole subset.  This yields the following three signatures:
+\begin{enumerate}
+\item $( 3, 3, 0 )$
+\item $( 2, 3, 0 )$
+\item $( 2, 5, 1 )$
+\end{enumerate}
+To estimate the Jaccard similarity from a minhash vector (derived either
+from permutations or hash functions), we find the number of matching
+minhash values in corresponding positions in the two subsets' minhash vectors.
+Estimating the Jaccard similarity using both permutation minhash vectors
+(problem 3) and hash function minhash vectors (this problem) gives:
+
+% Set 1, Set 2, actual, estimate
+\
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+Set 1 & Set 2 & Actual $J$ & Hash est. $J$ & Perm. est. $J$ \\
+\hline
+(a) $\{ 3, 6, 9 \}$ & (b) $\{ 2, 4, 6, 8 \}$ & $1/6$ & $2/3$ & $0/3$
+\\
+(a) $\{ 3, 6, 9 \}$ & (c) $\{ 2, 3, 4 \}$ & $1/5$ & $0/3$ & $0/3$
+\\
+(b) $\{ 2, 4, 6, 8 \}$ & (c) $\{ 2, 3, 4 \}$ & $2/5$ & $1/3$ & $2/3$
+\end{tabular}
+\end{center}
+
+\
+
+We can see that these minhash vectors, whether computed from universal set 
+permutations or a list of hash functions, are quite poor estimators
+of the Jaccard similarity.  This is understandable given
+how short the minhash vectors actually are.  We should get more permutations
+of the universal set or more hash functions to make the minhash vectors
+longer.
+\end{solution}
+
+\vfill
+
+\clearpage
+\item
+Suppose you have some documents, and have stored k-grams of these documents
+in a large table.  Each column of the table represents all the k-grams
+for a single document, and each row $r$ represents the $r^{\text{th}}$ k-gram
+for all the documents.  (Because documents vary in length, there may be
+empty cells in the bottom fringes of the table.)  The ``schema'' of the table
+--- that is, the mapping between row indexes in the table and document IDs
+--- is stored separately.  
+
+\
+
+Show how you would use MapReduce to compute a minhash value for each
+of your documents, using a single hash function (\emph{not} a permutation
+of a dictionary of possible k-grams).  You can assume that
+every processor gets a copy of the schema, but:
+\begin{enumerate}
+\item
+The table must be partitioned across the processors by rows.
+
+\begin{solution}
+In this partitioning, each processor receives a subset of the k-grams
+for every document.  Hence, each processor can't compute the minhash 
+for each document directly from its input data.  Instead, it must
+compute the hash value for each of its k-grams separately.  Then,
+the hash values must be grouped by document ID across the whole
+system.  Finally, each processor finds the minimum hash value for
+each of the documents it is given.
+
+\
+
+The MapReduce input is given as a set of key-value pairs, where each
+key is a document ID, and each value is a k-gram from that document.
+The map function then computes the hash value:
+
+\begin{verbatim}
+map (k: docID, v: kgram) {
+  emit_intermediate(ik = k, iv = hash(v))
+}
+\end{verbatim}
+
+\
+
+The MapReduce system groups the hashes by document ID, then the
+reduce function finds the minimum hash value:
+\begin{verbatim}
+reduce (ik: docID, ivs: hashval[]) {
+  var minhash := INFINITY
+  for each iv in ivs {
+    if iv < minhash {
+      minhash := iv
+    }
+  }
+  emit_final(fk = ik, fv = minhash)
+}
+\end{verbatim}
+\end{solution}
+
+\vfill
+
+\clearpage
+\item
+The table must be partitioned by columns.
+
+\begin{solution}
+This split is easier to program, but also much harder to build,
+unless the table is stored in column-major order (which is common for data
+mining applications like this, but relatively rare otherwise).
+Here, all the k-grams for a document go to the same processor.
+We can actually use the same input format and the same
+map and reduce functions as before, but this doesn't take advantage
+of the fact that the input data is already grouped for us.  
+
+\
+
+Instead, let the input keys be document IDs as before, but now
+let the input values be the list of every k-gram in the document.
+Then all the work is done in the map function:
+
+\begin{verbatim}
+map (k: docID, v: kgram[]) {
+  var minhash := INFINITY
+  for each kgram in v {
+    var h := hash(kgram)
+    if h < minhash {
+      minhash := h
+    }
+  }
+  emit_intermediate(ik = k, iv = minhash)
+}
+\end{verbatim}
+
+\
+
+And the reduce function becomes a no-op:
+\begin{verbatim}
+reduce (ik: docID, ivs: hashval[]) {
+  // There will be only one element in ivs[],
+  // because only one map() produces each ik.
+  emit_final(fk = ik, fv = ivs[0])
+}
+\end{verbatim}
+In fact, Hadoop will let you simply omit the Java code for the Reducer
+(reduce function closure) and not ask for it to be called at all.
+This saves the time to do the (useless) grouping of intermediate data.
+\end{solution}
+
+\vfill
+\end{enumerate}
+
+\clearpage
+
+\end{enumerate}
+
+
+
+\section{Locality-sensitive hashing}
+
+\begin{enumerate}
+
+\item
+Suppose we have a table where each tuple consists of three fields/attributes
+(name, address, phone number),
+and we need to do an entity resolution on this table to find those
+sets of tuples that refer to the same person.  For concreteness,
+suppose that the only pairs of tuples that could possibly be total
+edit distance 5 or less from each other consist of a true copy of 
+a tuple and another \emph{corrupted} version of the tuple.  In the corrupted
+version, each of the three fields is changed independently.  50\% of the time,
+a field has no change.  20\% of the time, there is a change resulting in 
+edit distance 1 for that field.  There is a 20\% chance of edit distance 2
+and 10\% chance of edit distance 10.  Suppose there are one million
+pairs of ths kind in the table.
+
+\begin{enumerate}
+\item
+How many of the million pairs are within total edit distance 5
+of each other?
+
+\begin{solution}
+Let's consider those pairs of tuples that are more than 5 away from each other.
+There are two possibilities that would cause this: all 3 fields
+have a change of edit distance 2 (probability: 
+$(.2)^3 = .008 = .8\%$), and at least one field
+has a change of edit distance 10 (probability:
+$1 - (.9)^3 = .271 = 27.1\%$).  The total proportion of tuple pairs that
+are 5 or less away from each other is then $1 - .279 = 72.1\%$, so 
+721,000 pairs are within edit distance 5.
+\end{solution}
+
+\vfill
+
+\item
+If we hash each field of all the tuples to one million buckets,
+how many of these one million pairs will hash to the same bucket for
+at least one of the three hashings?
+
+\begin{solution}
+By the definition of a hash function, identical field values will hash 
+to the same bucket.  Because each field pair is the same 50\% of the
+time, there is a 50\% chance that each pair of fields hashes
+to the same bucket, and a 50\% chance that each pair hashes to different
+buckets.
+
+\
+
+The probability that each pair of tuples hashes to the same bucket
+for at least one of the three fields, is just 1 less the probability
+that they hash to different buckets for all three fields:
+$1 - {(.5)}^{3} = 1 - .125 = .875$, or $87.5\%$.  Hence, there are 
+875,000 pairs of tuples that hash to the same bucket for at least one
+hashing.
+
+\end{solution}
+
+\vfill
+\clearpage
+
+
+\item
+How many false negatives will there be?  That is, how many of the one
+million pairs are within total edit distance 5, but will not hash to the
+same bucket for any of the three hashings?
+
+\begin{solution}
+There are three cases of the differences between the fields that
+will cause a false negative:
+\begin{itemize}
+% I assume here that the probabilities are drawn from multinomial distribution.
+%  Check this! (and my math)
+\item 
+  All three fields have a difference with edit distance 1.
+  The probability of this case, over all possible choices for the 
+  chagne or lack thereof in all three fields, is ${(.2)}^{3} = .008 = .8\%$.
+\item
+  One field has edit distance 2, and the other two have edit distance 1.
+  The probability is $3(.2 \cdot .2 \cdot 2) = .024 = 2.4\%$;
+  we multiply by 3 because there are 3 possible choices for the field
+  with edit distance 2.
+\item
+  Two fields have edit distance 2, and the other one has edit distance 1.
+  The probability is $3(.2 \cdot .2 \cdot 2) = .024 = 2.4\%$;
+  we multiply by 3 (similar to above) because there are 3 possible choices 
+  for the pair of fields with edit distance 2.
+\end{itemize}
+The total probability of all three cases is $.056 = 5.6\%$, so we should
+expect 56,000 false negatives.
+\end{solution}
+
+\end{enumerate}
+
+
+\vfill
+\clearpage
+
+\item
+The function $p = 1 - {(1- {s^r})}^b$ gives the probability $p$ that
+two minhash signatues that come from sets with Jaccard similarity $s$
+will hash to the same bucket at least once, if we use an LSH scheme with
+$b$ bands of $r$ rows each.  For a given similarity threshold $s$,
+we want to choose $b$ and $r$ so that $p = 1/2$ at $s$.  
+Suppose signatures have length 24, which means we can pick any integers
+$b$ and $r$ whose product is 24.  That is, the choices for $r$ are 1,
+2, 3, 4, 6, 8, 12, or 24, and $b$ must then be $24/r$.
+
+\begin{enumerate}
+
+\item
+If $s = 1/2$, determine the value of $p$ for each choice of $b$ and $r$.
+Which would you choose, if $1/2$ were the similarity threshold?
+
+\begin{solution}
+\begin{itemize}
+\item $r = 1, b = 24$: $p = 1 - {(1- {{(1/2)}^{1}})}^{24} = 1 - {(1/2)}^{24} \approx .99999994$
+\item $r = 2, b = 12$: $p = 1 - {(1- {{(1/2)}^{2}})}^{12} = 1 - {(3/4)}^{12} \approx 0.968$
+\item $r = 3, b = 8$: $p = 1 - {(1- {{(1/2)}^{3}})}^{8} = 1 - {(7/8)}^{8} \approx .657$
+\item $r = 4, b = 6$: $p = 1 - {(1- {{(1/2)}^{4}})}^{6} = 1 - {(15/16)}^{6} \approx .321$ 
+\item $r = 6, b = 4$: $p = 1 - {(1- {{(1/2)}^{6}})}^{4} = 1 - {(63/64)}^{4} \approx .0611$
+\item $r = 8, b = 3$: $p = 1 - {(1- {{(1/2)}^{8}})}^{3} = 1 - {(255/256)}^{3} \approx .0117$
+\item $r = 12, b = 2$: $p = 1 - {(1- {{(1/2)}^{12}})}^{2} = 1 - {(2047/2048)}^{2} \approx 4.882 \cdot {10}^{-4}$
+\item $r = 24, b = 1$: $p = 1 - {(1- {{(1/2)}^{24}})}^{1} = 1 - {(16777215/16777216)}^{1} \approx 5.960 \cdot {10}^{-8}$
+\end{itemize}
+It's clear that, in this case, you should choose to minimize the number of 
+rows (positions within a signature), by letting $r = 1$.
+\end{solution}
+
+\vfill
+
+\clearpage
+\item
+For each choice of $b$ and $r$, determine the value of $s$ that makes
+$p=1/2$.
+
+\begin{solution}
+We can solve for $s$ in the formula for $p$:
+\begin{IEEEeqnarray*}{rCl}
+p     & = & 1 - {(1- {s^r})}^b \\
+1 - p & = & {(1- {s^r})}^b \\
+\sqrt[b]{1-p} & = & 1 - s^r \\
+1 - \sqrt[b]{1-p} & = & s^r \\
+s & = & \sqrt[r]{1 - \sqrt[b]{1-p}}
+\end{IEEEeqnarray*}
+
+
+Then we can compute $s$ by plugging in $p$ and each choice of $r$ and $b$
+we're interested in: 
+\begin{itemize}
+\item $r = 1, b = 24$: $s = 1 - \sqrt[24]{1/2} \approx 0.0284$
+\item $r = 2, b = 12$: $s = \sqrt[2]{1 - \sqrt[12]{1/2}} \approx 0.2369$
+\item $r = 3, b = 8$: $s = \sqrt[3]{1 - \sqrt[8]{1/2}} \approx 0.4361$
+\item $r = 4, b = 6$: $s = \sqrt[4]{1 - \sqrt[6]{1/2}} \approx 0.5747$
+\item $r = 6, b = 4$: $s = \sqrt[6]{1 - \sqrt[4]{1/2}} \approx 0.7361$
+\item $r = 8, b = 3$: $s = \sqrt[8]{1 - \sqrt[3]{1/2}} \approx 0.8209$
+\item $r = 12, b = 2$: $s = \sqrt[12]{1 - \sqrt[2]{1/2}} \approx 0.9027$
+\item $r = 24, b = 1$: $s = \sqrt[24]{{1/2}} \approx 0.9715$
+\end{itemize}
+
+\end{solution}
+
+\vfill
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}

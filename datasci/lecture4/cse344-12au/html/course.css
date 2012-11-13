@@ -1,0 +1,18 @@
+@charset "UTF-8";
+.course {
+	color: #C9F;
+	font-size: large;
+}
+.magenta-heading {
+	color: #C6C;
+}
+.blue-heading {
+	color: #00F;
+}
+.colored-heading {
+	color: #006600;
+	font-size: x-large;
+}
+.red {
+	color: #F00;
+}

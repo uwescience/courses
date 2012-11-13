@@ -1,0 +1,1 @@
+/Users/billhowe/Documents/UW/Courses/CSSE/190p/12su/lectures/01-examples/twitter/simpleplots/stopwords.txt

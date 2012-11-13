@@ -1,0 +1,105 @@
+CSE 344 section 05 solution
+=================================================
+
+CONTEXT-SPECIFIC (DTD-BASED) MAPPING:
+
+XPath (1) = /bib/book[author[last="Ullman"][first="Jeff"]]
+SQL   (1) = 
+    Our first idea:
+        SELECT b.*
+        FROM Book b, Writes w
+        WHERE b.title = w.title
+          AND b.year = w.year
+          AND w.last = 'Ullman'
+          AND w.first = 'Jeff'
+    But this does not get the names of all the authors, or even Ullman...
+    Two possible ways to get the rest of the authors:
+      - Have the above be a subquery and then use the top-level query
+        to list the authors of matching books
+      - Have a second copy of Writes in the query, as follows:
+        SELECT b.*, w2.*
+        FROM Book b, Writes w1, Writes w2
+        WHERE b.title = w1.title
+          AND b.year = w1.year
+          AND b.title = w2.title
+          AND b.year = w2.year
+          AND w1.last = 'Ullman'
+          AND w1.first = 'Jeff'
+
+XPath (2) = /bib/book[author/last="Ullman"][author/first="Jeff"]
+  First, note that this is NOT the same as XPath (1)! Why?
+    XPath (1): Find all books with some author whose first
+    name is Jeff and last name is Ullman.
+    (Remember that two XPath conditions in adjacent [ ]
+     are equivalent to the AND of the two conditions in one [ ].)
+
+    XPath (2): Find all books with some author whose first name
+    is Jeff, and some author whose last name is Ullman.
+    (Remember that XPath conditions are implicitly existentially
+     quantified.)
+
+    So, if there is a book by Jeff Watson and George Ullman,
+    it will match XPath (2) but not XPath (1).
+
+SQL   (2) = 
+    Similar to the above with 2 copies of Writes, but add a third:
+        SELECT b.*, w.*
+        FROM Book b, Writes jeff, Writes ullman, Writes w
+        WHERE b.title = w.title
+          AND b.year = w.year
+          AND b.title = jeff.title
+          AND b.year = jeff.year
+          AND b.title = ullman.title
+          AND b.year = ullman.year
+          AND ullman.last = 'Ullman'
+          AND jeff.first = 'Jeff'
+
+--------------------------
+GENERIC (NO-DTD) MAPPING:
+
+XPath (1) = /bib/book[author[last="Ullman"][first="Jeff"]]
+SQL   (1) = 
+      SELECT y.*
+      FROM CE x, CE y, CE z, CE v, T vt, CE w, T wt
+      WHERE x.parent_id = 0           -- make sure x is root element
+        AND x.child_tag = 'bib'
+        AND x.child_id = y.parent_id
+        AND y.child_tag = 'book'
+        AND y.child_id = z.parent_id
+        AND z.child_tag = 'author'
+        AND z.child_id = v.parent_id
+        AND v.child_tag = 'last'
+        AND v.child_id = vt.element_id
+        AND vt.content = 'Ullman'
+        AND z.child_id = w.parent_id
+        AND w.child_tag = 'first'
+        AND w.child_id = wt.element_id
+        AND wt.content = 'Jeff'
+   This has the same problem as SQL (1) did in the context-specific
+   construction - it tells you about the book, but not about the
+   other authors.  To do this, the best way would be to have
+   a correlated subquery connecting to the top-level query on the 
+   <book> element (y).  But we won't do that here.
+ 
+XPath (2) = /bib/book[author/last="Ullman"][author/first="Jeff"]
+SQL   (2) = 
+   Again, we must introduce a second possible author, and we do
+   that by joining in CE as u:
+      SELECT y.*
+      FROM CE x, CE y, CE z, CE v, T vt, CE w, T wt, CE u
+      WHERE x.parent_id = 0           -- make sure x is root element
+        AND x.child_tag = 'bib'
+        AND x.child_id = y.parent_id
+        AND y.child_tag = 'book'
+        AND y.child_id = z.parent_id
+        AND z.child_tag = 'author'
+        AND z.child_id = v.parent_id
+        AND v.child_tag = 'last'
+        AND v.child_id = vt.element_id
+        AND vt.content = 'Ullman'
+     *  AND y.child_id = u.parent_id
+     *  AND u.child_tag = 'author'
+     *  AND u.child_id = w.parent_id
+        AND w.child_tag = 'first'
+        AND w.child_id = wt.element_id
+        AND wt.content = 'Jeff'

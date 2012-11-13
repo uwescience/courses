@@ -1,0 +1,155 @@
+CSE 344 section 07 -- Some transaction-related topics
+--------------------------------------------------------------
+
+BEGIN TRANSACTION : starts a transaction.
+COMMIT : completes a transaction.
+ROLLBACK : forces the server to undo all transaction changes and abort the transaction.
+
+
+-- SQL isolation levels
+--------------------------------------------------
+
+1. SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED
+
+   allows dirty reads. A "dirty" value is the value written by a transaction that did not yet commit. 
+
+
+2. SET TRANSACTION ISOLATION LEVEL READ COMMITTED
+
+   no dirty reads but can read values that are committed. It may read the same row twice and get different answers (this happens because in between another transaction has updated the value and committed)
+
+
+3. SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+
+   no dirty reads. Also, repeated reads in the same transaction return the same value
+
+
+4. SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
+
+   also handles the case of "phantoms"
+
+
+
+-- EXAMPLE 1 : A serializable execution of two transactions 
+-----------------------------------------------------------
+
+create table r(a int primary key, b int);
+insert into r values (1,10);
+insert into r values (2,20);
+insert into r values (3,30);
+
+
+-- Run the following two transactions in two different query windows (remember to set the isolation level in both windows!!)
+
+T1:
+   set transaction isolation level serializable;
+   begin transaction;
+   update r set b=11 where a=1;
+   -- T1 has now an exclusive lock on element a=1
+
+T2:
+   set transaction isolation level serializable;
+   begin transaction;
+   update r set b=21 where a=2;
+   -- T2 has now an exclusive lock on element a=2
+
+T1:
+   select * from r where a=1 or a=3;
+   -- T1 has shared lock on a=3
+
+T2:
+   select * from r where a=2 or a=3;
+   -- T2 has shared lock on a=3. Note that we can have two or more shared locks over the same row (here a=3)
+
+T1:
+   select * from r;
+   -- T1 wants to read also a=2. In order to read it, T1 must get a shared lock, but T2 has already an exclusive lock, so T1 must wait now.
+
+T2:
+   commit;
+   -- As soon as T2 commits, it releases the exclusive lock on a=2, so now T1 can answer the query. Notice that as soon as T2 commits, T1 answers.
+
+T1:
+   commit;
+
+-- Question: what is the corresponding serialization for the above execution? T1,T2 or T2,T1? Try to think why.
+
+
+-- EXAMPLE 2 : a non-serializable execution resulting in deadlock
+-----------------------------------------------------------------
+
+
+CREATE TABLE r(a int primary key, b int);
+INSERT INTO r values(1,10) ;
+INSERT INTO r values(2,20) ;
+
+
+T1:
+  set transaction isolation level serializable;
+  begin transaction;
+  select b from r where a = 1 ;
+  -- T1 acquires a shared lock on a=1 ;
+  
+T2:
+  set transaction isolation level serializable;
+  begin transaction;
+  select b from r where a = 2 ;  
+  -- T2 acquires a shared lock on a=2 ;
+  
+T1:
+  update r set b = 21 where a = 2 ;  
+  -- T1 wants to update the value for a=2. However, T1 has a shared lock on it, so T1 must wait for T2 to release the lock.
+
+T2:
+  update r set b = 11 where a = 1 ;  
+
+  -- T2 wants to update the value for a=1. Again, T2 has a shared lock on it, so T2 must wait for T1. Notice that now T2 waits for T2 and T1 for T2!! We are in a deadlock situation. In order to resolve the deadlock, SQL Server externally aborts one of the two transactions (the deadlock "victim"). Another way to see the deadlock is that the above interleaved execution can not be serialized (try to do so!)   
+  
+-- depending on whether T1 or T2 aborts, we commit for the remaining transaction.  
+  
+
+
+-- EXAMPLE 3: phantoms 
+----------------------------------------------------
+
+-- What is the phantom problem?
+-- PHANTOM = a tuple inserted in a relation during the execution of a transaction 
+-- A phantom will create inconsistencies for isolation level up to REPEATABLE READ, but will not appear in the case of isolation level SERIALIZABLE. 
+ 
+ 
+create table r(a int primary key, b int);
+insert into r values (1,10);
+insert into r values (2,20);
+insert into r values (3,30);
+
+
+T1:
+  SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+  begin transaction ;
+  select count(*) from R where a>1 ;
+
+
+T2:
+  SET TRANSACTION ISOLATION LEVEL REPEATABLE READ
+  begin transaction ;
+  insert into R(a,b) values(4,40) ;
+  -- The phantom tuple (4,40) is inserted into the database. 
+
+T1:
+  select count(*) from R where a>1;
+  -- We repeat the read as before. T1 waits for T2 to commit before executing the query
+
+T2:
+  commit ;
+  -- Now T1 can answer! Notice that the answer of the count(*) is now 3, whereas the answer of the previous count(*) is 2. Why is this
+  -- possible? Did we violate the isolation level of REPEATABLE READ ?
+
+T1:
+  commit ;
+
+
+-- Now try to run the same example with isolation level set to SERIALIZABLE. What happens now? Can we execute the same interleaved schedule? Is the above execution of T1,T2 serializable or not ? (try to see whether any possible serialization of T1 and T2 will yiled the same read outputs) 
+
+
+
+

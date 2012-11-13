@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Hypergeometric series - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Hypergeometric series</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p>In <a href="../../../../articles/m/a/t/Mathematics.html" title="Mathematics">mathematics</a>, a <b>hypergeometric series</b> is a <a href="../../../../articles/p/o/w/Power_series.html" title="Power series">power series</a> in which the ratios of successive <a href="../../../../articles/c/o/e/Coefficient.html" title="Coefficient">coefficients</a> <i>k</i> is a <a href="../../../../articles/r/a/t/Rational_function.html" title="Rational function">rational function</a> of <i>k</i>. The series, if convergent, will define a <b>hypergeometric function</b> which may then be defined over a wider domain of the argument by <a href="../../../../articles/a/n/a/Analytic_continuation.html" title="Analytic continuation">analytic continuation</a>. Hypergeometric functions generalize many <a href="../../../../articles/s/p/e/Special_function.html" class="mw-redirect" title="Special function">special functions</a>, including the <a href="../../../../articles/b/e/s/Bessel_function.html" title="Bessel function">Bessel functions</a>, the <a href="../../../../articles/i/n/c/Incomplete_Gamma_function_183a.html" class="mw-redirect" title="Incomplete Gamma function">incomplete Gamma function</a>, the <a href="../../../../articles/e/r/r/Error_function.html" title="Error function">error function</a>, the <a href="../../../../articles/e/l/l/Elliptic_integral.html" title="Elliptic integral">elliptic integrals</a> and the <a href="../../../../articles/o/r/t/Orthogonal_polynomial.html" class="mw-redirect" title="Orthogonal polynomial">orthogonal polynomials</a>. This is in part because the hypergeometric functions are solutions to the <a href="../../../../articles/h/y/p/Hypergeometric_differential_equation.html" title="Hypergeometric differential equation">hypergeometric differential equation</a>, which is a fairly general second-order <a href="../../../../articles/o/r/d/Ordinary_differential_equation.html" title="Ordinary differential equation">ordinary differential equation</a>.</p>
+<p>The ordinary hypergeometric series should not be confused with the <a href="../../../../articles/b/a/s/Basic_hypergeometric_series.html" title="Basic hypergeometric series">basic hypergeometric series</a>, which, despite its name, is a rather more complicated and less frequently studied series. The basic series is the <a href="../../../../articles/q/-/a/Q-analog.html" title="Q-analog">q-analog</a> of the ordinary hypergeometric series. There are several generalizations of the ordinary hypergeometric series, including a generalization to <a href="../../../../articles/r/i/e/Riemann_symmetric_space.html" class="mw-redirect" title="Riemann symmetric space">Riemann symmetric spaces</a>.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#The_series_2F1"><span class="tocnumber">1</span> <span class="toctext">The series <sub>2</sub>F<sub>1</sub></span></a></li>
+<li class="toclevel-1"><a href="#Elementary_functions"><span class="tocnumber">2</span> <span class="toctext">Elementary functions</span></a></li>
+<li class="toclevel-1"><a href="#Special_cases_and_applications"><span class="tocnumber">3</span> <span class="toctext">Special cases and applications</span></a></li>
+<li class="toclevel-1"><a href="#The_series_pFq"><span class="tocnumber">4</span> <span class="toctext">The series <sub>p</sub>F<sub>q</sub></span></a></li>
+<li class="toclevel-1"><a href="#Identities"><span class="tocnumber">5</span> <span class="toctext">Identities</span></a></li>
+<li class="toclevel-1"><a href="#Formal_definition"><span class="tocnumber">6</span> <span class="toctext">Formal definition</span></a></li>
+<li class="toclevel-1"><a href="#Notation"><span class="tocnumber">7</span> <span class="toctext">Notation</span></a></li>
+<li class="toclevel-1"><a href="#History_and_generalizations"><span class="tocnumber">8</span> <span class="toctext">History and generalizations</span></a></li>
+<li class="toclevel-1"><a href="#Notes"><span class="tocnumber">9</span> <span class="toctext">Notes</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">10</span> <span class="toctext">References</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="The_series_2F1" id="The_series_2F1"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: The series 2F1">edit</a>]</span> <span class="mw-headline">The series <sub><b>2</b></sub>F<sub><b>1</b></sub></span></h2>
+<p>The classical standard hypergeometric series is given by:</p>
+<dl>
+<dd><img class="tex" alt=" \,_2F_1 (a,b;c;z) = \sum_{n=0}^\infty 
+\frac{(a)_n(b)_n}{(c)_n} \, \frac {z^n} {n!}
+" src="../../../../math/a/d/2/ad2a559aab7a00d2f71213f3bfaf8eaf.png" /></dd>
+</dl>
+<p>where (<i>a</i>)<sub><i>n</i></sub>&#160;=&#160;<i>a</i>(<i>a</i>+1)(<i>a</i>+2)…(<i>a</i>+<i>n</i>−1) is the rising factorial, or <a href="../../../../articles/p/o/c/Pochhammer_symbol.html" title="Pochhammer symbol">Pochhammer symbol</a>.<sup id="cite_ref-0" class="reference"><a href="#cite_note-0" title="">[1]</a></sup> This function was first studied in detail by <a href="../../../../articles/c/a/r/Carl_Friedrich_Gauss_b24e.html" title="Carl Friedrich Gauss">Carl Friedrich Gauss</a>, who explored the conditions for its convergence. This series is one of 24 closely related solutions, the <a href="../../../../articles/e/r/n/Ernst_Kummer_2663.html" title="Ernst Kummer">Kummer</a> solutions, of the <a href="../../../../articles/h/y/p/Hypergeometric_differential_equation.html" title="Hypergeometric differential equation">hypergeometric differential equation</a>.</p>
+<p>By rewriting the series as</p>
+<dl>
+<dd><img class="tex" alt="
+\,_2F_1 (a,b;c;z) = 1 + \sum_{n=1}^\infty \alpha_n z^n, \,
+" src="../../../../math/e/e/f/eefa769f1b43d1f2fa0ae1d0b6f0ac4b.png" /></dd>
+</dl>
+<p>where the <i>n</i><sup>th</sup> coefficient α<sub><i>n</i></sub> is given by</p>
+<dl>
+<dd><img class="tex" alt="
+\alpha_n = \frac{(a)_n (b)_n}{(c)_n n!}, \,
+" src="../../../../math/e/7/e/e7e1ca96bb7d36e3f35cf97b19933efe.png" /></dd>
+</dl>
+<p>it is easily seen that</p>
+<ul>
+<li>if either <i>a</i> or <i>b</i> is a negative integer, the series only has a finite number of terms;</li>
+<li>if <i>c</i> is a negative integer, the series is not well-defined because all the denominators are zero after a certain point;</li>
+<li>as <i>n</i>→∞, the ratio of successive coefficients α<sub><i>n</i> + 1</sub>/α<sub><i>n</i></sub> approaches one in the limit; and</li>
+<li>the series is in general a convergent <a href="../../../../articles/p/o/w/Power_series.html" title="Power series">power series</a> for values of <i>z</i> such that |<i>z</i>|&#160;&lt;&#160;1.</li>
+</ul>
+<p>It can also be shown<sup id="cite_ref-1" class="reference"><a href="#cite_note-1" title="">[2]</a></sup> that if <i>c</i> is not a negative integer, the series converges when <i>z</i>&#160;=&#160;1 if ℜ(<i>c</i>−<i>a</i>−<i>b</i>)&#160;&gt;&#160;0. In this important case the value <sub>2</sub>F<sub>1</sub>(<i>a</i>, <i>b</i>; <i>c</i>; 1) is given by</p>
+<dl>
+<dd><img class="tex" alt="
+\,_2F_1(a,b;c;1) = \frac{\Gamma(c) \Gamma(c-a-b)}{\Gamma(c-a) \Gamma(c-b)} \,
+" src="../../../../math/4/0/b/40bc009cc1011a0197439b4a36e610e0.png" /></dd>
+</dl>
+<p>where Γ(<i>z</i>) denotes the <a href="../../../../articles/g/a/m/Gamma_function.html" title="Gamma function">gamma function</a>.</p>
+<p><a name="Elementary_functions" id="Elementary_functions"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: Elementary functions">edit</a>]</span> <span class="mw-headline">Elementary functions</span></h2>
+<p>Several of the familiar <a href="../../../../articles/e/l/e/Elementary_function.html" title="Elementary function">elementary functions</a> can be expressed in terms of the hypergeometric function <sub>2</sub><i>F</i><sub>1</sub>. These include<sup id="cite_ref-2" class="reference"><a href="#cite_note-2" title="">[3]</a></sup></p>
+<dl>
+<dd><img class="tex" alt="
+\begin{align}
+(1+z)^k &amp; = \,_2F_1\left(-k,1;1;-z\right)\\[3pt]
+\sqrt{1-z^2} &amp; = \,_2F_1\left({\scriptstyle\frac{1}{2}},{\scriptstyle -\frac{1}{2}};
+{\scriptstyle\frac{1}{2}};z^2\right)\\[3pt]
+\log(1+z) &amp; = z \,_2F_1\left(1,1;2;-z\right)\\[3pt]
+\log\left(\frac{1+z}{1-z}\right) &amp; = 2z\,_2F_1\left({\scriptstyle\frac{1}{2}},1;
+{\scriptstyle\frac{3}{2}};z^2\right)\\[3pt]
+\arcsin(z) &amp; = z \,_2F_1\left({\scriptstyle\frac{1}{2}},{\scriptstyle \frac{1}{2}};
+{\scriptstyle\frac{3}{2}};z^2\right)\\[3pt]
+\arctan(z) &amp; = z \,_2F_1\left({\scriptstyle\frac{1}{2}},1;
+{\scriptstyle\frac{3}{2}};-z^2\right)\,
+\end{align}
+" src="../../../../math/f/a/f/fafbd41464f3b295f69ea819b0f3b2b6.png" /></dd>
+</dl>
+<p><a name="Special_cases_and_applications" id="Special_cases_and_applications"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: Special cases and applications">edit</a>]</span> <span class="mw-headline">Special cases and applications</span></h2>
+<p>The classic <a href="../../../../articles/o/r/t/Orthogonal_polynomial.html" class="mw-redirect" title="Orthogonal polynomial">orthogonal polynomials</a> can all be expressed as special cases of <img class="tex" alt="{\;}_2F_1" src="../../../../math/5/2/e/52e7e75983b139516124d2ff3e75d2d3.png" /> with one or both <i>a</i> and <i>b</i> being (negative) integers. Many other special cases are listed in the <a href="../../../../articles/s/p/e/Category%7ESpecial_hypergeometric_functions_8dce.html" title="Category:Special hypergeometric functions">Category:Special hypergeometric functions</a>.</p>
+<p>The function <sub>2</sub><i>F</i><sub>1</sub> has several integral representations, including the <a href="../../../../articles/e/u/l/Euler_hypergeometric_integral.html" title="Euler hypergeometric integral">Euler hypergeometric integral</a>.</p>
+<p>Applications of hypergeometric series include the inversion of <a href="../../../../articles/e/l/l/Elliptic_integral.html" title="Elliptic integral">elliptic integrals</a>; these are constructed by taking the ratio of the two linearly independent solutions of the <a href="../../../../articles/h/y/p/Hypergeometric_differential_equation.html" title="Hypergeometric differential equation">hypergeometric differential equation</a> to form <a href="../../../../articles/s/c/h/Schwarz-Christoffel_map_2841.html" class="mw-redirect" title="Schwarz-Christoffel map">Schwarz-Christoffel maps</a> of the <a href="../../../../articles/f/u/n/Fundamental_domain.html" title="Fundamental domain">fundamental domain</a> to the <a href="../../../../articles/c/o/m/Complex_projective_line.html" class="mw-redirect" title="Complex projective line">complex projective line</a> or <a href="../../../../articles/r/i/e/Riemann_sphere.html" title="Riemann sphere">Riemann sphere</a>.</p>
+<p>A wide range of integrals of simple functions can be expressed using the hypergeometric function, e.g.:</p>
+<dl>
+<dd><img class="tex" alt="
+\int_0^x\sqrt{1+y^\alpha}\,\mathrm{d}y\ =\ \frac{x\left(\alpha\,{}_2F_1\left(\frac{1}{\alpha},\frac{1}{2};1+\frac{1}{\alpha};-x^\alpha\right)+2\sqrt{x^\alpha+1}\,\right)}{2+\alpha}\ ,\ \ \ \alpha\neq0
+" src="../../../../math/d/1/5/d1578ce32113ea5ddbd35fa551b34784.png" /></dd>
+</dl>
+<p>A limiting case of <sub>2</sub><i>F</i><sub>1</sub> is the Kummer function <sub>1</sub><i>F</i><sub>1</sub>(<i>a</i>,<i>b</i>;<i>z</i>), known as the <a href="../../../../articles/c/o/n/Confluent_hypergeometric_function.html" title="Confluent hypergeometric function">confluent hypergeometric function</a>.</p>
+<p><a name="The_series_pFq" id="The_series_pFq"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: The series pFq">edit</a>]</span> <span class="mw-headline">The series <sub><b>p</b></sub>F<sub><b>q</b></sub></span></h2>
+<p>In the general case, the hypergeometric series is written as:</p>
+<dl>
+<dd><img class="tex" alt="\,_pF_q(a_1,\ldots,a_p;b_1,\ldots,b_q;z)=\sum_{n=0}^\infty 
+\frac {\alpha_n z^n}{n!}\," src="../../../../math/1/f/3/1f378395a51e300f7e063e287aa693cd.png" /></dd>
+</dl>
+<p>where <span class="texhtml">α<sub>0</sub> = 1</span> and</p>
+<dl>
+<dd><img class="tex" alt=" \frac{\alpha_{n+1}}{\alpha_n} = \frac{(n+a_1)(n+a_2)\cdots(n+a_p)}{(n+b_1)(n+b_2)\cdots(n+b_q)}." src="../../../../math/a/2/e/a2e4b0782d0d0fb2ba7ebece10ccbf42.png" /></dd>
+</dl>
+<p>The series may also be written:</p>
+<dl>
+<dd><img class="tex" alt="\,_pF_q(a_1,\ldots,a_p;b_1,\ldots,b_q;z)=\sum_{n=0}^\infty
+\frac{(a_1)_n(a_2)_n\ldots(a_p)_n}{(b_1)_n(b_2)_n\ldots(b_q)_n}\,\frac{z^n}{n!}\," src="../../../../math/1/0/c/10ca23c71b55b85847d1679daf1f6ec9.png" /></dd>
+</dl>
+<p>where</p>
+<dl>
+<dd><img class="tex" alt="(a)_n=a(a+1)(a+2)...(a+n-1)\," src="../../../../math/e/2/0/e2030dbf25472af271a4ba063e4d1686.png" /></dd>
+</dl>
+<p>is the <a href="../../../../articles/r/i/s/Rising_factorial.html" class="mw-redirect" title="Rising factorial">rising factorial</a> or <a href="../../../../articles/p/o/c/Pochhammer_symbol.html" title="Pochhammer symbol">Pochhammer symbol</a>.</p>
+<p><a name="Identities" id="Identities"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: Identities">edit</a>]</span> <span class="mw-headline">Identities</span></h2>
+<p>A number of <a href="../../../../articles/h/y/p/Hypergeometric_function_identities.html" class="mw-redirect" title="Hypergeometric function identities">hypergeometric function identities</a> were discovered in the nineteenth and twentieth centuries; one classical list of such identities is <a href="../../../../articles/b/a/i/Bailey%27s_list.html" class="mw-redirect" title="Bailey's list">Bailey's list</a>.</p>
+<p>It is currently understood that there is a very large number of such identities, and several algorithms are now known to generate and prove these identities. Some mathematicians research on the various patterns that emerge from these algorithms.</p>
+<p><a name="Formal_definition" id="Formal_definition"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: Formal definition">edit</a>]</span> <span class="mw-headline">Formal definition</span></h2>
+<p>A hypergeometric series is formally defined as any <a href="../../../../articles/f/o/r/Formal_power_series.html" title="Formal power series">formal power series</a></p>
+<dl>
+<dd><img class="tex" alt="\ \sum_n \beta_n z^n " src="../../../../math/b/8/d/b8d8f3e44f76c4d2c100d0a985329821.png" /></dd>
+</dl>
+<p>in which the ratio of successive coefficients</p>
+<dl>
+<dd><img class="tex" alt="\frac{\beta_{n+1}}{\beta_n}" src="../../../../math/2/b/7/2b7e13cc7f1eb28be0baaafd0655d6f2.png" /></dd>
+</dl>
+<p>is a <a href="../../../../articles/r/a/t/Rational_function.html" title="Rational function">rational function</a> of <i>n</i>. That is,</p>
+<dl>
+<dd><img class="tex" alt="\frac{\beta_{n+1}}{\beta_n} = \frac{A(n)}{B(n)}" src="../../../../math/7/6/2/762d7bde00c211c7186e450240899892.png" /></dd>
+</dl>
+<p>for some <a href="../../../../articles/p/o/l/Polynomial.html" title="Polynomial">polynomials</a> <span class="texhtml"><i>A</i>(<i>n</i>)</span> and <span class="texhtml"><i>B</i>(<i>n</i>)</span>. Thus, for example, in the case of a <a href="../../../../articles/g/e/o/Geometric_series.html" title="Geometric series">geometric series</a>, this ratio is a constant. Another example is the series for the <a href="../../../../articles/e/x/p/Exponential_function.html" title="Exponential function">exponential function</a>, for which</p>
+<dl>
+<dd><img class="tex" alt="\frac{\beta_{n+1}}{\beta_n} =\frac{1}{n+1}." src="../../../../math/8/9/5/895e79c6805487eed5de69b80a79cf71.png" /></dd>
+</dl>
+<p>In practice the series is written as an <a href="../../../../articles/g/e/n/Generating_function.html" title="Generating function">exponential generating function</a>, modifying the coefficients so that a general term of the series takes the form</p>
+<dl>
+<dd><img class="tex" alt="\beta_n = \frac{\alpha_n}{n!}," src="../../../../math/e/f/4/ef411c063692536b99b310704bd67418.png" /></dd>
+</dl>
+<p>and <span class="texhtml">α<sub>0</sub> = 1</span>. One uses the exponential function as a 'baseline' for discussion.</p>
+<p>Many interesting series in mathematics have the property that the ratio of successive terms is a rational function. However, when expressed as an exponential generating function, such series have a non-zero <a href="../../../../articles/r/a/d/Radius_of_convergence.html" title="Radius of convergence">radius of convergence</a> only under restricted conditions. Thus, by convention, the use of the term <i>hypergeometric series</i> is usually restricted to the case where the series defines an actual <a href="../../../../articles/a/n/a/Analytic_function.html" title="Analytic function">analytic function</a> with a non-zero radius of convergence. Such a function, and its <a href="../../../../articles/a/n/a/Analytic_continuation.html" title="Analytic continuation">analytic continuations</a>, is called the <b>hypergeometric function</b>.</p>
+<p>Convergence conditions were given by <a href="../../../../articles/c/a/r/Carl_Friedrich_Gauss_b24e.html" title="Carl Friedrich Gauss">Carl Friedrich Gauss</a>, who examined the case of</p>
+<dl>
+<dd><img class="tex" alt="\frac{\alpha_{n+1}}{\alpha_n} = \frac{(n+a)(n+b)}{(n+c)}" src="../../../../math/8/7/f/87f13015b9bfccbdc7b5a0aa0a484c47.png" />,</dd>
+</dl>
+<p>leading to the classical standard hypergeometric series</p>
+<dl>
+<dd><img class="tex" alt="\,_2F_1(a,b;c;z)." src="../../../../math/d/7/8/d785573671b164ac52b9a0b815c08d78.png" /></dd>
+</dl>
+<p><a name="Notation" id="Notation"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: Notation">edit</a>]</span> <span class="mw-headline">Notation</span></h2>
+<p>The standard notation for the general hypergeometric series is</p>
+<dl>
+<dd><img class="tex" alt="\,_mF_p." src="../../../../math/7/d/7/7d7f82d8a29f2cc44521ffd0d416e38d.png" /></dd>
+</dl>
+<p>Here, the integers <i>m</i> and <i>p</i> refer to the degree of the polynomials <i>P</i> and <i>Q</i>, respectively, referring to the ratio</p>
+<dl>
+<dd><img class="tex" alt="\frac{\alpha_{n+1}}{\alpha_n} = \frac{P(n)}{Q(n)}." src="../../../../math/9/7/6/976a345d8c2473dc5bba3a0150c022ed.png" /></dd>
+</dl>
+<p>If <i>m</i>&gt;<i>p</i>+1, the radius of convergence is zero and so there is no analytic function. The series naturally terminates in case <i>P</i>(<i>n</i>) is ever 0 for <i>n</i> a natural number. If <i>Q</i>(<i>n</i>) were ever zero, the coefficients would be undefined.</p>
+<p>The full notation for <i>F</i> assumes that <i>P</i> and <i>Q</i> are <a href="../../../../articles/m/o/n/Monic.html" title="Monic">monic</a> and factorised, so that the notation for <i>F</i> includes an <i>m</i>-tuple that is the list of the negatives of the zeroes of <i>P</i> and a <i>p</i>-tuple of the negatives of the zeroes of <i>Q</i>. This is not much of a restriction: the <a href="../../../../articles/f/u/n/Fundamental_theorem_of_algebra.html" title="Fundamental theorem of algebra">fundamental theorem of algebra</a> applies, and we can also absorb a leading coefficient of <i>P</i> or <i>Q</i> by redefining <i>z</i>. As a result of the factorisation, a general term in the series then takes the form of a ratio of products of <a href="../../../../articles/p/o/c/Pochhammer_symbol.html" title="Pochhammer symbol">Pochhammer symbols</a>. Since <a href="../../../../articles/p/o/c/Pochhammer_notation.html" class="mw-redirect" title="Pochhammer notation">Pochhammer notation</a> for rising factorials is traditional it is neater to write <i>F</i> with the negatives of the zeros. Thus, to complete the notational example, one has</p>
+<dl>
+<dd><img class="tex" alt=" \,_2F_1 (a,b;c;z) = \sum_{n=0}^\infty 
+\frac{(a)_n(b)_n}{(c)_n} \, \frac {z^n} {n!}
+" src="../../../../math/a/d/2/ad2a559aab7a00d2f71213f3bfaf8eaf.png" /></dd>
+</dl>
+<p>where <span class="texhtml">(<i>a</i>)<sub><i>n</i></sub> = <i>a</i>(<i>a</i> + 1)(<i>a</i> + 2)...(<i>a</i> + <i>n</i> − 1)</span> is the rising factorial or <a href="../../../../articles/p/o/c/Pochhammer_symbol.html" title="Pochhammer symbol">Pochhammer symbol</a>. Here, the zeros of <i>P</i> were <i>−a</i> and <i>−b</i>, while the zero of <i>Q</i> was <i>−c</i>.</p>
+<p><a name="History_and_generalizations" id="History_and_generalizations"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: History and generalizations">edit</a>]</span> <span class="mw-headline">History and generalizations</span></h2>
+<p>Studies in the <a href="../../../../articles/n/i/n/Nineteenth_century.html" class="mw-redirect" title="Nineteenth century">nineteenth century</a> included those of <a href="../../../../articles/e/r/n/Ernst_Kummer_2663.html" title="Ernst Kummer">Ernst Kummer</a>, and the fundamental characterisation by <a href="../../../../articles/b/e/r/Bernhard_Riemann_a391.html" title="Bernhard Riemann">Bernhard Riemann</a> of the <i>F</i>-function by means of the differential equation it satisfies. Riemann showed that the second-order differential equation (in <i>z</i>) for the (2,1) variable F, examined in the complex plane, could be characterised (on the <a href="../../../../articles/r/i/e/Riemann_sphere.html" title="Riemann sphere">Riemann sphere</a>) by its three <a href="../../../../articles/r/e/g/Regular_singularity.html" class="mw-redirect" title="Regular singularity">regular singularities</a>: that effectively the entire algorithmic side of the theory was a consequence of basic facts and the use of <a href="../../../../articles/m/%C3%B6/b/M%C3%B6bius_transformation.html" title="Möbius transformation">Möbius transformations</a> as a symmetry group.</p>
+<p>The cases where the solutions are <a href="../../../../articles/a/l/g/Algebraic_function.html" title="Algebraic function">algebraic functions</a> were found by <a href="../../../../articles/h/2E/_/H._A._Schwarz_3e16.html" class="mw-redirect" title="H. A. Schwarz">H. A. Schwarz</a> (Schwarz's list).</p>
+<p>Subsequently the hypergeometric series were generalised to several variables, for example by <a href="../../../../articles/p/a/u/Paul_Emile_Appell_a4f9.html" class="mw-redirect" title="Paul Emile Appell">Paul Emile Appell</a>; but a comparable general theory took long to emerge. Many identities were found, some quite remarkable. A generalization, the <a href="../../../../articles/q/-/s/Q-series.html" class="mw-redirect" title="Q-series">q-series</a> analogues, called the <a href="../../../../articles/b/a/s/Basic_hypergeometric_series.html" title="Basic hypergeometric series">basic hypergeometric series</a>, were given by <a href="../../../../articles/e/d/u/Eduard_Heine_fba1.html" title="Eduard Heine">Eduard Heine</a> in the late nineteenth century. Here, the ratio of successive terms, instead of being a rational function of <i>n</i>, are considered to be a rational function of <span class="texhtml"><i>q</i><sup><i>n</i></sup></span>. Another generalization, the elliptic hypergeometric series, are those series where the ratio of terms is an <a href="../../../../articles/e/l/l/Elliptic_function.html" title="Elliptic function">elliptic function</a> (a doubly periodic <a href="../../../../articles/m/e/r/Meromorphic_function.html" title="Meromorphic function">meromorphic function</a>) of <i>n</i>.</p>
+<p>During the <a href="../../../../articles/t/w/e/Twentieth_century.html" class="mw-redirect" title="Twentieth century">twentieth century</a> this was a fruitful area of combinatorial mathematics, with numerous connections to other fields. There are a number of new definitions of hypergeometric series, by Aomoto, <a href="../../../../articles/i/s/r/Israel_Gelfand_c289.html" title="Israel Gelfand">Israel Gelfand</a> and others; and applications for example to the combinatorics of arranging a number of <a href="../../../../articles/h/y/p/Hyperplane.html" title="Hyperplane">hyperplanes</a> in complex <i>N</i>-space (see <a href="../../../../articles/a/r/r/Arrangement_of_hyperplanes.html" title="Arrangement of hyperplanes">arrangement of hyperplanes</a>).</p>
+<p>Hypergeometric series can be developed on <a href="../../../../articles/r/i/e/Riemannian_symmetric_space.html" title="Riemannian symmetric space">Riemannian symmetric spaces</a> and semi-simple <a href="../../../../articles/l/i/e/Lie_group.html" title="Lie group">Lie groups</a>. Their importance and role can be understood through a special case: the hypergeometric series <sub>2</sub>F<sub>1</sub> is closely related to the <a href="../../../../articles/a/s/s/Associated_Legendre_polynomials_b78d.html" class="mw-redirect" title="Associated Legendre polynomials">Legendre polynomials</a>, and when used in the form of <a href="../../../../articles/s/p/h/Spherical_harmonics.html" title="Spherical harmonics">spherical harmonics</a>, it expresses, in a certain sense, the symmetry properties of the <a href="../../../../articles/r/i/e/Riemann_sphere.html" title="Riemann sphere">two-sphere</a> or equivalently the rotations given by the Lie group <a href="../../../../articles/s/o/%28/SO%283%29_81cd.html" class="mw-redirect" title="SO(3)">SO(3)</a>. Concrete representations are analogous to the <a href="../../../../articles/c/l/e/Clebsch-Gordan_coefficients_049c.html" title="Clebsch-Gordan coefficients">Clebsch-Gordan coefficients</a>.</p>
+<p><a name="Notes" id="Notes"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: Notes">edit</a>]</span> <span class="mw-headline">Notes</span></h2>
+<div class="references-small">
+<ol class="references">
+<li id="cite_note-0"><b><a href="#cite_ref-0" title="">^</a></b> The "Pochhammer symbol" is somewhat ambiguous in mathematics, being used to represent both the <b>rising factorial</b> and the <b>falling factorial</b>.</li>
+<li id="cite_note-1"><b><a href="#cite_ref-1" title="">^</a></b> Whittaker &amp; Watson (1927), chapter XIV.</li>
+<li id="cite_note-2"><b><a href="#cite_ref-2" title="">^</a></b> Abramowitz and Stegun (1972); Wall (1948).</li>
+</ol>
+</div>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/y/p/Hypergeometric_series.html" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<ul>
+<li><cite class="book" style="font-style:normal">Milton Abramowitz and Irene A. Stegun, eds. (1972). <i><a href="../../../../articles/h/a/n/Handbook_of_Mathematical_Functions_129d.html" class="mw-redirect" title="Handbook of Mathematical Functions">Handbook of Mathematical Functions</a> with Formulas, Graphs, and Mathematical Tables</i>. New York: Dover. <a href="../../../../articles/b/o/o/Special%7EBookSources_0486612724_08b6.html" class="internal">ISBN 0-486-61272-4</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=%5B%5BHandbook+of+Mathematical+Functions%5D%5D+with+Formulas%2C+Graphs%2C+and+Mathematical+Tables&amp;rft.au=Milton+Abramowitz+and+Irene+A.+Stegun%2C+eds.&amp;rft.date=1972&amp;rft.pub=Dover&amp;rft.place=New+York"><span style="display: none;">&#160;</span></span>
+<ul>
+<li><a href="http://www.math.sfu.ca/~cbm/aands/page_503.htm" class="external text" title="http://www.math.sfu.ca/~cbm/aands/page_503.htm" rel="nofollow">Chapter 13.</a> - <img class="tex" alt="\,_1F_1" src="../../../../math/e/b/d/ebd7b237cc8a6eaf742417d48a430877.png" /> and <img class="tex" alt="\,_2F_0" src="../../../../math/9/e/6/9e641f24cf586614d8e3d03f79cf3d13.png" /></li>
+<li><a href="http://www.math.sfu.ca/~cbm/aands/page_555.htm" class="external text" title="http://www.math.sfu.ca/~cbm/aands/page_555.htm" rel="nofollow">Chapter 15.</a> - <img class="tex" alt="\,_2F_1" src="../../../../math/4/6/1/46101ad044b9e9f6c19644e61e7deb7a.png" /></li>
+</ul>
+</li>
+<li><cite class="book" style="font-style:normal">Gerrit Heckman and Henrik Schlichtkrull (1994). <i>Harmonic Analysis and Special Functions on Symmetric Spaces</i>. Academic Press, San Diego. <a href="../../../../articles/b/o/o/Special%7EBookSources_0123361702_7b2f.html" class="internal">ISBN 0-12-336170-2</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Harmonic+Analysis+and+Special+Functions+on+Symmetric+Spaces&amp;rft.au=Gerrit+Heckman+and+Henrik+Schlichtkrull&amp;rft.date=1994&amp;rft.pub=Academic+Press%2C+San+Diego"><span style="display: none;">&#160;</span></span> <i>(Part 1 treats hypergeometric functions on Lie groups.)</i></li>
+<li><cite class="book" style="font-style:normal">Masaaki Yoshida (1997). <i>Hypergeometric Functions, My Love: Modular Interpretations of Configuration Spaces</i>. Friedrick Vieweg &amp; Son. <a href="../../../../articles/b/o/o/Special%7EBookSources_3528069252_3923.html" class="internal">ISBN 3-528-06925-2</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Hypergeometric+Functions%2C+My+Love%3A+Modular+Interpretations+of+Configuration+Spaces&amp;rft.au=Masaaki+Yoshida&amp;rft.date=1997&amp;rft.pub=Friedrick+Vieweg+%26+Son"><span style="display: none;">&#160;</span></span></li>
+<li><cite class="book" style="font-style:normal">H. S. Wall (1948). <i>Analytic Theory of Continued Fractions</i>. D. Van Nostrand Company, Inc..</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Analytic+Theory+of+Continued+Fractions&amp;rft.au=H.+S.+Wall&amp;rft.date=1948&amp;rft.pub=D.+Van+Nostrand+Company%2C+Inc."><span style="display: none;">&#160;</span></span></li>
+<li><cite class="book" style="font-style:normal">E. T. Whittaker and G. N. Watson (1927). <i>A Course of Modern Analysis</i>. Cambridge University Press.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=A+Course+of+Modern+Analysis&amp;rft.au=E.+T.+Whittaker+and+G.+N.+Watson&amp;rft.date=1927&amp;rft.pub=Cambridge+University+Press"><span style="display: none;">&#160;</span></span></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 973/1000000
+Post-expand include size: 5086/2048000 bytes
+Template argument size: 2064/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/f/a/c/Category%7EFactorial_and_binomial_topics_2eee.html" title="Category:Factorial and binomial topics">Factorial and binomial topics</a></span> | <span dir='ltr'><a href="../../../../articles/h/y/p/Category%7EHypergeometric_functions_7539.html" title="Category:Hypergeometric functions">Hypergeometric functions</a></span> | <span dir='ltr'><a href="../../../../articles/o/r/d/Category%7EOrdinary_differential_equations_cf02.html" title="Category:Ordinary differential equations">Ordinary differential equations</a></span> | <span dir='ltr'><a href="../../../../articles/m/a/t/Category%7EMathematical_series_ce75.html" title="Category:Mathematical series">Mathematical series</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/h/y/p/Hypergeometric_series.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/h/y/p/Talk%7EHypergeometric_series_8bd7.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Hypergeometric_series">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	<div id="p-lang" class="portlet">
+	  <h5>Languages</h5>
+	  <div class="pBody">
+	    <ul>
+	      	      <li>
+	      <a href="../../../../../de/articles/h/y/p/Hypergeometrische_Funktion_8766.html">Deutsch</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../fr/articles/s/%C3%A9/r/S%C3%A9rie_hyperg%C3%A9om%C3%A9trique.html">Français</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../it/articles/s/e/r/Serie_ipergeometrica.html">Italiano</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../ja/articles/%E8%B6%85/%E5%B9%BE/%E4%BD%95/%E8%B6%85%E5%B9%BE%E4%BD%95%E7%B4%9A%E6%95%B0.html">日本語</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../ru/articles/%D0%B3/%D0%B8/%D0%BF/%D0%93%D0%B8%D0%BF%D0%B5%D1%80%D0%B3%D0%B5%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F_%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F.html">Русский</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../fi/articles/h/y/p/Hypergeometrinen_sarja.html">Suomi</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../zh-yue/articles/%E9%AB%98/%E6%96%AF/%E8%B6%85/%E9%AB%98%E6%96%AF%E8%B6%85%E5%B9%BE%E4%BD%95%E5%87%BD%E6%95%B8.html">粵語</a>
+	      </li>
+	      	    </ul>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 14:01, 5 June 2008 by Wikipedia user <a href="../../../../articles/s/t/e/User%7EStevenj_40e5.html" title="User:Stevenj">Stevenj</a>. Based on work by Wikipedia user(s) <a href="../../../../articles/y/e/c/User%7EYecril_7316.html" title="User:Yecril">Yecril</a>, <a href="../../../../articles/s/i/l/User%7ESilvonenBot_c197.html" title="User:SilvonenBot">SilvonenBot</a>, <a href="../../../../articles/r/o/b/User%7ERobinh_3ed9.html" title="User:Robinh">Robinh</a>, <a href="../../../../articles/v/o/l/User%7EVolkovBot_5c6d.html" title="User:VolkovBot">VolkovBot</a>, <a href="../../../../articles/r/a/t/User%7ERathemis_e156.html" title="User:Rathemis">Rathemis</a>, <a href="../../../../articles/g/i/f/User%7EGiftlite_9506.html" title="User:Giftlite">Giftlite</a>, <a href="../../../../articles/s/i/e/User%7ESieBot_e8dc.html" title="User:SieBot">SieBot</a>, <a href="../../../../articles/c/o/b/User%7ECOBot_4903.html" title="User:COBot">COBot</a>, <a href="../../../../articles/b/o/_/User%7EBo_Jacoby_56d6.html" title="User:Bo Jacoby">Bo Jacoby</a>, <a href="../../../../articles/d/a/v/User%7EDavidCBryant_f1d6.html" title="User:DavidCBryant">DavidCBryant</a>, <a href="../../../../articles/n/a/b/User%7ENabla_d282.html" title="User:Nabla">Nabla</a>, <a href="../../../../articles/a/b/e/User%7EAbelzaal_aea6.html" title="User:Abelzaal">Abelzaal</a>, <a href="../../../../articles/h/g/r/User%7EHgrosser_93d0.html" title="User:Hgrosser">Hgrosser</a>, <a href="../../../../articles/s/k/e/User%7ESketchjoy_f443.html" title="User:Sketchjoy">Sketchjoy</a>, <a href="../../../../articles/b/e/n/User%7EBen_Standeven_9e0a.html" title="User:Ben Standeven">Ben Standeven</a>, <a href="../../../../articles/b/e/n/User%7EBenFrantzDale_c7e5.html" title="User:BenFrantzDale">BenFrantzDale</a>, <a href="../../../../articles/j/i/t/User%7EJitse_Niesen_c0c4.html" title="User:Jitse Niesen">Jitse Niesen</a>, <a href="../../../../articles/j/o/n/User%7EJonMcLoone_2e03.html" title="User:JonMcLoone">JonMcLoone</a>, <a href="../../../../articles/s/m/a/User%7ESmackBot_cc7a.html" title="User:SmackBot">SmackBot</a>, <a href="../../../../articles/y/u/r/User%7EYurikBot_b393.html" title="User:YurikBot">YurikBot</a>, <a href="../../../../articles/d/o/g/User%7EDogaroon_f818.html" title="User:Dogaroon">Dogaroon</a>, <a href="../../../../articles/l/i/g/User%7ELigulem_20b6.html" title="User:Ligulem">Ligulem</a>, Don Warren, <a href="../../../../articles/l/i/n/User%7ELinas_c62b.html" title="User:Linas">Linas</a>, <a href="../../../../articles/l/i/g/User%7ELigulembot_623f.html" title="User:Ligulembot">Ligulembot</a>, <a href="../../../../articles/c/h/a/User%7ECharles_Matthews_cceb.html" title="User:Charles Matthews">Charles Matthews</a>, <a href="../../../../articles/t/h/e/User%7EThePI_aeb0.html" title="User:ThePI">ThePI</a>, <a href="../../../../articles/d/y/s/User%7EDysprosia_bc6d.html" title="User:Dysprosia">Dysprosia</a>, Almit39, <a href="../../../../articles/c/_/h/User%7EC_h_fleming_140c.html" title="User:C h fleming">C h fleming</a>, <a href="../../../../articles/e/s/k/User%7EEskimbot_5fb5.html" title="User:Eskimbot">Eskimbot</a>, Thomas Bliem, <a href="../../../../articles/m/i/c/User%7EMichael_Hardy_e932.html" title="User:Michael Hardy">Michael Hardy</a>, <a href="../../../../articles/p/a/r/User%7EPAR_bf60.html" title="User:PAR">PAR</a>, <a href="../../../../articles/h/u/m/User%7EHumus_sapiens_f37b.html" title="User:Humus sapiens">Humus sapiens</a>, <a href="../../../../articles/c/y/p/User%7ECyp_f138.html" title="User:Cyp">Cyp</a>, <a href="../../../../articles/w/r/i/User%7EWriterHound_30bf.html" title="User:WriterHound">WriterHound</a>, <a href="../../../../articles/n/y/m/User%7ENymphadoraTonks_8482.html" title="User:NymphadoraTonks">NymphadoraTonks</a>, <a href="../../../../articles/m/a/r/User%7EMarcika_111e.html" title="User:Marcika">Marcika</a>, <a href="../../../../articles/m/s/h/User%7EMsh210_2d23.html" title="User:Msh210">Msh210</a>, <a href="../../../../articles/a/h/o/User%7EAhoerstemeier_88c8.html" title="User:Ahoerstemeier">Ahoerstemeier</a>, <a href="../../../../articles/w/a/l/User%7EWaltpohl_11fc.html" title="User:Waltpohl">Waltpohl</a> and <a href="../../../../articles/w/i/l/User%7EWile_E._Heresiarch_9879.html" title="User:Wile E. Heresiarch">Wile E. Heresiarch</a> and Anonymous user(s) of Wikipedia.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

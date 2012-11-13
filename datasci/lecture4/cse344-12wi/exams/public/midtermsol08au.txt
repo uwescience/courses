@@ -1,0 +1,71 @@
+1. 
+
+note that the join through section is not needed in the queries
+below.  Instead of x.docid = y.docid and y.docid = z.docid, it
+suffices to say x.docid = z.docid.
+
+a. 
+
+select x.docid, x.title, count(distinct z.word)
+from doc x, section y, wordocc z
+where x.docid=y.docid and y.docid=z.docid and y.secnumber=z.secnumber
+group by x.docid, x.title
+
+b.
+
+selec distinct x.docid, x.title
+form doc x, section y, wordocc z1, wordocc z2
+where x.docid = y.docid
+  and y.docid = z1.docid and y.secnumber = z1.secnumber
+  and y.docid = z2.docid and y.secnumber = z2.secnumber
+  and z1.word = 'midterm' and z2.word = 'solution'
+
+b.
+
+select distinct y.docid
+from doc x
+where not exists ( select * 
+                   from QW w
+                   where not exists (select * 
+                                     from section y, wordocc z
+                                     where x.docid = y.docid
+                                       and z.docid = y.docid
+                                       and z.secnumber = y.secnumber
+                                       and z.word = w.word))
+
+
+2. b
+
+Decompose R(A,B,C,D,E,F,G).  Try A+ = AB.  Decompose into R1(A,B),
+R2(A,C,D,E,F,G)
+
+Decompose R2(A,C,D,E,F,G).  Try C+ = ACD.  Decompose into R3(A,C,D),
+R4(C, E, F, G)
+
+Decompose R4(C,E,F,G).  Try EF+ = CEF.  Decompose into R5(C,E,F) and
+R6(E,F,G)
+
+End result: R1(A,B) (key=A), R3(A,C,D) (key=C), R5(C,E,F) (key=E), and
+R6(E,F,G) (key=EFG)
+
+c. Write X<-->Y to mean X-->Y and Y-->X
+
+C-->A, D-->B, AB<-->E
+BC--> all attributes
+ED--> all attributes
+CD--> all attributes
+
+3.a.
+
+(i) T2, T5
+(ii) T3, T4, T6
+(iii)
+
+     Redo         Undo
+A=          | 2
+B= 20	    |
+C= 	    | 100
+D= 2000	    | 2000
+E=          |
+
+b. yes, no, no, yes

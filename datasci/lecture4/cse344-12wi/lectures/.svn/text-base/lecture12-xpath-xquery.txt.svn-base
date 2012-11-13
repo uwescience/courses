@@ -1,0 +1,162 @@
+================================================================
+CSE 344 -- Spring 2011
+Lecture 12:   XPath, XQuery
+================================================================
+
+How do we query XML ?
+
+We'll study in class:
+  -- XPath = simple navigation language (but XPath 2.0 bloated)
+  -- XQuery = query langauge = "SQL for XML"
+
+We won't study:
+  -- DOM = "Document Object Model" = programming language API
+  -- XSLT = for "complex" XML to XML transformations
+       (you can do most of it in XQuery better)
+
+
+================================================================
+In this lecture we will use the examples in XML-LECTURE-QUERIES
+
+================================================================
+
+XPath 1.0
+
+The XPath Data model = a tree with two root nodes (!!)
+
+   - "the root"
+   - "the root element"
+
+(picture in class)
+
+bib			matches a bib element
+*			matches any element
+@price			matches a price element
+@*			matches any attribute
+text()			matches a text node
+node()			matches any node: element, attribute, text
+/			matches the root element
+/bib			matches a bib element under root
+bib/paper		child axis:  bib followed immediately by paper
+bib//paper		descendant axis: bib followed eventually by paper 
+//paper			matches a paper at any depth
+paper|book		matches a paper or a book
+[C]			evaluates condition C on current element
+[4]			matches the 4th element (subtle ! discuss in class)
+contains(s1,s2)		returs TRUE if string s1 contains string s2
+name()			returns the tag of the current element
+
+
+================================================================
+XQuery:
+
+basic block = FLWR ("flower") block:
+
+      FROM
+      LET
+      WHERE
+      RETURN
+
+
+Discuss in class queries from XML-LECTURE-QUERIES
+
+   -- basic query q11
+   -- return clause q12
+   -- nesting q13
+   -- aggregates q14
+	    count = a function that counts
+	    avg =  computes the average
+	    sum = computes the sum
+	    distinct-values = eliminates duplicates
+   -- flattening q15
+   -- regrouping q16
+
+
+================================================================
+SQL v.s. XQuery
+
+Relations:
+       Product(pid, name, maker_id, price)
+       Company(cid, name, city, revenue)
+XML:
+<!ELEMENT DB (Product, Company)>
+<!ELEMENT Product (PRow*)>
+<!ELEMENT PRow (pid, name, maker_id, price)>
+<!ELEMENT Company (CRow*)>
+<!ELEMENT PRow (cid, name, city, renveue)>
+
+
+"Find all products manufactured in Seattle"
+
+SQL:
+
+   SELECT distinct x.pname
+   FROM Product x, Company y
+   WHERE x.maker_id = y.cid
+     and y.city='Seattle'
+
+XQuery (by novice):
+
+   for $x in doc("db.xml")/Product/PRow,
+       $y in doc("db.xml")/Company/CRow
+   where $x/maker_id = $y/cid
+     and $y/cit/text() = "Seattle"
+   return <answer> $x/name/text() </answer>
+
+XQuery (by expert):
+
+   for $y in doc("db.xml")/Company/CRow[city="Seattle"],
+       $x in doc("db.xml")/Product/PRow[maker_id=$y/cid]
+   return $x/name
+
+
+"For all companies who make more than 200 products under $99.99,
+compute the average price of such products"
+
+SQL:
+
+    SELECT y.cid, y.name, avg(x.price)
+    FROM Company y, Product x
+    WHERE y.cid = x.maker_id
+      and x.price < 99.99
+    GROUP BY y.cid, y.name
+    HAVING count(*) > 200
+
+XQuery:
+
+  for $y in doc("db.xml")/Company/CRow
+  let $p := doc("db.xml")/Product/PRow[maker_id=$y][price<99.99]
+  where count($p) > 200
+  return
+     <answer>
+        <company> { $y/name } </company>
+        <avg> { avg($p/price/text()) } </avg>
+     </answer>
+
+
+================================================================
+
+FOR v.s. LET
+
+  -- FOR = binds node variabes --> iterations
+  -- LET = binds collection varialbes --> one value
+
+for $x in /bib/book
+return <result> { $x } </result>
+
+   <result> <book> ... </book> </result>
+   <result> <book> ... </book> </result>
+   <result> <book> ... </book> </result>
+   . . .
+
+v.s.
+
+let $x := /bib/book
+return <result> { $x } </result>
+
+   <result> 
+       <book> ... </book>
+       <book> ... </book>
+       <book> ... </book>
+       . . .
+   </result>

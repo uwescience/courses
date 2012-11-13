@@ -1,0 +1,86 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function checkJavaScript()
+{
+        if (!document.getElementById)
+        {
+           document.write("Your browser does not support full ");
+           document.write("features of Javascript<br />");          
+           document.write("To get your code replace .../<thisfile>.html");
+           document.write(" with .../amazoncodes/<your_csenetid>/index.html")
+        }
+
+}
+
+function execOnEnter(e)
+{
+     var key;     
+     if(window.event)
+          key = window.event.keyCode; //IE
+     else
+          key = e.which; //firefox     
+
+     if (key != 13)
+     {
+         return true;
+     }
+     else
+     {
+        redirect();
+        return false;
+     }
+}
+
+function redirect(){
+	var username = "";
+        if (document.getElementById)
+        {
+            username = document.getElementById("usernametext").value;
+        }
+        else
+        {
+           document.write("Your browser does not support full ");
+           document.write("features of Javascript<br />");          
+           document.write("To get your code replace .../&lt;thisfile&gt;.html");
+	   document.write(" in the URL");
+           document.write(" with .../amazoncodes/&lt;your_csenetid&gt;/index.html")
+        }
+	if(username != ""){
+		window.location = 'amazoncodes/' + username.toLowerCase()+'/index.html';
+	}
+}
+
+
+</script>
+<head>
+<body>
+
+<noscript>
+  <font face="red">
+    Your browser does not support Javascript. <br />
+    To get your aws code either enable javascript (if possible) or
+    replace .../&lt;thisfile&gt;.html in the URL with .../amazoncodes/&lt;your_csenetid&gt;/index.html.
+  </font>
+</noscript>
+  
+<h1>Welcome to the CSEP 344 AWS Code Page</h1>
+
+<p>Please type in your <strong>csenetid</strong> in the text box
+  below and press enter or click submit. Your will be then asked for
+  your UW credentials. After logging in with your csenetid
+  credentials, you would be redirected to a page with your AWS code for the homework.
+  Note: Your csenetid is of the form: csenetid@cs.washington.edu.
+
+</p>
+
+CSENETID:
+<input type="text" id="usernametext" name="usernametext"
+       onKeyPress="return execOnEnter(event);"></input>
+<input type="submit" value="Submit" onClick="return redirect();"/>
+
+
+</body>
+</html>
+

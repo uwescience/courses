@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Host controller interface - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Host controller interface</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p>A <b>host controller interface</b> (HCI) is a register level <a href="../../../../articles/i/n/t/Interface.html" title="Interface">interface</a> which allows a <a href="../../../../articles/h/o/s/Host_controller.html" class="mw-redirect" title="Host controller">host controller</a> for <a href="../../../../articles/u/s/b/USB_7aca.html" class="mw-redirect" title="USB">USB</a> or <a href="../../../../articles/f/i/r/FireWire_33fa.html" class="mw-redirect" title="FireWire">FireWire</a> to communicate with the <a href="../../../../articles/o/p/e/Operating_system.html" title="Operating system">operating system</a> of a <a href="../../../../articles/p/e/r/Personal_computer.html" title="Personal computer">personal computer</a>.</p>
+<p>On the <a href="../../../../articles/e/x/p/Expansion_card.html" title="Expansion card">expansion card</a> or built-in controller, this probably involves much custom logic; prototypes involve digital logic engines in FPGAs plus analog circuitry managing the high speed differential signals. On the computer side, it requires a <a href="../../../../articles/s/o/f/Software.html" class="mw-redirect" title="Software">software</a> <a href="../../../../articles/d/e/v/Device_driver.html" title="Device driver">device driver</a> (called a Host Controller Driver, or HCD).</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#OHCI"><span class="tocnumber">1</span> <span class="toctext">OHCI</span></a></li>
+<li class="toclevel-1"><a href="#UHCI"><span class="tocnumber">2</span> <span class="toctext">UHCI</span></a></li>
+<li class="toclevel-1"><a href="#EHCI"><span class="tocnumber">3</span> <span class="toctext">EHCI</span></a></li>
+<li class="toclevel-1"><a href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1"><a href="#External_links"><span class="tocnumber">5</span> <span class="toctext">External links</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="OHCI" id="OHCI"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/o/s/Host_controller_interface.html" title="Edit section: OHCI">edit</a>]</span> <span class="mw-headline">OHCI</span></h2>
+<p><b>Open Host Controller Interface</b>, or <b>OHCI</b>, is an <a href="../../../../articles/o/p/e/Open_standard.html" title="Open standard">open standard</a>.</p>
+<p>When applied to a <a href="../../../../articles/f/i/r/FireWire_33fa.html" class="mw-redirect" title="FireWire">FireWire</a> card, OHCI means that the card supports a standard interface to the PC and can be used by the OHCI FireWire drivers that come with all modern <a href="../../../../articles/o/p/e/Operating_system.html" title="Operating system">operating systems</a>. Because the card has a standard OHCI interface, the OS does not need to know in advance exactly who makes the card or how it works, it can safely assume that the card understands the set of well-defined commands that are defined in the standard <a href="../../../../articles/p/r/o/Protocol.html" title="Protocol">protocol</a>.</p>
+<p>The OHCI standard for USB is broadly similar, but of course supports USB 1.1 (full and low speeds only) and so its register interface looks completely different. Compared to UHCI, it moves more intelligence into the controller and is accordingly much more efficient; that was part of the motivation for defining it. If a computer has a non-x86 USB 1.1 host, or an x86 one without an Intel or VIA chipset, it probably uses OHCI.</p>
+<p><a name="UHCI" id="UHCI"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/o/s/Host_controller_interface.html" title="Edit section: UHCI">edit</a>]</span> <span class="mw-headline">UHCI</span></h2>
+<p><b>Universal Host Controller Interface</b> (<b>UHCI</b>) was created by Intel for <a href="../../../../articles/u/n/i/Universal_Serial_Bus_022f.html" title="Universal Serial Bus">USB</a> 1.0 (full and low speeds only). UHCI is also a <a href="../../../../articles/l/i/n/Linux_kernel.html" title="Linux kernel">Linux kernel</a> <a href="../../../../articles/l/o/a/Loadable_kernel_module.html" title="Loadable kernel module">module</a> for general <a href="../../../../articles/i/n/t/Intel.html" class="mw-redirect" title="Intel">Intel</a> <a href="../../../../articles/p/e/r/Peripheral_Component_Interconnect_d275.html" title="Peripheral Component Interconnect">PCI</a> <a href="../../../../articles/c/h/i/Chipset.html" title="Chipset">chipset</a> USB controllers. Far from being "universal", it is actually <a href="../../../../articles/p/r/o/Proprietary.html" title="Proprietary">proprietary</a> and is <a href="../../../../articles/i/n/c/Incompatible.html" class="mw-redirect" title="Incompatible">incompatible</a> with OHCI; OHCI was developed in part to counter the problems observed with UHCI.</p>
+<p>The Linux kernel module supports Intel and <a href="../../../../articles/v/i/a/VIA_87a3.html" title="VIA">VIA</a> UHCI controllers. The kernel module is called USB_UHCI_HCD and is located under "Device Drivers / USB Support".</p>
+<p><a name="EHCI" id="EHCI"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/o/s/Host_controller_interface.html" title="Edit section: EHCI">edit</a>]</span> <span class="mw-headline">EHCI</span></h2>
+<p><b>Enhanced Host Controller Interface</b> (<b>EHCI</b>) is a high speed controller standard which is publicly specified. The <a href="../../../../articles/u/s/b/USB-IF_2c34.html" class="mw-redirect" title="USB-IF">USB-IF</a> insisted on this for USB 2.0 instead of having different standards for PCI based host interfaces, which would have increased complexity and therefore <a href="../../../../articles/c/o/s/Cost.html" title="Cost">costs</a>. Intel hosted EHCI conformance testing, which helped to ensure that the various implementations of this new standard didn't diverge too much from each other. EHCI relies on "companion controllers" (OHCI or UHCI) to handle full and low speed devices that aren't connected to high speed hubs.</p>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/o/s/Host_controller_interface.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<p><a href="../../../../articles/a/h/c/AHCI_4957.html" class="mw-redirect" title="AHCI">AHCI</a></p>
+<p><a name="External_links" id="External_links"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/h/o/s/Host_controller_interface.html" title="Edit section: External links">edit</a>]</span> <span class="mw-headline">External links</span></h2>
+<ul>
+<li><a href="ftp://ftp.compaq.com/pub/supportinformation/papers/hcir1_0a.pdf" class="external text" title="ftp://ftp.compaq.com/pub/supportinformation/papers/hcir1_0a.pdf" rel="nofollow">An OHCI for USB standard document from Compaq, Microsoft and National Semiconductor</a> (<a href="../../../../articles/p/o/r/Portable_Document_Format_95a8.html" title="Portable Document Format">PDF</a>)</li>
+<li><a href="http://developer.intel.com/technology/1394/download/ohci_11.htm" class="external text" title="http://developer.intel.com/technology/1394/download/ohci_11.htm" rel="nofollow">An OHCI for 1394 (FireWire) specification from Intel</a></li>
+<li><a href="http://www.charmed.com/txt/uhci.txt" class="external text" title="http://www.charmed.com/txt/uhci.txt" rel="nofollow">Linux kernel source</a></li>
+<li><a href="http://www.intel.com/technology/usb/ehcispec.htm" class="external text" title="http://www.intel.com/technology/usb/ehcispec.htm" rel="nofollow">Universal Serial Bus (USB*) EHCI Specification</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 6/1000000
+Post-expand include size: 0/2048000 bytes
+Template argument size: 0/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/c/o/m/Category%7EComputer_and_telecommunication_standards_c6ed.html" title="Category:Computer and telecommunication standards">Computer and telecommunication standards</a></span> | <span dir='ltr'><a href="../../../../articles/u/s/b/Category%7EUSB_9ae1.html" title="Category:USB">USB</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/h/o/s/Host_controller_interface.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/h/o/s/Talk%7EHost_controller_interface_4f63.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Host_controller_interface">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	<div id="p-lang" class="portlet">
+	  <h5>Languages</h5>
+	  <div class="pBody">
+	    <ul>
+	      	      <li>
+	      <a href="../../../../../de/articles/o/p/e/Open_Host_Controller_Interface_a116.html">Deutsch</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../pl/articles/o/h/c/OHCI_7738.html">Polski</a>
+	      </li>
+	      	    </ul>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 18:14, 8 June 2008 by Wikipedia user <a href="../../../../articles/m/r/o/User%7EMrOllie_0edb.html" title="User:MrOllie">MrOllie</a>. Based on work by Wikipedia user(s) <a href="../../../../articles/r/a/m/User%7ERamu50_e764.html" title="User:Ramu50">Ramu50</a>, <a href="../../../../articles/b/u/g/User%7EBugone_043b.html" title="User:Bugone">Bugone</a>, <a href="../../../../articles/a/b/d/User%7EAbdull_b6f2.html" title="User:Abdull">Abdull</a>, <a href="../../../../articles/m/a/c/User%7EMac_0174.html" title="User:Mac">Mac</a>, <a href="../../../../articles/f/l/i/User%7EFlightsoffancy_ec15.html" title="User:Flightsoffancy">Flightsoffancy</a>, <a href="../../../../articles/p/i/x/User%7EPixelBot_1b75.html" title="User:PixelBot">PixelBot</a>, <a href="../../../../articles/c/l/u/User%7EClueBot_8791.html" title="User:ClueBot">ClueBot</a>, <a href="../../../../articles/s/e/g/User%7ESega381_a591.html" title="User:Sega381">Sega381</a>, <a href="../../../../articles/r/e/m/User%7ERemember_the_dot_d46e.html" title="User:Remember the dot">Remember the dot</a>, Shaggy316, <a href="../../../../articles/z/v/a/User%7EZvar_a270.html" title="User:Zvar">Zvar</a>, GaelicWizard, <a href="../../../../articles/d/a/g/User%7EDaGizza_4a9b.html" title="User:DaGizza">DaGizza</a>, <a href="../../../../articles/r/a/d/User%7ERadiojon_da08.html" title="User:Radiojon">Radiojon</a>, <a href="../../../../articles/a/n/d/User%7EAndante1980_f07c.html" title="User:Andante1980">Andante1980</a>, ZyToggle-Case, <a href="../../../../articles/b/i/b/User%7EBiblbroks_50d5.html" title="User:Biblbroks">Biblbroks</a>, <a href="../../../../articles/c/a/l/User%7ECALR_dfd6.html" title="User:CALR">CALR</a>, <a href="../../../../articles/a/l/i/User%7EAlistairMcMillan_232b.html" title="User:AlistairMcMillan">AlistairMcMillan</a>, <a href="../../../../articles/f/l/a/User%7EFlaBot_747f.html" title="User:FlaBot">FlaBot</a>, <a href="../../../../articles/i/c/a/User%7EIcairns_bb52.html" title="User:Icairns">Icairns</a>, <a href="../../../../articles/q/u/a/User%7EQuale_0e6d.html" title="User:Quale">Quale</a>, <a href="../../../../articles/r/o/y/User%7ERoyBoy_492a.html" title="User:RoyBoy">RoyBoy</a>, <a href="../../../../articles/n/j/h/User%7ENjh%40bandsman.co.uk_5287.html" title="User:Njh@bandsman.co.uk">Njh@bandsman.co.uk</a>, <a href="../../../../articles/m/o/d/User%7EModster_b6f4.html" title="User:Modster">Modster</a>, <a href="../../../../articles/m/o/i/User%7EMoink_dc9f.html" title="User:Moink">Moink</a> and <a href="../../../../articles/f/u/e/User%7EFuelbottle_c429.html" title="User:Fuelbottle">Fuelbottle</a> and Anonymous user(s) of Wikipedia.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

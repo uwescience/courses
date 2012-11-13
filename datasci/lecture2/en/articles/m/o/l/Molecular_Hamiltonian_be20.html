@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Molecular Hamiltonian - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Molecular Hamiltonian</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p>In <a href="../../../../articles/a/t/o/Atomic%2C_molecular%2C_and_optical_physics.html" title="Atomic, molecular, and optical physics">atomic, molecular, and optical physics</a> as well as in <a href="../../../../articles/q/u/a/Quantum_chemistry.html" title="Quantum chemistry">quantum chemistry</a>, <b>molecular Hamiltonian</b> is the name given to the <a href="../../../../articles/h/a/m/Hamiltonian_%28quantum_mechanics%29.html" title="Hamiltonian (quantum mechanics)">Hamiltonian</a> representing the <a href="../../../../articles/e/n/e/Energy.html" title="Energy">energy</a> of the <a href="../../../../articles/e/l/e/Electron.html" title="Electron">electrons</a> and <a href="../../../../articles/a/t/o/Atomic_nucleus.html" title="Atomic nucleus">nuclei</a> in a <a href="../../../../articles/m/o/l/Molecule.html" title="Molecule">molecule</a>. This <a href="../../../../articles/s/e/l/Self-adjoint_operator.html" title="Self-adjoint operator">Hermitian operator</a> and the associated <a href="../../../../articles/s/c/h/Schr%C3%B6dinger_equation.html" title="Schrödinger equation">Schrödinger equation</a> play a central role in <a href="../../../../articles/c/o/m/Computational_chemistry.html" title="Computational chemistry">computational chemistry</a> and <a href="../../../../articles/c/o/m/Computational_physics.html" title="Computational physics">physics</a> for computing properties of molecules and aggregates of molecules, such as <a href="../../../../articles/c/o/n/Conductivity.html" title="Conductivity">conductivity</a>, <a href="../../../../articles/o/p/t/Optics.html" title="Optics">optical</a>, and <a href="../../../../articles/m/a/g/Magnetism.html" title="Magnetism">magnetic properties</a>, and <a href="../../../../articles/r/e/a/Reactivity.html" title="Reactivity">reactivity</a>.</p>
+<p>The bricks of the molecule are the nuclei, characterized by their <a href="../../../../articles/a/t/o/Atomic_number.html" title="Atomic number">atomic number</a> <i>Z</i>, while the electrons, which have negative <a href="../../../../articles/e/l/e/Elementary_charge.html" title="Elementary charge">elementary charge</a> -<i>q</i>, are its mortar. The charge of a nucleus is <i>Zq</i>. Electrons and nuclei are, to a very good approximation, <a href="../../../../articles/p/o/i/Point_charge.html" title="Point charge">point charges</a> and point masses. The molecular Hamiltonian is a sum of several terms: its major terms are the <a href="../../../../articles/k/i/n/Kinetic_energy.html" title="Kinetic energy">kinetic energies</a> of the electrons and the <a href="../../../../articles/c/o/u/Coulomb%27s_law.html" title="Coulomb's law">Coulomb (electrostatic) interactions</a> between the two kinds of charged particles. The Hamiltonian that contains only the kinetic energies of electrons and nuclei, and the Coulomb interactions between them, is known as the <b>Coulomb Hamiltonian</b>. From it are missing a number of small terms, most of which are due to electronic and nuclear <a href="../../../../articles/s/p/i/Spin_%28physics%29.html" title="Spin (physics)">spin</a>.</p>
+<p>Although it is generally assumed that the solution of the time-independent <a href="../../../../articles/s/c/h/Schr%C3%B6dinger_equation.html" title="Schrödinger equation">Schrödinger equation</a> associated with the Coulomb Hamiltonian will predict most properties of the molecule, including its shape (three-dimensional structure), calculations based on the full Coulomb Hamiltonian are very scarce. The main reason being that its Schrödinger equation is very difficult to solve. Applications are restricted to small systems like the hydrogen molecule.</p>
+<p>Almost all calculations of molecular wavefunctions are based on the separation of the Coulomb Hamiltonian first devised by <a href="../../../../articles/b/o/r/Born-Oppenheimer_approximation_fe55.html" title="Born-Oppenheimer approximation">Born and Oppenheimer</a>. The nuclear kinetic energy terms are omitted from the Coulomb Hamiltonian and one considers the remaining Hamiltonian as a Hamiltonian of electrons only. The stationary nuclei enter the problem only as generators of an electric potential in which the electrons move in a quantum mechanical way. Within this framework the molecular Hamiltonian has been simplified to the so-called <b>clamped nucleus Hamiltonian</b>, also called <b>electronic Hamiltonian</b>, that acts only on functions of the electronic coordinates.</p>
+<p>Once the Schrödinger equation of the clamped nucleus Hamiltonian has been solved for a sufficient number of constellations of the nuclei, an appropriate <a href="../../../../articles/e/i/g/Eigenvalue.html" class="mw-redirect" title="Eigenvalue">eigenvalue</a> (usually the lowest) can be seen as a <a href="../../../../articles/f/u/n/Function_%28mathematics%29.html" title="Function (mathematics)">function</a> of the nuclear coordinates, which leads to a <a href="../../../../articles/p/o/t/Potential_energy_surface.html" title="Potential energy surface">potential energy surface</a>. In practical calculations the surface is usually <a href="../../../../articles/l/e/a/Least_squares.html" title="Least squares">fitted</a> in terms of some analytic functions. In the second step of the <a href="../../../../articles/b/o/r/Born-Oppenheimer_approximation_fe55.html" title="Born-Oppenheimer approximation">Born-Oppenheimer approximation</a> the part of the full Coulomb Hamiltonian that depends on the electrons is replaced by the potential energy surface. This converts the total molecular Hamiltonian into another Hamiltonian that acts only on the nuclear coordinates. In the case of a breakdown of the <a href="../../../../articles/b/o/r/Born-Oppenheimer_approximation_fe55.html" title="Born-Oppenheimer approximation">Born-Oppenheimer approximation</a>—which occurs when energies of different electronic states are close—the neighboring potential energy surfaces are needed, see this <a href="../../../../articles/b/o/r/Born-Oppenheimer_approximation_fe55.html" title="Born-Oppenheimer approximation">article</a> for more details on this.</p>
+<p>The nuclear motion Schrödinger equation can be solved in a space-fixed (laboratory) <a href="../../../../articles/f/r/a/Frame_of_reference.html" title="Frame of reference">frame</a>, but then the <a href="../../../../articles/t/r/a/Translation_%28physics%29.html" title="Translation (physics)">translational</a> and <a href="../../../../articles/r/o/t/Rotation.html" title="Rotation">rotational</a> (external) energies are not accounted for. Only the (internal) atomic <a href="../../../../articles/v/i/b/Vibration.html" title="Vibration">vibrations</a> enter the problem. Further, for molecules larger than triatomic ones, it is quite common to introduce the harmonic approximation, which approximates the potential energy surface as a <a href="../../../../articles/q/u/a/Quadratic_function.html" title="Quadratic function">quadratic function</a> of the atomic displacements. This gives the <b>harmonic nuclear motion Hamiltonian</b>. Making the harmonic approximation, we can convert the Hamiltonian into a sum of uncoupled one-dimensional <a href="../../../../articles/h/a/r/Harmonic_oscillator.html" title="Harmonic oscillator">harmonic oscillator</a> Hamiltonians. The one-dimensional harmonic oscillator is one of the few systems that allows an exact solution of the Schrödinger equation.</p>
+<p>Alternatively, the nuclear motion (rovibrational) Schrödinger equation can be solved in a special frame (an <a href="../../../../articles/e/c/k/Eckart_conditions.html" title="Eckart conditions">Eckart frame</a>) that rotates and translates with the molecule. Formulated with respect to this body-fixed frame the Hamiltonian accounts for <a href="../../../../articles/r/o/t/Rotation.html" title="Rotation">rotation</a>, <a href="../../../../articles/t/r/a/Translation.html" title="Translation">translation</a> and <a href="../../../../articles/v/i/b/Vibration.html" title="Vibration">vibration</a> of the nuclei. Since Watson introduced in 1968 an important simplification to this Hamiltonian, it is often referred to as <b>Watson's nuclear motion Hamiltonian</b>, but it is also known as the <b>Eckart Hamiltonian</b>,</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#Coulomb_Hamiltonian"><span class="tocnumber">1</span> <span class="toctext">Coulomb Hamiltonian</span></a></li>
+<li class="toclevel-1"><a href="#Small_terms"><span class="tocnumber">2</span> <span class="toctext">Small terms</span></a></li>
+<li class="toclevel-1"><a href="#The_Schr.C3.B6dinger_equation_of_the_Coulomb_Hamiltonian"><span class="tocnumber">3</span> <span class="toctext">The Schrödinger equation of the Coulomb Hamiltonian</span></a></li>
+<li class="toclevel-1"><a href="#Clamped_nucleus_Hamiltonian"><span class="tocnumber">4</span> <span class="toctext">Clamped nucleus Hamiltonian</span></a></li>
+<li class="toclevel-1"><a href="#Harmonic_nuclear_motion_Hamiltonian"><span class="tocnumber">5</span> <span class="toctext">Harmonic nuclear motion Hamiltonian</span></a></li>
+<li class="toclevel-1"><a href="#Watson.27s_nuclear_motion_Hamiltonian"><span class="tocnumber">6</span> <span class="toctext">Watson's nuclear motion Hamiltonian</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">7</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1"><a href="#See_also"><span class="tocnumber">8</span> <span class="toctext">See also</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Coulomb_Hamiltonian" id="Coulomb_Hamiltonian"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html" title="Edit section: Coulomb Hamiltonian">edit</a>]</span> <span class="mw-headline">Coulomb Hamiltonian</span></h2>
+<p>The algebraic form of many observables—i.e., Hermitian operators representing observable quantities—is obtained by the following <a href="../../../../articles/c/a/n/Canonical_quantization.html#Quantum_mechanics" title="Canonical quantization">quantization rules</a>:</p>
+<ul>
+<li>Write the classical form of the observable in Hamilton form (as a function of momenta <b>p</b> and positions <b>q</b>). Both vectors are expressed with respect to an arbitrary <a href="../../../../articles/i/n/e/Inertial_frame.html" class="mw-redirect" title="Inertial frame">inertial frame</a>, usually referred to as <i>laboratory-frame</i> or <i>space-fixed frame</i>.</li>
+<li>Replace <b>p</b> by <img class="tex" alt="-i\hbar\boldsymbol{\nabla}" src="../../../../math/f/e/e/fee4e72b5fbb5f13cf4298c5a8a22fcc.png" /> and interpret <b>q</b> as a multiplicative operator. Here <img class="tex" alt="\boldsymbol{\nabla}" src="../../../../math/c/a/1/ca1189d3d0bd0e75acd3a4aea9055b8f.png" /> is the <a href="../../../../articles/d/e/l/Del.html" title="Del">nabla</a> operator, a vector operator consisting of first derivatives. The well-known commutation relations for the <b>p</b> and <b>q</b> operators follow directly from the differentiation rules.</li>
+</ul>
+<p>Classically the electrons and nuclei in a molecule have kinetic energy of the form <i>p</i><sup>2</sup>/<i>(2m)</i> and interact via <a href="../../../../articles/c/o/u/Coulomb%27s_law.html" title="Coulomb's law">Coulomb interactions</a>, which are inversely proportional to the <a href="../../../../articles/d/i/s/Distance.html#Distance_in_Euclidean_space" title="Distance">distance</a> <i>r</i><sub>ij</sub> between particle <i>i</i> and <i>j</i>.</p>
+<dl>
+<dd><img class="tex" alt=" r_{ij} \equiv |\mathbf{r}_i -\mathbf{r}_j|
+ = \sqrt{(\mathbf{r}_i -\mathbf{r}_j)\cdot(\mathbf{r}_i -\mathbf{r}_j)}
+ = \sqrt{(x_i-x_j)^2 + (y_i-y_j)^2 + (z_i-z_j)^2 } .
+" src="../../../../math/d/0/f/d0f22a4a974dae8b0880781723fbad30.png" /></dd>
+</dl>
+<p>In this expression <b>r</b><sub><i>i</i></sub> stands for the coordinate vector of any particle (electron or nucleus). But from here on we will reserve capital <b>R</b> to represent the nuclear coordinate, and lower case <b>r</b> for the electrons of the system. The coordinates can be taken to be expressed with respect to any Cartesian frame centered anywhere in space, because distance, being an inner product, is invariant under rotation of the frame and, being the norm of a difference vector, distance is invariant under translation of the frame as well.</p>
+<p>By quantizing the classical energy in Hamilton form one obtains the a molecular Hamilton operator that is often referred to as the <b>Coulomb Hamiltonian</b>. This Hamiltonian is a sum of 5 terms. They are</p>
+<ol>
+<li>The kinetic energy operators for each nucleus in the system;</li>
+<li>The kinetic energy operators for each electron in the system;</li>
+<li>The potential energy between the electrons and nuclei - the total electron-nucleus Coulombic attraction in the system;</li>
+<li>The potential energy arising from Coulombic electron-electron repulsions</li>
+<li>The potential energy arising from Coulombic nuclei-nuclei repulsions - also known as the nuclear repulsion energy. See <a href="../../../../articles/e/l/e/Electric_potential.html" title="Electric potential">electric potential</a> for more details.</li>
+</ol>
+<ol>
+<li><img class="tex" alt="\hat{T}_n = - \sum_i \frac{\hbar^2}{2 M_i} \nabla^2(\mathbf{R}_i) " src="../../../../math/3/b/8/3b8483e3bca8a3b743a5f4101cd333c0.png" /></li>
+<li><img class="tex" alt="\hat{T}_e = - \sum_i \frac{\hbar^2}{2 m_e} \nabla^2(\mathbf{r}_i) " src="../../../../math/8/7/a/87a5e449e445dfae77f21a3438fca346.png" /></li>
+<li><img class="tex" alt="\hat{U}_{en} = - \sum_i \sum_j \frac{Z_i e^2}{4 \pi \epsilon_0 \left | \mathbf{R}_i - \mathbf{r}_j \right | }" src="../../../../math/4/9/6/496c774e31b82e7aa6b1d81f59a1128a.png" /></li>
+<li><img class="tex" alt="\hat{U}_{ee} = {1 \over 2} \sum_i \sum_{j \ne i} \frac{e^2}{4 \pi \epsilon_0 \left | \mathbf{r}_i - \mathbf{r}_j \right | } =
+\sum_i \sum_{j &gt; i} \frac{e^2}{4 \pi \epsilon_0 \left | \mathbf{r}_i - \mathbf{r}_j \right | }
+" src="../../../../math/1/4/5/14582eb5f97366434b7783a43016d666.png" /></li>
+<li><img class="tex" alt="\hat{U}_{nn} = {1 \over 2} \sum_i \sum_{j \ne i} \frac{Z_i Z_j e^2}{4 \pi \epsilon_0 \left | \mathbf{R}_i - \mathbf{R}_j \right | } =
+\sum_i \sum_{j &gt; i} \frac{Z_i Z_j e^2}{4 \pi \epsilon_0 \left | \mathbf{R}_i - \mathbf{R}_j \right | }. " src="../../../../math/3/f/3/3f3de54c67ceda5b959165e5c7d05acd.png" /></li>
+</ol>
+<p>Here <i>M</i><sub>i</sub> is the mass of nucleus <i>i</i>, <i>Z</i><sub><i>i</i></sub> is the <a href="../../../../articles/a/t/o/Atomic_number.html" title="Atomic number">atomic number</a> of nucleus <i>i</i>, and <i>m</i><sub>e</sub> is the mass of the electron. The <a href="../../../../articles/l/a/p/Laplace_operator.html" title="Laplace operator">Laplace operator</a> of particle <i>i</i> is&#160;:<img class="tex" alt=" \nabla^2(\mathbf{r}_i) \equiv \boldsymbol{\nabla}(\mathbf{r}_i)\cdot \boldsymbol{\nabla}(\mathbf{r}_i)
+= \frac{\partial^2}{\partial x_i^2} + \frac{\partial^2}{\partial y_i^2} + \frac{\partial^2}{\partial z_i^2} " src="../../../../math/a/0/6/a0675fa5efc24656962ffbe78aa6dc0c.png" />. Since the kinetic energy operator is an inner product, it is invariant under rotation of the Cartesian frame with respect to which <i>x</i><sub>i</sub>, <i>y</i><sub>i</sub>, and <i>z</i><sub>i</sub> are expressed. The kinetic energy operator, however, is not invariant under translation (choice of origin of the frame).</p>
+<p><a name="Small_terms" id="Small_terms"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html" title="Edit section: Small terms">edit</a>]</span> <span class="mw-headline">Small terms</span></h2>
+<p>In the 1920s much spectroscopic evidence made it clear that the Coulomb Hamiltonian is missing certain terms. Especially for molecules containing heavier atoms, these terms, although much smaller than kinetic and Coulomb energies, are nonnegligible. These spectroscopic observations led to the introduction of a new degree of freedom for electrons and nuclei, namely <a href="../../../../articles/s/p/i/Spin_%28physics%29.html" title="Spin (physics)">spin</a>. This empirical concept was given a theoretical basis by <a href="../../../../articles/d/i/r/Dirac.html" class="mw-redirect" title="Dirac">Dirac</a> when he introduced a relativistically correct (<a href="../../../../articles/l/o/r/Lorentz_covariant.html" class="mw-redirect" title="Lorentz covariant">Lorentz covariant</a>) form of the one-particle Schrödinger equation. The Dirac equation predicts that spin and spatial motion of a particle interact via <a href="../../../../articles/s/p/i/Spin-orbit_interaction.html" title="Spin-orbit interaction">spin-orbit coupling</a>. In analogy spin-other-orbit coupling was introduced. The fact that particle spin has some of the characteristics of a magnetic dipole led to <a href="../../../../articles/m/a/g/Magnetic_dipole-dipole_interaction.html" title="Magnetic dipole-dipole interaction">spin-spin coupling</a>. Further terms without a classical counterpart are the Fermi-contact term (interaction of electronic density on a finite size nucleus with the nucleus), and nuclear quadrupole coupling (interaction of a nuclear <a href="../../../../articles/q/u/a/Quadrupole.html" title="Quadrupole">quadrupole</a> with the gradient of an electric field due to the electrons). Finally a parity violating term predicted by the <a href="../../../../articles/s/t/a/Standard_Model_84d9.html" title="Standard Model">Standard Model</a> must be mentioned. Although it is an extremely small interaction, it has attracted a fair amount of attention in the scientific literature because it gives different energies for the <a href="../../../../articles/e/n/a/Enantiomers.html" class="mw-redirect" title="Enantiomers">enantiomers</a> in <a href="../../../../articles/c/h/i/Chiral_molecules.html" class="mw-redirect" title="Chiral molecules">chiral molecules</a>.</p>
+<p>The remaining part of this article will ignore spin terms and consider the solution of the eigenvalue (time-independent Schrödinger) equation of the Coulomb Hamiltonian.</p>
+<p><a name="The_Schr.C3.B6dinger_equation_of_the_Coulomb_Hamiltonian" id="The_Schr.C3.B6dinger_equation_of_the_Coulomb_Hamiltonian"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html" title="Edit section: The Schrödinger equation of the Coulomb Hamiltonian">edit</a>]</span> <span class="mw-headline">The Schrödinger equation of the Coulomb Hamiltonian</span></h2>
+<p>The Coulomb Hamiltonian has a continuous spectrum due to to the center of mass motion of the molecule in homogeneous space. In classical mechanics it is easy to separate off the <a href="../../../../articles/c/e/n/Center_of_mass.html" title="Center of mass">center of mass</a> (COM) motion of a system of point masses. Classically the motion of the COM is uncoupled from the other motions. The COM moves uniformly (i.e., with constant velocity) through space as if it were a point particle with mass equal to the sum <i>M</i><sub>tot</sub> of the masses of all the particles.</p>
+<p>In quantum mechanics a free particle has as state function a plane wave function, which is a non-square-integrable function of well-defined momentum. The kinetic energy of this particle covers <img class="tex" alt="\mathbb{R}^+" src="../../../../math/e/5/7/e579ecffb2b0c4377c69fd7c38fcf0c2.png" />. The position of the COM is uniformly probable everywhere, in agreement with the <a href="../../../../articles/h/e/i/Heisenberg_uncertainty_principle.html" class="mw-redirect" title="Heisenberg uncertainty principle">Heisenberg uncertainty principle</a>.</p>
+<p>Quantum mechanically the proper separation of the COM motion is much more cumbersome than in classical mechanics. By introducing the coordinate vector <img class="tex" alt="\mathbf{X}" src="../../../../math/5/9/8/598f6444904755dda4a859a1e377468e.png" /> of the center of mass as three of the degrees of freedom of the system and eliminating the coordinate vector of one (arbitrary) particle, so that the number of degrees of freedom stays the same, one obtains by a linear transformation a new set of coordinates <b>t</b><sub>i</sub>. These coordinates are linear combinations of the old coordinates of <i>all</i> particles (nuclei <i>and</i> electrons). By applying the <a href="../../../../articles/c/h/a/Chain_rule.html" title="Chain rule">chain rule</a> one can show that</p>
+<dl>
+<dd><img class="tex" alt="
+H = -\frac{\hbar^2}{2M_\textrm{tot}} \nabla^2(\mathbf{X}) + H'
+\quad\textrm{with}\quad H'=
+-\sum_{i=1}^{N_\textrm{tot} -1 }  \frac{\hbar^2}{\mu_{ii}} \nabla^2(\mathbf{t}_i)
+-\sum_{i,j=1}^{N_\textrm{tot} -1 }  \frac{\hbar^2}{\mu_{ij}} \boldsymbol{\nabla}(\mathbf{t}_i) \cdot \boldsymbol{\nabla}(\mathbf{t}_j) +V(\mathbf{t}).
+" src="../../../../math/3/9/6/396e4317d65803a70d132eb7ec6dbc6c.png" /></dd>
+</dl>
+<p>The first term of <span class="texhtml"><i>H</i></span> is the kinetic energy of the COM motion, which can be treated separately since <span class="texhtml"><i>H</i>'</span> does not depend on <img class="tex" alt="\mathbf{X}" src="../../../../math/5/9/8/598f6444904755dda4a859a1e377468e.png" />. As just stated, its eigenstates are plane waves. The constants 1/μ<sub>ij</sub> are positive and are linear combinations of all the inverse masses 1/<i>m</i><sub>i</sub>. They are generalized <a href="../../../../articles/r/e/d/Reduced_mass.html" title="Reduced mass">reduced masses</a>. The potential <img class="tex" alt="V(\mathbf{t})" src="../../../../math/a/3/9/a39217f79e191104a168a2eda5e15f1e.png" /> consists of the Coulomb terms expressed in the new coordinates. The first term of <span class="texhtml"><i>H</i>'</span> has the usual appearance of a kinetic energy operator. The second term is known as the <b>mass polarization</b> term. The translationally invariant Hamiltonian <span class="texhtml"><i>H</i>'</span> can be shown to be <a href="../../../../articles/s/e/l/Self-adjoint.html" title="Self-adjoint">self-adjoint</a> and to be bounded from below. That is, its lowest eigenvalue is real and finite. Although <span class="texhtml"><i>H</i>'</span> is necessarily invariant under permutations of identical particles (since <span class="texhtml"><i>H</i></span> and the COM kinetic energy are invariant), its invariance is not manifest.</p>
+<p>Not many actual molecular applications of <span class="texhtml"><i>H</i>'</span> exist, see, however, the seminal work<sup id="cite_ref-0" class="reference"><a href="#cite_note-0" title="">[1]</a></sup> on the hydrogen molecule for an early application. In the great majority of computations of molecular wavefunctions the electronic problem is solved with the clamped nucleus Hamiltonian arising in the first step of the <a href="../../../../articles/b/o/r/Born-Oppenheimer_approximation_fe55.html" title="Born-Oppenheimer approximation">Born-Oppenheimer approximation</a>.</p>
+<p>See Ref.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1" title="">[2]</a></sup> for a thorough discussion of the mathematical properties of the Coulomb Hamiltonian. Also it is discussed in this paper whether one can arrive <i>a priori</i> at the concept of a molecule (as a stable system of electrons and nuclei with a well-defined geometry) from the properties of the Coulomb Hamiltonian alone.</p>
+<p><br /></p>
+<p><a name="Clamped_nucleus_Hamiltonian" id="Clamped_nucleus_Hamiltonian"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html" title="Edit section: Clamped nucleus Hamiltonian">edit</a>]</span> <span class="mw-headline">Clamped nucleus Hamiltonian</span></h2>
+<p>The clamped nucleus Hamiltonian describes the energy of the electrons in the electrostatic field of the nuclei, where the nuclei are assumed to be stationary with respect to an inertial frame. The form of the electronic Hamiltonian is</p>
+<dl>
+<dd><img class="tex" alt=" \hat{H}_\mathrm{el} = \hat{T}_e + \hat{U}_{en}+ \hat{U}_{ee}+ \hat{U}_{nn}.
+" src="../../../../math/d/e/4/de4f5a0c481afe972b4a414a9e0c168e.png" /></dd>
+</dl>
+<p>The coordinates of electrons and nuclei are expressed with respect to a frame that moves with the nuclei, so that the nuclei are at rest with respect to this frame. The frame stays parallel to a space-fixed frame. It is an inertial frame because the nuclei are assumed not to be accelerated by external forces or torques. The origin of the frame is arbitrary, it is usually positioned on a central nucleus or in the nuclear center of mass. Sometimes it is stated that the nuclei are "at rest in a space-fixed frame". This statement implies that the nuclei are viewed as classical particles, because a quantum mechanical particle cannot be at rest. (It would mean that it had simultaneously zero momentum and well-defined position, which contradicts Heisenberg's uncertainty principle).</p>
+<p>Since the nuclear positions are constants, the electronic kinetic energy operator is invariant under translation over any nuclear vector. The Coulomb potential, depending on difference vectors, is invariant as well. In the description of <a href="../../../../articles/a/t/o/Atomic_orbitals.html" class="mw-redirect" title="Atomic orbitals">atomic orbitals</a> and the computation of integrals over atomic orbitals this invariance is used by equipping all atoms in the molecule with their own localized frames parallel to the space-fixed frame.</p>
+<p>As explained in the article on the <a href="../../../../articles/b/o/r/Born-Oppenheimer_approximation_fe55.html" title="Born-Oppenheimer approximation">Born-Oppenheimer approximation</a>, a sufficient number of solutions of the Schrödinger equation of <span class="texhtml"><i>H</i><sub>el</sub></span> leads to a <a href="../../../../articles/p/o/t/Potential_energy_surface.html" title="Potential energy surface">potential energy surface</a> (PES) <img class="tex" alt="V(\mathbf{R}_1, \mathbf{R}_2, \ldots, \mathbf{R}_N)" src="../../../../math/d/5/c/d5ce090333835d26512c28681f3e5440.png" />. It is assumed that the functional dependence of <i>V</i> on its coordinates is such that</p>
+<dl>
+<dd><img class="tex" alt=" V(\mathbf{R}_1, \mathbf{R}_2, \ldots, \mathbf{R}_N)=V(\mathbf{R}'_1, \mathbf{R}'_2, \ldots, \mathbf{R}'_N)" src="../../../../math/5/c/9/5c9ede0a5ad353c3bccb86b3d6bf8a73.png" /></dd>
+</dl>
+<p>for</p>
+<dl>
+<dd><img class="tex" alt=" \mathbf{R}'_i =\mathbf{R}_i + \mathbf{t} \;\;\textrm{(translation)\;\; and}\;\;
+\mathbf{R}'_i =\mathbf{R}_i + \frac{\Delta\phi}{|\mathbf{s}|} \; ( \mathbf{s}\times \mathbf{R}_i)
+\;\;\textrm{(infinitesimal\;\; rotation)},
+" src="../../../../math/6/d/a/6da30769f977f2ec15acfe8a7c5d53b1.png" /></dd>
+</dl>
+<p>where <b>t</b> and <b>s</b> are arbitrary vectors and Δφ is an infinitesimal angle, Δφ &gt;&gt; Δφ<sup>2</sup>. This invariance condition on the PES is automatically fulfilled when the PES is expressed in terms of differences of, and angles between, the <b>R</b><sub>i</sub>, which is usually the case.</p>
+<p><a name="Harmonic_nuclear_motion_Hamiltonian" id="Harmonic_nuclear_motion_Hamiltonian"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html" title="Edit section: Harmonic nuclear motion Hamiltonian">edit</a>]</span> <span class="mw-headline">Harmonic nuclear motion Hamiltonian</span></h2>
+<p>In the remaining part of this article we assume that the molecule is <a href="../../../../articles/s/e/m/Semi-rigid_molecule.html" title="Semi-rigid molecule">semi-rigid</a>. In the second step of the BO approximation the nuclear kinetic energy <i>T</i><sub>n</sub> is reintroduced and the Schrödinger equation with Hamiltonian</p>
+<dl>
+<dd><img class="tex" alt=" \hat{H}_\mathrm{nuc} = -\frac{\hbar^2}{2}\sum_{i=1}^N
+\sum_{\alpha=1}^3 \frac{1}{M_i} \frac{\partial^2}{\partial R_{i\alpha}^2} +V(\mathbf{R}_1,\ldots,\mathbf{R}_N) " src="../../../../math/c/2/8/c286c4a55368fa48c04183b250c33a1d.png" /></dd>
+</dl>
+<p>is considered. One would like to recognize in its solution: the motion of the nuclear center of mass (3 degrees of freedom), the overall rotation of the molecule (3 degrees of freedom), and the nuclear vibrations. In general, this is not possible with the given nuclear kinetic energy, because it does not separate explicitly the 6 external degrees of freedom (overall translation and rotation) from the 3<i>N</i>-6 internal degrees of freedom. In fact, the kinetic energy operator here is defined with respect to a space-fixed (SF) frame. If we were to move the origin of the SF frame to the nuclear center of mass, then, by application of the <a href="../../../../articles/c/h/a/Chain_rule.html" title="Chain rule">chain rule</a>, nuclear mass polarization terms would appear. It is customary to ignore these terms altogether and we will follow this custom.</p>
+<p>In order to achieve a separation we must distinguish internal and external coordinates, to which end Eckart introduced <a href="../../../../articles/e/c/k/Eckart_conditions.html" title="Eckart conditions">conditions</a> to be satisfied by the coordinates. We will show how these conditions arise in a natural way from a harmonic analysis in mass-weighted Cartesian coordinates.</p>
+<p>In order to simplify the expression for the kinetic energy we introduce mass-weighted displacement coordinates</p>
+<dl>
+<dd><img class="tex" alt="\boldsymbol{\rho}_i \equiv \sqrt{M_i} (\mathbf{R}_i-\mathbf{R}_i^0)" src="../../../../math/c/0/1/c0180c6f679f1e001ea1281f81b46399.png" />.</dd>
+</dl>
+<p>Since</p>
+<dl>
+<dd><img class="tex" alt="
+\frac{\partial}{\partial \rho_{i \alpha}} = \frac{\partial}{\sqrt{M_i} (\partial R_{i \alpha} - \partial R^0_{i \alpha})} = \frac{1}{\sqrt{M_i}}  \frac{\partial}{\partial R_{i \alpha}} ,
+" src="../../../../math/4/0/c/40c7fe9c897533cca90a37a48a033e39.png" /></dd>
+</dl>
+<p>the kinetic energy operator becomes,</p>
+<dl>
+<dd><img class="tex" alt="
+T = -\frac{\hbar^2}{2} \sum_{i=1}^N \sum_{\alpha=1}^3  \frac{\partial^2}{\partial \rho_{i\alpha}^2}.
+" src="../../../../math/c/e/f/cef66976e458c6187be46834fd9d797a.png" /></dd>
+</dl>
+<p>If we make a Taylor expansion of <i>V</i> around the equilibrium geometry,</p>
+<dl>
+<dd><img class="tex" alt="
+V = V_0 + \sum_{i=1}^N \sum_{\alpha=1}^3 \Big(\frac{\partial V}{\partial \rho_{i\alpha}}\Big)_0\; \rho_{i\alpha} + \frac{1}{2}  \sum_{i,j=1}^N \sum_{\alpha,\beta=1}^3 \Big(
+\frac{\partial^2 V}{\partial \rho_{i\alpha}\partial\rho_{j\beta}}\Big)_0 \;\rho_{i\alpha}\rho_{j\beta} + \cdots,
+" src="../../../../math/1/d/5/1d54e0311d672ae51e343f6f0fad0464.png" /></dd>
+</dl>
+<p>and truncate after three terms (the so-called harmonic approximation), we can describe <i>V</i> with only the third term. The term <i>V</i><sub>0</sub> can be absorbed in the energy (gives a new zero of energy). The second term is vanishing because of the equilibrium condition. The remaining term contains the <a href="../../../../articles/h/e/s/Hessian_matrix.html" title="Hessian matrix">Hessian matrix</a> <b>F</b> of <i>V</i>, which is symmetric and may be diagonalized with an orthogonal 3<i>N</i> x 3<i>N</i> matrix with constant elements:</p>
+<dl>
+<dd><img class="tex" alt="
+\mathbf{Q} \mathbf{F} \mathbf{Q}^\mathrm{T} = \boldsymbol{\Phi} \quad \mathrm{with}\quad
+\boldsymbol{\Phi} = \operatorname{diag}(f_1, \dots, f_{3N-6}, 0,\ldots,0).
+" src="../../../../math/2/a/d/2ad011668d21db960834cb8bc9e5f778.png" /></dd>
+</dl>
+<p>It can be shown from the invariance of <i>V</i> under rotation and translation that six of the eigenvectors of <b>F</b> (last six rows of <b>Q</b>) have eigenvalue zero (are zero-frequency modes). They span the <i>external space</i>. The first 3<i>N</i>-6 rows of <b>Q</b> are—for molecules in their ground state—eigenvectors with non-zero eigenvalue; they are the internal coordinates and form an orthonormal basis for a 3<i>N</i> - 6 dimensional subspace of the nuclear configuration space <b>R</b><sup>3<i>N</i></sup>, the <i>internal space</i>. The zero-frequency eigenvectors are orthogonal to the eigenvectors of non-zero frequency. It can be shown that these orthogonalities are in fact the <a href="../../../../articles/e/c/k/Eckart_conditions.html" title="Eckart conditions">Eckart conditions</a>. The kinetic energy expressed in the internal coordinates is the internal (vibrational) kinetic energy.</p>
+<p>With the introduction of normal coordinates</p>
+<dl>
+<dd><img class="tex" alt="
+q_t \equiv \sum_{i=1}^N\sum_{\alpha=1}^3  \; Q_{t, i\alpha} \rho_{i\alpha},
+" src="../../../../math/9/6/3/96371d3811279f37792f87d3b8339dd9.png" /></dd>
+</dl>
+<p>the vibrational (internal) part of the Hamiltonian for the nuclear motion becomes in the <i>harmonic approximation</i></p>
+<dl>
+<dd><img class="tex" alt="
+\hat{H}_\mathrm{nuc} \approx \frac{1}{2}  \sum_{t=1}^{3N-6} \left[-\hbar^2 \frac{\partial^2}{\partial q_{t}^2} + f_t q_t^2 \right] .
+" src="../../../../math/3/0/d/30d9b5a62d763b4596dbd352549bef55.png" /></dd>
+</dl>
+<p>The corresponding Schrödinger equation is easily solved, it factorizes into 3<i>N</i>-6 equations for one-dimensional <a href="../../../../articles/h/a/r/Harmonic_oscillator.html" title="Harmonic oscillator">harmonic oscillators</a>. The main effort in this approximate solution of the nuclear motion Schrödinger equation is the computation of the Hessian <b>F</b> of <i>V</i> and its diagonalization.</p>
+<p>This approximation to the nuclear motion problem, described in 3<i>N</i> mass-weighted Cartesian coordinates, became standard in <a href="../../../../articles/q/u/a/Quantum_chemistry.html" title="Quantum chemistry">quantum chemistry</a>, since the days (1980s-1990s) that algorithms for accurate computations of the Hessian <b>F</b> became available. Apart from the harmonic approximation, it has as a further deficiency that the external (rotational and translational) motions of the molecule are not accounted for. They are accounted for in a rovibrational Hamiltonian that sometimes is called <i>Watson's Hamiltonian</i>.</p>
+<p><a name="Watson.27s_nuclear_motion_Hamiltonian" id="Watson.27s_nuclear_motion_Hamiltonian"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html" title="Edit section: Watson's nuclear motion Hamiltonian">edit</a>]</span> <span class="mw-headline">Watson's nuclear motion Hamiltonian</span></h2>
+<p>In order to obtain a Hamiltonian for external (translation and rotation) motions coupled to the internal (vibrational) motions, it is common to return at this point to classical mechanics and to formulate the classical kinetic energy corresponding to these motions of the nuclei. Classically it is easy to separate the translational—center of mass—motion from the other motions. However, the separation of the rotational from the vibrational motion is more difficult and is not completely possible. This ro-vibrational separation was first achieved by Eckart<sup id="cite_ref-2" class="reference"><a href="#cite_note-2" title="">[3]</a></sup> in 1935 by imposing by what is now known as <a href="../../../../articles/e/c/k/Eckart_conditions.html" title="Eckart conditions">Eckart conditions</a>. Since the problem is described in a frame (an "Eckart" frame) that rotates with the molecule, and hence is a <a href="../../../../articles/c/e/n/Centrifugal_force.html#Rotating_reference_frames" title="Centrifugal force">non-inertial frame</a>, energies associated with the <a href="../../../../articles/f/i/c/Fictitious_force.html" title="Fictitious force">fictitious forces</a>: <a href="../../../../articles/c/e/n/Centrifugal_force.html" title="Centrifugal force">centrifugal</a> and <a href="../../../../articles/c/o/r/Coriolis_effect.html" title="Coriolis effect">Coriolis force</a> appear in the kinetic energy.</p>
+<p>In general, the classical kinetic energy <i>T</i> defines the metric tensor <b>g</b> = (<i>g</i><sub>ij</sub>) associated with the <a href="../../../../articles/c/u/r/Curvilinear_coordinates.html" title="Curvilinear coordinates">curvilinear coordinates</a> <b>s</b> = (<i>s</i><sub>i</sub>) through</p>
+<dl>
+<dd><img class="tex" alt=" 2T = \sum_{ij} g_{ij} \dot{s}_i \dot{s}_j " src="../../../../math/f/9/6/f966227ab772b4b54f5619c32c9050f6.png" />.</dd>
+</dl>
+<p>The quantization step is the transformation of this classical kinetic energy into a quantum mechanical operator. It is common to follow Podolsky<sup id="cite_ref-Podolsky_3-0" class="reference"><a href="#cite_note-Podolsky-3" title="">[4]</a></sup> by writing down the <a href="../../../../articles/l/a/p/Laplace-Beltrami_operator_7471.html" title="Laplace-Beltrami operator">Laplace-Beltrami operator</a> in the same (generalized, curvilinear) coordinates <b>s</b> as used for the classical form. The equation for this operator requires the inverse of the metric tensor <b>g</b> and its determinant. Multiplication of the Laplace-Beltrami operator by <img class="tex" alt="-\hbar^2" src="../../../../math/2/f/2/2f2ec7ec6b6c6b953478b3243c10540b.png" /> gives the required quantum mechanical kinetic energy operator. When we apply this recipe to Cartesian coordinates, which have unit metric, the same kinetic energy is obtained as by application of the <a href="../../../../articles/c/a/n/Canonical_quantization.html#Quantum_mechanics" title="Canonical quantization">quantization rules</a>.</p>
+<p>The nuclear motion Hamiltonian was obtained by Wilson and Howard in 1936, <sup id="cite_ref-4" class="reference"><a href="#cite_note-4" title="">[5]</a></sup> who followed this procedure, and further refined by Darling and Dennison in 1940.<sup id="cite_ref-5" class="reference"><a href="#cite_note-5" title="">[6]</a></sup> It remained the standard until 1968, when Watson<sup id="cite_ref-6" class="reference"><a href="#cite_note-6" title="">[7]</a></sup> was able to simplify it drastically by commuting through the derivatives the determinant of the metric tensor. We will give the ro-vibrational Hamiltonian obtained by Watson, which often is referred to as the <b>Watson Hamiltonian</b>. Before we do this we must mention that a derivation of this Hamiltonian is also possible by starting from the Laplace operator in Cartesian form, application of coordinate transformations, and use of the <a href="../../../../articles/c/h/a/Chain_rule.html#Chain_rule_for_several_variables" title="Chain rule">chain rule</a>.<sup id="cite_ref-7" class="reference"><a href="#cite_note-7" title="">[8]</a></sup> The Watson Hamiltonian, describing all motions of the <i>N</i> nuclei, is</p>
+<dl>
+<dd><img class="tex" alt=" 
+\hat{H} =
+-\frac{\hbar^2}{2M_\mathrm{tot}} \sum_{\alpha=1}^3 \frac{\partial^2}{\partial X_\alpha^2}
++\frac{1}{2} \sum_{\alpha,\beta=1}^3 \mu_{\alpha\beta} (\mathcal{P}_\alpha - \Pi_\alpha)(\mathcal{P}_\beta - \Pi_\beta) +U  -\frac{\hbar^2}{2} \sum_{s=1}^{3N-6} \frac{\partial^2}{\partial q_s^2} + V .
+" src="../../../../math/9/3/4/93412e786926573b8fe07d6d5aa603b8.png" /></dd>
+</dl>
+<p>The first term is the center of mass term</p>
+<dl>
+<dd><img class="tex" alt="
+\mathbf{X} \equiv \frac{1}{M_\mathrm{tot}} \sum_{i=1}^N M_i \mathbf{R}_i \quad\mathrm{with}\quad
+M_\mathrm{tot} \equiv \sum_{i=1}^N M_i.
+" src="../../../../math/8/6/4/86496c1b0f88d56372356fbff0170f30.png" /></dd>
+</dl>
+<p>The second term is the rotational term akin to the kinetic energy of the <a href="../../../../articles/r/i/g/Rigid_rotor.html" title="Rigid rotor">rigid rotor</a>. Here <img class="tex" alt="\mathcal{P}_\alpha" src="../../../../math/9/1/1/911c24ef240f111f2bb2d862f8b7be60.png" /> is the α component of the body-fixed <i>rigid rotor angular momentum operator</i>, see <a href="../../../../articles/w/i/g/Wigner_D-matrix_8970.html#Properties_of_Wigner_D-matrix" title="Wigner D-matrix">this article</a> for its expression in terms of <a href="../../../../articles/e/u/l/Euler_angles.html" title="Euler angles">Euler angles</a>. The operator <img class="tex" alt="\Pi_\alpha\," src="../../../../math/9/0/4/9042240497364fa5e7912d8de8723c72.png" /> is a component of an operator known as the <i>vibrational angular momentum operator</i> (although it does <i>not</i> satisfy angular momentum commutation relations),</p>
+<dl>
+<dd><img class="tex" alt="
+\Pi_\alpha = -i\hbar \sum_{s,t=1}^{3N-6}  \zeta^{\alpha}_{st} \; q_s \frac{\partial}{\partial q_t}
+" src="../../../../math/d/2/6/d26542df4234ff62e9f8244be8f3b6a1.png" /></dd>
+</dl>
+<p>with the <i>Coriolis coupling constant</i>:</p>
+<dl>
+<dd><img class="tex" alt="
+\zeta^{\alpha}_{st} = \sum_{i=1}^N  \sum_{\beta,\gamma=1}^3 \epsilon_{\alpha\beta\gamma}  
+Q_{s, i\beta}\,Q_{t,i\gamma} \;\; \mathrm{and}\quad\alpha=1,2,3. 
+" src="../../../../math/e/1/5/e157723f3424eef1f323312544b79181.png" /></dd>
+</dl>
+<p>Here ε<sub>αβγ</sub> is the <a href="../../../../articles/l/e/v/Levi-Civita_symbol_49d9.html" title="Levi-Civita symbol">Levi-Civita symbol</a>. The terms quadratic in the <img class="tex" alt="\mathcal{P}_\alpha" src="../../../../math/9/1/1/911c24ef240f111f2bb2d862f8b7be60.png" /> are centrifugal terms, those bilinear in <img class="tex" alt="\mathcal{P}_\alpha" src="../../../../math/9/1/1/911c24ef240f111f2bb2d862f8b7be60.png" /> and <img class="tex" alt="\Pi_\beta\, " src="../../../../math/2/b/b/2bbf936d3ce4f9695f7499a6d2b6f08d.png" /> are Coriolis terms. The quantities <i>Q</i> <sub>s, iγ</sub> are the components of the normal coordinates introduced above. Alternatively, normal coordinates may be obtained by application of Wilson's <a href="../../../../articles/g/f/_/GF_method_babc.html" title="GF method">GF method</a>. The 3 x 3 symmetric matrix <img class="tex" alt="\boldsymbol{\mu}" src="../../../../math/7/9/c/79cfb85bd97fae093d7837f20f3f6ed5.png" /> is called the <i>effective reciprocal inertia tensor</i>. If all <i>q</i> <sub>s</sub> were zero (rigid molecule) the Eckart frame would coincide with a principal axes frame (see <a href="../../../../articles/r/i/g/Rigid_rotor.html" title="Rigid rotor">rigid rotor</a>) and <img class="tex" alt="\boldsymbol{\mu}" src="../../../../math/7/9/c/79cfb85bd97fae093d7837f20f3f6ed5.png" /> would be diagonal, with the equilibrium reciprocal moments of inertia on the diagonal. If all <i>q</i> <sub>s</sub> would be zero, only the kinetic energies of translation and rigid rotation would survive.</p>
+<p>The potential-like term <i>U</i> is the <i>Watson term</i>:</p>
+<dl>
+<dd><img class="tex" alt="
+U = -\frac{1}{8} \sum_{\alpha=1}^3 \mu_{\alpha\alpha}
+" src="../../../../math/7/a/1/7a183312d139a6d21ba58f726a72bbbf.png" /></dd>
+</dl>
+<p>proportional to the trace of the effective reciprocal inertia tensor.</p>
+<p>The fourth term in the Watson Hamiltonian is the kinetic energy associated with the vibrations of the atoms (nuclei) expressed in normal coordinates <i>q</i><sub>s</sub>, which as stated above, are given in terms of nuclear displacements ρ<sub>iα</sub> by</p>
+<dl>
+<dd><img class="tex" alt="
+q_s = \sum_{i=1}^N \sum_{\alpha=1}^3 Q_{s, i\alpha} \rho_{i\alpha}\quad\mathrm{for}\quad s=1,\ldots, 3N-6.
+" src="../../../../math/e/3/7/e377abba8d1b273c020c78488d64da70.png" /></dd>
+</dl>
+<p>Finally <i>V</i> is the unexpanded potential energy by definition depending on internal coordinates only. In the harmonic approximation it takes the form</p>
+<dl>
+<dd><img class="tex" alt="
+V \approx \frac{1}{2} \sum_{s=1}^{3N-6} f_s q_s^2.
+" src="../../../../math/4/b/a/4ba007e8eed457518001916d87489d61.png" /></dd>
+</dl>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<ol class="references">
+<li id="cite_note-0"><b><a href="#cite_ref-0" title="">^</a></b> W. Kołos and L. Wolniewicz, <i>Nonadiabatic Theory for Diatomic Molecules and Its Application</i> to the Hydrogen Molecule<i>, Rev. Mod. Phys. vol. <b>35</b>, pp. 473-483 (1963)</i></li>
+<li id="cite_note-1"><b><a href="#cite_ref-1" title="">^</a></b> R. G. Woolley and B. T. Sutcliffe, <i>P.-O. Löwdin and the Quantum Mechanics of Molecules</i> in <i>Fundamental World of Quantum Chemistry</i>, E. J. Brändas and E. S. Kryachko (Eds.), Vol. 1, 21-65, Kluwer Academic Publshers, 2003.</li>
+<li id="cite_note-2"><b><a href="#cite_ref-2" title="">^</a></b> C. Eckart, <i>Some studies concerning rotating axes and polyatomic molecules</i>, Physical Review, vol. <b>47</b>, pp. 552-558 (1935).</li>
+<li id="cite_note-Podolsky-3"><b><a href="#cite_ref-Podolsky_3-0" title="">^</a></b> B. Podolsky, <i>Quantum-mechanically correct form of Hamiltonian function for conservative system</i>, Phys. Rev., vol. <b>32</b>, p. 812 (1928)</li>
+<li id="cite_note-4"><b><a href="#cite_ref-4" title="">^</a></b> E. Bright Wilson, Jr. and J. B. Howard <i>The Vibration-Rotation Energy Levels of Polyatomic Molecules I. Mathematical Theory of Semirigid Asymmetrical Top Molecules</i>, J. Chem. Phys. vol. <b>4</b>, pp. 260-268 (1936)</li>
+<li id="cite_note-5"><b><a href="#cite_ref-5" title="">^</a></b> B. T. Darling and D. M. Dennison, <i>The water vapor molecule</i>, Phys. Rev., vol. <b>57</b>, pp. 128-139 (1940).</li>
+<li id="cite_note-6"><b><a href="#cite_ref-6" title="">^</a></b> J. K. G. Watson, <i>Simplification of the molecular vibration-rotation Hamiltonian</i>, Mol. Phys. vol. <b>15</b>, 479-490 (1968)</li>
+<li id="cite_note-7"><b><a href="#cite_ref-7" title="">^</a></b> L. C. Biedenharn and J. D. Louck, <i>Angular Momentum in Quantum Physics</i>, volume 8 of Encyclopedia of Mathematics, Addison-Wesley, Reading, 1981.</li>
+</ol>
+<p>Further reading</p>
+<ul>
+<li><cite style="font-style:normal"><a href="../../../../articles/m/a/x/Max_Born_83cc.html" title="Max Born">Born, Max</a>; <a href="../../../../articles/r/o/b/Robert_Oppenheimer_36b7.html" title="Robert Oppenheimer">Oppenheimer,Robert</a> (25 August 1927). "Zur Quantentheorie der Molekeln". <i>Annalen der Physik</i> <b>84</b>: 457–484.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=Zur+Quantentheorie+der+Molekeln&amp;rft.jtitle=Annalen+der+Physik&amp;rft.date=25+August+1927&amp;rft.volume=84&amp;rft.aulast=Born&amp;rft.aufirst=Max&amp;rft.pages=457%E2%80%93484"><span style="display: none;">&#160;</span></span></li>
+<li><cite class="book" style="font-style:normal">Moss, R. E. (1973). <i>Advanced Molecular Quantum Mechanics</i>. <a href="../../../../articles/c/h/a/Chapman_and_Hall_b718.html" title="Chapman and Hall">Chapman and Hall</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Advanced+Molecular+Quantum+Mechanics&amp;rft.aulast=Moss&amp;rft.aufirst=R.+E.&amp;rft.date=1973&amp;rft.pub=%5B%5BChapman+and+Hall%5D%5D"><span style="display: none;">&#160;</span></span></li>
+<li><cite class="book" style="font-style:normal"><a href="../../../../articles/m/i/c/Michael_Tinkham_ae67.html" title="Michael Tinkham">Tinkham, Michael</a> (2003). <i>Group Theory and Quantum Mechanics</i>. <a href="../../../../articles/d/o/v/Dover_Publications_47d8.html" title="Dover Publications">Dover Publications</a>. <a href="../../../../articles/b/o/o/Special%7EBookSources_0486432475_5b3b.html" class="internal">ISBN 0486432475</a>.</cite><span class="Z3988" title="ctx_ver=Z39.88-2004&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Group+Theory+and+Quantum+Mechanics&amp;rft.aulast=Tinkham&amp;rft.aufirst=Michael&amp;rft.date=2003&amp;rft.pub=%5B%5BDover+Publications%5D%5D"><span style="display: none;">&#160;</span></span></li>
+<li>A readable and thorough discussion on the spin terms in the molecular Hamiltonian is in: <a href="../../../../articles/r/o/y/Roy_McWeeny_8ebe.html" title="Roy McWeeny">R. McWeeny</a>, <i>Methods of Molecular Quantum Mechanics,</i> 2nd edition, Academic, London (1989).</li>
+</ul>
+<p><br /></p>
+<p><br /></p>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<ul>
+<li><a href="../../../../articles/a/d/i/Adiabatic_process_%28quantum_mechanics%29.html" class="mw-redirect" title="Adiabatic process (quantum mechanics)">Adiabatic process (quantum mechanics)</a></li>
+<li><a href="../../../../articles/f/r/a/Franck-Condon_principle_46a2.html" title="Franck-Condon principle">Franck-Condon principle</a></li>
+<li><a href="../../../../articles/b/o/r/Born-Oppenheimer_approximation_fe55.html" title="Born-Oppenheimer approximation">Born-Oppenheimer approximation</a></li>
+<li><a href="../../../../articles/g/f/_/GF_method_babc.html" title="GF method">GF method</a></li>
+<li><a href="../../../../articles/e/c/k/Eckart_conditions.html" title="Eckart conditions">Eckart conditions</a></li>
+<li><a href="../../../../articles/r/i/g/Rigid_rotor.html" title="Rigid rotor">Rigid rotor</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 826/1000000
+Post-expand include size: 2974/2048000 bytes
+Template argument size: 961/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/m/o/l/Category%7EMolecular_physics_f1b9.html" title="Category:Molecular physics">Molecular physics</a></span> | <span dir='ltr'><a href="../../../../articles/q/u/a/Category%7EQuantum_chemistry_09bb.html" title="Category:Quantum chemistry">Quantum chemistry</a></span> | <span dir='ltr'><a href="../../../../articles/s/p/e/Category%7ESpectroscopy_1a3a.html" title="Category:Spectroscopy">Spectroscopy</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/m/o/l/Molecular_Hamiltonian_be20.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/m/o/l/Talk%7EMolecular_Hamiltonian_2cac.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Molecular_Hamiltonian">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	<div id="p-lang" class="portlet">
+	  <h5>Languages</h5>
+	  <div class="pBody">
+	    <ul>
+	      	      <li>
+	      <a href="../../../../../es/articles/h/a/m/Hamiltoniano_molecular.html">Español</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../fr/articles/h/a/m/Hamiltonien_mol%C3%A9culaire.html">Français</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../uk/articles/%D0%B0/%D0%B4/%D1%96/%D0%90%D0%B4%D1%96%D0%B0%D0%B1%D0%B0%D1%82%D0%B8%D1%87%D0%BD%D0%B5_%D0%BD%D0%B0%D0%B1%D0%BB%D0%B8%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F.html">Українська</a>
+	      </li>
+	      	    </ul>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 17:24, 3 June 2008 by Wikipedia user <a href="../../../../articles/r/u/s/User%7ERussBot_6f95.html" title="User:RussBot">RussBot</a>. Based on work by Wikipedia user(s) <a href="../../../../articles/d/o/i/User%7EDOI_bot_acc4.html" title="User:DOI bot">DOI bot</a>, <a href="../../../../articles/g/r/i/User%7EGrimlock_82df.html" title="User:Grimlock">Grimlock</a>, <a href="../../../../articles/t/-/b/User%7ET-borg_0aca.html" title="User:T-borg">T-borg</a>, <a href="../../../../articles/c/m/d/User%7ECmdrObot_0605.html" title="User:CmdrObot">CmdrObot</a>, <a href="../../../../articles/c/a/m/User%7ECampeador_690_c656.html" title="User:Campeador 690">Campeador 690</a>, <a href="../../../../articles/p/2E/w/User%7EP.wormer_d89e.html" title="User:P.wormer">P.wormer</a>, <a href="../../../../articles/r/a/g/User%7ERaghunathan_77ec.html" title="User:Raghunathan">Raghunathan</a>, <a href="../../../../articles/j/o/s/User%7EJosephJohnCox_2951.html" title="User:JosephJohnCox">JosephJohnCox</a>, <a href="../../../../articles/m/a/r/User%7EMartin_Hedegaard_9fc6.html" title="User:Martin Hedegaard">Martin Hedegaard</a>, <a href="../../../../articles/h/a/p/User%7EHappyCamper_93e2.html" title="User:HappyCamper">HappyCamper</a>, <a href="../../../../articles/s/m/a/User%7ESmackBot_cc7a.html" title="User:SmackBot">SmackBot</a>, <a href="../../../../articles/s/t/4/User%7EST47_d0a2.html" title="User:ST47">ST47</a>, <a href="../../../../articles/e/i/y/User%7EEiyuu_Kou_cec8.html" title="User:Eiyuu Kou">Eiyuu Kou</a>, <a href="../../../../articles/v/b/_/User%7EVb_8dc7.html" title="User:Vb">Vb</a>, <a href="../../../../articles/s/t/b/User%7ESTBot_bbca.html" title="User:STBot">STBot</a>, <a href="../../../../articles/k/n/i/User%7EKnightRider_ec3b.html" title="User:KnightRider">KnightRider</a>, <a href="../../../../articles/v/a/l/User%7EValentinian_be8b.html" title="User:Valentinian">Valentinian</a>, <a href="../../../../articles/r/i/a/User%7ERiana_7579.html" title="User:Riana">Riana</a>, <a href="../../../../articles/w/i/l/User%7EWillWare_62d9.html" title="User:WillWare">WillWare</a>, <a href="../../../../articles/l/i/n/User%7ELinas_c62b.html" title="User:Linas">Linas</a> and Ian Pitchford and Anonymous user(s) of Wikipedia.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

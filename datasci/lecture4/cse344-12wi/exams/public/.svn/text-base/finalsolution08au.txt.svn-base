@@ -1,0 +1,78 @@
+1. a  10 points
+
+select x.city, count(*)
+from player x, game y, player z
+where x.pid = y.pid1 and y.pid2=z.pid and z.name = 'JC'
+group by x.city
+
+Note: subqueries are not needed in 1.a
+
+1. b  12 points
+
+select x.city
+from player x
+where x.city not in (select y.city
+                    from player y
+                    where y.pid not in
+                         (select g.pid1 
+                          from game g, player z
+                          where g.pid2=z.pid and z.pid = 'JC'))
+
+
+Other variants are possible in 1.b, e.g. not exists instead of not
+in.  They all require three occurrences of the PLAYER table.
+
+1.c. 12 points
+
+select x.city
+from player x
+where x.city not in (select y.city
+                     from player y, game, g, player z
+                     where y.pid=g.pid2 and g.pid1=z.pid and z.name='JC')
+
+
+1.d 1 points;  None
+
+2. a  11 points (3+3+3+2)
+
+Schedule 1: always deadlocks  (a)
+Schedule 2: may or may not deadlock  (c)
+Schedule 3: may or may not deadlock  (c)
+
+Rewrite T3:  R3(A),R3(C), W3(C),W3(A)
+
+2.b..... 4 points
+
+2.c 11 points
+
+3(B(R)+B(S)+B(T)) + 2B(S JOIN T)
+(pipeline the join phase of S JOIN T with the partition for the next
+join)
+
+2.d (9 points)
+
+NO-clusterd
+Clustered
+Either Clustered or Nonclustered depending on the data
+
+3. 
+
+S1. Compute a hash map of 8*10**6 bits = 1MB.  SEND 1MB
+
+S2. Compute matches.  Expected number of matches:
+
+       1M * 11% = 100k documents for hash map
+       1M *  2% =  20k documents for bloom filters
+
+    (may want to add the 50 documents that are true positives) 
+    SEND 100MB  or  20MB
+
+S3. Compute intersection, find the  50 documents, send them back.
+    SEND 50k.
+
+
+
+4  15points
+//bb/text()
+/aa/cc/*/text()
+/aa/cc[bb]/*/text()

@@ -1,0 +1,53 @@
+Step 1: Ask Magda who to email to get access to SQL Azure.
+
+Step 2: Create a new hotmail account:
+
+- Admin name: cse344-12au@hotmail.com
+- Password: Database-Course
+
+Step 3: Once they get back to you, follow their
+instructions to get the account activated.
+Remember! They will send emails to the
+new hotmail account!
+
+Step 4: Set-up IMDB on SQL Azure
+
+4.1) Follow the most recent
+instructions available to log in to the
+Azure management portal.
+
+4.2) Create a new SQL Azure database
+You need to click around to do this. The
+instructions change over time. In the past,
+we had to first create a server. Now, this doesn't
+seem to be necessary.
+
+Use the hotmail account login (cse344-12au)/password.
+
+4.3) Manage the server to create a firewall rule that
+says from 0.0.0.0 up to 255.255.255.255
+everyone can connect.
+
+4.5) To create tables and upload data
+check-out cse344-datasets and
+see the README.txt and create-tables.sql
+(see the README
+in /cse/courses/cse344/your-quarter/README for
+instructions on checking out cse344-datasets)
+
+
+Step 5: Getting students started
+
+See assignments/azure/create-accounts.py
+
+Step 5.1) Establish a connection to the master database.
+For each student, create a login as follows...
+CREATE LOGIN StudentLogin WITH PASSWORD=N'SQLcse344' 
+CREATE USER StudentLogin FOR LOGIN StudentLogin
+
+Step 5.2) Now switch to the IMDB database:
+(yes, the user must be in both databases)
+CREATE USER StudentLogin FOR LOGIN StudentLogin
+EXEC sp_addrolemember N'db_datareader',N'StudentLogin'
+GRANT SHOWPLAN TO StudentLogin
+

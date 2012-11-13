@@ -1,0 +1,55 @@
+movie:
+
+   id    |                    name                     | year 
+---------+---------------------------------------------+------
+   78813 | A Family X-mas                              | 2003
+  178813 | Despus del Zapatismo                        | 2009
+  278813 | L'avventuriera del piano di sopra           | 1941
+  378813 | Lauf um Dein Leben - Vom Junkie zum Ironman | 2008
+  478813 | Pas de deux                                 | 2004
+  578813 | The Silence of the Lambs                    | 1991
+  678813 | A por todas                                 | 1990
+  778813 | Von Tieren und Menschen                     |     
+  878813 | (#15.3)                                     | 2004
+  978813 | Inheritance                                 |     
+ 1078813 | (#1.4)                                      |     
+ 1178813 | (#2.114)                                    |     
+ 1278813 | (1991-06-06)                                | 1991
+ 1378813 | Global Financial Crisis                     |     
+ 1478813 | (1971-04-14)                                | 1971
+ 1578813 | Wiener & Wiener                             | 2009
+
+actor:
+
+   id    |    fname     |     lname     | gender 
+---------+--------------+---------------+--------
+   87957 | Fred         | Berhoff       | M
+ 1105970 | Daniel       | von Bargen    | M
+ 1115596 | Tracey       | Walter        | M
+  832368 | Camillo      | Pilotto       | M
+  202655 | Alex         | Coleman       | M
+ 1727043 | Rebecca      | Saxon         | F
+ 1732986 | Jasmin       | Schwiers      | F
+  239553 | Danny        | Darst         | M
+ 1092696 | Ron          | Vawter        | M
+ 1791491 | Sarah        | Thom          | F
+  895172 | Jim          | Roche         | M
+ 1260141 | Mindy        | Burbano       | F
+  111042 | Lawrence A.  | Bonney        | M
+  166025 | Johnny       | Carson        | M
+ 1378631 | Jodie        | Foster        | F
+  129783 | Josh         | Broder        | M
+  834042 | Tobias       | Pippig        | M
+  902151 | George A.    | Romero        | M
+ 1421729 | Eva          | Hache         | F
+ 1431833 | Janina       | Hartwig       | F
+
+casts:
+
+   pid   |   mid   |       role        
+---------+---------+-------------------
+  166025 | 1478813 | Himself - Host
+  895172 |  578813 | TV Evangelist
+ 1105970 |  578813 | SWAT Communicator
+ 1378631 |  578813 | Clarice Starling
+ 1421729 | 1178813 | Herself - Host

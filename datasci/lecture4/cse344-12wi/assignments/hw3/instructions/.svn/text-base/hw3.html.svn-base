@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>CSE 344 Homework 3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+dl dt { font-weight: bold; }
+.style1 {color: #006600}
+</style>
+
+<body>
+<h1>CSE 344 Homework 3</h1>
+<dl>
+  <dt>Objectives:</dt>
+  <dd>To practice advanced SQL. To get familiar with commercial database management systems (SQL Server), both in client-server and in cloud configurations.</dd>
+  
+  <dt>Assignment tools:</dt>
+  <dd><a href="http://www.microsoft.com/sqlserver">SQL Server</a> on IISQLSRV, Windows Azure.  </dd>
+  
+  <dt>Due date:</dt>
+  <dd>Wednesday, Feb. 1, 2012, at 11:59 pm 
+  <a href="https://catalyst.uw.edu/collectit/dropbox/pkoutris/19498" target="_new">Dropbox</a></dd>
+  
+  <dt>What to turn in:</dt>
+  <dd><code>hw3-queries.sql</code></dd>
+</dl>
+
+<p>	
+This homework is a continuation of homework 2, with two changes. The queries are more challenging, and you will have to use a commercial database system . SQLite simply cannot execute these queries in any reasonable amount of time; hence, we will use SQL Server, which has one of the most advanced query optimizers.. In fact, you will be asked to use <em>two</em> database servers, both running SQL Server.
+<p> Here is again the schema of the IMDB database, for your reference:
+<blockquote><p>
+	<b>ACTOR</b> (id, fname, lname, gender)<br>
+	<b>MOVIE</b> (id, name, year)<br>
+	<b>DIRECTORS</b> (id, fname, lname)<br>
+	<b>CASTS</b> (pid, mid, role)<br>
+	<b>MOVIE_DIRECTORS</b> (did, mid)<br>
+	<b>GENRE</b> (mid, genre)<p>All <tt>id</tt> fields are integers. MOVIE.year is an integer. All other fields are character strings.  
+
+  <p>id column in <strong>ACTOR</strong>, <strong>MOVIE</strong> & <strong>DIRECTOR</strong> tables is a key for the respective table.
+  <p> <strong>CASTS.pid</strong> refers to <strong>ACTOR.id</strong><br>
+     <strong>CASTS.mid</strong> refers to <strong>MOVIE.id</strong><br>
+     <strong>MOVIE_DIRECTORS.did </strong>refers to <strong>DIRECTORS.id</strong><br>
+     <strong>MOVIE_DIRECTORS.mid</strong> refers to <strong>MOVIE.id</strong><br>
+     <strong>GENRE.mid</strong> refers to <strong>MOVIE.id </strong><br>
+</blockquote>
+
+<p>
+In this homework, you will do three things. First, you will connect to two database systems that we use in this homework: IISQLSRV and Windows Azure. Second, you will write and test the six SQL queries below (you can use either database server for that); keep in mind that the queries are quite challenging, both for you and for the database engine. Third, you will do a final run of your queries on <em>both</em> database systmes, and report their running times, then write a brief opinion on their similarities or differences. 
+<h4>A. Connecting to SQL Server on IISQLSRV and to Windows Azure:</h4>
+<p>You will connect to two servers: IISQL, and Windows Azure Cloud. The good news is that the IMDB database is already uploaded on both servers, and all indices are created; all you need is to do is to connect successfully, then run your queries.</p>
+<p>1. We will be using <strong>Microsoft SQL Server 2008 </strong>running on<strong> IISQLSRV.cs.washington.edu</strong>.  Follow the <a href="SQLServerInstructr.html" target="_new">instructions here</a> to connect to the database server. 
+<p>2. We also use an instance of SQL Server running in the <a href="http://www.microsoft.com/windowsazure/sqlazure/">Microsoft Azure Cloud</a>. You can connect in two ways: (a) use your Web browser, <a href="https://xbn4slk6hn.database.windows.net" target="_new">https://xbn4slk6hn.database.windows.net </a>  (normally you will connect to the <em>IMDB</em> database, but the first time you should connect to the  <em>master</em> database in order to change your password) or (b) run <strong>SQL Server Management Studio 2008 R2</strong> (it has to be R2 -- this is already installed on the PC labs), just as you did to connect to <em>iisqlsrv.cs.washington.edu</em>, but use instead <em>xbn4slk6hn.database.windows.net</em>. For either type of connection, your login is your UW login (without '@washington.edu') and the initial password is given in class (change it immediately).<ul>
+  <li>Once you are connected, change your password as follows:
+    <ul>
+      <li>If you connect using a Web browser, first connect to the <em>master </em>database, then run the ALTER LOGIN command below; then connect to the <em>IMDB</em> database.</li>
+      <li>If you connect from Management Studio, then: in the Object Explorer on the left, select Databases -&gt; System Databases -&gt; master
+        <ul>
+          <li>Click on New Query (at the top) </li>
+          <li>Execute the following SQL Statement to change your password. 
+            Note that you will get an error message if your password is not sufficiently complex. Make sure to use some capital letters
+            and some numbers.</li>
+        </ul>
+        <blockquote>
+          <p>ALTER LOGIN yourlogin WITH PASSWORD='some_new_password' OLD_PASSWORD = 'old_password'   </p>
+        </blockquote>
+        <ul>
+          <li>To run queries against IMDB, <strong>first </strong>select the database called IMDB in the Object Explorer and <strong>then </strong>click on &quot;New Query&quot;  </li>
+          <li>Unlike <em>iisqlsrv</em>, you should be able to connect to our SQL Azure instance directly from home. This should be especially helpful later in hw5. </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  </ul>
+<p>If you have any problems connecting to IISQLSRV or to Windows Azure, please let the instructor or the TAs know. Once you connect, for fun, try and run some of the queries from the previous homework and see how fast they run compared to your local SQLite application.</p>
+<p>&nbsp;  </p>
+<h4>B. SQL QUERIES (90 points; 15 points per question):</h4>
+<p>For each question below, write a single SQL query to answer that question. Add a comment to
+each query indicating the question number and the number of rows your query returns. At this stage you can run the query either on IISQLSRV or on Azure.
+<ol><li>
+  <p>Consider all actors that had five or more roles in a movie in 2010.
+  In homework 2, we asked you to list each such actor's name, the movie name,
+  and the number of roles he/she played.  Do the same thing, but instead
+  of giving the number of roles, give the name of each role.  Your answer
+  should have one tuple for each combination of (actor, movie, role) - so
+  if an actor has 10 roles in a given movie, there should be 10 tuples
+  for that actor and movie.
+	<!--<em> [~137 rows expected] </em>--><em>
+ 
+Approx. 140 rows.</em>
+<li> 
+	<p>For each year, count the number of movies in that year that had
+  only female actors.  Recall the meaning of the universal quantifier: a
+  movie without any actors is also a movie with only female actors (since
+  there are no male actors in such a movie!).
+
+      <em>Approx. 130 rows.</em>
+  <li>
+	<p>Now make a small change: for each year, report the percentage of
+  movies with only female actors made that year, and also the total
+  number of movies made that year. For example, one answer will be: 
+  <pre>1990 31.81 13522</pre> 
+  <p>meaning that in 1990 there were 13,522 movies, and 31.81%
+  had only female actors. You do not need to round your answer.
+
+    <em>Approx. 130 rows.</em>
+  <li>
+	<p>Find the film(s) with the largest cast. Return the movie title and
+  the size of the cast. By "cast size" we mean the number of distinct
+  actors that played in that movie: if an actor played multiple roles,
+  or if the actor is simply listed more than once in CASTS, we still
+  count her/him only once.  You may <em>not</em> assume that only one
+  film has the largest cast.
+	<!--<em> [1 row - but your solution must work with multiple largest casts] </em>-->
+
+    <em>1 row.</em>
+  <li>
+  <p>
+	A decade is a sequence of 10 consecutive years. For example 1965,
+  1966, ..., 1974 is a decade, and so is 1967, 1968, ..., 1976. Find the
+  decade with the largest number of films.
+  <!--<em> [1 row] </em>-->
+  
+  <em>1 row.</em>
+  <li>
+    <p>
+      The Bacon number of an actor is the length of the shortest path
+      between the actor and Kevin Bacon in the "co-acting" graph. That is,
+      Kevin Bacon has Bacon number 0; all actors who acted in the same film
+      as KB have Bacon number 1; all actors who acted in the same film as
+      some actor with Bacon number 1 (but not with Bacon himself) 
+      have Bacon number 2, etc. Count how many  actors have Bacon number is 2. 
+      <!-- <em> [521,876 rows] </em> -->
+  <em>1 row.</em>
+  </ol>
+<h4>C. Running Times (10 points)</h4>
+<p>Now run all six queries on IISQLSRV, then on SQL Azure, and measure their running times. Report all 12 running times, then write a brief comment (2-3 sentences) explaining why you think the running times are similar, or different.</p>
+<p>
+  Put all your code for part B (<code>SELECT-FROM-WHERE</code> code) in a file called<code> hw3-queries.sql</code> and add the answers to part C as SQL comments.

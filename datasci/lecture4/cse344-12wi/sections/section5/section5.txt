@@ -1,0 +1,123 @@
+CSE 344 section 05 -- Mapping from XML to relations 
+=================================================
+
+CONTEXT-SPECIFIC (DTD-BASED) MAPPING:
+--
+Suppose we have an XML document conforming to this DTD:
+
+<!DOCTYPE bib [
+	<!ELEMENT bib  (book* )>
+	<!ELEMENT book  (title,  (author+ | editor+ ), publisher?, price )>
+	<!ATTLIST book  year CDATA  #REQUIRED >
+	<!ELEMENT author  (last, first )>
+	<!ELEMENT editor  (last, first, affiliation )>
+	<!ELEMENT title  (#PCDATA )>
+	<!ELEMENT last  (#PCDATA )>
+	<!ELEMENT first  (#PCDATA )>
+	<!ELEMENT affiliation  (#PCDATA )>
+	<!ELEMENT publisher  (#PCDATA )>
+	<!ELEMENT price  (#PCDATA )>
+]>
+
+We want to store the data in this document as a set of SQL tables,
+so we need to define a relational schema for it.
+
+First, let's design an E/R diagram for this bibliographic data.
+This diagram might have the following kinds of entities:
+- Book, with attributes title, year, publisher, price
+    corresponds to elements <book>, <title>, <publisher>, <price>
+    and @year attribute of <book>
+    (What might the key of a Book be?  Which attributes must have values?)
+- Author, with attributes last, first
+    corresponds to elements <author>, <last>, <first>
+- Editor, with attributes last, first, affiliation
+    corresponds to elements <editor>, <last>, <first>, <affiliation>
+Can we combine Author and Editor?  Idea: define an entity set Person,
+with attributes last and first; add is-a relationships s.t. Author
+is-a Person, Editor is-a Person.
+
+The relationships between entities might then be:
+- writes: A Book is written by an Author.
+    This is many-to-many - each Book may have any number of Authors,
+    and each Author may write any number of Books.
+- edits: A Book is edited by an Editor.
+     Like writes, this is a many-to-many relationship.
+We will need to add >=1 constraints on the side of the relationships
+closer to Author and Editor, to represent the + constraints (not *)
+in the DTD.
+
+In the DTD, a book can have authors, or editors, but not both.
+Can we represent this in the E/R diagram?
+
+Here is a relational schema corresponding to this diagram:
+  Book (title, year, publisher, price)
+  Person (first, last)
+  Author (first, last)
+  Editor (first, last, affiliation)
+  Writes (first, last, title, year)
+  Edits (first, last, title, year)
+
+  Keys:
+   - Book(title, year) might be a key
+   - Person(first, last) is probably a key;
+     so are Author(first, last), Editor(first, last)
+  Foreign keys:
+   - Author(first, last) and Editor(first, last) both
+     reference Person(first, last)
+   - Writes(first, last) references Author(first, last)
+   - Edits(first, last) references Editor(first, last)
+   - Writes(title, year) and Edits(title, year) both reference Book(title, year)
+
+Given this schema, let's translate the following XPath expressions to SQL:
+
+XPath (1) = /bib/book[author[last="Ullman"][first="Jeff"]]
+SQL   (1) = 
+
+XPath (2) = /bib/book[author/last="Ullman"][author/first="Jeff"]
+SQL   (2) = 
+
+--------------------------
+GENERIC (NO-DTD) MAPPING:
+--
+
+Suppose we want to design a relational schema that can store
+ANY XML document, regardless of its structure.  A construction
+like the above will not do, because it relies on an awareness
+of the meaning of the various elements.
+
+A simple approach to this problem is to represent the edges of the 
+XML element "tree" in a table.  To do this, we assign ID numbers
+to each XML element arbitrarily, and then construct a relation:
+
+  Child_Element (parent_id, child_tag, child_id)
+
+with key child_id.  Each tuple in this table represents an
+element node with tag child_tag, ID number child_id, and parent's 
+ID number parent_id.  
+
+Child_Element has a foreign key constraint referencing itself:
+child_id references parent_id.  To provide a base case for the recursion,
+let's give the ID number 0 to the  root of the XML document 
+(not the root element, but just above that; compare with 
+/ vs. /root_element in XPath).
+
+If an element has text data as a child instead of other elements,
+we can store that text data in another table:
+
+  Text (element_id, content)
+
+You can make a similar construction for attributes of an element.
+
+With this construction, you will have to do a lot more work to 
+convert XPath expressions to SQL.  In fact, you will have to join 
+Child_Element (CE for short) and Text (T) with themselves many different
+times.
+
+In section we'll work through the same examples as for the mapping with
+the DTD:
+
+XPath (1) = /bib/book[author[last="Ullman"][first="Jeff"]]
+SQL   (1) = 
+ 
+XPath (2) = /bib/book[author/last="Ullman"][author/first="Jeff"]
+SQL   (2) = 

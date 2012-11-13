@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.style12 {color: #990033;
+	font-weight: bold;
+}
+.style14 {color: #FFFFFF}
+</style>
+</head>
+
+<body>
+<center>
+  <h2 align="left">CSE 344: Exams </h2>
+  <h2 align="left">Practice problems:</h2>
+  <p align="left">SQL Practice: <a href="./exams/sql-practice-problems.txt" target="_new">sql-practice-problems.txt</a> and <a href="./exams/sql-practice-problems-answers.txt" target="_new">sql-practice-problems-answers.txt</a></p>
+  <p align="left"><a href="http://www.newgradiance.com" target="new">Midterm practice</a> web quiz on Gradience</p>
+  <p align="left"><a href="http://www.newgradiance.com" target="new">Final practice</a> web quiz on Gradience</p>
+  <p align="left">&nbsp;</p>
+  <h2 align="left">Practice midterms and finals:</h2>
+  <p align="left">Please see <a href="http://www.cs.washington.edu/education/courses/cse344" target="new">previous offerings of CSE344</a> for practice midterms and finals with solutions. Note that because the course is still new, the content is still changing from quarter to quarter. As a result, some questions may not apply to this quarter. </p>
+  <p align="left">You should also take a look at past offerings of CSE444 (old version). That is, please look at <a href="http://www.cs.washington.edu/education/courses/cse444/11wi/" target="new">Winter 2011</a> and earlier for additional practice midterms and finals. Please note that the old version of CSE444 covered different material than 344 so some questions are not applicable to us. Most recent versions of 444 definitely do not apply to this course.</p>
+  <p align="left">&nbsp;</p>
+  <h2 align="left">Our midterm and final:<a href="./exams/midterm/sql-practice-problems-answers.txt" target="_new"></a></h2>
+</center>
+<ul>
+  <li><a href="./exams/midterm-blank.pdf">Midterm blank</a> and solution will be posted here.</li>
+  <li><a href="./exams/final-blank.pdf">Final blank</a> and solution will be posted here.  </li>
+</ul>
+<center>
+  <h2 align="left">&nbsp;</h2>
+</center>
+</body>
+</html>

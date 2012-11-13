@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>pushd and popd - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">pushd and popd</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p>In <a href="../../../../articles/c/o/m/Computing.html" title="Computing">computing</a>, <b><code>pushd</code></b> and <b><code>popd</code></b> are <a href="../../../../articles/c/o/m/Command_%28computing%29.html" title="Command (computing)">commands</a> in various <a href="../../../../articles/u/n/i/Unix.html" title="Unix">Unix</a>, <a href="../../../../articles/d/o/s/DOS_a58e.html" title="DOS">DOS</a> and <a href="../../../../articles/m/i/c/Microsoft_Windows_48e2.html" title="Microsoft Windows">Microsoft Windows</a> <a href="../../../../articles/c/o/m/Command_line_interpreter.html" title="Command line interpreter">command line interpreters</a> (<a href="../../../../articles/s/h/e/Shell_%28computing%29.html" title="Shell (computing)">shells</a>) such as <a href="../../../../articles/b/a/s/Bash.html" title="Bash">Bash</a>, <code><a href="../../../../articles/c/m/d/Cmd.exe.html" class="mw-redirect" title="Cmd.exe">cmd.exe</a></code>, <a href="../../../../articles/4/d/o/4DOS_d53a.html" title="4DOS">4DOS</a>/<a href="../../../../articles/4/n/t/4NT_096d.html" title="4NT">4NT</a> and <a href="../../../../articles/w/i/n/Windows_PowerShell_2c4c.html" title="Windows PowerShell">Windows PowerShell</a>. Both are used to work with the <a href="../../../../articles/c/o/m/Command_line_interface.html" title="Command line interface">command line</a> <a href="../../../../articles/d/i/r/Directory_%28file_systems%29.html" title="Directory (file systems)">directory stack</a>.</p>
+<p>The <b><code>pushd</code></b> command saves the current <a href="../../../../articles/w/o/r/Working_directory.html" title="Working directory">working directory</a> in memory so it can be returned to at any time, optionally changing to a new directory. The <b><code>popd</code></b> command returns to the <a href="../../../../articles/p/a/t/Path_%28computing%29.html" title="Path (computing)">path</a> at the top of the directory stack.</p>
+<p>In <a href="../../../../articles/w/i/n/Windows_PowerShell_2c4c.html" title="Windows PowerShell">Windows PowerShell</a>, <b>pushd</b> is a predefined <a href="../../../../articles/a/l/i/Alias_%28command%29.html" title="Alias (command)">command alias</a> for the <code>Push-Location</code> Cmdlet and <b>popd</b> is a predefined command alias for the <code>Pop-Location</code> Cmdlet. Both serve basically the same purpose.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#Syntax"><span class="tocnumber">1</span> <span class="toctext">Syntax</span></a>
+<ul>
+<li class="toclevel-2"><a href="#pushd"><span class="tocnumber">1.1</span> <span class="toctext">pushd</span></a></li>
+<li class="toclevel-2"><a href="#popd"><span class="tocnumber">1.2</span> <span class="toctext">popd</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Example"><span class="tocnumber">2</span> <span class="toctext">Example</span></a></li>
+<li class="toclevel-1"><a href="#See_also"><span class="tocnumber">3</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Syntax" id="Syntax"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/p/u/s/Pushd_and_popd.html" title="Edit section: Syntax">edit</a>]</span> <span class="mw-headline">Syntax</span></h2>
+<p><a name="pushd" id="pushd"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/p/u/s/Pushd_and_popd.html" title="Edit section: pushd">edit</a>]</span> <span class="mw-headline">pushd</span></h3>
+<pre>
+pushd [path | ..]
+</pre>
+<p>Arguments:</p>
+<ul>
+<li><b><code>path</code></b> This <a href="../../../../articles/c/o/m/Command-line_argument.html" title="Command-line argument">command-line argument</a> specifies the directory to make the current directory.</li>
+</ul>
+<p><a name="popd" id="popd"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/p/u/s/Pushd_and_popd.html" title="Edit section: popd">edit</a>]</span> <span class="mw-headline">popd</span></h3>
+<pre>
+popd
+</pre>
+<p><a name="Example" id="Example"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/p/u/s/Pushd_and_popd.html" title="Edit section: Example">edit</a>]</span> <span class="mw-headline">Example</span></h2>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-dos">
+C:\Users\root&gt;pushd C:\
+ 
+C:\&gt;popd
+ 
+C:\Users\root&gt;
+</pre></div>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/p/u/s/Pushd_and_popd.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<ul>
+<li><a href="../../../../articles/l/i/s/List_of_DOS_commands_4265.html" title="List of DOS commands">List of DOS commands</a></li>
+<li><a href="../../../../articles/l/i/s/List_of_Unix_programs_0012.html" class="mw-redirect" title="List of Unix programs">List of Unix programs</a></li>
+</ul>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/p/u/s/Pushd_and_popd.html" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<ul>
+<li><a href="http://technet.microsoft.com/en-us/library/bb490978.aspx" class="external text" title="http://technet.microsoft.com/en-us/library/bb490978.aspx" rel="nofollow">Microsoft TechNet Pushd article</a></li>
+<li><a href="http://technet.microsoft.com/en-us/library/bb490969.aspx" class="external text" title="http://technet.microsoft.com/en-us/library/bb490969.aspx" rel="nofollow">Microsoft TechNet Popd article</a></li>
+<li><a href="http://ftp.gnu.org/old-gnu/Manuals/bash-2.05a/html_node/bashref_73.html" class="external text" title="http://ftp.gnu.org/old-gnu/Manuals/bash-2.05a/html_node/bashref_73.html" rel="nofollow">Bash Reference Manual: Directory Stack Builtins</a></li>
+</ul>
+<div class="references-small"></div>
+<table class="navbox" cellspacing="0" style=";">
+<tr>
+<td style="padding:2px;">
+<table cellspacing="0" class="nowraplinks collapsible autocollapse" style="width:100%;background:transparent;color:inherit;;">
+<tr>
+<th style=";" colspan="2" class="navbox-title">
+<div style="float:left; width:6em;text-align:left;">
+<div class="noprint plainlinksneverexpand" style="background-color:transparent; padding:0; white-space:nowrap; font-weight:normal; font-size:xx-small;&#160;;;border:none;;"><a href="../../../../articles/u/n/i/Template%7EUnix_commands_e8ac.html" title="Template:Unix commands"><span title="View this template" style=";;border:none;;">v</span></a>&#160;<span style="font-size:80%;">•</span>&#160;<a href="../../../../articles/u/n/i/Template_talk%7EUnix_commands_2387.html" title="Template talk:Unix commands"><span style="color:#002bb8;;;border:none;;" title="Discussion about this template">d</span></a>&#160;<span style="font-size:80%;">•</span>&#160;<a href="http://en.wikipedia.org../../../../articles/u/n/i/Template%7EUnix_commands_e8ac.html" class="external text" title="http://en.wikipedia.org../../../../articles/u/n/i/Template%7EUnix_commands_e8ac.html" rel="nofollow"><span style="color:#002bb8;;;border:none;;" title="You can edit this template. Please use the preview button before saving.">e</span></a></div>
+</div>
+<span style="font-size:110%;"><a href="../../../../articles/u/n/i/Unix.html" title="Unix">Unix</a> <a href="../../../../articles/c/o/m/Command_line.html" class="mw-redirect" title="Command line">command line</a> programs and builtins (<a href="../../../../articles/l/i/s/List_of_Unix_utilities_a3cc.html" title="List of Unix utilities">more</a>)</span></th>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">File system</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/c/a/t/Cat_%28Unix%29_14b9.html" title="Cat (Unix)">cat</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/h/a/Chattr.html" title="Chattr">chattr</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/h/d/Chdir.html" class="mw-redirect" title="Chdir">cd</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/h/m/Chmod.html" title="Chmod">chmod</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/h/o/Chown.html" title="Chown">chown</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/h/g/Chgrp.html" title="Chgrp">chgrp</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/k/s/Cksum.html" title="Cksum">cksum</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/m/p/Cmp_%28Unix%29_3bb0.html" title="Cmp (Unix)">cmp</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/p/_/Cp_%28Unix%29_bcd4.html" title="Cp (Unix)">cp</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/u/_/Du_%28Unix%29_41db.html" title="Du (Unix)">du</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/f/_/Df_%28Unix%29_9f3a.html" title="Df (Unix)">df</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/i/l/File_%28Unix%29_2d7c.html" title="File (Unix)">file</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/s/c/Fsck.html" title="Fsck">fsck</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/u/s/Fuser_%28Unix%29_6d1e.html" title="Fuser (Unix)">fuser</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/l/n/_/Ln_%28Unix%29_b329.html" title="Ln (Unix)">ln</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/l/s/_/Ls.html" title="Ls">ls</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/l/s/a/Lsattr.html" title="Lsattr">lsattr</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/l/s/o/Lsof.html" title="Lsof">lsof</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/k/d/Mkdir.html" title="Mkdir">mkdir</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/o/u/Mount_%28Unix%29_e87a.html" title="Mount (Unix)">mount</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/v/_/Mv.html" title="Mv">mv</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/w/d/Pwd.html" title="Pwd">pwd</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/m/_/Rm_%28Unix%29_5249.html" title="Rm (Unix)">rm</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/m/d/Rmdir.html" title="Rmdir">rmdir</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/p/l/Split_%28Unix%29_c02a.html" title="Split (Unix)">split</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/o/u/Touch_%28Unix%29_1f21.html" title="Touch (Unix)">touch</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Processes</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em"><a href="../../../../articles/a/t/_/At_%28Unix%29_7558.html" title="At (Unix)">at</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/h/r/Chroot.html" title="Chroot">chroot</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/r/o/Cron.html" title="Cron">cron</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/x/i/Exit_%28command%29.html" title="Exit (command)">exit</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/k/i/l/Kill_%28Unix%29_f03b.html" title="Kill (Unix)">kill</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/k/i/l/Killall.html" title="Killall">killall</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/n/i/c/Nice_%28Unix%29_16e2.html" title="Nice (Unix)">nice</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/g/r/Pgrep.html" title="Pgrep">pgrep</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/i/d/Pidof.html" title="Pidof">pidof</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/k/i/Pkill.html" title="Pkill">pkill</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/s/_/Ps_%28Unix%29_7909.html" title="Ps (Unix)">ps</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/s/t/Pstree.html" title="Pstree">pstree</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/l/e/Sleep_%28Unix%29_c2ce.html" title="Sleep (Unix)">sleep</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/i/m/Time_%28Unix%29_0887.html" title="Time (Unix)">time</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/o/p/Top_%28Unix%29_3202.html" title="Top (Unix)">top</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/a/i/Wait_%28command%29.html" title="Wait (command)">wait</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/a/t/Watch_%28Unix%29_63aa.html" title="Watch (Unix)">watch</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">User environment</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/e/n/v/Env.html" title="Env">env</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/i/n/Finger_protocol.html" title="Finger protocol">finger</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/i/d/_/Id_%28Unix%29_836e.html" title="Id (Unix)">id</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/l/o/g/Logname.html" title="Logname">logname</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/e/s/Mesg.html" title="Mesg">mesg</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/a/s/Passwd.html" title="Passwd">passwd</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/u/_/Su_%28Unix%29_c122.html" title="Su (Unix)">su</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/u/d/Sudo.html" title="Sudo">sudo</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/u/n/a/Uname.html" title="Uname">uname</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/u/p/t/Uptime.html" title="Uptime">uptime</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/_/%28/W_%28Unix%29_22fd.html" title="W (Unix)">w</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/a/l/Wall_%28Unix%29_118a.html" title="Wall (Unix)">wall</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/h/o/Who_%28Unix%29_646b.html" title="Who (Unix)">who</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/h/o/Whoami_%28command%29.html" title="Whoami (command)">whoami</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/r/i/Write_%28Unix%29_238c.html" title="Write (Unix)">write</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Text processing</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em"><a href="../../../../articles/a/w/k/AWK_00db.html" title="AWK">awk</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/o/m/Comm.html" title="Comm">comm</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/u/t/Cut_%28Unix%29_8874.html" title="Cut (Unix)">cut</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/d/_/Ed_%28text_editor%29.html" title="Ed (text editor)">ed</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/x/_/Ex_%28text_editor%29.html" title="Ex (text editor)">ex</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/m/t/Fmt_%28Unix%29_cd7b.html" title="Fmt (Unix)">fmt</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/h/e/a/Head_%28Unix%29_a068.html" title="Head (Unix)">head</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/i/c/o/Iconv.html" title="Iconv">iconv</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/j/o/i/Join_%28Unix%29_b4ad.html" title="Join (Unix)">join</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/l/e/s/Less_%28Unix%29_c801.html" title="Less (Unix)">less</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/o/r/More_%28command%29.html" title="More (command)">more</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/a/s/Paste_%28Unix%29_23fa.html" title="Paste (Unix)">paste</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/e/d/Sed.html" title="Sed">sed</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/o/r/Sort_%28Unix%29_7609.html" title="Sort (Unix)">sort</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/a/c/Tac_%28Unix%29_65e8.html" title="Tac (Unix)">tac</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/a/i/Tail_%28Unix%29_2ca8.html" title="Tail (Unix)">tail</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/r/_/Tr_%28Unix%29_7d73.html" title="Tr (Unix)">tr</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/u/n/i/Uniq.html" title="Uniq">uniq</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/c/_/Wc_%28Unix%29_ba31.html" title="Wc (Unix)">wc</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/x/a/r/Xargs.html" title="Xargs">xargs</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;"><a href="../../../../articles/s/h/e/Shell_%28computing%29.html" title="Shell (computing)">Shell</a> programming</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/a/l/i/Alias_%28command%29.html" title="Alias (command)">alias</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/b/a/s/Basename.html" title="Basename">basename</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/c/h/Echo_%28command%29.html" title="Echo (command)">echo</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/x/p/Expr.html" title="Expr">expr</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/a/l/False_%28Unix%29_56df.html" title="False (Unix)">false</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/r/i/Printf.html" title="Printf">printf</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/e/s/Test_%28Unix%29_d716.html" title="Test (Unix)">test</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/r/u/True_%28Unix%29_4b2b.html" title="True (Unix)">true</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/u/n/s/Unset.html" title="Unset">unset</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Networking</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em"><a href="../../../../articles/i/n/e/Inetd.html" title="Inetd">inetd</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/n/e/t/Netstat.html" title="Netstat">netstat</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/i/n/Ping.html" title="Ping">ping</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/l/o/Rlogin.html" title="Rlogin">rlogin</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/n/e/t/Netcat.html" title="Netcat">nc</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/r/a/Traceroute.html" title="Traceroute">traceroute</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Searching</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/f/i/n/Find.html" title="Find">find</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/g/r/e/Grep.html" title="Grep">grep</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/t/r/Strings_%28Unix%29_6a39.html" title="Strings (Unix)">strings</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Miscellaneous</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em"><a href="../../../../articles/b/a/n/Banner_%28Unix%29_ac9c.html" title="Banner (Unix)">banner</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/b/c/_/Bc_programming_language.html" title="Bc programming language">bc</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/a/l/Cal_%28Unix%29_12f7.html" title="Cal (Unix)">cal</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/l/e/Clear_%28Unix%29_1f8a.html" title="Clear (Unix)">clear</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/a/t/Date_%28Unix%29_1dae.html" title="Date (Unix)">date</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/d/_/Dd_%28Unix%29_7288.html" title="Dd (Unix)">dd</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/l/p/_/Lp_%28Unix%29_498b.html" title="Lp (Unix)">lp</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/a/n/Manual_page_%28Unix%29_9bd1.html" title="Manual page (Unix)">man</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/i/z/Size_%28Unix%29_4f54.html" title="Size (Unix)">size</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/e/e/Tee_%28command%29.html" title="Tee (command)">tee</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/y/e/s/Yes_%28Unix%29_b733.html" title="Yes (Unix)">yes</a></div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table class="navbox" cellspacing="0" style=";">
+<tr>
+<td style="padding:2px;">
+<table cellspacing="0" class="nowraplinks collapsible autocollapse" style="width:100%;background:transparent;color:inherit;;">
+<tr>
+<th style=";" colspan="2" class="navbox-title">
+<div style="float:left; width:6em;text-align:left;">
+<div class="noprint plainlinksneverexpand" style="background-color:transparent; padding:0; white-space:nowrap; font-weight:normal; font-size:xx-small;&#160;;;border:none;;"><a href="../../../../articles/w/i/n/Template%7EWindows_commands_2fbf.html" title="Template:Windows commands"><span title="View this template" style=";;border:none;;">v</span></a>&#160;<span style="font-size:80%;">•</span>&#160;<a href="../../../../articles/w/i/n/Template_talk%7EWindows_commands_843e.html" title="Template talk:Windows commands"><span style="color:#002bb8;;;border:none;;" title="Discussion about this template">d</span></a>&#160;<span style="font-size:80%;">•</span>&#160;<a href="http://en.wikipedia.org../../../../articles/w/i/n/Template%7EWindows_commands_2fbf.html" class="external text" title="http://en.wikipedia.org../../../../articles/w/i/n/Template%7EWindows_commands_2fbf.html" rel="nofollow"><span style="color:#002bb8;;;border:none;;" title="You can edit this template. Please use the preview button before saving.">e</span></a></div>
+</div>
+<span style="font-size:110%;"><a href="../../../../articles/m/i/c/Microsoft_Windows_48e2.html" title="Microsoft Windows">Windows</a> <a href="../../../../articles/c/o/m/Command_line.html" class="mw-redirect" title="Command line">command line</a> programs and builtins (<a href="../../../../articles/l/i/s/List_of_DOS_commands_4265.html" title="List of DOS commands">more</a>)</span></th>
+</tr>
+<tr style="height:2px;">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">File system<br />
+(basic)</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/a/t/t/Attrib.html" title="Attrib">attrib</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/d/_/Cd_%28command%29.html" title="Cd (command)">cd</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/d/_/Cd_%28command%29.html" title="Cd (command)">chdir</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/o/p/Copy_%28command%29.html" title="Copy (command)">copy</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/e/l/Del_%28command%29.html" title="Del (command)">del</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/e/l/Deltree.html" title="Deltree">deltree</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/i/r/Dir_%28command%29.html" title="Dir (command)">dir</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/e/l/Del_%28command%29.html" title="Del (command)">erase</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/i/s/Disk_formatting.html" title="Disk formatting">format</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/d/_/Md.html" class="mw-redirect" title="Md">md</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/k/d/Mkdir.html" title="Mkdir">mkdir</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/o/v/Move_%28command%29.html" title="Move (command)">move</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/m/d/Rmdir.html" title="Rmdir">rd</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/e/n/Ren_%28command%29.html" title="Ren (command)">rename</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/e/n/Ren_%28command%29.html" title="Ren (command)">ren</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/m/d/Rmdir.html" title="Rmdir">rmdir</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/o/b/Robocopy.html" title="Robocopy">robocopy</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/y/p/Type_%28command%29.html" title="Type (command)">type</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/x/c/o/XCOPY_65c0.html" title="XCOPY">xcopy</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">File system<br />
+(advanced)</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em">assoc<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/a/c/Cacls.html" title="Cacls">cacls</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/h/k/CHKDSK_f33c.html" title="CHKDSK">chkdsk</a><span style="font-weight:bold;">&#160;·</span> chkntfs<span style="font-weight:bold;">&#160;·</span> comp<span style="font-weight:bold;">&#160;·</span> compact<span style="font-weight:bold;">&#160;·</span> convert<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/i/s/Disk_Defragmenter_%28Windows%29_704b.html" title="Disk Defragmenter (Windows)">defrag</a><span style="font-weight:bold;">&#160;·</span> diskcomp<span style="font-weight:bold;">&#160;·</span> diskcopy<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/i/c/Microsoft_File_Compare_6bb1.html" title="Microsoft File Compare">fc</a><span style="font-weight:bold;">&#160;·</span> ftype<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/l/a/b/Label_%28command%29.html" title="Label (command)">label</a><span style="font-weight:bold;">&#160;·</span> recover<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/i/n/Windows_Registry_b394.html#Command_line_editing" title="Windows Registry">reg</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/e/g/Regsvr32.exe.html" class="mw-redirect" title="Regsvr32.exe">regsvr32</a><span style="font-weight:bold;">&#160;·</span> replace<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/u/b/Subst.html" title="Subst">subst</a><span style="font-weight:bold;">&#160;·</span> tree<span style="font-weight:bold;">&#160;·</span> verify<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/v/o/l/Vol_%28command%29.html" title="Vol (command)">vol</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Processes</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/a/t/_/At_%28Windows%29_ccd4.html" title="At (Windows)">at</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/x/i/Exit_%28command%29.html" title="Exit (command)">exit</a><span style="font-weight:bold;">&#160;·</span> kill<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/a/s/Task_Scheduler_0e96.html" title="Task Scheduler">schtasks</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/s/t/a/Start.html" title="Start">start</a><span style="font-weight:bold;">&#160;·</span> taskkill<span style="font-weight:bold;">&#160;·</span> tasklist<span style="font-weight:bold;">&#160;·</span> tlist</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">User environment</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em"><a href="../../../../articles/a/p/p/Append.html" title="Append">append</a><span style="font-weight:bold;">&#160;·</span> chcp<span style="font-weight:bold;">&#160;·</span> color<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/i/m/Time_and_date.html" title="Time and date">date</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/i/n/Finger_protocol.html" title="Finger protocol">finger</a><span style="font-weight:bold;">&#160;·</span> graftabl<span style="font-weight:bold;">&#160;·</span> mode<span style="font-weight:bold;">&#160;·</span> path<span style="font-weight:bold;">&#160;·</span> <strong class="selflink">popd</strong><span style="font-weight:bold;">&#160;·</span> <strong class="selflink">pushd</strong><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/r/u/n/Runas.html" title="Runas">runas</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/n/v/Environment_variable.html#DOS" title="Environment variable">set</a><span style="font-weight:bold;">&#160;·</span> setx<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/i/m/Time_and_date.html" title="Time and date">time</a><span style="font-weight:bold;">&#160;·</span> title<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/v/e/r/Ver_%28command%29.html" title="Ver (command)">ver</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/h/o/Whoami_%28command%29.html" title="Whoami (command)">whoami</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Text processing</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/m/s/-/MS-DOS_Editor_0ac3.html" title="MS-DOS Editor">edit</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/d/l/Edlin.html" title="Edlin">edlin</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/m/o/r/More_%28command%29.html" title="More (command)">more</a><span style="font-weight:bold;">&#160;·</span> sort</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;"><a href="../../../../articles/s/h/e/Shell_%28computing%29.html" title="Shell (computing)">Shell</a> programming</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em"><a href="../../../../articles/b/r/e/Break.html" title="Break">break</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/a/l/Call.html" title="Call">call</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/m/d/Cmd.exe.html" class="mw-redirect" title="Cmd.exe">cmd</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/o/m/COMMAND.COM_975a.html" title="COMMAND.COM">command</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/i/n/Windows_Script_Host_dcda.html" title="Windows Script Host">cscript</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/o/s/DOSKey_70d7.html" title="DOSKey">doskey</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/e/c/h/Echo_%28command%29.html" title="Echo (command)">echo</a><span style="font-weight:bold;">&#160;·</span> endlocal<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/o/r/For_loop.html" title="For loop">for</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/g/o/t/GOTO_4b8b.html" class="mw-redirect" title="GOTO">goto</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/o/n/Conditional_%28programming%29.html" title="Conditional (programming)">if</a><span style="font-weight:bold;">&#160;·</span> pause<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/w/i/n/Windows_PowerShell_2c4c.html" title="Windows PowerShell">powershell</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/o/m/Command_line_interface.html#Command_prompt" title="Command line interface">prompt</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/c/o/m/Comment_%28computer_programming%29.html" title="Comment (computer programming)">rem</a><span style="font-weight:bold;">&#160;·</span> setlocal<span style="font-weight:bold;">&#160;·</span> shift<span style="font-weight:bold;">&#160;·</span> forfiles<span style="font-weight:bold;">&#160;·</span> choice</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Networking</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/a/d/d/Address_Resolution_Protocol_63ce.html" title="Address Resolution Protocol">arp</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/f/i/l/File_Transfer_Protocol_5436.html" title="File Transfer Protocol">ftp</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/i/p/c/Ipconfig.html" title="Ipconfig">ipconfig</a><span style="font-weight:bold;">&#160;·</span> net<span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/n/e/t/Netsh.html" title="Netsh">netsh</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/n/e/t/Netstat.html" title="Netstat">netstat</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/i/n/Ping.html" title="Ping">ping</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/e/l/TELNET_1360.html" title="TELNET">telnet</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/r/i/Trivial_File_Transfer_Protocol_7ea3.html" title="Trivial File Transfer Protocol">tftp</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/t/r/a/Tracert.html" class="mw-redirect" title="Tracert">tracert</a></div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Searching</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-even">
+<div style="padding:0em 0.25em"><a href="../../../../articles/f/i/n/Find_%28command%29.html" title="Find (command)">find</a><span style="font-weight:bold;">&#160;·</span> findstr</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td></td>
+</tr>
+<tr>
+<td class="navbox-group" style=";;">Miscellaneous</td>
+<td style="text-align:left;border-left:2px solid #fdfdfd;width:100%;padding:0px;;;" class="navbox-list navbox-odd">
+<div style="padding:0em 0.25em"><a href="../../../../articles/c/l/s/Cls_%28computing%29.html" title="Cls (computing)">cls</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/h/e/l/Help_%28command%29.html" title="Help (command)">help</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/p/r/i/Print_%28command%29.html" title="Print (command)">print</a><span style="font-weight:bold;">&#160;·</span> <a href="../../../../articles/d/e/b/Debug_%28command%29.html" title="Debug (command)">debug</a><span style="font-weight:bold;">&#160;·</span> exe2bin</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="boilerplate metadata" id="stub">
+<table cellpadding="0" cellspacing="0" style="background-color: transparent;">
+<tr>
+<td><a href="../../../../articles/s/y/n/Image%7ESynaptic.png_b05d.html" class="image" title="Synaptic.png"><img alt="" src="../../../../images/shared/thumb/0/05/Synaptic.png/30px-Synaptic.png" width="30" height="30" border="0" /></a></td>
+<td><i>&#160;This <a href="../../../../articles/c/o/m/Computer_software.html" title="Computer software">software</a>-related article is a <a href="../../../../articles/s/t/u/Wikipedia%7EStub_72af.html" title="Wikipedia:Stub">stub</a>. You can help Wikipedia by <a href="http://en.wikipedia.org/w/index.php?stub&amp;title=Pushd_and_popd&amp;action=edit" class="external text" title="http://en.wikipedia.org/w/index.php?stub&amp;title=Pushd_and_popd&amp;action=edit" rel="nofollow">expanding it</a></i>.</td>
+</tr>
+</table>
+</div>
+<div class="boilerplate metadata" id="stub">
+<table cellpadding="0" cellspacing="0" style="background-color: transparent;">
+<tr>
+<td><a href="../../../../articles/p/o/u/Image%7EPoundexclam.svg_202d.html" class="image" title="Poundexclam.svg"><img alt="" src="../../../../images/shared/thumb/1/13/Poundexclam.svg/15px-Poundexclam.svg.png" width="15" height="15" border="0" /></a>&#160;</td>
+<td><i>This <a href="../../../../articles/u/n/i/Unix.html" title="Unix">Unix</a>-related article is a <a href="../../../../articles/s/t/u/Wikipedia%7EStub_72af.html" title="Wikipedia:Stub">stub</a>. You can help by <a href="http://en.wikipedia.org../../../../articles/p/u/s/Pushd_and_popd.html" class="external text" title="http://en.wikipedia.org../../../../articles/p/u/s/Pushd_and_popd.html" rel="nofollow">expanding it</a></i>.<br /></td>
+</tr>
+</table>
+</div>
+<div class="boilerplate metadata" id="stub">
+<table cellpadding="0" cellspacing="0" style="background-color: transparent;">
+<tr>
+<td><a href="../../../../articles/w/i/n/Image%7EWin-like-userbox.svg_55ae.html" class="image" title="Win-like-userbox.svg"><img alt="" src="../../../../images/local/thumb/7/7b/Win-like-userbox.svg/32px-Win-like-userbox.svg.png" width="32" height="32" border="0" /></a>&#160;</td>
+<td><i>This <a href="../../../../articles/m/i/c/Microsoft_Windows_48e2.html" title="Microsoft Windows">Microsoft Windows</a> article is a <a href="../../../../articles/s/t/u/Wikipedia%7EStub_72af.html" title="Wikipedia:Stub">stub</a>. You can help by <a href="http://en.wikipedia.org../../../../articles/p/u/s/Pushd_and_popd.html" class="external text" title="http://en.wikipedia.org../../../../articles/p/u/s/Pushd_and_popd.html" rel="nofollow">expanding it</a></i>.<br /></td>
+</tr>
+</table>
+</div>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 1869/1000000
+Post-expand include size: 68592/2048000 bytes
+Template argument size: 45283/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/d/o/s/Category%7EDOS_on_IBM_PC_compatibles_ef8d.html" title="Category:DOS on IBM PC compatibles">DOS on IBM PC compatibles</a></span> | <span dir='ltr'><a href="../../../../articles/m/i/c/Category%7EMicrocomputer_software_d929.html" title="Category:Microcomputer software">Microcomputer software</a></span> | <span dir='ltr'><a href="../../../../articles/w/i/n/Category%7EWindows_administration_bb41.html" title="Category:Windows administration">Windows administration</a></span> | <span dir='ltr'><a href="../../../../articles/s/o/f/Category%7ESoftware_stubs_cab5.html" title="Category:Software stubs">Software stubs</a></span> | <span dir='ltr'><a href="../../../../articles/u/n/i/Category%7EUnix_stubs_61cf.html" title="Category:Unix stubs">Unix stubs</a></span> | <span dir='ltr'><a href="../../../../articles/m/i/c/Category%7EMicrosoft_Windows_stubs_eb8f.html" title="Category:Microsoft Windows stubs">Microsoft Windows stubs</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/p/u/s/Pushd_and_popd.html">Article</a></li><li id="ca-talk"
+	       class="new"	       ><a href="../../../../articles/p/u/s/Talk%7EPushd_and_popd_e879.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Pushd_and_popd">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 23:51, 22 April 2008 by Wikipedia user <a href="../../../../articles/g/h/e/User%7EGhettoblaster_6f7e.html" title="User:Ghettoblaster">Ghettoblaster</a>. </li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+
+
+Problem 1: 
+Express matrix addition as an SQL query.  Assume you have two matrices A and B represented as follows:
+
+A(row_number, column_number, value)
+B(row_number, column_number, value)
+
+Example of using this representation: 
+To retrive the value of A[i,j], you would write
+
+SELECT value FROM A WHERE row_number = i AND column_number = j
+
+
+
+Problem 2 (Optional):  
+Express term-frequency, inverse-document frequency measure in SQL.  
+
+The result should be a relation (term, tfidf) that gives the tfidf score of each term.
+
+Read more at the <a href="http://en.wikipedia.org/wiki/Tf%E2%80%93idf">Wikipedia page about tf-idf</a>
+
+Assume you are given a table with the frequencies of each term in each document:
+
+frequency(term, docid, count)
+
+There are many variants of tf-idf -- keep it simple!  
+
+If you'd like, you can use can use <a href="http://sqlshare.escience.washington.edu/">SQLShare</a> to test your solution. I've posted a <a href="https://sqlshare.escience.washington.edu/sqlshare#s=query/billhowe/reuters_terms.csv&q=">SQLShare dataset providing the term frequencies for a subset of the Reuters document corpus</a>
+
+

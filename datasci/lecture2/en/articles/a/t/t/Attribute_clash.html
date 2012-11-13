@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Attribute clash - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Attribute clash</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p><b>Attribute clash</b> (or <b>colour clash</b>) was a display artefact caused by limitations in the graphics circuitry of a number of early colour 8-bit <a href="../../../../articles/h/o/m/Home_computers.html" class="mw-redirect" title="Home computers">home computers</a> — most notably the <a href="../../../../articles/s/i/n/Sinclair_Research_6cad.html" title="Sinclair Research">Sinclair</a> <a href="../../../../articles/z/x/_/ZX_Spectrum_4c8a.html" class="mw-redirect" title="ZX Spectrum">ZX Spectrum</a>. It has since been considered an element of Spectrum user culture.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#Causes"><span class="tocnumber">1</span> <span class="toctext">Causes</span></a></li>
+<li class="toclevel-1"><a href="#Effects"><span class="tocnumber">2</span> <span class="toctext">Effects</span></a></li>
+<li class="toclevel-1"><a href="#Workarounds"><span class="tocnumber">3</span> <span class="toctext">Workarounds</span></a></li>
+<li class="toclevel-1"><a href="#Screenshots_demonstrating_the_problem_and_solutions"><span class="tocnumber">4</span> <span class="toctext">Screenshots demonstrating the problem and solutions</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Causes" id="Causes"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/t/t/Attribute_clash.html" title="Edit section: Causes">edit</a>]</span> <span class="mw-headline">Causes</span></h2>
+<p>Attribute clash on the ZX Spectrum was caused by its idiosyncratic display memory layout, designed in such a way as to keep the memory consumption of the <a href="../../../../articles/f/r/a/Frame_buffer.html" class="mw-redirect" title="Frame buffer">frame buffer</a> to a minimum, and optimised for text display rather than graphics. Rather than restricting the colour palette to conserve memory, Sinclair's design stored <a href="../../../../articles/p/i/x/Pixel.html" title="Pixel">pixel</a> <a href="../../../../articles/b/i/t/Bitmap.html" title="Bitmap">bitmap</a> and colour information in separate areas of memory. While the bitmap specified the state of individual pixels (either on or off), the colour information (or "attributes") corresponded to the text character matrix — 24 rows of 32 columns — with one <a href="../../../../articles/b/y/t/Byte.html" title="Byte">byte</a> per 8x8 pixel character cell. This byte encoded two 3-bit values, known as <i>INK</i> (foreground colour) and <i>PAPER</i> (background colour) after the <a href="../../../../articles/b/a/s/BASIC_%28programming_language%29_d9d9.html" class="mw-redirect" title="BASIC (programming language)">BASIC</a> instructions used to define the colour values. Two other binary values were included in an attribute; a <i>BRIGHT</i> bit indicating one of two brightness levels for the two colours, and a <i>FLASH</i> bit, which, when set, caused the two colours to be swapped at regular intervals. This scheme provided 15 different colours: the eight combinations of red, green and blue at two brightness levels (except for black, which appeared the same at both brightness). Thus each 8x8 pixel block could only contain 2 colours from the 15 available, which must both be from either the BRIGHT or non-BRIGHT halves of the palette.</p>
+<p>The ZX Spectrum used 6144 bytes for pixel information, with one byte representing a row of eight pixels, and 768 bytes used for the colour attributes, thus giving a total of 6912 bytes for the entire graphics display, a relatively small total for a computer of the Spectrum's era with "colour" capabilities. This graphics architecture was retained right through to Sinclair and <a href="../../../../articles/a/m/s/Amstrad.html" title="Amstrad">Amstrad</a>'s later redesigns of the Spectrum, up until Amstrad's final model, the ZX Spectrum +3, despite subsequent models having contained 128 kB of RAM, reducing the need to save memory in this manner. The architecture was retained to prevent loss of <a href="../../../../articles/b/a/c/Backwards_compatibility.html" class="mw-redirect" title="Backwards compatibility">backwards compatibility</a>.</p>
+<p>The Thomson MO5 and TO7 microcomputers display a very similar constraint: for each group of eight pixels horizontally, only 2 colours out of 16 are available, thus the screenshots look very similar to spectrum ones. Attributes were used by a variety of other computers and consoles, including the <a href="../../../../articles/c/o/m/Commodore_64.html" title="Commodore 64">Commodore 64</a>, the <a href="../../../../articles/m/s/x/MSX_e216.html" title="MSX">MSX</a> and <a href="../../../../articles/n/i/n/Nintendo_Entertainment_System_c10f.html" title="Nintendo Entertainment System">NES</a>, although the size of the attribute blocks and the number of colours per block varied. However, with the use of hardware <a href="../../../../articles/s/p/r/Sprite_%28computer_graphics%29.html" title="Sprite (computer graphics)">sprites</a> and <a href="../../../../articles/s/c/r/Scrolling.html" title="Scrolling">scrolling</a>, attribute clash could be avoided.</p>
+<div class="thumb tright">
+<div class="thumbinner" style="width:211px;"><a href="../../../../articles/m/s/x/Image%7EMSX_Computer_Color_Limit.gif_bc81.html" class="image" title="The effect of attribute clash on MSX 1 systems when using the 256x192 Highres mode of MSX 1"><img alt="The effect of attribute clash on MSX 1 systems when using the 256x192 Highres mode of MSX 1" src="../../../../images/shared/c/cb/MSX_Computer_Color_Limit.gif" width="209" height="158" border="0" class="thumbimage" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="../../../../articles/m/s/x/Image%7EMSX_Computer_Color_Limit.gif_bc81.html" class="internal" title="Enlarge"><img src="../../../../skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>
+The effect of <strong class="selflink">attribute clash</strong> on MSX 1 systems when using the 256x192 Highres mode of MSX 1</div>
+</div>
+</div>
+<p>For the <a href="../../../../articles/m/s/x/MSX_e216.html#MSX_1" title="MSX">MSX 1</a> system (and other systems based on the Texas Instruments TMS-9918 <a href="../../../../articles/v/i/d/Video_Display_Controller_c9f9.html" title="Video Display Controller">Video Display Controller</a>) attribute clash was also a problem. Although in theory it was much less severe. because the MSX 1 did not have just one single color attribute byte available for a whole 8x8 pixel area, as was the case with the Sinclair Spectrum, but one attribute byte for each 8x1 pixel area.</p>
+<p>So where the Spectrum was limited to one color pair for a square area of 8x8 pixels the MSX 1 was only limited to one color pair for a "line" of eight pixels next to each other.</p>
+<p>However the problem for MSX 1 was that many European software companies who converted Spectrum games to MSX brought the exact same amount of attribute clash of the Spectrum game to the MSX version of the game, by ignoring all the improvements the MSX 1 had over the Spectrum. To ease conversion the software developers simply copied the single attribute byte value of the Spectrum to all eight corresponding attribute bytes of the MSX, so many MSX 1 games needlessly suffered from the same amount of attribute clash as the Spectrum version. Because they also, for the same reason, ignored the sprite capabilities of MSX 1, and because the video display capabilities were for the rest quite similar, (256x192 resolution, 16 colors) both systems produced virtually identical screenshots for the same game. In contrast, Japanese MSX 1 games did use all the capabilities of MSX 1, often resulting in better looking games.</p>
+<p><a name="Effects" id="Effects"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/t/t/Attribute_clash.html" title="Edit section: Effects">edit</a>]</span> <span class="mw-headline">Effects</span></h2>
+<p>Static graphic displays therefore had to be constructed with care. Finely-detailed colour graphics were impossible, as colour could only be applied in 8×8 pixel blocks. Careful design could achieve impressive results, as could synchronizing colour changes to the refresh rate of the display — usually a television set.</p>
+<p>However, animated displays were more difficult — a distinct drawback in a machine whose primary use was playing <a href="../../../../articles/v/i/d/Video_game.html" title="Video game">video games</a>. If just one pixel in an 8×8 block was recoloured because a moving part of the display touched it, the entire block would change colour. Thus detailed moving graphics caused large ugly fringes of rapidly-changing colours to follow them around.</p>
+<p><a name="Workarounds" id="Workarounds"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/t/t/Attribute_clash.html" title="Edit section: Workarounds">edit</a>]</span> <span class="mw-headline">Workarounds</span></h2>
+<p>Early software simply ignored the problem. Later, the standard workaround was to use colour for static display elements — such as a decorative border around the edges of the screen, which might include score displays and so on, or some form of instrumentation — with a smaller central <a href="../../../../articles/m/o/n/Monochrome.html" title="Monochrome">monochrome</a> area containing all the animated graphics. This also made graphics faster, as less of the screen had to be updated — both a smaller region, plus only changing pixel information and leaving the colour area untouched.</p>
+<p>Some late Spectrum software, such as FTL's <i>Lightforce</i>, used extremely careful graphics design to achieve full-colour moving graphics, essentially by restricting both the design of the onscreen elements and their paths of motion to 8×8 colour resolution boundaries. The moving elements were thus relatively large and rather blocky or squarish, and their movement was constrained, but this was not visually obvious and the sight of moving full-colour graphics was hugely impressive to Spectrum owners.</p>
+<p>No mainstream developers were able to find a suitable all-round fix for the attribute clash problem, instead preferring to use the monochrome graphics method when fast, clear graphics were needed, and full-colour graphics when the situation permitted.</p>
+<p>It was possible by paying careful attention to timing to modify the attribute area of RAM at certain specific times as the display was drawn - let the display hardware draw one line of the display, then change the attribute RAM before the next line is drawn to give the effect of different attributes for each individual line. This had to be done in software and was time consuming, thus it was usually limited to special effects. This technique was also very popular in the demoscene.</p>
+<p><a name="Screenshots_demonstrating_the_problem_and_solutions" id="Screenshots_demonstrating_the_problem_and_solutions"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/t/t/Attribute_clash.html" title="Edit section: Screenshots demonstrating the problem and solutions">edit</a>]</span> <span class="mw-headline">Screenshots demonstrating the problem and solutions</span></h2>
+<table class="wikitable">
+<tr>
+<td>Most demonstrative of the problem were games pre-1987, such as shown here by the game <i><a href="../../../../articles/k/n/i/Knight_Tyme_e2a2.html" title="Knight Tyme">Knight Tyme</a></i>. Note how the central character, (the small figure with a knights helmet just to the left of the right of the two figured with blue heads) is almost hidden by the attribute clash that has occurred. It should be noted that <i>Knight Tyme</i> was one of the few games that allowed the player to select between two modes of attribute clash — one whereby the main character's attributes would be ignored (producing the below effect) and one whereby the main character's attributes would be emphasised, turning any graphics surrounding the character white.</td>
+<td>
+<div class="center">
+<div class="floatnone"><span><a href="../../../../articles/z/x/_/Image%7EZX_knighttyme2.png_0290.html" class="image" title="ZX knighttyme2.png"><img alt="" src="../../../../images/local/thumb/d/db/ZX_knighttyme2.png/256px-ZX_knighttyme2.png" width="256" height="198" border="0" /></a></span></div>
+</div>
+</td>
+</tr>
+<tr>
+<td>One workaround was to simply render the graphics in two colours — otherwise known as monochrome — as shown here with the Spectrum version of <i><a href="../../../../articles/k/n/i/Knight_Lore_06dc.html" title="Knight Lore">Knight Lore</a></i> in 1984.</td>
+<td>
+<div class="center">
+<div class="floatnone"><span><a href="../../../../articles/k/n/i/Image%7EKnight_lore_3.gif_4f5e.html" class="image" title="Knight lore 3.gif"><img alt="" src="../../../../images/local/5/54/Knight_lore_3.gif" width="256" height="192" border="0" /></a></span></div>
+</div>
+</td>
+</tr>
+<tr>
+<td>A number of games used full-colour backgrounds and "character scrolling" (where the environment would be scrolled eight pixels at a time), but monochrome sprites that were effectively transparent, as displayed here in <i><a href="../../../../articles/d/o/u/Double_Dragon_%28arcade_game%29_c995.html" class="mw-redirect" title="Double Dragon (arcade game)">Double Dragon</a></i>. The sprites in this case have been drawn in such a way so that they stand out, avoiding a dependence on the colour. A number of games used this method with smooth pixel-by-pixel scrolling, but the attribute clash as elements of one character block were "passed" to the next were clearly noticeable.</td>
+<td><a href="../../../../articles/s/p/e/Image%7ESpectrum_Double_Dragon.png_414b.html" class="image" title="Spectrum Double Dragon.png"><img alt="" src="../../../../images/local/thumb/8/84/Spectrum_Double_Dragon.png/320px-Spectrum_Double_Dragon.png" width="320" height="240" border="0" /></a></td>
+</tr>
+<tr>
+<td>A prominent (and less successful) example of the use of full-colour graphics was the Spectrum conversion of <i><a href="../../../../articles/a/l/t/Altered_Beast_ec85.html" title="Altered Beast">Altered Beast</a></i>. Note that the game suffers from considerable attribute clash.</td>
+<td><a href="../../../../articles/s/p/e/Image%7ESpectrum_Altered_Beast.png_66c6.html" class="image" title="Spectrum Altered Beast.png"><img alt="" src="../../../../images/local/thumb/f/fc/Spectrum_Altered_Beast.png/320px-Spectrum_Altered_Beast.png" width="320" height="240" border="0" /></a></td>
+</tr>
+<tr>
+<td>Programmer <a href="../../../../articles/d/o/n/Don_Priestley_337c.html" title="Don Priestley">Don Priestley</a> developed a distinctive style for several of his games by using large, colourful, cartoon-like sprites. Due to their size, and some careful design, the need to have more than two colours in any attribute block was almost entirely eliminated. A disadvantage of this technique was that the gameplay had to be designed around the graphics, and so it was not useful for <a href="../../../../articles/p/o/r/Porting.html" title="Porting">ports</a> from other platforms. Games that used this technique included <i>Popeye</i>, <i><a href="../../../../articles/t/h/e/The_Trap_Door_%28game%29_8c8e.html" class="mw-redirect" title="The Trap Door (game)">The Trap Door</a></i> (shown right), <i>Through the Trapdoor</i>, and <i><a href="../../../../articles/f/l/u/Flunky_%28computer_game%29.html" title="Flunky (computer game)">Flunky</a></i></td>
+<td><a href="../../../../articles/z/x/_/Image%7EZX_trapdoor1.png_e115.html" class="image" title="ZX trapdoor1.png"><img alt="" src="../../../../images/local/d/d5/ZX_trapdoor1.png" width="320" height="241" border="0" /></a></td>
+</tr>
+</table>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/t/t/Attribute_clash.html" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<ul>
+<li><a href="http://www.worldofspectrum.org/faq/reference/reference.htm" class="external text" title="http://www.worldofspectrum.org/faq/reference/reference.htm" rel="nofollow">comp.sys.sinclair FAQ: Reference</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 6/1000000
+Post-expand include size: 0/2048000 bytes
+Template argument size: 0/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/c/o/m/Category%7EComputer_graphic_artifacts_f4b6.html" title="Category:Computer graphic artifacts">Computer graphic artifacts</a></span> | <span dir='ltr'><a href="../../../../articles/z/x/_/Category%7EZX_Spectrum_fac6.html" title="Category:ZX Spectrum">ZX Spectrum</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/a/t/t/Attribute_clash.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/a/t/t/Talk%7EAttribute_clash_d474.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Attribute_clash">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 20:23, 23 May 2008 by Wikipedia user <a href="../../../../articles/m/e/t/User%7EMetaManFromTomorrow_276d.html" title="User:MetaManFromTomorrow">MetaManFromTomorrow</a>. Based on work by Wikipedia user(s) Ricky540, <a href="../../../../articles/i/m/a/User%7EImageRemovalBot_623a.html" title="User:ImageRemovalBot">ImageRemovalBot</a>, <a href="../../../../articles/t/w/i/User%7ETwinsMetsFan_25be.html" title="User:TwinsMetsFan">TwinsMetsFan</a>, <a href="../../../../articles/f/r/o/User%7EFrodet_716f.html" title="User:Frodet">Frodet</a>, <a href="../../../../articles/m/a/h/User%7EMahjongg_2e93.html" title="User:Mahjongg">Mahjongg</a>, <a href="../../../../articles/w/i/z/User%7EWizardman_4d38.html" title="User:Wizardman">Wizardman</a>, <a href="../../../../articles/d/e/l/User%7EDelldot_cc92.html" title="User:Delldot">Delldot</a>, Glennimoss, <a href="../../../../articles/g/i/m/User%7EGimme_danger_b0ca.html" title="User:Gimme danger">Gimme danger</a>, <a href="../../../../articles/y/a/x/User%7EYaxu_23eb.html" title="User:Yaxu">Yaxu</a>, <a href="../../../../articles/a/t/o/User%7EAtomicthumbs_ae13.html" title="User:Atomicthumbs">Atomicthumbs</a>, <a href="../../../../articles/r/i/c/User%7ERicnun_ab51.html" title="User:Ricnun">Ricnun</a>, <a href="../../../../articles/l/e/t/User%7ELetdorf_3e50.html" title="User:Letdorf">Letdorf</a>, <a href="../../../../articles/m/a/r/User%7EMarasmusine_675c.html" title="User:Marasmusine">Marasmusine</a>, <a href="../../../../articles/s/t/u/User%7EStuartBrady_f558.html" title="User:StuartBrady">StuartBrady</a>, <a href="../../../../articles/i/n/s/User%7EInsouciance_83a8.html" title="User:Insouciance">Insouciance</a>, <a href="../../../../articles/o/s/c/User%7EOscarthecat_3c87.html" title="User:Oscarthecat">Oscarthecat</a>, <a href="../../../../articles/z/a/g/User%7EZagrebo_ffa0.html" title="User:Zagrebo">Zagrebo</a>, <a href="../../../../articles/j/o/e/User%7EJoeBot_e8e1.html" title="User:JoeBot">JoeBot</a>, <a href="../../../../articles/p/a/k/User%7EPak21_529c.html" title="User:Pak21">Pak21</a>, <a href="../../../../articles/j/a/m/User%7EJamyskis_2c95.html" title="User:Jamyskis">Jamyskis</a>, <a href="../../../../articles/b/a/c/User%7EBACbKA_d1dc.html" title="User:BACbKA">BACbKA</a>, <a href="../../../../articles/p/i/x/User%7EPixel8_3d3a.html" title="User:Pixel8">Pixel8</a>, <a href="../../../../articles/m/i/r/User%7EMirror_Vax_6652.html" title="User:Mirror Vax">Mirror Vax</a>, <a href="../../../../articles/r/i/c/User%7ERichard_W.M._Jones_a98a.html" title="User:Richard W.M. Jones">Richard W.M. Jones</a>, BioPizza, Hooperbloob, <a href="../../../../articles/z/u/n/User%7EZundark_7566.html" title="User:Zundark">Zundark</a>, <a href="../../../../articles/d/e/h/User%7EDehumanizer_e929.html" title="User:Dehumanizer">Dehumanizer</a> and <a href="../../../../articles/l/p/r/User%7ELproven_c193.html" title="User:Lproven">Lproven</a> and Anonymous user(s) of Wikipedia.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

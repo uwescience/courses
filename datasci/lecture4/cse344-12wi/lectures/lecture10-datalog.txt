@@ -1,0 +1,296 @@
+================================================================
+CSE 344 -- Fall 2011
+Lecture 10: Datalog
+================================================================
+
+As an alternative to abstract query languages based on algebra, one
+can use a form of logic to express queries. Just like SQL, these
+queries express the WHAT rather than the HOW.
+
+Today, we will discuss the Datalog ("database logic") logical query
+language.
+
+Another declarative language is the relational calculus, which
+influenced heavily the design of the SQL query language.
+
+Why are we discussing Datalog and the Relational Calculus?
+
+For relational calculus, the answer is simple: it is the foundation
+behind SQL, so you need to understand it.
+
+For datalog, the key reason for studying it is that it is heavily used
+in the database theory literature. Many important and fundamental
+problems in database research require rigorous reasoning about queries
+and their properties. Datalog is much more convenient to use in those
+cases than SQL or even relational algebra.
+
+As one example, there has recently been great interest in managing
+imprecise information. Recall IMDB and how it contains dirty data. In
+practice, data is almost always dirty. Integrity constraints can help
+us catch when problems arise but it is not always possible to clean
+the data.  For example, a QFC database can include two "Preferred
+customers" with the same name, same phone number, but two different
+addresses. One approach to handling such dirty data is to annotate the
+data with probabilities. Perhaps one address is more likely to be
+correct than the other one because it was more recently added to the
+database?  Once we annotate base data with probabilities, we can ask
+queries, and receive results also annotated with probabilities and
+ranked according to their likelyhood of being correct. It is
+computationally intensive to execute queries with such
+probabilities. In fact, some queries are #P-hard to answer while
+others can be computed in polynomial time (Prof. Dan Suciu is behind
+this crucial and very well cited result). Reasoning about the
+complexity of various queries under such new data models is much
+easier to do in datalog rather than relational algebra or SQL.
+
+Hence, if you ever want to do research in theoretical data management,
+you must learn datalog. 
+
+For everyone else, it is still very useful to know at least a little
+datalog because you need to understand whether theoreticians actually
+came up with something useful in practice ;-) For example, Joe
+Hellerstein from Berkeley who is a systems database faculty is using
+datalog-like languages to reason about network protocols and
+distributed systems. Others are using datalog to reason about
+massive-scale parallel query processing.
+
+Datalog is thus a veru useful, theoretical tool. You need to know
+about it!
+
+-----------------------------
+
+Datalog consists of "if-then" rules. A datalog rule is:
+
+  Q(args)  :- R1(args1), R2(args2), ...
+
+sometimes also written as:
+
+  Q(args)  :- R1(args1) AND R2(args2) AND ...
+
+Terminology:
+
+  the rule head = Q(args)
+  the rule body = R1(args1), R2(args2), ...
+  atom or subgoal = any one of Ri(argsi)
+  head variables  = the variables occurring in the head
+  existential variables = all the other variables
+
+Ri(argsi) is also called a relational atom.
+Ri(argsi) evaluates to true when relation Ri contains the tuple described by argsi.
+
+For example, for relation R(A,B) containing tuples (1,2) and (3,4),
+R(1,2) is true, R(3,4) is true but R(5,6) is false.
+
+In addition to relational atoms, we can also have arithmetic atoms of the form x < y or 2x > 4.
+
+Subgoals may be negated with NOT.
+
+A datalog program is a collection of one or more rules:
+
+  rule1
+  rule2
+  ...
+
+Each of the rules expresses the idea that from certain combinations of
+tuples in certain relations, we may infer that some other tuple must
+be in some other relation, or in the answer to a query.
+
+-----------------------
+
+Examples of single rules:
+
+Schema:
+/*****************************************************/
+/*   Purchase(pid, product, price, quantity)         */
+/*   Product(pname, manufacturer)                    */
+/*   (Purchase.product refers to Product.pname)      */
+/*****************************************************/
+
+Find all products under 9.99:
+
+  A(y) :- Purchase(x,y,z,u),  z < 9.99
+
+What is the meaning of this datalog program?  Whenever we can find a
+tuple in Purchase that satisfies the predicate z < 9.99, then we have
+a tuple in the result relation A with attribute y equal to the value
+of the product attribute of the Purchase tuple.
+
+Find all manufacturers that manufacture some products under 9.99
+
+  A(v) :- Purchase(x,y,z,u),  z < 9.99, Product(y, v)
+
+
+
+Find manfuacturers that manufacture products both < 9.99 and > 999.99
+
+  A(v) :- Purchase(x1,y1,z1,u1), z1 < 9.99, Product(y1, v),
+          Purchase(x2,y2,z2,u2), z2 > 999.99, Product(y2, v),
+
+Change this query so it returns manfuacturer that sold THE SAME
+PRODUCT both under 9.99 and over 999.99
+
+
+Examples of multiple rules:
+
+/************************/
+/* Friend(name1, name2) */
+/* Enemy(name1, name2)  */
+/************************/
+
+Find Joe's friends, and Joe's friends of friends.
+
+  A(x) :- Friend('Joe', x)
+  A(x) :- Friend('Joe', z), Friend(z, x)
+
+What does this compute ?
+
+  Mystery(x,y) :- Friend(x,z), Friend(z,y)
+
+What does this compute ?
+
+  M1(x,y) :- Friend(x,z), Friend(z,y)
+  M2(x,y) :- M1(x,z), M1(z,y)
+  A(x,y) :- M2(x,z), M2(z,y)
+
+----------------------
+
+We allow only *non-recursive* datalog in this course, meaning the
+following:
+
+   the relation in the head of rule k cannot appear in the body of rules
+
+----------------------
+
+Meaning of a datalog rule =  a logical statement !
+
+  M(x,y) :- Friend(x,z), Friend(z,y)
+
+Means:
+
+forall x. forall y. forall z. (Friend(x,z) and Friend(z,y) ==> M(x,y))
+
+and M is the smallest relation that has this property
+
+Note: logically equivalent to:
+
+forall x. forall y. (exists z. Friend(x,z) and Friend(z,y)) ==> M(x,y)
+
+That's why the variables not in the head are called "existential
+variables".
+
+
+----------------------
+
+Can we express everything in the Relational Algebra in datalog ?
+
+In class:
+
+  1. Union  R(A,B) U S(A,B)
+  2. Intersection
+  3. Selection
+  4. Join
+  5. Projections
+  6. Difference
+
+For union we need two rules:
+
+U(x,y) :- R(x,y)
+U(x,y) :- S(x,y)
+
+Intersection 
+I(x,y) :- R(x,y),S(x,y)
+
+Selection x>100 AND y='some string'
+S(x,y) :- R(x,y), x > 100, y='some string'
+Alternatively
+S(x,y) :- R(x,'some string)
+
+Selection x>100 OR y='some string'
+Need two rules
+S(x,y) :- R(x,y), x > 100
+S(x,y) :- R(x,y), y='some string'
+
+Cross-product
+C(x,y,u,v) :- R(x,y)S(u,v)
+
+Natural join
+J(x,y,z) :- R(x,y)S(y,z)
+
+Projections
+P(x) :- R(x,y)
+
+To express difference, we add negation 
+D(x,y) :- R(x,y) NOT S(x,y)
+
+Another example with negation:
+Find Joe's friends' of friends that are not Joe's friends.
+
+  A(x) :- Friend('Joe',y), Friend(y,x), not Friend('Joe',x)
+
+
+---------------------
+
+what's wrong ?
+
+  A(x,y) :- Friend('Joe',y), Enemy(y,z)
+
+  A(z) :- Friend('Joe', x), x != z
+
+  A(x) :- Friend('Joe', x), not (Friend(x,y))
+
+These rules generate infinite numbers of answers!
+
+---------------------
+
+"Safe datalog rule": every variable occurs in a positive atom.
+
+Every rule must be safe !
+
+---------------------
+
+Extra examples.
+
+1) Translate the following relational algebra expressions into datalog:
+
+R(A,B,C)
+S(D,E,F)
+T(G,H)
+
+1.1) project_{A} ( select_{B=3} (R) )
+
+A(a) :- R(a,3,c)
+
+Can also write:
+
+A(a) :- R(a,3,_)
+
+Underscore is used to denote an "anonymous variable", a variable
+that appears only once.
+
+1.2) project_{A} ( select_{B=3} (R) join_{R.A=S.D} select_{E=5}(S) )
+
+A(a) :- R(a,3,c), S(a,5,f)
+
+1.3) project_{A} ( select_{B=3 and C > 100} (R) )
+
+A(a) :- R(a,3,c), c > 100
+
+
+2) Translate the following datalog queries into SQL
+
+A(a) :- R(a,_,c), S(c,_,e), T(e,f,_), f > 100
+
+SELECT R.a
+FROM R, S, T
+WHERE R.A = S.D AND S.F = T.G
+AND T.H > 100
+
+
+
+---------------------
+Comparison between datalog and relational algebra
+
+1) Every expression in the basic relational algebra can be expressed as a Datalog query.
+2) But operations in the extended relational algebra (grouping, aggregation, and sorting)
+have no corresponding features in the version of datalog that we discussed today.
+3) Similarly, datalog can express recursion, which relational algebra cannot.

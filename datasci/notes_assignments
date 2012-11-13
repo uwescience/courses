@@ -1,0 +1,262 @@
+
+Lecture 1:
+
+Syllabus
+
+Course context, scope, content
+
+History, Definitions
+
+Theme: Relational
+
+Other courses
+
+Non-goal: R 
+
+Assignment 1:
+
+-- Launch an Amazon instance
+
+-- Install Python
+
+-- Install Java
+
+=====
+
+“tend to be “hard scientists”, particularly physicists, rather than computer science majors.  Physicists have a strong mathematical background, computing skills, and come from a discipline in which survival depends on getting the most from the data.  They have to think about the big picture, the big problem.”
+
+"They need to find nuggets of truth in data and then explain it to the business leaders"
+
+My view:
+"Statistics at scale"
+
+"Here is a bunch of data.  Here is my question."
+-- supervised learning
+
+"Here is a bunch of data.  What is important here?"
+-- unsupervised learning
+	
+Nuggets:
+
+definitions of data science
+http://www.micfarris.com/2011/09/data-science-defined/
+http://radar.oreilly.com/2010/06/what-is-data-science.html
+http://shop.oreilly.com/product/0636920025160.do
+
+Columbia:
+http://www.columbia.edu/cu/bulletin/uwb/subj/STAT/W4242-20123-001/
+
+eBook
+Jeffrey Stanton
+http://ischool.syr.edu/media/documents/2012/3/DataScienceBook1_1.pdf
+
+Mckinsey report:
+http://www.mckinsey.com/Insights/MGI/Research/Technology_and_Innovation/Big_data_The_next_frontier_for_innovation
+
+Dataists
+http://www.dataists.com/2010/09/a-taxonomy-of-data-science/
+
+Journal of Data Science
+http://www.jds-online.com/v1-1
+
+EMC summit
+http://www.greenplum.com/datasciencesummit/
+
+History of data science
+http://whatsthebigdata.com/2012/04/26/a-very-short-history-of-data-science/
+
+Peter Huber
+Ben Fry
+
+
+Hal Varian, Google’s Chief Economist, was interviewed a few months ago, and said the following in the McKinsey Quarterly:
+“The sexy job in the next ten years will be statisticians… The ability to take data—to be able to understand it, to process it, to extract value from it, to visualize it, to communicate it—that’s going to be a hugely important skill.”
+
+Mike Driscoll
+http://www.dataspora.com/2009/05/sexy-data-geeks/
+Skill #1: Statistics (Studying).
+Skill #2: Data Munging (Suffering). 
+Skill #3: Visualization (Storytelling).
+
+
+
+Simpler models with more data trump sophisticated models with less data
+
+"More data" introduces its own challenges
+
+Spectrum: mathematical sophistication -- scalable algorithms
+Data science about a 7 and heading right
+Statistics: Born out of data-poor scenarios
+
+Tools: Promiscuity is important.   No one-size-fits-all
+
+IT may build applications for others to use: Data scientists eat their own dog food.  Your deliverable is a data-driven decision, not an application. (Though in the process, you may build applications to empower others)
+
+Business intelligence: It's all about Data Warehousing, and DW is all about up-front organization to drive specific reports and dashboards.  Incorporating new data is difficult
+
+Ben Fry (Process):
+1. acquire – the matter of obtaining the data, whether from a file 
+on a disk or from a source over a network.
+2. parse – providing some structure around what the data means, 
+ordering it into categories.
+3. filter – removing all but the data of interest.
+4. mine – the application of methods from statistics or data 
+mining, as a way to discern patterns or place the data in mathematical context.
+5. represent – determination of a simple representation, whether 
+the data takes one of many shapes such as a bar graph, list, or 
+tree.
+6. refine – improvements to the basic representation to make it 
+clearer and more visually engaging.
+7. interact – the addition of methods for manipulating the data or 
+controlling what features are visible.
+
+
+http://cm.bell-labs.com/cm/ms/departments/sia/doc/datascience.pdf
+
+1974 Peter Naur, Concise Survey of Computer Methods 
+
+Course plan was presented at the IFIP Congress in 1968, titled “Datalogy, the science of data and of data processes and its place in education"
+
+“The science of dealing with data, once they have been established, while the relation of the data to what they represent is delegated to other fields and sciences.”
+
+
+2001: William Cleveland Bell Labs
+
+(25%) Multidisciplinary Investigations: data analysis collaborations in a collection of subject matter areas. 
+(20%) Models and Methods for Data: statistical models; methods of model building; methods of estimation and distribution based on probabilistic inference.  
+(15%) Computing with Data: hardware systems; software systems; computational algorithms.  
+(15%) Pedagogy: curriculum planning and approaches to teaching for elementary school, secondary
+school, college, graduate school, continuing education, and corporate training.  
+(5%) Tool Evaluation: surveys of tools in use in practice, surveys of perceived needs for new tools, and studies of the processes for developing new tools.
+
+
+
+Key idea: extract information from large datasets and then present something of use to non-data experts
+
+Ben] Fry… argues for an entirely new field that combines the skills and talents from often disjoint areas of expertise… [computer science; mathematics, statistics, and data mining; graphic design; infovis and human-computer interaction]
+
+
+
+quadrant: Scale
+
+Quiz:
+
+There are a varie
+
+
+Jim Gray's laws of Data Engineering
+Go from working to working
+Start with 20 questions
+Scale-out
+Take the analysis to the data
+
+
+Messy data
+Schemas can't exists
+
+
+Jobs Data:
+-- Dice
+-- Craigslist
+
+
+=============
+
+courses
+
+matrix multiple in SQL (MADSkills)
+
+matrix multiply in MR (SOCC tutorial, TODO: find paper)
+
+
+
+Visualization:
+
+no scrolling
+no refresh
+
+[Find speaker at UW on vis. Ask Cecilia?]
+
+
+VizDeck:
+
+=========
+Courses
+
+Data model oriented
+
+Hammerbacher and Franklin:
+less emphasis on scale
+more emphasis on learning and analytics
+more emphasis on foundations
+
+Taxonomy and tool tour:
+Ex: workflow
+Ex: provenance
+
+http://datascienc.es/schedule/
+
+Nothwestern:
+http://www.analytics.northwestern.edu/overview/index.html
+
+NCState:
+http://analytics.ncsu.edu/?page_id=1799
+
+
+http://ischool.syr.edu/future/cas/datascience.aspx
+
+
+Data Analysis, Johns Hopkins (via Coursera)
+Computing for Data Analysis, Johns Hopkins (via Coursera)
+
+=========
+
+Assignments:
+
+Twitter:
+
+Fukushima:
+
+Project:
+Part 1: Acquire Data, state question(s)
+Part 2: Implement solution
+Part 3: Present results
+
+=========
+
+Call Aaron Kimball about travel date?
+
+
+
+Jeff Hammerbacher's?
+
+	
+	
+========	
+Introduction to data (data types, data movement, terminology, etc.)
+Storage and Concurrency Preliminaries
+Files and File-based data systems
+Relational Database Management Systems
+Hadoop Introduction
+NoSQL - MapReduce vs. Parallel RDBMS
+Search and Text Analysis
+
+
+* Data modeling: relations, key-value, trees, graphs, images, text 
+* Relational algebra and parallel query processing 
+
+
+* NoSQL systems, key-value stores 
+
+
+* Tradeoffs of SQL, NoSQL, and NewSQL systems 
+* Algorithm design in Hadoop (and MapReduce in general) 
+* Basic statistical analysis at scale: sampling, regression 
+* Introduction to data mining: clustering, association rules, decision trees 
+* Case studies in analytics: social networking, bioinformatics, text processing
+
+
+Week 1: Introduction to Big Data: big data definitions, data science definitions, history and context, technology landscapeReading: None
+
+
+Week 2: Relational data model revisited, relational algebra, query processing Week 3: Hadoop, Elastic MapReduce (Hadoop vs. RDBMS)Reading: TBDWeek 3: MapReduce algorithms: Join, matrix multiply, communication costs, Reading: TBDWeek 4: Week 5: Key-value stores and NoSQLReading: http://www.cidrdb.org/cidr2011/Papers/CIDR11_Paper32.pdfWeek 6: key-value stores, low-latency, indexing: Hbase, DynamoDBCase study: DynamoDBAssignment: DynamoDB speed testWeek 7: Declarative Query, Pig, HIVE, Tenzing, DremelCase study: PigReading: http://infolab.stanford.edu/~usriv/papers/pig-latin.pdf Assignment: Elastic MapReduce, Billion Triple Challenge Pig QueryWeek 8: Practical Machine Learning Toolbox: k-means clustering, association rule mining, multi-dimensional scaling, collaborative filtering 1) Social Networks: Provide a solution for graph query over the Billion Triple Challenge Dataset  (e.g., triangle query)OR2) Text: Provide a solution for keyword search over the entire corpus for the Wikipedia datasetOR3) Genomics: Perform one of the analyses described in the talk below using the 1000 genomes datasethttp://schatzlab.cshl.edu/presentations/2010-03-15.XGen-Scalable%20Solutions.pdfWeek 9: NewSQL: Column-oriented DBs, CAP theorem revisitedMonetDB, Vertica, VoltDB, JustOne DB, NimbusDBCase Study: MonetDBReading: http://db.csail.mit.edu/projects/cstore/abadi-sigmod08.pdf Assignment: Group case studiesWeek 10: Mini-Project PresentationsExercise: Cloud Data Interview Questions

@@ -1,0 +1,18 @@
+Notes for the future:
+- Update assignment instructions to include query runtimes with and without indexes.
+- Update instructions to indicate time to load the data and time to build indexes.
+- Double-check and indicate that group by can be much slower than distinct in SQLite.
+- Odd SQLite behavior: can select attributes that did not appear in the group by! E.g. group by id but select fname.
+
+Common student problems
+- selection v. join in index choice explanations
+- replicating indexes on PRIMARY KEY columns (ok because we didn't warn on it)
+- problem 2: errors in data entry, historical figures with reused footage.
+
+================================================================
+Winter 2012
+
+-- I did not update the assignment, and the same issues came up.  
+
+-- Also, query 3 runs much slower than 15'; should update the
+   assignment to say that.

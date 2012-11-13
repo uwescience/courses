@@ -1,0 +1,10 @@
+Instructions for setting up the SQL Azure student accounts and databases for homework 5:
+
+1. Run the Python script create-tables-hw5.py under the assignments/azure directory to generate the master.sql file of SQL commands for creating the necessary accounts and databases.
+2. Execute each CREATE DATABASE statement in master.sql on the master db. 
+3. For each student database created execute the following generated statements from master.sql to setup permissions/accounts on each student's new DB:
+  CREATE USER STUDENTID FOR LOGIN STUDENTID;
+  GRANT CREATE TABLE TO STUDENTID;
+  EXEC sp_addrolemember N'db_owner', N'STUDENTID'
+
+where STUDENTID is the uw Net ID.  The permissions, 'db_owner', allows the student to be able to write and create new tables in their database. 

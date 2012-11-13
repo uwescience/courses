@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<title>CSE 344 - Homework 6, AWS setup and usage</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="hw6.css">
+</head>
+
+<body>
+<div class="topheading">
+  <h1>AWS Setup </h1>
+</div>
+
+<h2>Setting up your AWS account </h2>
+<p>Note: Amazon will ask you for your credit card information during the setup process. This is normal. </p>
+<ol>
+  <li>Go to <a href="http://aws.amazon.com/">http://aws.amazon.com/</a>
+and sign up:<br>
+<ol style="list-style-type: lower-alpha">
+<li>You may sign in using your existing Amazon account or
+you can create a new account by selecting "I am a new user."</li>
+<li>Enter your contact information and confirm your
+acceptance of the AWS Customer Agreement.</li>
+<li>Once you have created an Amazon Web Services Account,
+check your email for your confirmation step. You need Access Identifiers 
+to make valid web service requests.</li>
+</ol>
+</li>
+
+<li>Go to <a href="http://aws.amazon.com/">http://aws.amazon.com/</a>
+and sign in. You need to double-check that your account is
+signed up for three of their services: Simple Storage Service (S3),
+Elastic Compute Cloud (EC2), and Amazon Elastic MapReduce by clicking <a
+href="https://aws-portal.amazon.com/gp/aws/manageYourAccount">
+here</a> -- you should see "Services You're Signed Up For" under "Manage Your Account". </li>
+<li>You should have received your  AWS credit code by email. Armed with this code, go to <a href="http://aws.amazon.com/awscredits/"> http://aws.amazon.com/awscredits/</a> This gives you $100 credit towards AWS. Be aware that if you exceed it, amazon will charge your credit card without warning.  Normally, this credit is more than enough for this homework assignment (if you are interested in their changes, see
+  <a href="http://aws.amazon.com/elasticmapreduce/pricing/">AWS charges:</a> 
+  
+  currently, AWS charges about 10 cents/node/hour for 
+  the default "small" node size.). However, you must remember to terminate <em>manually</em> the AWS cluster (called Job Flows) when you are done: if you just close the browser, the job flows continue to run, and  amazon will continue to charge you for days and weeks, exhausting your credit and charging you huge amount on your credit card.  Remember to terminate the AWS cluster.</li>
+</ol>
+
+<h2 id="Setting_up_an_EC2_key_pair">Setting up an EC2 key pair</h2>
+<p>
+To connect to an Amazon EC2 node, such as the master nodes for the
+Hadoop clusters you will be creating, you need an SSH key pair.
+To create and install one, do the following:
+</p>
+
+<ol>
+<li>After setting up your account, follow
+<a href="http://docs.amazonwebservices.com/AWSEC2/latest/UserGuide/generating-a-keypair.html" 
+target=_blank>
+Amazon's instructions</a> to create a key pair.  Follow the instructions in 
+section "Having AWS create the key pair for you," subsection "AWS Management 
+Console."  (Don't do this in Internet Explorer,
+or you might not be able to download the .pem private key file.)</li>
+
+<li>Download and save the .pem private key file to disk. We will reference
+the .pem file as <code>&lt;/path/to/saved/keypair/file.pem&gt;</code>
+in the following instructions.</li>
+<li>Make sure only you can access the .pem file. If you do not change the permissions, you will get an error message later:
+  <pre>$ chmod 600 &lt;/path/to/saved/keypair/file.pem&gt;</pre>
+</li>
+</ol>
+
+<h2 id="Running_jobs_on_AWS">Starting an AWS Cluster and running Pig Interactively</h2>
+<p>To run a Pig job on AWS, you need to start up an AWS cluster using the 
+<a href="https://console.aws.amazon.com/elasticmapreduce/home" target="_blank">
+web Management Console</a> and  connect to the Hadoop master node. Do this by following the Pig tutorial but note that things change quickly in the cloud, so the screenshots and other details will be a bit outdated:
+</p>
+
+<ol>
+<li>Complete Section 1 (you already did this), Section 2, and Section 3.1 (only) in <a href="http://aws.amazon.com/articles/2729" target="_blank">
+  Amazon's interactive Pig tutorial</a>. Some extra notes to help you along the way:<br>
+  <br>
+</li>
+<ul>
+  <li>In section 2.1.5, when you first create the job flow and pick the type to be &quot;Pig Program&quot;, you should also select: &quot;Run your own application&quot;. <br><br></li>
+  <li>In section 2.1.6: make sure to select only <strong>1 instance</strong>. In the last question of the homework you will need to 
+    set your cluster to have 20 nodes, rather than the 1 node. <br><br></li>
+  <li>When you are done setting up your workflow and you come back to your management console, you may need to refresh the page to see your workflow. <br>
+    <br>
+  </li>
+  <li>In section 2.3: you are instructed to obtain the Master Public DNS Name: you get this by clicking (highliging) your job flow; this creates a frame at the bottom of your window. Scroll in that frame and you will find the Master Public DNS at the bottom. We call this Master Public DNS name <span style="color:red; font-weight:bold;">&lt;master.public-dns-name.amazonaws.com&gt;</span>. Section 2.3 instructs you to ssh to it: do it. For your reference, here is the ssh command (so you can cut/paste it from here):<br>
+    <br>
+    <span class="programlisting"><code>$ ssh -o "ServerAliveInterval 10" -i &lt;/path/to/saved/keypair/file.pem&gt;  hadoop@<span style="color: red; font-weight: bold;">&lt;master.public-dns-name.amazonaws.com&gt;</span></code></span><br>
+    <br>
+  </li>
+  <li>In section 3.1 type:
+    <pre> <strong>$ pig</strong><strong><br></strong></pre>
+    <p>Instead of  <code>pig -x local</code>. <strong><br>
+    </strong></p>
+  </li>
+</ul>
+<li>Once you completed Sections 1, 2, and 3.1 you have a pig prompt:<br>
+  <pre>  <strong>grunt&gt;</strong>
+</pre>
+  This is the interactive mode where you type in pig queries. Here you will cut and paste <code>example.pig</code>, but only after you read &quot;Managing the results of your Pig queries&quot; below. In this homework we will use pig only interactively. (The alternative is to have pig read the program from a file.)<br>
+  <br>
+</li>
+<li>Useful information:
+  <ul>
+    <li>To exit pig, type <code>quit</code> at the <code>grunt&gt;</code> promt. To terminate the ssh session, type <code>exit</code> at the unix prompt: after that you must terminate the AWS cluster (see next).</li>
+    <li>To kill a pig job type CTRL/C while pig is running.This kills pig only: after that you need to kill the hadoop job. We show you how to do this below. <br>
+    </li>
+  </ul>
+</li>
+</ol>
+<h2 id="Terminating_a_running_cluster">Monitoring Hadoop jobs</h2>
+<p> You are required in this homework to monitor the running Hadoop jobs on your AWS cluster using 
+the master node's <em>job tracker</em> web UI. There are two ways to do this: using <a href="http://lynx.isc.org/" target="_new">lynx</a>  or using your own browser with a SOCKS proxy.</p>
+<ol>
+  <li>Using LYNX. Very easy, you don't need to download anything. Open a separate <code>ssh</code> connection to the AWS master node and type:
+<br>
+    <br>
+    <code>% lynx http://localhost:9100/ </code><br>
+<br> 
+Lynx is a text browswer. Navigate as follows:  <code>up/down arrows </code>= move through the links (current link is highlighted); <code>enter</code> = follows a link; <code>left arrow</code> = return to previous page. <br>
+<br>
+Examine the webpage carefully, while your pig pgram is running. You should find information about the map tasks, the reduce tasks, you should be able to drill down into each map task (for example to monitor its progress); you should be able to look at the log files of the map tasks (if there are runtime errors, you will see them only in these log files).<br>
+<br>
+  </li>
+  <li>Using SOCKS proxy, and your own browser. This requires more work, but the nicer interface makes it worth the extra work
+    <ol>
+    <li>Set up your browser  
+      to use a proxy when connecting to the master node.
+      <em>Note: If the instructions fail for one browser, try the other browser</em>.
+      In particular, it seems like people are having problems with Chrome but Firefox, especially following Amazon's instructions, works well.
+      <ul>
+        <li>Firefox:
+          <ol>
+            <li>Install the <a href="https://addons.mozilla.org/en-US/firefox/addon/2464/">
+              FoxyProxy extension</a> for Firefox.</li>
+            <li>Copy the <code>foxyproxy.xml</code> configuration file from the 
+              <code>hw6/</code> folder into your
+              <a href="http://support.mozilla.com/kb/profiles">Firefox profile folder</a>.</li>
+            <li>If the previous step doesn't work for you, try deleting
+              the <code>foxyproxy.xml</code> you copied into your profile, and using
+              <a href="http://docs.amazonwebservices.com/ElasticMapReduce/latest/DeveloperGuide/UsingtheHadoopUserInterface.html#AccessingtheHadoopUserInterfacetoMonitorJobStatus2">
+                Amazon's instructions</a> to set up FoxyProxy manually. If you use Amazon's instructions, be careful to use port 8888 instead of the port in the instructions. </li>
+            </ol>
+          </li>
+        <li>Chrome:
+          <ol>
+            <li>Install <a href="https://chrome.google.com/webstore/detail/caehdcpeofiiigpdhbabniblemipncjj" target="_new">proxy switch!</a></li>
+            <li>Click the <em>Tools</em> icon (upper right corner; don't confuse it with the Developer's Tools !), Go to <em>Tools, </em>go to <em> Extensions</em>. Here you will see the ProxySwitch!: click on <em>Options</em>.</li>
+            <li>Create a new Proxy Profile: Manual Configuration, Profile name = Amazon Elastic MapReduce (any name you want), SOCKS Host = localhost, Port = 8888 (you can choose any port you want; another favorite is <span class="programlisting">8157</span>), SOCKS v5. If you don't see &quot;SOCKS&quot;, de-select the option to &quot;Use the same proxy server for all protocols&quot;. </li>
+            <li>Create two new swtich rules (give them any names, say AWS1 and AWS2). Rule 1: pattern=*.amazonaws.com:*/*, Rule 2: pattern=*.ec2.internal:*/*. For both, Type=wildcard, Proxy profile=[the profile you created at the previous step].</li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    <li>Open a new local terminal window and create the SSH SOCKS tunnel 
+to the master node using the following:
+      <pre class="programlisting">
+$ ssh -o "ServerAliveInterval 10"<b> </b>-i &lt;/path/to/saved/keypair/file.pem&gt; -ND 8888 hadoop@<span style="color: red; font-weight: bold;">&lt;master.public-dns-name.amazonaws.com&gt;</span></pre>
+(The <code>-N</code> option tells <code>ssh</code> not to start a shell,
+ and the <code>-D 8888</code> option tells <code>ssh</code> to start
+ the proxy and have it listen on port 8888.)<br><br>
+
+The resulting SSH window will appear to hang, without any output;
+this is normal as SSH has not started a shell on the master node, but
+just created the tunnel over which proxied traffic will run.<br><br>
+Keep this window running in the background (minimize it) until
+you are finished with the proxy, then close the window to shut 
+the proxy down.</li>
+    <li>Open your browser, and type one of the following URLs:
+      <ul>
+        <li>For the job tracker: <code>http://<span style="color:red; font-weight:bold">&lt;master.public-dns-name.amazonaws.com&gt;</span>:9100/</code></li>
+        
+        <li>For HDFS management: <code>http://<span style="color:red; font-weight:bold">&lt;master.public-dns-name.amazonaws.com&gt;</span>:9101/</code></li>
+        </ul>
+    </li>
+    </ol>
+    <blockquote>
+      <p>The job tracker enables you to see what MapReduce jobs are executing in your cluster and the details on the number of maps and reduces that are running or already completed. </p>
+      <p>Note that, at this point in the instructions, you will not see any MapReduce jobs running but you should see that your cluster has the capacity to run a couple of maps and reducers on your one instance. </p>
+      <p>The HDFS manager gives you more low-level details about your cluster and all the log files for your jobs. </p>
+    </blockquote>
+  </li>
+</ol>
+<h2 id="copying_to_master2">&nbsp;</h2>
+<h2>Killing a Hadoop Job</h2>
+<p>Later, in the assignment, we will show you how to launch MapReduce jobs through Pig. You will basically write Pig Latin scripts that will be translated into MapReduce jobs (see lecture notes). Some of these jobs can take a long time to run. If you decide that you need to interrupt a job before it completes, here is the way to do it: </p>
+<p>If you want to kill pig, you first type CTRL/C, which kills pig only.  Next, kill the hadoop job, as follows. From the job tracker interface find the hadoop <code>job_id</code>, then type:</p>
+<blockquote>
+  <p>	<code>% hadoop job -kill job_id</code></p>
+</blockquote>
+<p>You do not need to kill any jobs at this point. </p>
+<p>However, you can now exit pig (just type &quot;quit&quot;) and exit your ssh session. You can also kill the  SSH SOCKS tunnel 
+to the master node. </p>
+<h2 id="Terminating_a_running_cluster">&nbsp;</h2>
+<h2>Terminating an AWS cluster</h2>
+<p>When you are done running Pig scripts, make sure to <strong>ALSO</strong> terminate your job flow. This is a step that you need to do <strong>in addition to </strong>stopping pig and Hadoop (if necessary) above.  </p>
+<p>This step  shuts down your AWS cluster:</p>
+<ol>
+  <li>Go to the <a href="https://console.aws.amazon.com/elasticmapreduce/home" target="_blank"> Management Console.</a></li>
+  <li>Select the job in the list.</li>
+  <li>Click the Terminate button (it should be right below "Your
+    Elastic MapReduce Job Flows").</li>
+  <li>Wait for a while (may take minutes) and recheck until the job state becomes TERMINATED.</li>
+</ol>
+<p><strong>Pay attention to this step</strong>. If you fail to terminate your job and only close the browser, or log off AWS, your AWS will continue to run, and AWS will continue to charge you: for hours, days, weeks, and when your credit is exhausted, it chages your creditcard. Make sure you don't leave the console until you have confirmation that the job is terminated.</p>
+<p>You can now shut down your cluster.  </p>
+<h2 id="job_tracker"></h2>
+<h2>Checking your Balance  </h2>
+<p>Please check your balance regularly!!! </p>
+<ol>
+  <li>Go to the <a href="https://console.aws.amazon.com/elasticmapreduce/home" target="_blank"> Management Console.</a></li>
+  <li>Click on your name in the top right corner and select &quot;Account Activity&quot;. </li>
+  <li>Now click on &quot;detail&quot; to see any charges &lt; $1. </li>
+</ol>
+<p>To avoid unnecessary charges, terminate your job flows when you are not using them. </p>
+<blockquote>
+  <p>&nbsp;</p>
+</blockquote>
+<h2>Managing the results of your Pig queries</h2>
+<p>For the next step, you need to restart a new cluster as follows. Hopefully, it should now go very quickly: </p>
+<ul>
+  <li>Start a new cluster with one instance. </li>
+  <li>Start a new interactive Pig session (through grunt) </li>
+  <li> Start a new SSH SOCKS tunnel 
+to the master node</li>
+</ul>
+<p>We will now get into more details about running Pig scripts. </p>
+<p>Your pig program stores the results in  several files in a directory. You have two options: (1) store these files in the Hadoop File System, or (2) store these files in S3. In both cases you need to copy them  to your local machine.</p>
+<h3>1. Storing Files in the Hadoop File System</h3>
+<p>This is done through the following pig command (used in <code>example.pig</code>):</p>
+<pre>	store count_by_object_ordered into '/user/hadoop/example-results' using PigStorage();</pre>
+<p>Before you run the pig query, you need to (A) create the /user/hadoop directory. After you run the query you need to (B) copy this directory to the local directory of the AWS master node, then (C) copy this directory from the AWS master node to your local machine.</p>
+<h4>1.A. Create the &quot;/user/hadoop Directory&quot; in the Hadoop Filesystem</h4>
+<p>You will need to do this for each new job flow that you create. 
+<p>To create a <code>/user/hadoop</code> directory on the AWS cluster's
+  HDFS file system run this from the AWS master node:
+<pre>
+% hadoop dfs -mkdir /user/hadoop
+</pre>
+Check that the directory was created by listing it with this command:
+<pre>
+% hadoop dfs -ls /user/hadoop
+</pre>
+<p>You may see some output from either command, but you should not see any errors.</p>
+<p>You can also do this directly from grunt with the following command.  </p>
+<pre>grunt&gt; fs -mkdir /user/hadoop </pre>
+<p>Now you are ready to run your first sample program. Take a look at the starter code that we provided in <a href="hw6.tar.gz">hw6.tar.gz</a>. Copy and paste the content of <code>example.pig.</code> (We give more details about this program back in hw6.html). </p>
+<p><strong>Note</strong>: The program may appear to hang with a 0% completion time... go check the job tracker. Scroll down. You should see a MapReduce job running with some non-zero progress. </p>
+<p><strong>Note 2</strong>: Once the first MapReduce job gets to 100%... if your grunt terminal still appears to be suspended... go back to the job tracker and make sure that <strong>the reduce phase is also 100% complete</strong>. It can take some time for the reducers to start making any progress. </p>
+<p><strong>Note 3</strong>: The example generates more than 1 MapReduce job... so be patient. </p>
+<p>&nbsp;</p>
+<h4>1.B. Copying files from the Hadoop Filesystem</h4>
+<p>The result of a pig script is stored in the hadoop directory specified by the <code>store</code> command.
+That is, for <code>example.pig</code>, the output will be stored at 
+<code>/user/hadoop/example-results</code>, as specified in the script.
+HDFS is separate from the master node's file system, so  
+before you can copy this to your local machine, you must copy the directory
+from HDFS to the master node's Linux file system:
+<pre>% hadoop dfs -copyToLocal /user/hadoop/example-results example-results</pre>
+<p>This will create a directory <code>example-results</code> with 
+  <code>part-*</code> files in it, which you can copy 
+to your local machine with <code>scp</code>.
+You can then concatenate all the <code>part-*</code> files to get
+a single results file, perhaps sorting the results if you like.
+</p>
+<p>An easier option may be to use</p>
+<pre>% hadoop fs -getmerge  /user/hadoop/example-results example-results</pre>
+
+<p>This command takes a source directory and a destination file as input and concatenates files in src into the destination local file.  </p>
+<p><br>
+  Use <code>hadoop dfs -help</code> or see the <a href="http://hadoop.apache.org/common/docs/r0.20.0/hdfs_shell.html"><code>hadoop dfs</code> guide</a>
+  
+  to learn how to manipulate HDFS.  (Note that <code>hadoop fs</code> is
+  the same as <code>hadoop dfs</code>.)<br>
+  <br>
+</p>
+<h4>1.C. Copying files to or from the AWS master node</h4>
+<ul>
+  <li>
+    To copy one file from the master node back to your computer, 
+    run this command <em>on the local computer:</em><br>
+    <br>
+    <pre>$ scp -o "ServerAliveInterval 10" -i &lt;/path/to/saved/keypair/file.pem&gt; hadoop@<span style="color: red; font-weight: bold;">&lt;master.public-dns-name.amazonaws.com&gt;</span>:&lt;file_path&gt; .
+    </pre>
+    where <code>&lt;file_path&gt;</code> can be absolute or relative to the
+    AWS master node's home folder. The file should be copied onto your current directory
+  ('.') on your local computer.<br>
+  <br>
+  </li>
+  <li>Better: copy an entire directory, recursively.  Suppose your files are in the directory <code>example-results</code>.  They type the following <em>on your loal computer</em>:
+    <pre>
+
+$ scp -o "ServerAliveInterval 10" -i &lt;/path/to/saved/keypair/file.pem&gt; -r hadoop@<span style="color: red; font-weight: bold;">&lt;master.public-dns-name.amazonaws.com&gt;</span>:example-results .</pre>
+  </li>
+  <li>As an alternative, you may run the scp command on the AWS master node, and connect to your local machine.  For that, you need to know your local machine's domain name, or IP address, and your local machine needs to accept ssh connections.</li>
+</ul>
+<h3>2. Storing Files in S3</h3>
+<p>This seems much easier to use. Go to your AWS Management Console, click on Create Bucket, and create a new bucket (=directory). Give it a name that may be a public name. Let's say you call it<code> superman-hw6</code>. Click on Actions, Properties, Permissions. Make sure you have all the permissions.</p>
+<p>Modify the store command of <code>example.pig</code> to:</p>
+<pre>	store count_by_object_ordered into 's3n://superman-hw6/example-results';</pre>
+<p>Run your pig program. When it terminates, then in your S3 console you should see the new directory <code>example-results</code>. Click on individual files to download. The number of files depends on the number of reduce tasks, and may vary from one to a few dozens. The only disadvantage of using S3 is that you have to click on each file separately to download.</p>
+<p>Note that S3 is permanent storage, and you are charged for it. You can safely store all your query answers for several weeks without exceeding your credit; at some point in the future remember to delete them.</p>
+<p><br>
+</p>
+<p>&nbsp;</p>
+</body>
+</html>

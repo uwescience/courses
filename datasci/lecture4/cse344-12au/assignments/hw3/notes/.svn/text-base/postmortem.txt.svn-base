@@ -1,0 +1,5 @@
+Clarify "remote desktop" instructions. Students need to indicate CSEPCLAB\login instead of just login.
+Clarify that SQL Server password is not their usual windows password. Make sure that this is in the instructions.
+Clarify that one has to use "use imdb" with local SQL Server and select the database before running "New Query" for SQL Azure.
+... other stuff?
+

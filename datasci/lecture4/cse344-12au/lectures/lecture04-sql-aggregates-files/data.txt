@@ -1,0 +1,11 @@
+01|bagel|1.99|20|september
+02|bagel|2.50|12|december
+03|banana|0.99|9|september
+04|banana|1.59|9|february
+05|gizmo|99.99|5|february
+06|gizmo|99.99|3|march
+07|gizmo|49.99|3|april
+08|gadget|89.99|3|january
+09|gadget|89.99|3|february
+10|gadget|49.99|3|march
+11|orange|null|5|may

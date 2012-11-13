@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type">
+<title>CSE 444 - Connecting to SQL Server</title>
+
+<style type="text/css">
+h1, h2, h3, h4, h5, h6 {
+	font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+}
+.style1 {color: #006600}
+.red {
+	color: #F00;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Starting with SQL Server</h1>
+
+<p>
+We will be using <strong>Microsoft SQL Server 2008 running on 
+IISQLSRV.cs.washington.edu</strong>.  Accounts on it have been set up for each of you, 
+and you have been given your user names and passwords. To get started,you will need to run  <strong>SQL Server Management Studio. </strong>There are three options: (1) run it from any Windows machine in the undergrad labs. (2) remote desktop to a Windows machine following these instructions <a href="http://vdi.cs.washington.edu/vdi/" target="_new">http://vdi.cs.washington.edu/vdi/</a> and run it from there. (3) Install a copy of SQL Server Management Studio on your own machine  from&nbsp;<a href="http://msdn.e-academy.com/elms/Storefront/Home.aspx?campus=washington_cs" target="_new">MSDNAA</a> then use&nbsp;<a href="tunneling-instructions.html">SSH tunneling for SQL Server</a><a href="http://www.cs.washington.edu/education/courses/csep544/11au/resources/tunneling-instructions.html"></a>. </p>
+<p>SQL Server Management Studio is a client application. This client application will  establish a connection to the server where the IMDB database (and other databases) are located. The client application will send SQL statements to the server. The server will execute these SQL statements and will send results back to the client application.</p>
+<p> <a href="http://technet.microsoft.com/en-us/library/cc917543.aspx">Click here for more information about a client-server setup and an illustrative figure</a>. </p>
+<p>Before you can run queries on IISQLSRV, you thus need to 
+connect to the server in Management Studio and change your password:</p>
+       
+<ol>
+  <li>Go to Start -&gt; All Programs -&gt; Microsoft SQL Server 2008 
+	-&gt; SQL Server Management Studio.</li>
+  <li>A box labeled "Connect to Server" will show up.
+	Fill in the options to connect:
+                
+    <ol type="a">
+      <li>In the box labeled <em>SQL Server</em>, 
+      enter <em>iisqlsrv.cs.washington.edu</em>&nbsp;.</li>
+      <li>Select the <em>Use SQL Server Authentication</em> option.</li>
+      <li>Enter your login (your UW account) and password (has been given in class).</li>
+      <li>Click <em>OK</em>.</li>
+    </ol>
+
+  </li>
+  <li>You will be asked to change your password.  Enter the new password;
+  you only need to change it on your first connection.</li>
+  <li>Now you are connected; on the left side of the screen
+  there should be an expanding tree.</li>
+</ol>
+
+        
+<p>
+In order to use Management Studio to connect to the server
+and run SQL queries, you need to go through the following steps:</p>
+
+        
+<ol>
+  <li>Connect to the server using Management Studio.</li> 
+  <li>Start a new query by clicking <em>New Query</em> in the upper left.</li>
+  <li>Type in <span class="style1"><code>USE imdb;</code></span>&nbsp;, and click <span class="red">! </span>Exectue, or just press F5 to execute
+  the statement.  This will set your current database to be the imdb
+  database, used in the first project.</li>
+  <li>You can now enter and execute any SQL statements. Pressing F5
+  runs all the SQL code in the text window, displaying the results in
+  the results view below.  If you highlight a piece of SQL code and
+  press F5, only that code is executed.</li>
+</ol>
+
+<p>
+That should be enough to get you started with Management Studio and 
+SQL Server, but both tools have many more capabilities.  The variant of SQL 
+supported by SQL Server is called 
+<a href="http://msdn.microsoft.com/library/bb510741">Transact-SQL (T-SQL)</a>;
+in addition to executing all T-SQL statements, Management Studio can also
+be used to view query execution plans, statistics, and more.  To learn more
+about these features, explore the Query, Tools, and View menus of Management
+Studio, or read the
+<a href="http://msdn.microsoft.com/library/bb934498">Management Studio manual</a>.
+</p>
+
+<p>
+Note that in addition to read-only privileges on the imdb database,
+you also have your own database on IISQLSRV.  This database's name
+is the same as your SQL Server username, so it can be accessed using
+the SQL statement <code class="style1">USE your_iisqlsrv_username;</code>&nbsp;You have full privileges to this database; feel free to use it for
+any project or homework assignment.</p>
+
+<p>
+<b>WORKING FROM HOME :</b> It is not possible to directly connect to SQL 
+Server on IISQLSRV from outside the CSE network. This restriction is there for security reasons.  If you plan to use 
+Management Studio or connect to SQL Server from home, consider working on a 
+<a href="http://www.cs.washington.edu/lab/services/vdi/" target="_new">CSE terminal server</a>, see
+instructions here <a href="http://vdi.cs.washington.edu/vdi/" target="_new">http://vdi.cs.washington.edu/vdi/</a> , or run Management Studio on your own Windows machine and set up <a href="tunneling-instructions.html">SSH tunneling for SQL Server</a>.</p>
+
+</body>
+</html>

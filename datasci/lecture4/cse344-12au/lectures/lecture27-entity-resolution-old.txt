@@ -1,0 +1,169 @@
+================================================================
+CSE 344 -- Fall 2011
+Lecture 27:  Data cleaning: Entity Resolution
+================================================================
+
+Acks: Some content in this lecture comes from Arvind Arasu's 
+guest talk in 544. Arvind is a researcher at MSR. See:
+http://www.cs.washington.edu/education/courses/cse544/09au/lecture-notes/lecture18/lecture18.pdf
+
+The first few slides in the above talk show a great
+motivating example.
+
+Data cleaning: Process of fixing errors and inconsistencies in data.
+Subject of research for nearly 50 years.
+Several orthogonal sub-problems. We look at the entity resolution problem.
+
+The problem:
+   -- we have two datasets about the "same" entities (people, or
+   companies, or...):  S = {x1, x2, ...} and T = {y1, y2, ...}
+   -- however, the entities are represented (or spelled) differently
+   in the two datasets
+   -- Problem: "resolve" the entities, i.e. find matching entities
+
+Reasons for mismatches:
+- misspellings
+- variant names: e.g., name with or without middle initial.
+- misunderstandings of names: e.g., Robert Henry or Henry Robert?
+- evolution of values: e.g., address change.
+- abbreviations
+
+Examples:
+
+x = "Mr. J. Brown"   v.s.   y = "John Brown"
+x = "Microsoft Corporation" v.s.  y = "The Microsoft Company"
+
+Other names for the entity resolution problem:
+   - For DB people: data matching, merge/purge, duplicate detection,
+     data cleansing, ETL (extract, transform, and load),
+     deduplication, de-duping
+   - For AI/ML people: reference matching, database hardening
+
+Main applications:
+   - fuzzy join, e.g. dirty table against reference table
+   - removing duplicates in a single table
+
+
+
+================================================================
+
+Step 1: finding similar items
+
+   -- define a similarity function between two entities, "x~y", return
+      all pairs whose similarity exceeds some threshold
+
+   -- normalize the representation, using rules: effective only if
+      such a normalization is already standardized,
+      e.g. U.S. addresses: replace St with Street in street names
+      and with Saint in city names.
+
+   -- often we have to match two records: several attributes are
+      similar, and we need to combine their similarity scores into one
+      global score. 
+
+Useful properties of similarity function:
+
+0) Strings representing the same concept ⇒ high similarity 
+   Strings representing different concepts ⇒ low similarity
+
+1) A record is always similar to itself (idempotence)
+2) A record r is similar to another record s iff s is also similar to r (commutativity)
+3) If r is similar to s and could thus be merged with s, but s is
+   instead merged with a third record t, then r should be similar to
+   the merged recod.
+
+Step 2: merging similar items: if x, y are sufficiently similar, then
+        merge them into x*y.
+
+Useful properties of merge function:
+1) If we merge a record with itself, we get the record back
+(idempotence)
+2) Merging r with s should yield the same result as merging s with r.
+3) merge (merge(r,s), t) = merge( r, merge(s,t)) (associativity)
+4) if x is similar to y then merge(x,y) is defined
+
+
+If these properties hold, then one cleaning algorithm is as follows:
+While similar records exist
+   Identify two similar records r and s
+      Replace them with the output of merge(r,s)
+
+
+Interesting idea: What if we associate probabilities with merged records?
+
+================================================================
+
+Let's further discuss similarity functions.
+
+The Edit Distance (a.k.a. Levenstein distance)
+
+Definition.  Given two strings x = x1.x2... and y= y1.y2... their
+"edit distance" D(x,y) is the shortest sequence of edit commands that
+transforms x into y.  An edit command is one of:
+
+   -- delete a character (cost = 1)
+   -- insert a character (cost = 1)
+   -- substitute one character for another (cost = 1)
+
+*** IN class: compute the edit distance:
+
+   x = "Bill Gates, Jr"
+   y = "William Gates, Chair"
+
+Computing D(x,y) in polynomial time.
+
+D(i,j) = edit distance of x1...xi and y1...yj
+
+Then:
+
+D(i,j) = min of the following three values
+   1.   D(i-1,j-1)    if xi=yj   /* copy */
+     or D(i-1,j-1)+1  if xi!=yj  /* substitute */
+   2. D(i-1,j)+1               /* insert */
+   3. D(i,j-1)+1               /* delete */
+
+See illustration on the white board.
+
+
+Edit distance limitations:
+- Should we compute distance character by character or word by word?
+- If things are simply out-of-order, edit distance will be very high.
+
+================================================================
+
+Jaccard Similarity.
+
+First, split a string into "k-grams" or "shingles".
+
+E.g. k=3 then "Bill Gates, Jr" --> 'Bil', 'ill', 'll ', 'l G', ...
+
+Thus, x, y become two sets.
+
+DEFINITION.  Given two sets x, y, their Jaccard similarity is 
+
+J(x,y) = |x*y|/|x+y|, 
+
+where * denotes intersection and + denotes union.
+
+***  Example in class.
+
+================================================================
+No universally good similarity function: Choice of similarity function depends on domains of interest, data instances etc
+
+List of Other Similarity Functions 
+- Affine edit distance 
+- Cosine similarity 
+- Hamming distance 
+- Generalized edit distance 
+- Jaro distance 
+- Monge-Elkan distance 
+- Q-gram 
+- Smith-Waterman distance 
+- Soundex distance 
+- TF/IDF
+- many more
+
+An interesting approach: compute all these distances!
+Each distance becomes a feature.
+Train a classifier to decide on similarity based on all these
+features.

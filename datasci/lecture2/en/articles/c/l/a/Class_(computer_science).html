@@ -1,0 +1,757 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Class (computer science) - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Class (computer science)</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p>In <a href="../../../../articles/o/b/j/Object-oriented_programming.html" title="Object-oriented programming">object-oriented programming</a>, a <b>class</b> is a <a href="../../../../articles/p/r/o/Programming_language.html" title="Programming language">programming language</a> construct that is used as a blueprint to create <a href="../../../../articles/o/b/j/Object_%28object-oriented_programming%29.html" class="mw-redirect" title="Object (object-oriented programming)">objects</a>. This blueprint includes <a href="../../../../articles/a/t/t/Attribute_%28computing%29.html" title="Attribute (computing)">attributes</a> and <a href="../../../../articles/m/e/t/Method_%28computer_science%29.html" title="Method (computer science)">methods</a> that the created objects all share.</p>
+<p>More technically, a class is a <a href="../../../../articles/c/o/h/Cohesion_%28computer_science%29.html" title="Cohesion (computer science)">cohesive</a> package that consists of a particular kind of <a href="../../../../articles/m/e/t/Metadata.html" title="Metadata">metadata</a>. It describes the rules by which objects behave; these objects are referred to as <a href="../../../../articles/i/n/s/Instantiation_%28computer_science%29.html" class="mw-redirect" title="Instantiation (computer science)">instances</a> of that class. A class has both an interface and a structure. The interface describes how the class and its instances can be interacted with via methods, while the structure describes how the <a href="../../../../articles/d/a/t/Data_%28computing%29.html" title="Data (computing)">data</a> is partitioned into attributes within an instance. A class is the most specific <a href="../../../../articles/d/a/t/Datatype.html" class="mw-redirect" title="Datatype">type</a> of an object in relation to a specific <a href="../../../../articles/l/a/y/Layer_%28object-oriented_design%29.html" title="Layer (object-oriented design)">layer</a>. A class may also have a representation (<a href="../../../../articles/m/e/t/Metaobject.html" title="Metaobject">metaobject</a>) at runtime, which provides runtime support for manipulating the class-related metadata.</p>
+<p>Programming languages that support classes all subtly differ in their support for various class-related features. Most support various forms of class <a href="../../../../articles/i/n/h/Inheritance_%28computer_science%29.html" title="Inheritance (computer science)">inheritance</a>. Many languages also support features providing <a href="../../../../articles/i/n/f/Information_hiding.html" title="Information hiding">encapsulation</a>, such as access specifiers.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#Reasons_for_using_classes"><span class="tocnumber">1</span> <span class="toctext">Reasons for using classes</span></a></li>
+<li class="toclevel-1"><a href="#Instantiation"><span class="tocnumber">2</span> <span class="toctext">Instantiation</span></a></li>
+<li class="toclevel-1"><a href="#Interfaces_and_methods"><span class="tocnumber">3</span> <span class="toctext">Interfaces and methods</span></a></li>
+<li class="toclevel-1"><a href="#Structure_of_a_class"><span class="tocnumber">4</span> <span class="toctext">Structure of a class</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Run-time_representation_of_classes"><span class="tocnumber">4.1</span> <span class="toctext">Run-time representation of classes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Information_hiding_and_encapsulation"><span class="tocnumber">5</span> <span class="toctext">Information hiding and encapsulation</span></a></li>
+<li class="toclevel-1"><a href="#Associations_between_classes"><span class="tocnumber">6</span> <span class="toctext">Associations between classes</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Composition"><span class="tocnumber">6.1</span> <span class="toctext">Composition</span></a></li>
+<li class="toclevel-2"><a href="#Inheritance"><span class="tocnumber">6.2</span> <span class="toctext">Inheritance</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Languages_without_inheritance"><span class="tocnumber">6.2.1</span> <span class="toctext">Languages without inheritance</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Categories_of_classes"><span class="tocnumber">7</span> <span class="toctext">Categories of classes</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Concrete_classes"><span class="tocnumber">7.1</span> <span class="toctext">Concrete classes</span></a></li>
+<li class="toclevel-2"><a href="#Abstract_classes"><span class="tocnumber">7.2</span> <span class="toctext">Abstract classes</span></a></li>
+<li class="toclevel-2"><a href="#Sealed_classes"><span class="tocnumber">7.3</span> <span class="toctext">Sealed classes</span></a></li>
+<li class="toclevel-2"><a href="#Local_and_inner_classes"><span class="tocnumber">7.4</span> <span class="toctext">Local and inner classes</span></a></li>
+<li class="toclevel-2"><a href="#Metaclasses"><span class="tocnumber">7.5</span> <span class="toctext">Metaclasses</span></a></li>
+<li class="toclevel-2"><a href="#Partial_classes"><span class="tocnumber">7.6</span> <span class="toctext">Partial classes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Non-class-based_object-oriented_programming"><span class="tocnumber">8</span> <span class="toctext">Non-class-based object-oriented programming</span></a></li>
+<li class="toclevel-1"><a href="#Examples"><span class="tocnumber">9</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2"><a href="#C.2B.2B"><span class="tocnumber">9.1</span> <span class="toctext">C++</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Example_1"><span class="tocnumber">9.1.1</span> <span class="toctext">Example 1</span></a></li>
+<li class="toclevel-3"><a href="#Example_2"><span class="tocnumber">9.1.2</span> <span class="toctext">Example 2</span></a></li>
+<li class="toclevel-3"><a href="#Example_3"><span class="tocnumber">9.1.3</span> <span class="toctext">Example 3</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Java"><span class="tocnumber">9.2</span> <span class="toctext">Java</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Example_1_2"><span class="tocnumber">9.2.1</span> <span class="toctext">Example 1</span></a></li>
+<li class="toclevel-3"><a href="#Example_2_2"><span class="tocnumber">9.2.2</span> <span class="toctext">Example 2</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Visual_Basic_.NET"><span class="tocnumber">9.3</span> <span class="toctext">Visual Basic .NET</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Example_1_3"><span class="tocnumber">9.3.1</span> <span class="toctext">Example 1</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#PHP"><span class="tocnumber">9.4</span> <span class="toctext">PHP</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Example_1_4"><span class="tocnumber">9.4.1</span> <span class="toctext">Example 1</span></a></li>
+<li class="toclevel-3"><a href="#Example_2_3"><span class="tocnumber">9.4.2</span> <span class="toctext">Example 2</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#C.23"><span class="tocnumber">9.5</span> <span class="toctext">C#</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Example_1_5"><span class="tocnumber">9.5.1</span> <span class="toctext">Example 1</span></a></li>
+<li class="toclevel-3"><a href="#Example_2_4"><span class="tocnumber">9.5.2</span> <span class="toctext">Example 2</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#ActionScript"><span class="tocnumber">9.6</span> <span class="toctext">ActionScript</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Example_1_6"><span class="tocnumber">9.6.1</span> <span class="toctext">Example 1</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Ruby"><span class="tocnumber">9.7</span> <span class="toctext">Ruby</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Example_1_7"><span class="tocnumber">9.7.1</span> <span class="toctext">Example 1</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#See_also"><span class="tocnumber">10</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1"><a href="#Literature"><span class="tocnumber">11</span> <span class="toctext">Literature</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Reasons_for_using_classes" id="Reasons_for_using_classes"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Reasons for using classes">edit</a>]</span> <span class="mw-headline">Reasons for using classes</span></h2>
+<p>Classes, when used properly, can accelerate development by reducing redundant code entry, testing and <a href="../../../../articles/s/o/f/Software_bug.html" title="Software bug">bug</a> <a href="../../../../articles/d/e/b/Debugging.html" title="Debugging">fixing</a>. If a class has been thoroughly tested and is known to be a solid work, it stands to reason that using that well-tested class or extending it will reduce, if not eliminate, the possibility of bugs propagating into the code. In the case of extension, new code is being added, so it also requires the same level of testing before it can be considered solid.</p>
+<p>Another reason for using classes is to simplify the relationships of interrelated data. Rather than writing code to repeatedly call a <a href="../../../../articles/g/r/a/Graphical_user_interface.html" title="Graphical user interface">GUI</a> <a href="../../../../articles/w/i/n/Window_%28computing%29.html" title="Window (computing)">window</a> drawing subroutine on the terminal screen (as would be typical for <a href="../../../../articles/s/t/r/Structured_programming.html" title="Structured programming">structured programming</a>), it is more intuitive to represent the window as an object and tell it to draw itself as necessary. With classes, GUI items that are similar to windows (such as dialog boxes) can simply inherit most of their functionality and data structures from the <a href="../../../../articles/w/i/n/Window_class.html" title="Window class">window class</a>. The programmer then need only add code to the dialog class that is unique to its operation. Indeed, GUIs are a very common and useful application of classes, and GUI programming is generally much easier with a good class framework.</p>
+<p><a name="Instantiation" id="Instantiation"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Instantiation">edit</a>]</span> <span class="mw-headline">Instantiation</span></h2>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main article: <a href="../../../../articles/i/n/s/Instantiation_%28computer_science%29.html" class="mw-redirect" title="Instantiation (computer science)">Instantiation (computer science)</a></i></div>
+</dd>
+</dl>
+<p>A class is used to create new <b>instances</b> (<i>objects</i>) by <b>instantiating</b> the class.</p>
+<p>Instances of a class share the same set of attributes, yet may differ in what those attributes contain. For example, a class "Person" would describe the attributes common to all instances of the Person class. Each person is generally alike, but varies in such attributes as "height" and "weight". The class would list types of such attributes and also define the actions which a person can perform: "run", "jump", "sleep", "walk", etc. One of the benefits of programming with classes is that all instances of a particular class will follow the defined behavior of the class they instantiate.</p>
+<p>In most languages, the <a href="#Structure_of_a_class" title="">structures</a> as defined by the class determine how the memory used by its instances will be laid out. This technique is known as the <i>cookie-cutter model</i>. The alternative to the cookie-cutter model is that of for example <a href="../../../../articles/p/y/t/Python_%28programming_language%29.html" title="Python (programming language)">Python</a>, where objects are structured as associative key-value containers. In such models, objects that are instances of the same class could contain different instance variables, as state can be dynamically added to the object. This may resemble <a href="../../../../articles/p/r/o/Prototype-based_languages.html" class="mw-redirect" title="Prototype-based languages">prototype-based languages</a> in some ways, but it is not equivalent.</p>
+<p><a name="Interfaces_and_methods" id="Interfaces_and_methods"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Interfaces and methods">edit</a>]</span> <span class="mw-headline">Interfaces and methods</span></h2>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main articles: <a href="../../../../articles/i/n/t/Interface_%28computer_science%29.html" title="Interface (computer science)">Interface (computer science)</a> and <a href="../../../../articles/m/e/t/Method_%28computer_science%29.html" title="Method (computer science)">Method (computer science)</a></i></div>
+</dd>
+</dl>
+<p>Note: the term "interface" here isn't referring to a <a href="../../../../articles/i/n/t/Interface_%28Java%29_91b2.html" title="Interface (Java)">Java interface</a>, although the two are closely related.</p>
+<p>Objects define their interaction with the outside world through the <b>methods</b> that they expose. A method, or <i>instance method</i>, is a <a href="../../../../articles/s/u/b/Subroutine.html" title="Subroutine">subroutine</a> (function) with a special property that it has access to data stored in an object (instance). Methods that manipulate the data of the object and perform tasks are sometimes described as <a href="../../../../articles/b/e/h/Behavior.html" title="Behavior">behavior</a>.</p>
+<p>Methods form the object's <b>interface</b> with the outside world; the buttons on the front of your television set, for example, are the interface between you and the electrical wiring on the other side of its plastic casing. You press the "power" button to toggle the television on and off. In this example, the television is the instance, each method is represented by a button, and all the buttons together comprise the interface. In its most common form, an interface is a specification of a group of related methods without any associated implementation of the methods.</p>
+<p>Every class <b>implements</b> (or <i>realizes</i>) an interface by providing <a href="#Structure_of_a_class" title="">structure</a> (i.e. data and state) and method implementations (i.e. providing code that specifies how methods work). There is a distinction between the definition of an interface and the implementation of that interface. In most languages, this line is usually blurred, because a class declaration both defines and implements an interface. Some languages, however, provide features that help separate interface and implementation. For example, an <a href="#Abstract_classes" title="">abstract class</a> can define an interface without providing implementation, and in the <a href="../../../../articles/d/y/l/Dylan_%28programming_language%29.html" title="Dylan (programming language)">Dylan</a> language, class definitions do not even define interfaces.</p>
+<p>Interfaces may also be defined to include a set of auxiliary functions called <i>static methods</i> or <i>class methods</i>. Static methods, like instance methods, are exclusively associated with the class. They differ with instance methods in that they do not work with instances of the class; that is, static methods neither require an instance of the class nor can access the data of such an instance. For example, getting the total number of televisions in existence could be a static method of the television class. This method is clearly associated with the class, yet is outside the domain of each individual instance of the class. Another example is a static method that finds a particular instance out of the set of all television sets.</p>
+<p>Languages that support class inheritance also allow classes to inherit interfaces from the classes that they are derived from. In languages that support <a href="#Information_hiding_and_encapsulation" title="">access specifiers</a>, the interface of a class is considered to be the set of public members of the class, including both methods and attributes (via implicit <a href="../../../../articles/m/u/t/Mutator_method.html" title="Mutator method">getter and setter methods</a>); any private members or internal data structures are not intended to be depended on by client code and thus are not part of the interface.</p>
+<p>The object-oriented programming methodology is designed in such a way that the operations of any interface of a class are usually chosen to be independent of each other. It results in a <a href="../../../../articles/c/l/i/Client-server.html" title="Client-server">client-server</a> (or layered) design where servers do not depend in any way on the clients. An interface places no requirements for clients to invoke the operations of one interface in any particular order. This approach has the benefit that client code can assume that the operations of an interface are available for use whenever the client holds a valid reference to the object.</p>
+<p><a name="Structure_of_a_class" id="Structure_of_a_class"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Structure of a class">edit</a>]</span> <span class="mw-headline">Structure of a class</span></h2>
+<div class="thumb tright">
+<div class="thumbinner" style="width:163px;"><a href="../../../../articles/o/o/p/Image%7EOop-uml-class-example.png_b06a.html" class="image" title="UML notation for classes"><img alt="UML notation for classes" src="../../../../images/shared/1/18/Oop-uml-class-example.png" width="161" height="206" border="0" class="thumbimage" /></a>
+<div class="thumbcaption"><a href="../../../../articles/u/n/i/Unified_Modeling_Language_b552.html" title="Unified Modeling Language">UML</a> notation for classes</div>
+</div>
+</div>
+<p>Along with having an interface, a class contains a description of structure of <a href="../../../../articles/d/a/t/Data_%28computing%29.html" title="Data (computing)">data</a> stored in the instances of the class. The data is partitioned into <b>attributes</b> (or <i>properties</i>, <i>fields</i>, <i>data members</i>). Going back to the television set example, the myriad attributes, such as size and whether it supports color, together comprise its structure. A class represents the full description of a television, including its attributes (structure) and buttons (interface).</p>
+<p>The <a href="../../../../articles/s/t/a/State_%28computer_science%29.html" title="State (computer science)">state</a> of an instance's data is stored in some resource, such as memory or a file. The storage is assumed to be located in a specific location, such that it is possible to access the instance through <a href="../../../../articles/r/e/f/Reference_%28computer_science%29.html" title="Reference (computer science)">references</a> to the <a href="../../../../articles/i/d/e/Identity_%28object-oriented_programming%29.html" title="Identity (object-oriented programming)">identity</a> of the instances. However, the actual storage location associated with an instance may change with time. In such situations, the identity of the object does not change. The state is encapsulated and every access to the state occurs through methods of the class.</p>
+<p>A class also describes a set of <a href="../../../../articles/c/l/a/Class_invariant.html" title="Class invariant">invariants</a> that are preserved by every method in the class. An invariant is a constraint on the state of an object that should be satisfied by every object of the class. The main purpose of the invariants is to establish what objects belong to the class. An invariant is what distinguishes <a href="../../../../articles/d/a/t/Data_type.html" title="Data type">data types</a> and classes from each other; that is, a class does not allow use of all possible values for the state of the object, and instead allows only those values that are well-defined by the semantics of the intended use of the data type. The set of supported (public) methods often implicitly establishes an invariant. Some programming languages support specification of invariants as part of the definition of the class, and enforce them through the type system. <a href="#Information_hiding_and_encapsulation" title="">Encapsulation</a> of state is necessary for being able to enforce the invariants of the class.</p>
+<p>Some languages allow an implementation of a class to specify <a href="../../../../articles/c/o/n/Constructor_%28computer_science%29.html" title="Constructor (computer science)">constructor</a> and <a href="../../../../articles/d/e/s/Destructor_%28computer_science%29.html" title="Destructor (computer science)">destructor</a> methods that allow creation and destruction of objects of the class. A constructor that takes arguments can be used to create an object from data. The main purpose of a constructor is to establish the invariant of the class, failing if the invariant isn't valid. The main purpose of a destructor is to destroy the identity of the object, invalidating any references in the process. In some languages, a destructor can return a value which can then be used to obtain a public representation (transfer encoding) of an object of a class and simultaneously destroy the copy of the object stored in current thread's memory. Constructors and destructors are also sometimes used to reserve and release, respectively, resources associated with the object. Constructors and destructors are sometimes specified as static methods.</p>
+<p>A class may also contain <i>static attributes</i> or <i>class attributes</i>, which contain data that are specific to the class yet are common to all instances of the class. If the class itself is treated as an instance of a hypothetical <a href="../../../../articles/m/e/t/Metaclass.html" title="Metaclass">metaclass</a>, static attributes and static methods would be instance attributes and instance methods of that metaclass.</p>
+<p><a name="Run-time_representation_of_classes" id="Run-time_representation_of_classes"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Run-time representation of classes">edit</a>]</span> <span class="mw-headline">Run-time representation of classes</span></h3>
+<p>As a data type, a class is usually considered as a compile-time construct. A language may also support <a href="../../../../articles/p/r/o/Prototype.html" title="Prototype">prototype</a> or <a href="../../../../articles/f/a/c/Factory_method_pattern.html" title="Factory method pattern">factory</a> <a href="../../../../articles/m/e/t/Metaobject.html" title="Metaobject">metaobjects</a> that represent run-time information about classes, or even represent metadata that provides access to <a href="../../../../articles/r/e/f/Reflection_%28computer_science%29.html" title="Reflection (computer science)">reflection</a> facilities and ability to manipulate data structure formats at run-time. Many languages distinguish this kind of <a href="../../../../articles/r/u/n/Run-time_type_information.html" title="Run-time type information">run-time type information</a> about classes from a class on the basis that the information is not needed at run-time. Some dynamic languages do not make strict distinctions between run-time and compile-time constructs, and therefore may not distinguish between metaobjects and classes.</p>
+<p>For example: if Human is a <a href="../../../../articles/m/e/t/Metaobject.html" title="Metaobject">metaobject</a> representing the class Person, then instances of class Person can be created by using the facilities of the Human <a href="../../../../articles/m/e/t/Metaobject.html" title="Metaobject">metaobject</a>.</p>
+<p><a name="Information_hiding_and_encapsulation" id="Information_hiding_and_encapsulation"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Information hiding and encapsulation">edit</a>]</span> <span class="mw-headline">Information hiding and encapsulation</span></h2>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main article: <a href="../../../../articles/i/n/f/Information_hiding.html" title="Information hiding">Information hiding</a></i></div>
+</dd>
+</dl>
+<p>Many languages support the concept of <b>information hiding</b> and <b>encapsulation</b>, typically with <b>access specifiers</b> for class members. Access specifiers specify constraints on who can access which class members. Some access specifiers may also control how classes inherit such constraints. Their primary purpose is to separate the interface of a class with its implementation.</p>
+<p>A common set of access specifiers that many object-oriented languages support is:</p>
+<ul>
+<li><b>Private</b> restricts the access to the class itself. Only methods that are part of the same class can access private members.</li>
+<li><b>Protected</b> allows the class itself and all its subclasses to access the member.</li>
+<li><b>Public</b> means that all clients can access the member by its name.</li>
+</ul>
+<p>Note that although many languages support these access specifiers, the semantics of them may subtly differ in each.</p>
+<p>A common usage of access specifiers is to separate the internal data structures of a class from its interface; that is, the internal data structures are private. Public <a href="../../../../articles/a/c/c/Accessor_method.html" class="mw-redirect" title="Accessor method">accessor methods</a> can be used to inspect or alter such private data. The various object-oriented programming languages enforce this to various degrees. For example, the <a href="../../../../articles/j/a/v/Java_%28programming_language%29.html" title="Java (programming language)">Java</a> language does not allow client code to access the private data of a class at all, whereas in languages like <a href="../../../../articles/o/b/j/Objective-C_a508.html" title="Objective-C">Objective-C</a> or <a href="../../../../articles/p/e/r/Perl.html" title="Perl">Perl</a> client code can do whatever it wants. In <a href="../../../../articles/c/%2B/%2B/C%2B%2B.html" title="C++">C++</a> language, private methods are visible but not accessible in the interface; however, they are commonly made invisible by explicitly declaring fully abstract classes that represent the interfaces of the class.</p>
+<p>Access specifiers do not necessarily control <b>visibility</b>, in that even private members may be visible to client code. In some languages, an inaccessible but visible member may be referred to at run-time (e.g. pointer to it can be returned from member functions), but all attempts to use it by referring to the name of the member from client code will be prevented by the type checker. Object-oriented design uses the access specifiers in conjunction with careful design of public method implementations to enforce class invariants. Access specifiers are intended to protect against accidental use of members by clients, but are not suitable for run-time protection of object's data.</p>
+<p>In addition, some languages, such as C++, support a mechanism where a function explicitly declared as <i>friend</i> of the class may access the members designated as private or protected.</p>
+<p><a name="Associations_between_classes" id="Associations_between_classes"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Associations between classes">edit</a>]</span> <span class="mw-headline">Associations between classes</span></h2>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main article: <a href="../../../../articles/a/s/s/Association_%28object-oriented_programming%29.html" title="Association (object-oriented programming)">Association (object-oriented programming)</a></i></div>
+</dd>
+</dl>
+<p>In <a href="../../../../articles/o/b/j/Object-oriented_design.html" title="Object-oriented design">object-oriented design</a> and in <a href="../../../../articles/u/n/i/Unified_Modelling_Language_4bb4.html" class="mw-redirect" title="Unified Modelling Language">UML</a>, an <b>association</b> between two classes is a type of a link between the corresponding objects. A (two-way) association between classes A and B describes a relationship between each object of class A and some objects of class B, and vice versa. Associations are often named with a verb, such as "subscribes-to".</p>
+<p>An association role type describes the role type of an instance of a class when the instance participates in an association. An association role type is related to each end of the association. A role describes an instance of a class from the point of view of a situation in which the instance participates in the association. Role types are collections of role (instance)s grouped by their similar properties. For example, a "subscriber" role type describes the property common to instances of the class "Person" when they participate in a "subscribes-to" relationship with the class "Magazine". Also, a "Magazine" has the "subscribed magazine" role type when the subscribers subscribe-to it.</p>
+<p>Association role multiplicity describes how many instances correspond to each instance of the other class(es) of the association. Common multiplicities are "0..1", "1..1", "1..*" and "0..*", where the "*" specifies any number of instances.</p>
+<p>There are some special kinds of associations between classes.</p>
+<p><a name="Composition" id="Composition"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Composition">edit</a>]</span> <span class="mw-headline">Composition</span></h3>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main article: <a href="../../../../articles/o/b/j/Object_composition.html" title="Object composition">Object composition</a></i></div>
+</dd>
+</dl>
+<p><b>Composition</b> between class A and class B describes a "part-of" relationship where instances of class B have shorter <a href="../../../../articles/o/b/j/Object_lifetime.html" title="Object lifetime">lifetime</a> than the lifetime of the corresponding instances of the enclosing class. Class B is said to be a part of class A. This is often implemented in programming languages by allocating the data storage of instances of class A to contain a representation of instances of class B.</p>
+<p><b>Aggregation</b> is a variation of composition that describes that instances of a class are part of instances of the other class, but the constraint on lifetime of the instances is not required. The implementation of aggregation is often via a <a href="../../../../articles/p/o/i/Pointer_%28computing%29.html" title="Pointer (computing)">pointer</a> or reference to the contained instance. In both cases, method implementations of the enclosing class can invoke methods of the part class. A common example of aggregation is a list class. When a list's lifetime is over, it does not necessarily mean the lifetimes of the objects within the list are also over.</p>
+<p><a name="Inheritance" id="Inheritance"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Inheritance">edit</a>]</span> <span class="mw-headline">Inheritance</span></h3>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main articles: <a href="../../../../articles/i/n/h/Inheritance_%28computer_science%29.html" title="Inheritance (computer science)">Inheritance (computer science)</a>, <a href="../../../../articles/s/u/p/Superclass_%28computer_science%29.html" title="Superclass (computer science)">Superclass (computer science)</a>, and <a href="../../../../articles/s/u/b/Subclass_%28computer_science%29.html" title="Subclass (computer science)">Subclass (computer science)</a></i></div>
+</dd>
+</dl>
+<p>Another type of class association is <b>inheritance</b>, which involves <b>subclasses</b> and <b>superclasses</b>, also known respectively as <i>child classes</i> (or <i>derived classes</i>) and <i>parent classes</i> (or <i>base classes</i>). If [car] was a class, then [station wagon] and [mini-van] might be two subclasses. If [Button] is a subclass of [Control], then all buttons are controls. Subclasses usually consist of several kinds of modifications (customizations) to their respective superclasses: addition of new instance variables, addition of new methods and <a href="../../../../articles/o/v/e/Overriding.html" class="mw-redirect" title="Overriding">overriding</a> of existing methods to support the new instance variables.</p>
+<p>Conceptually, a superclass should be considered as a common part of its subclasses. This factoring of commonality is one mechanism for providing <a href="../../../../articles/r/e/u/Reuse.html" title="Reuse">reuse</a>. Thus, extending a superclass by modifying the existing class is also likely to narrow its applicability in various situations. In object-oriented design, careful balance between applicability and functionality of superclasses should be considered. Subclassing is different from <a href="../../../../articles/s/u/b/Subtyping.html" class="mw-redirect" title="Subtyping">subtyping</a> in that subtyping deals with common behaviour whereas subclassing is concerned with common structure.</p>
+<p>Some programming languages (for example <a href="../../../../articles/c/%2B/%2B/C%2B%2B.html" title="C++">C++</a>) allow <a href="../../../../articles/m/u/l/Multiple_inheritance.html" title="Multiple inheritance">multiple inheritance</a> - they allow a child class to have more than one parent class. This technique has been criticized by some for its unnecessary complexity and being difficult to implement efficiently, though some projects have certainly benefited from its use. <a href="../../../../articles/j/a/v/Java_%28programming_language%29.html" title="Java (programming language)">Java</a>, for example has no multiple inheritance, as its designers felt that it would add unnecessary complexity. Java instead allows inheriting from multiple pure abstract classes (called interfaces in Java).</p>
+<p>Sub- and superclasses are considered to exist within a <a href="../../../../articles/h/i/e/Hierarchy_%28object-oriented_programming%29.html" title="Hierarchy (object-oriented programming)">hierarchy</a> defined by the inheritance relationship. If multiple inheritance is allowed, this hierarchy is a <a href="../../../../articles/d/i/r/Directed_acyclic_graph.html" title="Directed acyclic graph">directed acyclic graph</a> (or DAG for short), otherwise it is a <a href="../../../../articles/t/r/e/Tree_%28graph_theory%29.html" title="Tree (graph theory)">tree</a>. The hierarchy has classes as nodes and inheritance relationships as links. The levels of this hierarchy are called <a href="../../../../articles/l/a/y/Layer_%28object-oriented_design%29.html" title="Layer (object-oriented design)">layers</a> or <a href="../../../../articles/l/e/v/Level_of_abstraction.html" class="mw-redirect" title="Level of abstraction">levels of abstraction</a>. Classes in the same level are more likely to be <a href="../../../../articles/a/s/s/Association_%28object-oriented_programming%29.html" title="Association (object-oriented programming)">associated</a> than classes in different levels.</p>
+<p>There are two slightly different points of view as to whether subclasses of the same class are required to be disjoint. Sometimes, subclasses of a particular class are considered to be completely disjoint. That is, every instance of a class has exactly one <i>most-derived class</i>, which is a subclass of every class that the instance has. This view does not allow dynamic change of object's class, as objects are assumed to be created with a fixed most-derived class. The basis for not allowing changes to object's class is that the class is a compile-time type, which does not usually change at runtime, and <a href="../../../../articles/p/o/l/Polymorphism_in_object-oriented_programming.html" title="Polymorphism in object-oriented programming">polymorphism</a> is utilized for any dynamic change to the object's behavior, so this ability is not necessary. And design that does not need to perform changes to object's type will be more robust and easy-to-use from the point of view of the users of the class.</p>
+<p>From another point of view, subclasses are not required to be disjoint. Then there is no concept of a most-derived class, and all types in the inheritance hierarchy that are types of the instance are considered to be equally types of the instance. This view is based on a dynamic classification of objects, such that an object may change its class at runtime. Then object's class is considered to be its <i>current</i> structure, but changes to it are allowed. The basis for allowing changes to object's class is a perceived inconvenience caused by replacing an instance with another instance of a different type, since this would require change of all references to the original instance to be changed to refer to the new instance. When changing the object's class, references to the existing instances do not need to be replaced with references to new instances when the class of the object changes. However, this ability is not readily available in all programming languages. This analysis depends on the proposition that dynamic changes to object structure are common. This may or may not be the case in practice.</p>
+<p><a name="Languages_without_inheritance" id="Languages_without_inheritance"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Languages without inheritance">edit</a>]</span> <span class="mw-headline">Languages without inheritance</span></h4>
+<p>Although class-based languages are commonly assumed to support inheritance, inheritance is not an intrinsic aspect of the concept of classes. There are languages that support classes yet do not support inheritance. Examples are earlier versions of <a href="../../../../articles/v/i/s/Visual_Basic_5ea7.html" title="Visual Basic">Visual Basic</a>. These languages, sometimes called "object-based languages", do not provide the structural benefits of statically type-checked interfaces for objects. This is because in object-based languages, it is possible to use and extend data structures and attach methods to them at run-time. This precludes the compiler or interpreter from being able to check the type information specified in the source code as the type is built dynamically and not defined statically. Most of these languages allow for <i>instance behaviour</i> and complex <i>operational polymorphism</i> (see <a href="../../../../articles/d/y/n/Dynamic_dispatch.html" title="Dynamic dispatch">dynamic dispatch</a> and <a href="../../../../articles/p/o/l/Polymorphism_%28computer_science%29.html" class="mw-redirect" title="Polymorphism (computer science)">polymorphism</a>).</p>
+<p><a name="Categories_of_classes" id="Categories_of_classes"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Categories of classes">edit</a>]</span> <span class="mw-headline">Categories of classes</span></h2>
+<p>There are many categories of classes depending on modifiers. Note that these categories do not necessarily categorize classes into distinct partitions. For example, while it is impossible to have a class that is both abstract and concrete, a sealed class is implicitly a concrete class, and it may be possible to have an abstract partial class.</p>
+<p><a name="Concrete_classes" id="Concrete_classes"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Concrete classes">edit</a>]</span> <span class="mw-headline">Concrete classes</span></h3>
+<p>A <b>concrete class</b> is a class that can be <a href="../../../../articles/i/n/s/Instantiation_%28computer_science%29.html" class="mw-redirect" title="Instantiation (computer science)">instantiated</a>. This contrasts with abstract classes as described below.</p>
+<p><a name="Abstract_classes" id="Abstract_classes"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Abstract classes">edit</a>]</span> <span class="mw-headline">Abstract classes</span></h3>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main article: <a href="../../../../articles/a/b/s/Abstract_type.html" title="Abstract type">Abstract type</a></i></div>
+</dd>
+</dl>
+<p>An <b>abstract class</b>, or <i>abstract base class</i> (ABC), is a class that cannot be instantiated. Such a class is only meaningful if the language supports inheritance. An abstract class is designed <i>only</i> as a parent class from which child classes may be derived. Abstract classes are often used to represent <a href="../../../../articles/a/b/s/Abstraction_%28computer_science%29.html" title="Abstraction (computer science)">abstract</a> concepts or entities. The incomplete features of the abstract class are then shared by a group of subclasses which add different variations of the missing pieces.</p>
+<p>Abstract classes are superclasses which contain <a href="../../../../articles/a/b/s/Abstract_method.html" class="mw-redirect" title="Abstract method">abstract methods</a> and are defined such that concrete subclasses are to extend them by implementing the methods. The behaviors defined by such a class are "generic" and much of the class will be undefined and unimplemented. Before a class derived from an abstract class can become concrete, i.e. a class that can be instantiated, it must implement particular methods for all the abstract methods of its parent classes.</p>
+<p>When specifying an abstract class, the programmer is referring to a class which has elements that are meant to be implemented by inheritance. The abstraction of the class methods to be implemented by the subclasses is meant to simplify <a href="../../../../articles/s/o/f/Software_development.html" title="Software development">software development</a>. This also enables the programmer to focus on planning and design.</p>
+<p>Most object oriented programming languages allow the programmer to specify which classes are considered abstract and will not allow these to be instantiated. For example, in <a href="../../../../articles/j/a/v/Java_%28programming_language%29.html" title="Java (programming language)">Java</a>, the keyword <i>abstract</i> is used. In <a href="../../../../articles/c/%2B/%2B/C%2B%2B.html" title="C++">C++</a>, an abstract class is a class having at least one abstract method (a pure virtual function in C++ parlance).</p>
+<p>Some languages, notably Java, additionally support a variant of abstract classes called an <a href="../../../../articles/i/n/t/Interface_%28Java%29_91b2.html" title="Interface (Java)">interface</a>. Such a class can only contain abstract publicly-accessible methods. In this way, they are closely related - but not equivalent - to the abstract concept of <a href="#Interfaces_and_methods" title="">interfaces</a> described in this article.</p>
+<p><a name="Sealed_classes" id="Sealed_classes"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Sealed classes">edit</a>]</span> <span class="mw-headline">Sealed classes</span></h3>
+<p>Some languages also support <b>sealed classes</b>. A sealed class cannot be used as a base class. For this reason, it cannot also be an abstract class. Sealed classes are primarily used to prevent derivation. They add another level of strictness during compile-time, improve memory usage, and trigger certain optimizations that improve run-time efficiency.</p>
+<p><a name="Local_and_inner_classes" id="Local_and_inner_classes"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Local and inner classes">edit</a>]</span> <span class="mw-headline">Local and inner classes</span></h3>
+<p>In some languages, classes can be declared in <a href="../../../../articles/s/c/o/Scope_%28programming%29.html" title="Scope (programming)">scopes</a> other than the global scope. There are various types of such classes.</p>
+<p>One common type is an <b>inner class</b> or <i>nested class</i>, which is a class defined within another class. Since it involves two classes, this can also be treated as another type of class association. The methods of an inner class can access static methods of the enclosing class(es). An inner class is typically not associated with instances of the enclosing class, i.e. an inner class is not instantiated along with its enclosing class. Depending on language, it may or may not be possible to refer to the class from outside the enclosing class. A related concept is <i>inner types</i> (a.k.a. <i>inner data type</i>, <i>nested type</i>), which is a generalization of the concept of inner classes. <a href="../../../../articles/c/%2B/%2B/C%2B%2B.html" title="C++">C++</a> is an example of a language that supports both inner classes and inner types (via <i>typedef</i> declarations).</p>
+<p>Another type is a <b>local class</b>, which is a class defined within a procedure or function. This limits references to the class name to within the scope where the class is declared. Depending on the semantic rules of the language, there may be additional restrictions on local classes compared non-local ones. One common restriction is to disallow local class methods to access local variables of the enclosing function. For example, in C++, a local class may refer to static variables declared within its enclosing function, but may not access the function's automatic variables.</p>
+<p><a name="Metaclasses" id="Metaclasses"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Metaclasses">edit</a>]</span> <span class="mw-headline">Metaclasses</span></h3>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main article: <a href="../../../../articles/m/e/t/Metaclass.html" title="Metaclass">Metaclass</a></i></div>
+</dd>
+</dl>
+<p><b>Metaclasses</b> are classes whose instances are classes. A metaclass describes a common structure of a collection of classes. A metaclass can implement a <a href="../../../../articles/d/e/s/Design_pattern_%28computer_science%29.html" title="Design pattern (computer science)">design pattern</a> or describe a shorthand for particular kinds of classes. Metaclasses are often used to describe <a href="../../../../articles/f/r/a/Framework.html" title="Framework">frameworks</a>.</p>
+<p>In some languages such as <a href="../../../../articles/p/y/t/Python_%28programming_language%29.html" title="Python (programming language)">Python</a>, <a href="../../../../articles/r/u/b/Ruby_%28programming_language%29.html" title="Ruby (programming language)">Ruby</a>, <a href="../../../../articles/j/a/v/Java_%28programming_language%29.html" title="Java (programming language)">Java</a>, and <a href="../../../../articles/s/m/a/Smalltalk.html" title="Smalltalk">Smalltalk</a>, a class is also an object; thus each class is an instance of the unique metaclass, which is built in the language. For example, in <a href="../../../../articles/o/b/j/Objective-C_a508.html" title="Objective-C">Objective-C</a>, each object and class is an instance of NSObject. The <a href="../../../../articles/c/o/m/Common_Lisp_7468.html" title="Common Lisp">Common Lisp</a> <a href="../../../../articles/c/o/m/Common_Lisp_Object_System_2bee.html" title="Common Lisp Object System">Object System</a> (CLOS) provides <a href="../../../../articles/m/e/t/Metaobject.html" title="Metaobject">metaobject protocols</a> (MOPs) to implement those classes and metaclasses.</p>
+<p><a name="Partial_classes" id="Partial_classes"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Partial classes">edit</a>]</span> <span class="mw-headline">Partial classes</span></h3>
+<dl>
+<dd>
+<div class="noprint relarticle mainarticle"><i>Main article: <a href="../../../../articles/p/a/r/Partial_class.html" title="Partial class">Partial class</a></i></div>
+</dd>
+</dl>
+<p><b>Partial classes</b> are classes that can be split over multiple definitions (typically over multiple files), making it easier to deal with large quantities of code. At <a href="../../../../articles/c/o/m/Compiler.html" title="Compiler">compile</a> time the partial classes are grouped together, thus logically make no difference to the output. An example of the use of partial classes may be the separation of user interface logic and processing logic. A primary benefit of partial classes is allowing different programmers to work on different parts of the same class at the same time. They also make automatically generated code easier to interpret, as it is separated from other code into a partial class.</p>
+<p>Partial classes have been around in <a href="../../../../articles/s/m/a/Smalltalk.html" title="Smalltalk">Smalltalk</a> under the name of <i>Class Extensions</i> for considerable time. With the arrival of the <a href="../../../../articles/2E/n/e/.NET_Framework_cb4a.html" title=".NET Framework">.NET framework 2</a>, <a href="../../../../articles/m/i/c/Microsoft.html" title="Microsoft">Microsoft</a> introduced partial classes, supported in both <a href="../../../../articles/c/_/s/C_Sharp_%28programming_language%29_be48.html" title="C Sharp (programming language)">C#</a> 2.0 and <a href="../../../../articles/v/i/s/Visual_Basic_.NET_5ee6.html" title="Visual Basic .NET">Visual Basic 2005</a>.</p>
+<p><a name="Non-class-based_object-oriented_programming" id="Non-class-based_object-oriented_programming"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Non-class-based object-oriented programming">edit</a>]</span> <span class="mw-headline">Non-class-based object-oriented programming</span></h2>
+<dl>
+<dd><span class="boilerplate seealso"><i>See also: <a href="../../../../articles/o/b/j/Object-based.html" title="Object-based">Object-based</a></i></span></dd>
+</dl>
+<p>To the surprise of some familiar with the use of classes, classes are not the only way to approach object-oriented programming. Another common approach is <a href="../../../../articles/p/r/o/Prototype-based_programming.html" title="Prototype-based programming">prototype-based programming</a>. Languages that support non-class-based programming are usually designed with the motive to address the problem of tight-coupling between implementations and interfaces due to the use of classes. For example, the <a href="../../../../articles/s/e/l/Self_programming_language.html" class="mw-redirect" title="Self programming language">Self</a> language, a prototype-based language, was designed to show that the role of a class can be substituted by using an extant object which serves as a prototype to a new object, and the resulting language is as expressive as <a href="../../../../articles/s/m/a/Smalltalk.html" title="Smalltalk">Smalltalk</a> with more generality in creating objects.</p>
+<p><a name="Examples" id="Examples"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Examples">edit</a>]</span> <span class="mw-headline">Examples</span></h2>
+<p><a name="C.2B.2B" id="C.2B.2B"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: C++">edit</a>]</span> <span class="mw-headline">C++</span></h3>
+<p><a name="Example_1" id="Example_1"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 1">edit</a>]</span> <span class="mw-headline">Example 1</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-cpp">
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="co2">#include &lt;string&gt;</span>
+ 
+<span class="kw2">using</span> <span class="kw2">namespace</span> std;
+<span class="kw2">class</span> Hello
+<span class="br0">{</span>
+    string what;
+ 
+    <span class="kw2">public</span>:
+        Hello<span class="br0">(</span><span class="kw4">const</span> string&amp; s<span class="br0">)</span>
+            : what<span class="br0">(</span>s<span class="br0">)</span>
+        <span class="br0">{</span>
+        <span class="br0">}</span>
+ 
+        <span class="kw4">void</span> say<span class="br0">(</span><span class="br0">)</span>
+        <span class="br0">{</span>
+            <span class="kw3">cout</span> &lt;&lt; <span class="st0">"Hello "</span> &lt;&lt; what &lt;&lt; <span class="st0">"!"</span> &lt;&lt; endl;
+        <span class="br0">}</span>
+<span class="br0">}</span>;
+ 
+<span class="kw4">int</span> main<span class="br0">(</span> <span class="kw4">int</span> argc, <span class="kw4">char</span>** argv <span class="br0">)</span>
+<span class="br0">{</span>
+    Hello hello_world<span class="br0">(</span><span class="st0">"world"</span><span class="br0">)</span>;
+    hello_world.<span class="me1">say</span><span class="br0">(</span><span class="br0">)</span>;
+ 
+    <span class="kw1">return</span> <span class="nu0">0</span>;
+<span class="br0">}</span>
+</pre></div>
+<p>This example shows how to define a <a href="../../../../articles/c/%2B/%2B/C%2B%2B.html" title="C++">C++</a> class named "<code>Hello</code>". It has a private string attribute named "<code>what</code>", and a public method named "<code>say</code>".</p>
+<p><a name="Example_2" id="Example_2"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 2">edit</a>]</span> <span class="mw-headline">Example 2</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-cpp">
+<span class="kw2">class</span> MyAbstractClass
+<span class="br0">{</span>
+<span class="kw2">public</span>:
+     <span class="kw2">virtual</span> <span class="kw4">void</span> MyVirtualMethod<span class="br0">(</span><span class="br0">)</span> = <span class="nu0">0</span>;
+<span class="br0">}</span>;
+ 
+<span class="kw2">class</span> MyConcreteClass : <span class="kw2">public</span> MyAbstractClass
+<span class="br0">{</span>
+<span class="kw2">public</span>:
+     <span class="kw4">void</span> MyVirtualMethod<span class="br0">(</span><span class="br0">)</span>
+     <span class="br0">{</span>
+      <span class="co1">//do something</span>
+     <span class="br0">}</span>
+<span class="br0">}</span>;
+</pre></div>
+<p>An object of class MyAbstractClass cannot be created because the function MyVirtualMethod has not been defined (the =0 is C++ syntax for a pure virtual function, a function that must be part of any derived concrete class but is not defined in the abstract base class. The MyConcreteClass class is a concrete class because its functions (in this case, only one function) have been declared and implemented.</p>
+<p><a name="Example_3" id="Example_3"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 3">edit</a>]</span> <span class="mw-headline">Example 3</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-cpp">
+<span class="co2">#include &lt;string&gt;</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw2">using</span> <span class="kw2">namespace</span> std;
+ 
+<span class="kw2">class</span> InetMessage
+<span class="br0">{</span>
+    string m_subject, m_to, m_from;
+ 
+<span class="kw2">public</span>:
+    InetMessage <span class="br0">(</span><span class="kw4">const</span> string&amp; subject,
+                 <span class="kw4">const</span> string&amp; to,
+                 <span class="kw4">const</span> string&amp; from<span class="br0">)</span> : m_subject<span class="br0">(</span>subject<span class="br0">)</span>, m_to<span class="br0">(</span>to<span class="br0">)</span>, m_from<span class="br0">(</span>from<span class="br0">)</span> <span class="br0">{</span> <span class="br0">}</span>
+    string subject <span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> <span class="kw1">return</span> m_subject; <span class="br0">}</span>
+    string to <span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> <span class="kw1">return</span> m_to; <span class="br0">}</span>
+    string from <span class="br0">(</span><span class="br0">)</span> <span class="kw4">const</span> <span class="br0">{</span> <span class="kw1">return</span> m_from; <span class="br0">}</span>
+    <span class="kw2">virtual</span> <span class="kw4">void</span> printTo<span class="br0">(</span>ostream &amp;out<span class="br0">)</span> 
+    <span class="br0">{</span>
+        out &lt;&lt; <span class="st0">"Subject: "</span> &lt;&lt; m_subject &lt;&lt; endl;
+        out &lt;&lt; <span class="st0">"From: "</span> &lt;&lt; m_from &lt;&lt; endl;
+        out &lt;&lt; <span class="st0">"To: "</span> &lt;&lt; m_to &lt;&lt; endl;
+    <span class="br0">}</span>
+<span class="br0">}</span>;
+</pre></div>
+<p><a name="Java" id="Java"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Java">edit</a>]</span> <span class="mw-headline">Java</span></h3>
+<p><a name="Example_1_2" id="Example_1_2"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 1">edit</a>]</span> <span class="mw-headline">Example 1</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-java">
+<span class="kw2">public</span> <span class="kw2">class</span> Example1
+<span class="br0">{</span>
+    <span class="co1">// This is a Java class, it automatically extends the class Object</span>
+    <span class="kw2">public</span> <span class="kw2">static</span> <span class="kw4">void</span> main <span class="br0">(</span><span class="kw3">String</span> args<span class="br0">[</span><span class="br0">]</span><span class="br0">)</span> 
+    <span class="br0">{</span>
+        <span class="kw3">System</span>.<span class="me1">out</span>.<span class="me1">println</span><span class="br0">(</span><span class="st0">"Hello world!"</span><span class="br0">)</span>;
+    <span class="br0">}</span>
+<span class="br0">}</span>
+</pre></div>
+<p>This example shows a simple <a href="../../../../articles/h/e/l/Hello_world_program.html" title="Hello world program">hello world program</a>.</p>
+<p><a name="Example_2_2" id="Example_2_2"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 2">edit</a>]</span> <span class="mw-headline">Example 2</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-java">
+<span class="kw2">public</span> <span class="kw2">class</span> Example2 <span class="kw2">extends</span> Example1
+<span class="br0">{</span>
+    <span class="co1">// This is a class that extends the class created in Example 1.</span>
+    <span class="kw2">protected</span> <span class="kw4">int</span> data;
+ 
+    <span class="kw2">public</span> Example2<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="co1">// This is a constructor for the class.  It does not have a return type.</span>
+        data = <span class="nu0">1</span>;
+    <span class="br0">}</span>
+ 
+    <span class="kw2">public</span> <span class="kw4">int</span> getData<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw2">return</span> data;
+    <span class="br0">}</span>
+ 
+    <span class="kw2">public</span> <span class="kw4">void</span> setData<span class="br0">(</span><span class="kw4">int</span> d<span class="br0">)</span>
+    <span class="br0">{</span>
+        data = d;
+    <span class="br0">}</span>
+<span class="br0">}</span>
+</pre></div>
+<p>This example shows a class that has a defined constructor, one member data, an accessor method (getData) and a Modifier method (setData) for that member data. It extends the previous example's class. Note that in Java all classes automatically extend the class Object. This allows you to write generic code to deal with objects of any type.</p>
+<p><a name="Visual_Basic_.NET" id="Visual_Basic_.NET"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Visual Basic .NET">edit</a>]</span> <span class="mw-headline">Visual Basic .NET</span></h3>
+<p><a name="Example_1_3" id="Example_1_3"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 1">edit</a>]</span> <span class="mw-headline">Example 1</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-vbnet">
+<span class="kw6">Class</span> Hello
+    <span class="kw2">Private</span> what <span class="kw2">as</span> <span class="kw2">String</span>
+ 
+    <span class="kw6">Sub</span> <span class="kw2">New</span><span class="br0">(</span> <span class="kw2">ByVal</span> s <span class="kw2">as</span> <span class="kw2">String</span> <span class="br0">)</span>
+        what = s
+    <span class="kw6">End</span> <span class="kw6">Sub</span>
+ 
+    <span class="kw6">Sub</span> Say<span class="br0">(</span><span class="br0">)</span>
+        MessageBox.<span class="me1">Show</span><span class="br0">(</span><span class="st0">"Hello "</span> &amp; what <span class="br0">)</span>
+    <span class="kw6">End</span> <span class="kw6">Sub</span>
+<span class="kw6">End</span> <span class="kw6">Class</span>
+ 
+<span class="kw6">Sub</span> Main<span class="br0">(</span><span class="br0">)</span>
+    <span class="kw6">Dim</span> h <span class="kw2">as</span> <span class="kw2">new</span> Hello<span class="br0">(</span> <span class="st0">"Foobar"</span> <span class="br0">)</span>
+    h.<span class="me1">Say</span><span class="br0">(</span><span class="br0">)</span>
+<span class="kw6">End</span> <span class="kw6">Sub</span>
+</pre></div>
+<p>This example is a port of the C++ example above. It demonstrates how to make a class named Hello with a private property named what. It also demonstrates the proper use of a constructor, and has a public method named Say. It also demonstrates how to instantiate the class and call the Say method.</p>
+<p><a name="PHP" id="PHP"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: PHP">edit</a>]</span> <span class="mw-headline">PHP</span></h3>
+<p><a name="Example_1_4" id="Example_1_4"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 1">edit</a>]</span> <span class="mw-headline">Example 1</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-php">
+<span class="kw2">&lt;?php</span>
+<span class="kw2">class</span> A <span class="br0">{</span>
+    <span class="kw2">public</span> <span class="kw2">function</span> foo<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+        <span class="kw1">if</span> <span class="br0">(</span><span class="kw3">isset</span><span class="br0">(</span><span class="re0">$this</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span>
+            <span class="kw3">echo</span> <span class="st0">'$this is defined ('</span>;
+            <span class="kw3">echo</span> <span class="kw3">get_class</span><span class="br0">(</span><span class="re0">$this</span><span class="br0">)</span>;
+            <span class="kw3">echo</span> <span class="st0">")<span class="es0">\n</span>"</span>;
+        <span class="br0">}</span> <span class="kw1">else</span> <span class="br0">{</span>
+            <span class="kw3">echo</span> <span class="st0">"<span class="es0">\$</span>this is not defined.<span class="es0">\n</span>"</span>;
+        <span class="br0">}</span>
+    <span class="br0">}</span>
+<span class="br0">}</span>
+<span class="kw2">?&gt;</span>
+</pre></div>
+<p><a name="Example_2_3" id="Example_2_3"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 2">edit</a>]</span> <span class="mw-headline">Example 2</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-php">
+<span class="kw2">&lt;?php</span>
+        <span class="kw2">class</span> DateObject
+        <span class="br0">{</span>
+                <span class="kw2">public</span> <span class="kw2">function</span> getTime<span class="br0">(</span><span class="br0">)</span>
+                <span class="br0">{</span>
+                        <span class="coMULTI">/** For E_STRICT mode:
+                         *
+                         * date_default_timezone_set('CET');
+                         */</span>
+ 
+                        <span class="kw1">return</span><span class="br0">(</span><span class="kw3">time</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>;
+                <span class="br0">}</span>
+ 
+                <span class="kw2">public</span> <span class="kw2">function</span> <span class="kw3">getDate</span><span class="br0">(</span><span class="br0">)</span>
+                <span class="br0">{</span>
+                        <span class="kw1">return</span><span class="br0">(</span><span class="kw3">date</span><span class="br0">(</span><span class="st0">'jS F, Y'</span>, <span class="re0">$this</span>-&gt;<span class="me1">getTime</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span>;
+                <span class="br0">}</span>
+        <span class="br0">}</span>
+<span class="kw2">?&gt;</span>
+</pre></div>
+<p><a name="C.23" id="C.23"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: C#">edit</a>]</span> <span class="mw-headline">C#</span></h3>
+<p><a name="Example_1_5" id="Example_1_5"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 1">edit</a>]</span> <span class="mw-headline">Example 1</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-csharp">
+<span class="kw1">using</span> <span class="kw5">System</span>;
+ 
+<span class="kw1">public</span> <span class="kw4">class</span> Program
+<span class="br0">{</span>
+    <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw1">void</span> Main<span class="br0">(</span><span class="kw4">string</span><span class="br0">[</span><span class="br0">]</span> args<span class="br0">)</span>
+    <span class="br0">{</span>
+        <span class="kw5">System</span>.<span class="me1">Console</span>.<span class="me1">WriteLine</span><span class="br0">(</span><span class="st0">"Hello world!"</span><span class="br0">)</span>;
+    <span class="br0">}</span>
+<span class="br0">}</span>
+</pre></div>
+<p>This example demonstrates a traditional "Hello world!" example in Microsoft's C# language. The Program class contains a single static method, Main(), which calls System.Console.WriteLine to print text onto the console.</p>
+<p><a name="Example_2_4" id="Example_2_4"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 2">edit</a>]</span> <span class="mw-headline">Example 2</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-csharp">
+<span class="kw1">using</span> <span class="kw5">System</span>;
+ 
+<span class="kw1">public</span> <span class="kw4">class</span> Hello
+<span class="br0">{</span>
+    <span class="kw1">private</span> <span class="kw4">string</span> what;
+ 
+    <span class="kw1">public</span> Hello<span class="br0">(</span><span class="kw4">string</span> s<span class="br0">)</span>
+    <span class="br0">{</span>
+        what = s;
+    <span class="br0">}</span>
+ 
+    <span class="kw1">public</span> <span class="kw1">void</span> Say<span class="br0">(</span><span class="br0">)</span>
+    <span class="br0">{</span>
+        Console.<span class="me1">WriteLine</span><span class="br0">(</span><span class="st0">"Hello "</span> + what + <span class="st0">"!"</span><span class="br0">)</span>;
+    <span class="br0">}</span>
+<span class="br0">}</span>
+ 
+<span class="kw1">public</span> <span class="kw4">class</span> Program
+<span class="br0">{</span>
+    <span class="kw1">public</span> <span class="kw1">static</span> <span class="kw1">void</span> Main<span class="br0">(</span><span class="kw4">string</span><span class="br0">[</span><span class="br0">]</span> args<span class="br0">)</span>
+    <span class="br0">{</span>
+        Hello helloWorld = <span class="kw3">new</span> Hello<span class="br0">(</span><span class="st0">"world"</span><span class="br0">)</span>;
+        helloWorld.<span class="me1">Say</span><span class="br0">(</span><span class="br0">)</span>; <span class="co1">// prints "Hello world!" onto the console</span>
+    <span class="br0">}</span>
+<span class="br0">}</span>
+</pre></div>
+<p>This is another port of the above C++ example. A class called Hello is created with a constructor that takes a string parameter. When the Say() method is called, the instance of Hello will print "Hello {what}!" onto the console. Notice that the Main() method (the entry point) is actually contained in a class itself.</p>
+<p><a name="ActionScript" id="ActionScript"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: ActionScript">edit</a>]</span> <span class="mw-headline">ActionScript</span></h3>
+<p><a name="Example_1_6" id="Example_1_6"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 1">edit</a>]</span> <span class="mw-headline">Example 1</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-actionscript">
+<span class="kw2">class</span> Cart <span class="br0">{</span>
+ 
+    <span class="kw3">private</span> <span class="kw2">var</span> cart:<span class="kw3">Array</span>;
+ 
+    <span class="kw3">public</span> <span class="kw2">function</span> Cart<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span>
+        <span class="kw3">this</span>.<span class="me1">cart</span> = <span class="kw2">new</span> <span class="kw3">Array</span><span class="br0">(</span><span class="br0">)</span>;
+    <span class="br0">}</span>
+ 
+    <span class="kw3">public</span> <span class="kw2">function</span> addItem<span class="br0">(</span>id:<span class="kw3">Number</span>, <span class="kw3">name</span>:<span class="kw3">String</span><span class="br0">)</span>:<span class="kw3">Void</span> <span class="br0">{</span>
+        <span class="kw3">this</span>.<span class="me1">cart</span>.<span class="kw3">push</span><span class="br0">(</span><span class="br0">[</span>id, <span class="kw3">name</span><span class="br0">]</span><span class="br0">)</span>;
+    <span class="br0">}</span>
+ 
+    <span class="kw3">public</span> <span class="kw2">function</span> removeItemById<span class="br0">(</span>id:<span class="kw3">Number</span><span class="br0">)</span>:<span class="kw3">Void</span> <span class="br0">{</span>
+        <span class="kw2">var</span> ln:<span class="kw3">Number</span> = <span class="kw3">this</span>.<span class="me1">cart</span>.<span class="kw3">length</span>;
+        <span class="kw1">for</span> <span class="br0">(</span><span class="kw2">var</span> i:<span class="kw3">Number</span> = <span class="nu0">0</span>; i&lt;ln; i++<span class="br0">)</span> <span class="br0">{</span>
+            <span class="kw2">var</span> curr:<span class="kw3">Array</span> = <span class="kw3">this</span>.<span class="me1">cart</span><span class="br0">[</span>i<span class="br0">]</span>;
+            <span class="kw1">if</span> <span class="br0">(</span>curr<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> == id<span class="br0">)</span> <span class="kw3">this</span>.<span class="me1">cart</span>.<span class="kw3">splice</span><span class="br0">(</span>i, <span class="nu0">1</span><span class="br0">)</span>;
+        <span class="br0">}</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw3">public</span> <span class="kw2">function</span> removeItemByName<span class="br0">(</span><span class="kw3">name</span>:<span class="kw3">String</span><span class="br0">)</span>:<span class="kw3">Void</span> <span class="br0">{</span>
+        <span class="kw2">var</span> ln:<span class="kw3">Number</span> = <span class="kw3">this</span>.<span class="me1">cart</span>.<span class="kw3">length</span>;
+        <span class="kw1">for</span> <span class="br0">(</span><span class="kw2">var</span> i:<span class="kw3">Number</span> = <span class="nu0">0</span>; i&lt;ln; i++<span class="br0">)</span> <span class="br0">{</span>
+            <span class="kw2">var</span> curr:<span class="kw3">Array</span> = <span class="kw3">this</span>.<span class="me1">cart</span><span class="br0">[</span>i<span class="br0">]</span>;
+            <span class="kw1">if</span> <span class="br0">(</span>curr<span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span> == <span class="kw3">name</span><span class="br0">)</span> <span class="kw3">this</span>.<span class="me1">cart</span>.<span class="kw3">splice</span><span class="br0">(</span>i, <span class="nu0">1</span> <span class="br0">)</span>;
+        <span class="br0">}</span>
+    <span class="br0">}</span>
+<span class="br0">}</span>
+</pre></div>
+<p><a name="Ruby" id="Ruby"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Ruby">edit</a>]</span> <span class="mw-headline">Ruby</span></h3>
+<p><a name="Example_1_7" id="Example_1_7"></a></p>
+<h4><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Example 1">edit</a>]</span> <span class="mw-headline">Example 1</span></h4>
+<div dir="ltr" style="text-align: left;">
+<pre class="source-ruby">
+<span class="kw1">class</span> Hello
+    <span class="kw1">def</span> <span class="kw2">self</span>.<span class="me1">hello</span>
+        <span class="kw3">string</span> = <span class="st0">"Hello world!"</span>
+        <span class="kw2">return</span> <span class="kw3">string</span>
+    <span class="kw1">end</span>
+<span class="kw1">end</span>
+</pre></div>
+<p>A Ruby class "Hello", with one method "hello". This method returns the variable "string", which is set to "Hello world!".</p>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<ul>
+<li><a href="../../../../articles/h/i/e/Hierarchy_%28object-oriented_programming%29.html" title="Hierarchy (object-oriented programming)">Hierarchy</a></li>
+<li><a href="../../../../articles/c/l/a/Class_diagram.html" title="Class diagram">Class diagram</a> (UML)</li>
+<li><a href="../../../../articles/c/l/a/Class-based_programming.html" title="Class-based programming">Class-based programming</a></li>
+</ul>
+<p><a name="Literature" id="Literature"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/c/l/a/Class_%28computer_science%29.html" title="Edit section: Literature">edit</a>]</span> <span class="mw-headline">Literature</span></h2>
+<ul>
+<li>Meyer, B.: "Object-oriented software construction", 2nd edition, Prentice Hall, 1997, <a href="../../../../articles/b/o/o/Special%7EBookSources_0136291554_ab4b.html" class="internal">ISBN 0-13-629155-4</a></li>
+<li>Rumbaugh et al.: "Object-oriented modeling and design", Prentice Hall, 1991, <a href="../../../../articles/b/o/o/Special%7EBookSources_0136300545_6e3d.html" class="internal">ISBN 0-13-630054-5</a></li>
+<li><a href="http://www.open-std.org/jtc1/sc22/wg21/" class="external text" title="http://www.open-std.org/jtc1/sc22/wg21/" rel="nofollow">ISO/IEC 14882:2003 Programming Language C++, International standard</a></li>
+<li><a href="http://lucacardelli.name/TheoryOfObjects.html" class="external text" title="http://lucacardelli.name/TheoryOfObjects.html" rel="nofollow">Abadi; Cardelli: A Theory of Objects</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 420/1000000
+Post-expand include size: 1643/2048000 bytes
+Template argument size: 764/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/o/b/j/Category%7EObject-oriented_programming_f6c4.html" title="Category:Object-oriented programming">Object-oriented programming</a></span> | <span dir='ltr'><a href="../../../../articles/p/r/o/Category%7EProgramming_constructs_6564.html" title="Category:Programming constructs">Programming constructs</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/c/l/a/Class_%28computer_science%29.html">Article</a></li><li id="ca-talk"
+	       class="new"	       ><a href="../../../../articles/c/l/a/Talk%7EClass_%28computer_science%29_8f6d.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Class_%28computer_science%29">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	<div id="p-lang" class="portlet">
+	  <h5>Languages</h5>
+	  <div class="pBody">
+	    <ul>
+	      	      <li>
+	      <a href="../../../../../af/articles/k/l/a/Klasse.html">Afrikaans</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../be-x-old/articles/%D0%BA/%D0%BB/%D1%8F/%D0%9A%D0%BB%D1%8F%D1%81%D0%B0_%28%D0%BF%D1%80%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%B0%D0%B2%D0%B0%D0%BD%D1%8C%D0%BD%D0%B5%29.html">Беларуская (тарашкевіца)</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../bs/articles/r/a/%C4%8D/Ra%C4%8Dunarska_klasa.html">Bosanski</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../ca/articles/c/l/a/Classe_%28inform%C3%A0tica%29.html">Català</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../cs/articles/t/%C5%99/%C3%AD/T%C5%99%C3%ADda_%28programov%C3%A1n%C3%AD%29.html">Česky</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../da/articles/k/l/a/Klasse_%28datalogi%29.html">Dansk</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../de/articles/k/l/a/Klasse_%28objektorientierte_Programmierung%29_a265.html">Deutsch</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../es/articles/c/l/a/Clase_%28inform%C3%A1tica%29.html">Español</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../eo/articles/k/l/a/Klaso_%28objektema_programado%29.html">Esperanto</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../fa/articles/%DA%A9/%D9%84/%D8%A7/%DA%A9%D9%84%D8%A7%D8%B3_%28%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87%E2%80%8C%D9%86%D9%88%DB%8C%D8%B3%DB%8C%29.html">فارسی</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../fr/articles/c/l/a/Classe_%28informatique%29.html">Français</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../is/articles/k/l/a/Klasi_%28forritun%29.html">Íslenska</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../it/articles/c/l/a/Classe_%28informatica%29.html">Italiano</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../he/articles/%D7%9E/%D7%97/%D7%9C/%D7%9E%D7%97%D7%9C%D7%A7%D7%94_%28%D7%AA%D7%9B%D7%A0%D7%95%D7%AA%29.html">עברית</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../lt/articles/k/l/a/Klas%C4%97_%28programavimas%29.html">Lietuvių</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../nl/articles/k/l/a/Klasse_%28informatica%29.html">Nederlands</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../ja/articles/%E3%82%AF/%E3%83%A9/%E3%82%B9/%E3%82%AF%E3%83%A9%E3%82%B9_%28%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%29.html">日本語</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../pl/articles/k/l/a/Klasa_%28programowanie_obiektowe%29.html">Polski</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../pt/articles/c/l/a/Classe_%28programa%C3%A7%C3%A3o%29.html">Português</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../ru/articles/%D0%BA/%D0%BB/%D0%B0/%D0%9A%D0%BB%D0%B0%D1%81%D1%81_%28%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%29.html">Русский</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../simple/articles/c/l/a/Class_%28programming%29.html">Simple English</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../sk/articles/t/r/i/Trieda_%28programovanie%29.html">Slovenčina</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../su/articles/c/l/a/Class_%28%C3%A9lmu_komputer%29.html">Basa Sunda</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../fi/articles/k/a/p/Kapselointi.html">Suomi</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../sv/articles/k/l/a/Klass_%28programmering%29.html">Svenska</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../ta/articles/%E0%AE%B5/%E0%AE%95/%E0%AF%81/%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81_%28%E0%AE%95%E0%AE%A3%E0%AE%BF%E0%AE%A9%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%AF%E0%AE%B2%E0%AF%8D%29.html">தமிழ்</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../th/articles/%E0%B8%84/%E0%B8%A5/%E0%B8%B2/%E0%B8%84%E0%B8%A5%E0%B8%B2%E0%B8%AA.html">ไทย</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../vi/articles/l/%E1%BB%9B/p/L%E1%BB%9Bp_%28khoa_h%E1%BB%8Dc_m%C3%A1y_t%C3%ADnh%29.html">Tiếng Việt</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../uk/articles/%D0%BA/%D0%BB/%D0%B0/%D0%9A%D0%BB%D0%B0%D1%81_%28%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F%29.html">Українська</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../zh/articles/%E7%B1%BB/_/%28/%E7%B1%BB_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29.html">中文</a>
+	      </li>
+	      	    </ul>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 01:33, 8 June 2008 by Anonymous user(s) of Wikipedia. Based on work by Wikipedia user(s) <a href="../../../../articles/h/u/n/User%7EHunting_dog_f24d.html" title="User:Hunting dog">Hunting dog</a>, Maian, <a href="../../../../articles/s/a/m/User%7ESam_1124_5199.html" title="User:Sam 1124">Sam 1124</a>, <a href="../../../../articles/j/a/n/User%7EJAnDbot_5c44.html" title="User:JAnDbot">JAnDbot</a>, <a href="../../../../articles/b/r/i/User%7EBrick_Thrower_da1d.html" title="User:Brick Thrower">Brick Thrower</a>, <a href="../../../../articles/b/t/x/User%7EBtx40_4001.html" title="User:Btx40">Btx40</a>, <a href="../../../../articles/m/e/t/User%7EMetaheurist_f6af.html" title="User:Metaheurist">Metaheurist</a>, TheoJulienne, <a href="../../../../articles/w/a/k/User%7EWakimakirolls_a101.html" title="User:Wakimakirolls">Wakimakirolls</a>, <a href="../../../../articles/v/o/l/User%7EVolkovBot_5c6d.html" title="User:VolkovBot">VolkovBot</a>, <a href="../../../../articles/h/e/r/User%7EHervegirod_c57f.html" title="User:Hervegirod">Hervegirod</a>, <a href="../../../../articles/a/b/d/User%7EAbdull_b6f2.html" title="User:Abdull">Abdull</a>, <a href="../../../../articles/m/i/s/User%7EMistercupcake_fb70.html" title="User:Mistercupcake">Mistercupcake</a>, Torc2, <a href="../../../../articles/e/s/a/User%7EEsap_e227.html" title="User:Esap">Esap</a>, <a href="../../../../articles/j/u/m/User%7EJumbuck_a815.html" title="User:Jumbuck">Jumbuck</a>, <a href="../../../../articles/t/e/c/User%7ETechi2ee_763b.html" title="User:Techi2ee">Techi2ee</a>, <a href="../../../../articles/o/k/b/User%7EOKBot_2a6e.html" title="User:OKBot">OKBot</a>, Celi0r, <a href="../../../../articles/s/j/p/User%7ESJP_f2d7.html" title="User:SJP">SJP</a>, Dprust, Njlover, <a href="../../../../articles/d/o/c/User%7EDocboat_258d.html" title="User:Docboat">Docboat</a>, <a href="../../../../articles/s/m/a/User%7ESmackBot_cc7a.html" title="User:SmackBot">SmackBot</a>, Redreign, 4321dcba, <a href="../../../../articles/m/a/t/User%7EMattOates_2c61.html" title="User:MattOates">MattOates</a>, <a href="../../../../articles/a/n/t/User%7EAntiSpamBot_9832.html" title="User:AntiSpamBot">AntiSpamBot</a>, <a href="../../../../articles/j/a/p/User%7EJapo_2681.html" title="User:Japo">Japo</a>, Aknowl, <a href="../../../../articles/g/a/m/User%7EGamer_Eek_41f2.html" title="User:Gamer Eek">Gamer Eek</a>, <a href="../../../../articles/c/h/a/User%7ECharlesC_5756.html" title="User:CharlesC">CharlesC</a>, <a href="../../../../articles/e/w/l/User%7EEwlyahoocom_d1b9.html" title="User:Ewlyahoocom">Ewlyahoocom</a>, <a href="../../../../articles/a/n/c/User%7EAnchor_Link_Bot_fcb1.html" title="User:Anchor Link Bot">Anchor Link Bot</a>, <a href="../../../../articles/d/o/r/User%7EDoranchak_f857.html" title="User:Doranchak">Doranchak</a>, <a href="../../../../articles/b/o/b/User%7EBobo192_c260.html" title="User:Bobo192">Bobo192</a>, <a href="../../../../articles/b/o/t/User%7EBotMultichill_c5ae.html" title="User:BotMultichill">BotMultichill</a>, Zedlik, <a href="../../../../articles/d/r/o/User%7EDropDeadGorgias_33d3.html" title="User:DropDeadGorgias">DropDeadGorgias</a>, <a href="../../../../articles/t/i/m/User%7ETimneu22_943f.html" title="User:Timneu22">Timneu22</a>, Mathurnitin, <a href="../../../../articles/j/a/y/User%7EJayvdb_61b3.html" title="User:Jayvdb">Jayvdb</a>, <a href="../../../../articles/d/e/n/User%7EDennyColt_9f74.html" title="User:DennyColt">DennyColt</a>, <a href="../../../../articles/l/i/n/User%7ELinus_M._4f9d.html" title="User:Linus M.">Linus M.</a>, <a href="../../../../articles/p/e/y/User%7EPeyre_e178.html" title="User:Peyre">Peyre</a>, <a href="../../../../articles/t/i/m/User%7ETime3000_8d68.html" title="User:Time3000">Time3000</a>, Prashanthomesh, <a href="../../../../articles/b/e/t/User%7EBetacommand_e660.html" title="User:Betacommand">Betacommand</a>, <a href="../../../../articles/p/a/t/User%7EPatrick_7b47.html" title="User:Patrick">Patrick</a>, <a href="../../../../articles/g/h/e/User%7EGhewgill_c616.html" title="User:Ghewgill">Ghewgill</a>, <a href="../../../../articles/v/i/c/User%7EVictorAnyakin_df1a.html" title="User:VictorAnyakin">VictorAnyakin</a>, <a href="../../../../articles/j/u/t/User%7EJutiphan_cc6d.html" title="User:Jutiphan">Jutiphan</a>, <a href="../../../../articles/a/n/u/User%7EAnupamsr_6a35.html" title="User:Anupamsr">Anupamsr</a>, <a href="../../../../articles/m/p/a/User%7EMParaz_5a5d.html" title="User:MParaz">MParaz</a>, <a href="../../../../articles/s/h/o/User%7EShoessss_80c5.html" title="User:Shoessss">Shoessss</a>, <a href="../../../../articles/r/e/m/User%7ERemi0o_de20.html" title="User:Remi0o">Remi0o</a>, <a href="../../../../articles/g/w/e/User%7EGwern_2189.html" title="User:Gwern">Gwern</a>, <a href="../../../../articles/k/u/r/User%7EKurykh_2d02.html" title="User:Kurykh">Kurykh</a>, <a href="../../../../articles/r/o/n/User%7ERonyclau_0add.html" title="User:Ronyclau">Ronyclau</a>, <a href="../../../../articles/i/r/w/User%7EIrwangatot_0f95.html" title="User:Irwangatot">Irwangatot</a>, <a href="../../../../articles/d/h/p/User%7EDhp1080_3c5b.html" title="User:Dhp1080">Dhp1080</a>, <a href="../../../../articles/h/e/d/User%7EHede2000_86f6.html" title="User:Hede2000">Hede2000</a>, <a href="../../../../articles/n/u/m/User%7ENumbo3_f4e9.html" title="User:Numbo3">Numbo3</a>, <a href="../../../../articles/d/h/n/User%7EDHN-bot_8c4a.html" title="User:DHN-bot">DHN-bot</a>, Zoryn, <a href="../../../../articles/b/o/d/User%7EBodyvisual_19c9.html" title="User:Bodyvisual">Bodyvisual</a>, <a href="../../../../articles/t/e/s/User%7ETestPilot_548e.html" title="User:TestPilot">TestPilot</a>, <a href="../../../../articles/b/l/u/User%7EBluemoose_d309.html" title="User:Bluemoose">Bluemoose</a>, Hyperfusion, <a href="../../../../articles/s/i/p/User%7ESippel2707_c158.html" title="User:Sippel2707">Sippel2707</a>, <a href="../../../../articles/s/h/a/User%7EShawn_wiki_183d.html" title="User:Shawn wiki">Shawn wiki</a>, <a href="../../../../articles/g/e/o/User%7EGeorgeMoney_583b.html" title="User:GeorgeMoney">GeorgeMoney</a>, Oran, Phraine, Rs kumar b4u@yahoo.co.in, <a href="../../../../articles/c/o/l/User%7EColonies_Chris_c27e.html" title="User:Colonies Chris">Colonies Chris</a>, <a href="../../../../articles/w/l/i/User%7EWlievens_2d8b.html" title="User:Wlievens">Wlievens</a>, <a href="../../../../articles/%D7%93/%D7%A0/%D7%99/User%7E%D7%93%D7%A0%D7%99%D7%90%D7%9C_%D7%A6%D7%91%D7%99.html" title="User:דניאל צבי">דניאל צבי</a>, <a href="../../../../articles/w/h/i/User%7EWhitepaw_0fef.html" title="User:Whitepaw">Whitepaw</a>, <a href="../../../../articles/g/o/l/User%7EGoldenXuniversity_d393.html" title="User:GoldenXuniversity">GoldenXuniversity</a>, TheNightFly, Rz, <a href="../../../../articles/t/a/w/User%7ETawkerbot2_313a.html" title="User:Tawkerbot2">Tawkerbot2</a>, <a href="../../../../articles/r/e/d/User%7ERedWolf_0f32.html" title="User:RedWolf">RedWolf</a>, Msadegi, <a href="../../../../articles/y/u/r/User%7EYurikBot_b393.html" title="User:YurikBot">YurikBot</a>, <a href="../../../../articles/p/o/l/User%7EPolitepunk_094c.html" title="User:Politepunk">Politepunk</a>, <a href="../../../../articles/s/a/l/User%7ESalix_alba_9f89.html" title="User:Salix alba">Salix alba</a>, <a href="../../../../articles/y/m/s/User%7EYms_abf7.html" title="User:Yms">Yms</a>, <a href="../../../../articles/c/a/n/User%7ECan%27t_sleep%2C_clown_will_eat_me_7058.html" title="User:Can't sleep, clown will eat me">Can't sleep, clown will eat me</a>, Narcelio, <a href="../../../../articles/b/u/r/User%7EBurntSky_3c02.html" title="User:BurntSky">BurntSky</a>, <a href="../../../../articles/s/t/w/User%7EStw_8a8b.html" title="User:Stw">Stw</a>, <a href="../../../../articles/g/r/a/User%7EGraemeL_c5a8.html" title="User:GraemeL">GraemeL</a>, <a href="../../../../articles/f/u/z/User%7EFuzheado_f8f0.html" title="User:Fuzheado">Fuzheado</a>, <a href="../../../../articles/l/i/g/User%7ELigulem_20b6.html" title="User:Ligulem">Ligulem</a>, <a href="../../../../articles/a/s/s/User%7EAssulted_Peanut_3c29.html" title="User:Assulted Peanut">Assulted Peanut</a>, <a href="../../../../articles/c/u/r/User%7ECurvers_4747.html" title="User:Curvers">Curvers</a>, <a href="../../../../articles/g/a/r/User%7EGary_King_7238.html" title="User:Gary King">Gary King</a>, <a href="../../../../articles/t/i/m/User%7ETimBentley_fb12.html" title="User:TimBentley">TimBentley</a>, <a href="../../../../articles/p/a/l/User%7EPalfrey_558d.html" title="User:Palfrey">Palfrey</a>, <a href="../../../../articles/s/a/h/User%7ESahirShah_b14a.html" title="User:SahirShah">SahirShah</a>, <a href="../../../../articles/l/e/o/User%7ELeonardoRob0t_c34e.html" title="User:LeonardoRob0t">LeonardoRob0t</a>, MMSequeira, <a href="../../../../articles/j/-/s/User%7EJ-Star_d4b3.html" title="User:J-Star">J-Star</a>, <a href="../../../../articles/v/e/r/User%7EVer_9dc7.html" title="User:Ver">Ver</a>, <a href="../../../../articles/m/i/c/User%7EMichael_Hardy_e932.html" title="User:Michael Hardy">Michael Hardy</a>, <a href="../../../../articles/c/e/y/User%7ECeyockey_fb55.html" title="User:Ceyockey">Ceyockey</a>, <a href="../../../../articles/r/a/u/User%7ERaulMiller_4465.html" title="User:RaulMiller">RaulMiller</a>, <a href="../../../../articles/o/r/d/User%7EOrderud_9d90.html" title="User:Orderud">Orderud</a>, IGLOBALIZE, DanielSHaischt, <a href="../../../../articles/k/2E/n/User%7EK.Nevelsteen_38d1.html" title="User:K.Nevelsteen">K.Nevelsteen</a>, DouglasGreen, <a href="../../../../articles/i/a/n/User%7EIancarter_9538.html" title="User:Iancarter">Iancarter</a>, <a href="../../../../articles/t/a/k/User%7ETakuyaMurata_085a.html" title="User:TakuyaMurata">TakuyaMurata</a>, <a href="../../../../articles/r/e/x/User%7ERexNL_e4e0.html" title="User:RexNL">RexNL</a>, <a href="../../../../articles/d/e/r/User%7EDerrickOswald_cf65.html" title="User:DerrickOswald">DerrickOswald</a>, <a href="../../../../articles/k/a/y/User%7EKayEss_94c2.html" title="User:KayEss">KayEss</a>, <a href="../../../../articles/b/r/i/User%7EBrighterorange_f618.html" title="User:Brighterorange">Brighterorange</a>, <a href="../../../../articles/p/i/o/User%7EPion_1f6d.html" title="User:Pion">Pion</a>, <a href="../../../../articles/k/n/u/User%7EKnutux_d5ca.html" title="User:Knutux">Knutux</a>, <a href="../../../../articles/c/a/n/User%7ECanisRufus_0875.html" title="User:CanisRufus">CanisRufus</a>, <a href="../../../../articles/e/a/t/User%7EEatMyShortz_1fd5.html" title="User:EatMyShortz">EatMyShortz</a>, <a href="../../../../articles/m/i/n/User%7EMinghong_2ceb.html" title="User:Minghong">Minghong</a>, <a href="../../../../articles/m/i/t/User%7EMIT_Trekkie_1e9d.html" title="User:MIT Trekkie">MIT Trekkie</a>, <a href="../../../../articles/s/a/m/User%7ESam_Hocevar_dccf.html" title="User:Sam Hocevar">Sam Hocevar</a>, Bmf1972, <a href="../../../../articles/c/h/a/User%7ECharles_Matthews_cceb.html" title="User:Charles Matthews">Charles Matthews</a>, <a href="../../../../articles/l/i/f/User%7ELiftarn_fddd.html" title="User:Liftarn">Liftarn</a>, <a href="../../../../articles/r/o/b/User%7ERobbot_3bd9.html" title="User:Robbot">Robbot</a>, <a href="../../../../articles/d/c/o/User%7EDcoetzee_a2a7.html" title="User:Dcoetzee">Dcoetzee</a>, <a href="../../../../articles/b/r/y/User%7EBryan_Derksen_3ce8.html" title="User:Bryan Derksen">Bryan Derksen</a>, <a href="../../../../articles/w/e/r/User%7EWernher_a499.html" title="User:Wernher">Wernher</a>, <a href="../../../../articles/j/o/n/User%7EJondel_fb32.html" title="User:Jondel">Jondel</a>, <a href="../../../../articles/j/e/e/User%7EJeeves_f660.html" title="User:Jeeves">Jeeves</a>, EvilPettingZoo, <a href="../../../../articles/k/i/m/User%7EKim_Bruning_2d0e.html" title="User:Kim Bruning">Kim Bruning</a>, <a href="../../../../articles/j/e/c/User%7EJecar_a3c4.html" title="User:Jecar">Jecar</a>, <a href="../../../../articles/l/i/r/User%7ELir_4e26.html" title="User:Lir">Lir</a>, <a href="../../../../articles/j/a/m/User%7EJamesday_85fa.html" title="User:Jamesday">Jamesday</a>, (, <a href="../../../../articles/e/v/i/User%7EEvil_saltine_d8c0.html" title="User:Evil saltine">Evil saltine</a>, <a href="../../../../articles/m/i/n/User%7EMintguy_d760.html" title="User:Mintguy">Mintguy</a>, <a href="../../../../articles/v/e/r/User%7EVera_Cruz_69f4.html" title="User:Vera Cruz">Vera Cruz</a>, <a href="../../../../articles/m/a/r/User%7EMartinHarper_de8f.html" title="User:MartinHarper">MartinHarper</a>, <a href="../../../../articles/c/h/r/User%7EChristian_List_1987.html" title="User:Christian List">Christian List</a>, <a href="../../../../articles/h/i/r/User%7EHirzel_8c30.html" title="User:Hirzel">Hirzel</a> and <a href="../../../../articles/t/a/w/User%7ETaw_8bc0.html" title="User:Taw">Taw</a>.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Test data for problem 2                            -->
+<!-- java -cp /Users/suciu/PROJECTS-UNISON/COURSES/344/2012wi/SVN/cse344-12wi/assignments/hw4/saxon9he.jar net.sf.saxon.Query problem2b.xq  -->
+<!-- save to  file.xml, then run xmllint -format file.xml  -->
+<!DOCTYPE Normalized [
+	<!ELEMENT Normalized  (students,courses,takes)>
+	<!ELEMENT students  (student* )>
+	<!ELEMENT courses   (course* )>
+	<!ELEMENT takes   (take* )>
+	<!ELEMENT student   (name, address)>
+        <!ELEMENT course    (title, instructor)>
+        <!ELEMENT take    (name, title, grade?)>
+]>
+
+
+<Normalized>
+  <students>
+    <student>
+      <name>Alice</name>
+      <address>Seattle</address>
+    </student>
+    <student>
+      <name>Bob</name>
+      <address>Seattle</address>
+    </student>
+    <student>
+      <name>Carol</name>
+      <address>Seattle</address>
+    </student>
+  </students>
+  <courses>
+     <course>
+        <title>Algorithms</title>
+        <instructor>Fred</instructor>
+     </course>
+     <course>
+        <title>Basics</title>
+        <instructor>Geroge</instructor>
+     </course>
+     <course>
+        <title>C</title>
+        <instructor>Harry</instructor>
+     </course>
+  </courses>
+  <takes>
+    <take>
+      <name>Alice</name>
+      <title>Algorithms</title>
+      <grade>4.0</grade>
+    </take>
+    <take>
+      <name>Alice</name>
+      <title>Basics</title>
+      <grade>2.0</grade>
+    </take>
+    <take>
+      <name>Bob</name>
+      <title>Algorithms</title>
+      <grade>2.0</grade>
+    </take>
+    <take>
+      <name>Bob</name>
+      <title>C</title>
+      <grade>3.0</grade>
+    </take>
+    <take>
+      <name>Carol</name>
+      <title>Algorithms</title>
+      <grade>4.0</grade>
+    </take>
+    <take>
+      <name>Carol</name>
+      <title>C</title>
+      <grade>4.0</grade>
+    </take>
+  </takes>
+</Normalized>

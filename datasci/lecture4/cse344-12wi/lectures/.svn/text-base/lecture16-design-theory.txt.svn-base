@@ -1,0 +1,181 @@
+================================================================
+CSE 344 -- Spring 2011
+Lecture 17:   Design Theory
+
+================================================================
+
+Normal Forms = Schema Refinements
+
+1st Normal Form = says that all tables have to be flat
+
+*** In class: what are we supposed to do if we need to represent a
+    nested table ?
+
+All the other "normal forms" take a (flat) relation schema and
+decompose it into several relation schemas
+
+2nd Normal Form = obsolete
+
+Boyce Codd Normal Form (BCNF) = we discuss today
+
+3rd Normal Form = solves one problem with BCNF, but much more complex
+                  (see book)
+
+4th Normal Form = elegant, but too much theory...
+                  (you can still read about it in the book)
+
+All these "normal forms" try to remove "ANOMALIES"
+
+================================================================
+
+ANOMALIES
+
+Person(SSN, Name, Phone, City)
+
+SSN | Name | Phone | City
+---------------------------
+123 | Joe  | 555   | Seattle
+456 | Fred | 666   | NYC
+456 | Fred | 777   | NYC
+789 | Sue  | 888   | Seattle
+
+Explanation:
+   -- each person has unique SSN, Name, City
+   -- a person may have multiple phone numbers
+
+What is "wrong" about this schema design:
+
+1. Redundancy anomaly
+2. Update anomaly  (e.g. "Fred moves to LA")
+3. Deletion anomaly (e.g. "Sue cancels her phone")
+
+----------
+
+*** in class: propose a better schema design for
+     Person(SSN, Name, Phone, City)
+
+    discuss how anomalies go away
+
+
+----------
+
+The essence of the problem is that SSN is not a key (because of
+multiple phones), yet it is "a key for Name and City only".  This is
+called a "functional dependency"
+
+----------
+
+DEFINITION. A functional dependency A1, ..., Am --> B1, ..., Bn is a
+constraint on a table.  We say that the FD holds if any two tuples t1,
+t2 that agree on A1, ..., Am also agree on B1, ..., Bn.
+
+----------
+
+*** In class:  
+
+   -- what functional dependencies hold in
+      Person(SSN, Name, Phone, City) ?
+
+   -- Suppose (A,B) is a key in R(A,B,C,D). What functional
+      dependencies hold ?
+
+   -- what functional dependencies hold here ?
+
+       ID  | Name | Phone | Rank
+       -------------------------
+       123 | Joe  | 1234  | clerk
+       234 | Jim  | 5678  | salesrep
+       642 | Jack | 5678  | salesrep
+       987 | Jill | 1234  | lawyer
+
+
+---------
+
+DEFINITION.  Fix a set F of FDs and let X = A1,..Am be any set of
+attributes.  Then:
+
+   X+ = { B | any instance that satisfies F, also satisfies X --> B }
+
+---------
+
+Product(name, department, category, color, price)
+
+name --> color
+category --> department
+color, category --> price
+
+name+ = name,color
+{name,category}+ = name, color, category, department, price
+
+---------
+
+**** In class
+
+R(A,B,C,D,E,F)
+
+AB -> C
+AD -> E
+B  -> D
+AF -> B
+
+Compute AB+ and AF+.
+
+---------
+
+DEFINITION X is a super-key if X+ = all attributes
+           X is a key if it is a superkey and no subset of X is a key
+
+
+*** discuss significance in class:
+
+     -- what does it mean when X+ = all attributes
+
+     -- what does it mean when X+ = X (X+ can't be smaller than X)
+
+================================================================
+
+DEFINITION A relation R with functional dependencies F is in "Boyce
+Codd Normal Form" if for any X, either X+ = all attributes, or X+ = X.
+
+Equivalently:
+
+   For any functional dependency X --> A, either X contains A (we say
+   that X-->A is "trivial"), or X is a superkey.
+
+In yet other words, only key functional dependences are allowed (other
+than trivial FDs).
+
+
+Example:
+
+     Person(SSN, Name, Phone, City)
+
+     SSN --> Name, City   (but not Phone)
+
+     Is this in BCNF ?
+
+================================================================
+
+The Boyce-Codd Decomposition Algorithm
+
+Input: R(A, B, C, ...)
+Output: a set of BNCF relations that form a decomposition for R.
+
+1. Find X s.t.  X < X+ < [all attributes]
+
+2. If not found, then stop: R is in BCNF
+
+3. Split R into R1(X+) and R2([all attributes] - X)
+
+4. Decompose, recursively, R1 and R2
+
+================================================================
+
+**** In class:
+
+Example 1: Person(SSN, Name, Phone, City)
+              SSN --> Name, City
+
+Example 2: Person(SSN, name, age, hairColor, phoneNumber)
+              SSN --> name, age, hairColor
+              age --> hairColor

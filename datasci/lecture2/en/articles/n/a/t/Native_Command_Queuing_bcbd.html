@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Native Command Queuing - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Native Command Queuing</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <table class="metadata plainlinks ambox ambox-move" style="">
+<tr>
+<td class="ambox-image">
+<div style="width: 52px;"><a href="../../../../articles/m/e/r/Image%7EMerge-arrows.svg_14eb.html" class="image" title="Merge arrows"><img alt="Merge arrows" src="../../../../images/shared/thumb/5/52/Merge-arrows.svg/50px-Merge-arrows.svg.png" width="50" height="20" border="0" /></a></div>
+</td>
+<td class="ambox-text" style="">It has been suggested that this article or section be <a href="../../../../articles/m/e/r/Help%7EMerging_and_moving_pages_84a9.html" title="Help:Merging and moving pages">merged</a> with <i><a href="../../../../articles/t/a/g/Tagged_Command_Queuing_0d6c.html" title="Tagged Command Queuing">Tagged Command Queuing</a></i>. (<a href="../../../../articles/t/a/g/Talk%7ETagged_Command_Queuing_b0aa.html" title="Talk:Tagged Command Queuing">Discuss</a>)</td>
+</tr>
+</table>
+<div class="floatright"><span><a href="../../../../articles/n/c/q/Image%7ENCQ.svg_ed30.html" class="image" title="NCQ.svg"><img alt="" src="../../../../images/shared/thumb/4/4a/NCQ.svg/300px-NCQ.svg.png" width="300" height="212" border="0" /></a></span></div>
+<p><b>Native Command Queuing</b> (NCQ) is a technology designed to increase performance of <a href="../../../../articles/s/a/t/SATA_b295.html" class="mw-redirect" title="SATA">SATA</a> <a href="../../../../articles/h/a/r/Hard_disk.html" class="mw-redirect" title="Hard disk">hard disks</a> under certain situations by allowing the individual hard disk to internally optimize the order in which received read and write commands are executed. This can reduce the amount of unnecessary drive head movement, resulting in increased performance (and slightly decreased wear of the drive) for workloads where multiple simultaneous read/write requests are outstanding, most often occurring in <a href="../../../../articles/s/e/r/Server_%28computing%29.html" title="Server (computing)">server</a>-type applications. However, the current (as of 2004) technology actually slows down HD access in certain applications, like games and sequential reads &amp; writes, because of the added latency induced by NCQ logic.<sup id="cite_ref-test_0-0" class="reference"><a href="#cite_note-test-0" title="">[1]</a></sup><sup class="noprint Inline-Template"><span title="" style="white-space: nowrap;">[<i><a href="../../../../articles/n/a/t/Talk%7ENative_Command_Queuing_a100.html#obsolete" title="Talk:Native Command Queuing">obsolete fact</a></i>]</span></sup></p>
+<p>Native Command Queuing was preceded by Parallel ATA's version of <a href="../../../../articles/t/a/g/Tagged_Command_Queuing_0d6c.html" title="Tagged Command Queuing">Tagged Command Queuing</a> (TCQ). Because ATA's attempt at integrating TCQ had to put up with the constraint that ATA host bus adapters had to look like ISA bus devices to the operating system, this forced an awkward implementation that failed to gain much acceptance in the market due to extremely high CPU overhead and negligible performance gain. NCQ differs from PATA TCQ in that the command re-ordering is completely done on the drive itself, and each command is equal in importance. This is touted as an optimal solution, since the drive has the most knowledge of its performance characteristics, and is able to take rotational position into account. NCQ and PATA TCQ have a maximum queue length of 32 in-flight commands<sup id="cite_ref-sata_1-0" class="reference"><a href="#cite_note-sata-1" title="">[2]</a></sup><sup id="cite_ref-pata-7Vol1_2-0" class="reference"><a href="#cite_note-pata-7Vol1-2" title="">[3]</a></sup> (31 in practice<sup id="cite_ref-lata_ncq_3-0" class="reference"><a href="#cite_note-lata_ncq-3" title="">[4]</a></sup>), while <a href="../../../../articles/s/c/s/SCSI_87e0.html" title="SCSI">SCSI</a> <a href="../../../../articles/t/a/g/Tagged_Command_Queuing_0d6c.html" title="Tagged Command Queuing">TCQ</a> has a maximum queue length of 2<sup>64</sup> in-flight commands.</p>
+<p>For NCQ to be enabled, it must be supported and turned on in the SATA host bus adapter and in the hard drive itself. The appropriate driver must be loaded into the operating system to enable NCQ on the host bus adapter. Many newer chipsets support the <a href="../../../../articles/a/d/v/Advanced_Host_Controller_Interface_074d.html" title="Advanced Host Controller Interface">Advanced Host Controller Interface</a> (AHCI), which should allow a generic driver supplied by the operating system to control them and enable NCQ. In fact, newer mainstream Linux kernels support AHCI natively.<sup id="cite_ref-linuxSATA_4-0" class="reference"><a href="#cite_note-linuxSATA-4" title="">[5]</a></sup> Unfortunately, <a href="../../../../articles/w/i/n/Windows_XP_1c6b.html" title="Windows XP">Windows XP</a> requires the installation of a vendor-specific driver even if AHCI is present on the host bus adapter. <a href="../../../../articles/w/i/n/Windows_Vista_dc35.html" title="Windows Vista">Windows Vista</a> corrects this situation by including a generic AHCI driver.<sup class="noprint Template-Fact"><span title="This claim needs references to reliable sources&#160;since January 2008" style="white-space: nowrap;">[<i><a href="../../../../articles/c/i/t/Wikipedia%7ECitation_needed_0174.html" title="Wikipedia:Citation needed">citation needed</a></i>]</span></sup></p>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/n/a/t/Native_Command_Queuing_bcbd.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<ul>
+<li><a href="../../../../articles/t/a/g/Tagged_Command_Queuing_0d6c.html" title="Tagged Command Queuing">Tagged Command Queuing</a></li>
+</ul>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/n/a/t/Native_Command_Queuing_bcbd.html" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<ol class="references">
+<li id="cite_note-test-0"><b><a href="#cite_ref-test_0-0" title="">^</a></b> <a href="http://techreport.com/reviews/2004q4/seagate-7200.7ncq/index.x?pg=13" class="external text" title="http://techreport.com/reviews/2004q4/seagate-7200.7ncq/index.x?pg=13" rel="nofollow">Test of Seagate Barracuda 7200.7 NCQ and other drives</a></li>
+<li id="cite_note-sata-1"><b><a href="#cite_ref-sata_1-0" title="">^</a></b> <a href="http://www.seagate.com/content/docs/pdf/whitepaper/D2c_tech_paper_intc-stx_sata_ncq.pdf" class="external text" title="http://www.seagate.com/content/docs/pdf/whitepaper/D2c_tech_paper_intc-stx_sata_ncq.pdf" rel="nofollow">PDF white paper on NCQ from Intel and Seagate</a></li>
+<li id="cite_note-pata-7Vol1-2"><b><a href="#cite_ref-pata-7Vol1_2-0" title="">^</a></b> <a href="http://www.t13.org/Documents/UploadedDocuments/docs2004/d1532v1r4b-ATA-ATAPI-7.pdf" class="external text" title="http://www.t13.org/Documents/UploadedDocuments/docs2004/d1532v1r4b-ATA-ATAPI-7.pdf" rel="nofollow">Volume 1 of the final draft of the ATA-7 standard</a></li>
+<li id="cite_note-lata_ncq-3"><b><a href="#cite_ref-lata_ncq_3-0" title="">^</a></b> <a href="http://linux-ata.org/faq.html#ncq" class="external text" title="http://linux-ata.org/faq.html#ncq" rel="nofollow">Linux ATA FAQ about NCQ</a></li>
+<li id="cite_note-linuxSATA-4"><b><a href="#cite_ref-linuxSATA_4-0" title="">^</a></b> <a href="http://linux-ata.org/driver-status.html" class="external text" title="http://linux-ata.org/driver-status.html" rel="nofollow">Linux support status of various Serial ATA host bus adapters</a></li>
+</ol>
+<p><a name="External_links" id="External_links"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/n/a/t/Native_Command_Queuing_bcbd.html" title="Edit section: External links">edit</a>]</span> <span class="mw-headline">External links</span></h2>
+<ul>
+<li><a href="http://www.tomshardware.com/2004/11/16/can_command_queuing_turbo_charge_sata/" class="external text" title="http://www.tomshardware.com/2004/11/16/can_command_queuing_turbo_charge_sata/" rel="nofollow">Tom's Hardware Analysis of Hype vs. Reality</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 277/1000000
+Post-expand include size: 2879/2048000 bytes
+Template argument size: 852/2048000 bytes
+Expensive parser function count: 1/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/s/e/r/Category%7ESerial_ATA_a6c4.html" title="Category:Serial ATA">Serial ATA</a></span></div><div id="mw-hidden-catlinks" class="mw-hidden-cats-hidden">Hidden categories:&#32;<span dir='ltr'><a href="../../../../articles/a/r/t/Category%7EArticles_to_be_merged_since_May_2007_f76f.html" title="Category:Articles to be merged since May 2007">Articles to be merged since May 2007</a></span> | <span dir='ltr'><a href="../../../../articles/a/l/l/Category%7EAll_pages_needing_cleanup_2b7d.html" title="Category:All pages needing cleanup">All pages needing cleanup</a></span> | <span dir='ltr'><a href="../../../../articles/a/l/l/Category%7EAll_articles_with_unsourced_statements_2f67.html" title="Category:All articles with unsourced statements">All articles with unsourced statements</a></span> | <span dir='ltr'><a href="../../../../articles/a/r/t/Category%7EArticles_with_unsourced_statements_since_January_2008_af68.html" title="Category:Articles with unsourced statements since January 2008">Articles with unsourced statements since January 2008</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/n/a/t/Native_Command_Queuing_bcbd.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/n/a/t/Talk%7ENative_Command_Queuing_a100.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Native_Command_Queuing">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	<div id="p-lang" class="portlet">
+	  <h5>Languages</h5>
+	  <div class="pBody">
+	    <ul>
+	      	      <li>
+	      <a href="../../../../../de/articles/n/a/t/Native_Command_Queuing_bcbd.html">Deutsch</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../es/articles/n/a/t/Native_command_queueing.html">Español</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../fr/articles/n/a/t/Native_Command_Queuing_bcbd.html">Français</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../pl/articles/n/c/q/NCQ_24eb.html">Polski</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../pt/articles/n/a/t/Native_Command_Queuing_bcbd.html">Português</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../ru/articles/n/c/q/NCQ_24eb.html">Русский</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../sk/articles/n/a/t/Native_Command_Queuing_bcbd.html">Slovenčina</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../sv/articles/n/c/q/NCQ_24eb.html">Svenska</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../tr/articles/n/a/t/Native_Command_Queuing_bcbd.html">Türkçe</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../zh/articles/n/c/q/NCQ_24eb.html">中文</a>
+	      </li>
+	      	      <li>
+	      <a href="../../../../../cs/articles/n/c/q/NCQ_24eb.html">Česky</a>
+	      </li>
+	      	    </ul>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 01:11, 12 April 2008 by Anonymous user(s) of Wikipedia. Based on work by Wikipedia user(s) <a href="../../../../articles/p/e/p/User%7EPepve_0a6e.html" title="User:Pepve">Pepve</a>, Ddxc, <a href="../../../../articles/j/e/l/User%7EJel_6106.html" title="User:Jel">Jel</a>, <a href="../../../../articles/j/e/s/User%7EJesse_Viviano_b409.html" title="User:Jesse Viviano">Jesse Viviano</a>, <a href="../../../../articles/s/m/a/User%7ESmackBot_cc7a.html" title="User:SmackBot">SmackBot</a>, <a href="../../../../articles/i/n/t/User%7EIntgr_3172.html" title="User:Intgr">Intgr</a>, <a href="../../../../articles/h/e/l/User%7EHelix84_a51c.html" title="User:Helix84">Helix84</a>, Rob.desbois, <a href="../../../../articles/t/h/i/User%7EThijs%21bot_bdf4.html" title="User:Thijs!bot">Thijs!bot</a>, <a href="../../../../articles/f/l/a/User%7EFlaBot_747f.html" title="User:FlaBot">FlaBot</a>, <a href="../../../../articles/w/r/s/User%7EWrs1864_30eb.html" title="User:Wrs1864">Wrs1864</a>, <a href="../../../../articles/h/u/g/User%7EHughcharlesparker_a9f4.html" title="User:Hughcharlesparker">Hughcharlesparker</a>, <a href="../../../../articles/p/o/w/User%7EPoweroid_35e1.html" title="User:Poweroid">Poweroid</a>, R!SC, <a href="../../../../articles/t/r/a/User%7ETravis_Wells_ced7.html" title="User:Travis Wells">Travis Wells</a>, <a href="../../../../articles/r/o/m/User%7ERomanc19s_3a8c.html" title="User:Romanc19s">Romanc19s</a>, <a href="../../../../articles/w/i/d/User%7EWidefox_7e44.html" title="User:Widefox">Widefox</a>, <a href="../../../../articles/a/l/i/User%7EAlistairMcMillan_232b.html" title="User:AlistairMcMillan">AlistairMcMillan</a>, Kozaki, <a href="../../../../articles/o/r/p/User%7EOrphanBot_88cf.html" title="User:OrphanBot">OrphanBot</a>, Nitrium, <a href="../../../../articles/e/r/a/User%7EEras-mus_f9f9.html" title="User:Eras-mus">Eras-mus</a>, <a href="../../../../articles/l/x/_/User%7ELX_9e66.html" title="User:LX">LX</a>, <a href="../../../../articles/s/l/e/User%7ESleigh_9150.html" title="User:Sleigh">Sleigh</a>, <a href="../../../../articles/y/u/r/User%7EYurikBot_b393.html" title="User:YurikBot">YurikBot</a>, <a href="../../../../articles/s/e/a/User%7ESeano1_3dfb.html" title="User:Seano1">Seano1</a>, <a href="../../../../articles/l/e/v/User%7ELevin_f100.html" title="User:Levin">Levin</a>, <a href="../../../../articles/k/n/i/User%7EKnightRider_ec3b.html" title="User:KnightRider">KnightRider</a>, <a href="../../../../articles/m/i/r/User%7EMirror_Vax_6652.html" title="User:Mirror Vax">Mirror Vax</a>, <a href="../../../../articles/a/t/o/User%7EAtomique_366d.html" title="User:Atomique">Atomique</a>, Jzm, Guggemos, <a href="../../../../articles/r/u/u/User%7ERuud_Koot_88b0.html" title="User:Ruud Koot">Ruud Koot</a>, 1c3d0g, <a href="../../../../articles/r/e/y/User%7EReyBrujo_ebf1.html" title="User:ReyBrujo">ReyBrujo</a>, <a href="../../../../articles/c/a/m/User%7ECambridgeBayWeather_aa30.html" title="User:CambridgeBayWeather">CambridgeBayWeather</a>, <a href="../../../../articles/p/a/l/User%7EPalica_fbf7.html" title="User:Palica">Palica</a>, <a href="../../../../articles/p/i/e/User%7EPierre_gronau_6ebf.html" title="User:Pierre gronau">Pierre gronau</a>, <a href="../../../../articles/a/g/o/User%7EAgoode_a09f.html" title="User:Agoode">Agoode</a>, <a href="../../../../articles/j/r/m/User%7EJRM_b3bc.html" title="User:JRM">JRM</a>, Spymanut, Prodicus, <a href="../../../../articles/m/i/c/User%7EMichael_Hardy_e932.html" title="User:Michael Hardy">Michael Hardy</a>, <a href="../../../../articles/c/h/m/User%7EChmod007_2959.html" title="User:Chmod007">Chmod007</a> and <a href="../../../../articles/w/e/r/User%7EWernher_a499.html" title="User:Wernher">Wernher</a>.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

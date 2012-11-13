@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Ambiguity function - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Ambiguity function</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p>In pulsed <a href="../../../../articles/r/a/d/Radar.html" title="Radar">radar</a> and <a href="../../../../articles/s/o/n/Sonar.html" title="Sonar">sonar</a> signal processing, an <b>ambiguity function</b> is a two-dimensional function of time delay and Doppler frequency <span class="texhtml">χ(τ,<i>f</i>)</span> showing the <a href="../../../../articles/d/i/s/Distortion.html" title="Distortion">distortion</a> of an uncompensated <a href="../../../../articles/m/a/t/Matched_filter.html" title="Matched filter">matched filter</a> (sometimes called <a href="../../../../articles/p/u/l/Pulse_compression.html" title="Pulse compression">pulse compression</a>) due to the <a href="../../../../articles/d/o/p/Doppler_shift.html" class="mw-redirect" title="Doppler shift">Doppler shift</a> of the return from a moving target. The ambiguity function is determined by the properties of the <a href="../../../../articles/p/u/l/Pulse_%28signal_processing%29.html" title="Pulse (signal processing)">pulse</a> used, and not any particular target scenario. Many definitions of the ambiguity function exist; Some are restricted to narrowband signals and others are suitable to describe the propagation delay and Doppler relationship of wideband signals. Often the definition of the ambiguity function is given as the magnitude squared of other definitions (Weiss). For a given <a href="../../../../articles/c/o/m/Complex_number.html" title="Complex number">complex</a> <a href="../../../../articles/b/a/s/Baseband.html" title="Baseband">baseband</a> pulse <span class="texhtml"><i>s</i>(<i>t</i>)</span>, the narrowband ambiguity function is given by</p>
+<dl>
+<dd><img class="tex" alt="\chi(\tau,f)=\int_{-\infty}^{\infty}s(t)s^*(t-\tau) e^{-i 2 \pi f t} dt" src="../../../../math/5/4/2/5428eee2e556141c71803c70cb95c255.png" /></dd>
+</dl>
+<p>where <span class="texhtml"><sup>*</sup></span> denotes the <a href="../../../../articles/c/o/m/Complex_conjugate.html" title="Complex conjugate">complex conjugate</a> and <span class="texhtml"><i>i</i></span> is the <a href="../../../../articles/i/m/a/Imaginary_unit.html" title="Imaginary unit">imaginary unit</a>. Note that for zero Doppler shift (<span class="texhtml"><i>f</i> = 0</span>) this reduces to the <a href="../../../../articles/a/u/t/Autocorrelation.html" title="Autocorrelation">autocorrelation</a> of <span class="texhtml"><i>s</i>(<i>t</i>)</span>. A more concise way of representing the ambiguity function consists of examining the one-dimensional zero-delay and zero-Doppler "cuts"; that is, <span class="texhtml">χ(0,<i>f</i>)</span> and <span class="texhtml">χ(τ,0)</span>, respectively. The matched filter output as a function of a time (the signal one would observe in a radar system) is a delay cut, with constant frequency given by the target's Doppler shift: <span class="texhtml">χ(τ,<i>f</i><sub><i>D</i></sub>)</span>.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#Wideband_ambiguity_function"><span class="tocnumber">1</span> <span class="toctext">Wideband ambiguity function</span></a></li>
+<li class="toclevel-1"><a href="#Ideal_ambiguity_function"><span class="tocnumber">2</span> <span class="toctext">Ideal ambiguity function</span></a></li>
+<li class="toclevel-1"><a href="#Properties_of_the_ambiguity_function"><span class="tocnumber">3</span> <span class="toctext">Properties of the ambiguity function</span></a></li>
+<li class="toclevel-1"><a href="#Square_Pulse"><span class="tocnumber">4</span> <span class="toctext">Square Pulse</span></a></li>
+<li class="toclevel-1"><a href="#LFM_Pulse"><span class="tocnumber">5</span> <span class="toctext">LFM Pulse</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">6</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1"><a href="#See_also"><span class="tocnumber">7</span> <span class="toctext">See also</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Wideband_ambiguity_function" id="Wideband_ambiguity_function"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/m/b/Ambiguity_function.html" title="Edit section: Wideband ambiguity function">edit</a>]</span> <span class="mw-headline">Wideband ambiguity function</span></h2>
+<p>The wideband ambiguity function of <img class="tex" alt="s \in L^2(R)" src="../../../../math/3/b/a/3baefa488355ed63ecd6bc98048273ad.png" /> is (Sibul and Ziomek, 1981 in Weiss, 1994)</p>
+<dl>
+<dd><img class="tex" alt="WB_{ss}(\tau,\alpha)=\sqrt{|{\alpha}|}\int_{-\infty}^{\infty}s(t)s^*({\alpha}(t-\tau))  dt" src="../../../../math/a/c/c/accc1864164a672de4ff67d206809fb9.png" /></dd>
+</dl>
+<p>where <i><span class="texhtml">α</span></i> is a time scale factor of the received signal relative to the transmitted signal given by:</p>
+<dl>
+<dd><img class="tex" alt="{\alpha} = \frac{c-v}{c+v}" src="../../../../math/1/e/b/1eb71f61f5d5377f40057b5e8fcc958b.png" /></dd>
+</dl>
+<p>for an object moving with constant radial velocity <i>v</i>.</p>
+<p><a name="Ideal_ambiguity_function" id="Ideal_ambiguity_function"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/m/b/Ambiguity_function.html" title="Edit section: Ideal ambiguity function">edit</a>]</span> <span class="mw-headline">Ideal ambiguity function</span></h2>
+<p>An ambiguity function of interest is a 2-dimensional <a href="../../../../articles/d/i/r/Dirac_delta_function.html" title="Dirac delta function">Dirac delta function</a> or "thumbtack" function; that is, a function which is infinite at (0,0) and zero elsewhere.</p>
+<dl>
+<dd><span class="texhtml">χ(τ,<i>f</i>) = δ(τ)δ(<i>f</i>)</span></dd>
+</dl>
+<p>An ambiguity function of this kind would be somewhat of a misnomer; it would have no ambiguities at all, and both the zero-delay and zero-Doppler cuts would be an <a href="../../../../articles/d/i/r/Dirac_delta_function.html" title="Dirac delta function">impulse</a>. However, any Doppler shift would make the target disappear. This is not desirable if a target has unknown velocity it will disappear from the radar picture, but if Doppler processing is independently performed, knowledge of the precise Doppler frequency allows ranging without interference from any other targets which are not also moving at exactly the same velocity.</p>
+<p>This type of ambiguity function is not physically realizable; that is, there is no pulse <span class="texhtml"><i>s</i>(<i>t</i>)</span> that will produce <span class="texhtml">δ(τ)δ(<i>f</i>)</span> from the definition of the ambiguity function. Approximations exist, however, and binary phase-shift keyed waveforms using maximal-length sequences are the best known performers in this regard <sup id="cite_ref-0" class="reference"><a href="#cite_note-0" title="">[1]</a></sup>.</p>
+<p><a name="Properties_of_the_ambiguity_function" id="Properties_of_the_ambiguity_function"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/m/b/Ambiguity_function.html" title="Edit section: Properties of the ambiguity function">edit</a>]</span> <span class="mw-headline">Properties of the ambiguity function</span></h2>
+<p>(1) Maximum value</p>
+<dl>
+<dd><img class="tex" alt="|{\chi}(\tau,f)|^2\le|{\chi}(0,0)|^2" src="../../../../math/d/3/9/d39438e67e78edbeeab3785a59f3332a.png" /></dd>
+</dl>
+<p>(2) Symmetry about the origin</p>
+<dl>
+<dd><span class="texhtml">χ(τ,<i>f</i>) = χ <sup>*</sup> ( − τ, − <i>f</i>)</span></dd>
+</dl>
+<p>(3) Volume invariance</p>
+<dl>
+<dd><img class="tex" alt="\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}|{\chi}(\tau,f)|^2d{\tau}df=|{\chi}(0,0)|^2=E^2" src="../../../../math/b/1/e/b1eb3ddf4d7fa14c3207f1378bc36687.png" /></dd>
+</dl>
+<p>(4) Modulation</p>
+<dl>
+<dd>If s(t) <img class="tex" alt=" {\rightarrow} |{\chi}({\tau},f)| " src="../../../../math/8/7/b/87b6f06b6a5985049eb3aaf4acd88765.png" /> then <img class="tex" alt="s(t){\exp}^{j{\pi}kt^2} {\rightarrow} |{\chi}(\tau,v+kt)|" src="../../../../math/9/0/0/9002eb06f4cff822cf5b53da6360caba.png" /></dd>
+</dl>
+<p>(5) Frequency energy spectrum</p>
+<dl>
+<dd><img class="tex" alt="S(f)S^*(f) = \int_{-\infty}^{\infty}{\chi}(\tau,0) e^{-j2\pi\tau f} d{\tau}" src="../../../../math/d/d/b/ddbeea2f968af4097fbf94e52e415cc2.png" /></dd>
+</dl>
+<p><a name="Square_Pulse" id="Square_Pulse"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/m/b/Ambiguity_function.html" title="Edit section: Square Pulse">edit</a>]</span> <span class="mw-headline">Square Pulse</span></h2>
+<div class="thumb tright">
+<div class="thumbinner" style="width:282px;"><a href="../../../../articles/s/q/u/Image%7ESquare_pulse_ambiguity_function.png_a146.html" class="image" title="Ambiguity function for a square pulse"><img alt="Ambiguity function for a square pulse" src="../../../../images/local/thumb/e/e8/Square_pulse_ambiguity_function.png/280px-Square_pulse_ambiguity_function.png" width="280" height="211" border="0" class="thumbimage" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="../../../../articles/s/q/u/Image%7ESquare_pulse_ambiguity_function.png_a146.html" class="internal" title="Enlarge"><img src="../../../../skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>
+Ambiguity function for a square pulse</div>
+</div>
+</div>
+<p>Consider a simple square pulse of duration <span class="texhtml">τ</span> and amplitude <span class="texhtml"><i>A</i></span>:</p>
+<dl>
+<dd><span class="texhtml"><i>A</i>(<i>u</i>(<i>t</i>) − <i>u</i>(<i>t</i> − τ))</span></dd>
+</dl>
+<p>where <span class="texhtml"><i>u</i>(<i>t</i>)</span> is the <a href="../../../../articles/h/e/a/Heaviside_step_function.html" title="Heaviside step function">Heaviside step function</a>. The matched filter output is given by the <a href="../../../../articles/a/u/t/Autocorrelation.html" title="Autocorrelation">autocorrelation</a> of the pulse, which is a triangular pulse of height <span class="texhtml">τ<i>A</i><sup>2</sup></span> and duration <span class="texhtml">2τ</span> (the zero-Doppler cut). However, if the measured pulse has a frequency offset due to Doppler shift, the matched filter output is distorted into a <a href="../../../../articles/s/i/n/Sinc_function.html" title="Sinc function">sinc function</a>. The greater the Doppler shift, the smaller the peak of the resulting sinc, and the more difficult it is to detect the target.</p>
+<p>In general, the square pulse is not a desirable waveform from a pulse compression standpoint, because the autocorrelation function is too short in amplitude, making it difficult to detect targets in noise, and too wide in time, making it difficult to discern multiple overlapping targets.</p>
+<p><a name="LFM_Pulse" id="LFM_Pulse"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/m/b/Ambiguity_function.html" title="Edit section: LFM Pulse">edit</a>]</span> <span class="mw-headline">LFM Pulse</span></h2>
+<div class="thumb tright">
+<div class="thumbinner" style="width:282px;"><a href="../../../../articles/l/f/m/Image%7ELfm_ambiguity_function.png_f26d.html" class="image" title="Ambiguity function for an LFM pulse"><img alt="Ambiguity function for an LFM pulse" src="../../../../images/local/thumb/1/1e/Lfm_ambiguity_function.png/280px-Lfm_ambiguity_function.png" width="280" height="210" border="0" class="thumbimage" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="../../../../articles/l/f/m/Image%7ELfm_ambiguity_function.png_f26d.html" class="internal" title="Enlarge"><img src="../../../../skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>
+Ambiguity function for an LFM pulse</div>
+</div>
+</div>
+<p>A commonly used <a href="../../../../articles/r/a/d/Radar.html" title="Radar">radar</a> or <a href="../../../../articles/s/o/n/Sonar.html" title="Sonar">sonar</a> pulse is the linear frequency modulated (LFM) pulse (or "chirp"). It has the advantage of greater bandwidth while keeping the pulse duration short and envelope constant. A constant envelope LFM pulse has an ambiguity function similar to that of the square pulse, except that it is skewed in the delay-Doppler plane. Slight Doppler mismatches for the LFM pulse do not change the general shape of the pulse and reduce the amplitude very little, but they do appear to shift the pulse in time. Thus, an uncompensated Doppler shift changes the target's apparent range; this phenomenon is called range-Doppler coupling.</p>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/m/b/Ambiguity_function.html" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<div class="references-small" style="-moz-column-count:1; -webkit-column-count:1; column-count:1;">
+<ol class="references">
+<li id="cite_note-0"><b><a href="#cite_ref-0" title="">^</a></b> G. Jourdain and J. P. Henrioux, "Use of large bandwidth-duration binary phase shift keying signals in target delay Doppler measurements," J. Acoust. Soc. Am. 90, 299-309 (1991).</li>
+</ol>
+</div>
+<ul>
+<li>Richards, Mark A. <i>Fundamentals of Radar Signal Processing</i>. McGraw-Hill Inc., 2005. <a href="../../../../articles/b/o/o/Special%7EBookSources_0071444742_ec4c.html" class="internal">ISBN 0-07-144474-2</a>.</li>
+<li>Ipatov, Valery P. <i>Spread Spectrum and CDMA</i>. Wiley &amp; Sons, 2005. <a href="../../../../articles/b/o/o/Special%7EBookSources_0470091789_8efe.html" class="internal">ISBN 0-470-09178-9</a></li>
+<li>Weiss, Lora G. "Wavelets and Wideband Correlation Processing". <i>IEEE Signal Processing Magazine</i>, pp. 13-32, Jan 1994</li>
+<li>Woodward P.M. <i>Probability and Information Theory with Applications to Radar</i>, Norwood, MA: Artech House, 1980.</li>
+</ul>
+<p><br /></p>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/m/b/Ambiguity_function.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<ul>
+<li><a href="../../../../articles/m/a/t/Matched_filter.html" title="Matched filter">Matched filter</a></li>
+<li><a href="../../../../articles/p/u/l/Pulse_compression.html" title="Pulse compression">Pulse compression</a></li>
+<li><a href="../../../../articles/p/u/l/Pulse-Doppler_radar_c502.html" title="Pulse-Doppler radar">Pulse-Doppler radar</a></li>
+<li><a href="../../../../articles/d/i/g/Digital_signal_processing.html" title="Digital signal processing">Digital signal processing</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 128/1000000
+Post-expand include size: 289/2048000 bytes
+Template argument size: 4/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/s/i/g/Category%7ESignal_processing_58c0.html" title="Category:Signal processing">Signal processing</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/a/m/b/Ambiguity_function.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/a/m/b/Talk%7EAmbiguity_function_b5e2.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Ambiguity_function">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 11:25, 12 January 2008 by Wikipedia user <a href="../../../../articles/t/h/u/User%7EThunderbird2_364c.html" title="User:Thunderbird2">Thunderbird2</a>. Based on work by Wikipedia user(s) <a href="../../../../articles/o/d/o/User%7EOdo_Benus_a21b.html" title="User:Odo Benus">Odo Benus</a>, <a href="../../../../articles/t/w/o/User%7ETwotonkatrucks_77ec.html" title="User:Twotonkatrucks">Twotonkatrucks</a>, Cjpuffin, Rowanfry, <a href="../../../../articles/s/m/a/User%7ESmackBot_cc7a.html" title="User:SmackBot">SmackBot</a>, <a href="../../../../articles/p/e/a/User%7EPearle_6f07.html" title="User:Pearle">Pearle</a>, <a href="../../../../articles/o/l/e/User%7EOleg_Alexandrov_8bb5.html" title="User:Oleg Alexandrov">Oleg Alexandrov</a>, <a href="../../../../articles/b/l/u/User%7EBluebot_e595.html" title="User:Bluebot">Bluebot</a>, <a href="../../../../articles/t/h/e/User%7EThe_wub_6388.html" title="User:The wub">The wub</a>, <a href="../../../../articles/s/c/o/User%7EScottbeck_6406.html" title="User:Scottbeck">Scottbeck</a> and <a href="../../../../articles/g/l/o/User%7EGlogger_c41d.html" title="User:Glogger">Glogger</a> and Anonymous user(s) of Wikipedia.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

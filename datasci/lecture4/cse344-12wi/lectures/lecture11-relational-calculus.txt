@@ -1,0 +1,257 @@
+================================================================
+CSE 344 -- Fall 2011
+Lecture 11:  Relational Calculus.
+================================================================
+
+Review from lecture 10:
+
+/************************/
+/* Friend(name1, name2) */
+/* Enemy(name1, name2)  */
+/************************/
+
+Find Joe's friends, and Joe's friends of friends.
+
+  A(x) :- Friend('Joe', x)
+  A(x) :- Friend('Joe', z), Friend(z, x)
+
+
+Find all of Joe's friends who do not have any friends:
+
+JoeFriends(x) :- Friend('Joe',x)
+NonAns(x) :- Friend(x,y)
+A(x) :- JoeFriends(x) NOT NonAns(x)
+
+
+Find all x such that all their enemies' enemies are their friends
+
+-- we assume that if someone doesn't have any enemies nor friends,
+-- we also want them in the answer
+Everyone(x) :- Friend(x,y)
+Everyone(x) :- Friend(y,x)
+Everyone(x) :- Enemy(x,y)
+Everyone(x) :- Enemy(y,x)
+
+NonAns(x) :- Enemy(x,y),Enemy(y,z) NOT Friend(x,z)
+
+A(x) :- Everyone(x) NOT NonAns(x)
+
+
+Find all x having some friend all of whose enemies are x's enemies.
+
+Everyone(x) :- Friend(x,y)
+NonAns(x) :- Friend(x,y) Enemy(y,z) NOT Enemy(x,z)
+A(x) :- Everyone(x) NOT NonAns(x)
+
+
+
+Recap: why do we use datalog ?
+
+1) simple, logic language, based on rules
+
+2) no quantifiers, no "or"
+
+3) can be extended to recursion BUT we don't discuss this in class
+
+4) Equivalences
+
+4.1) Datalog can be translated easily to SQL  (*** practice this at home ! ***)
+     
+4.2) Can also translate back and forth between datalog and relational
+     algebra (*** see examples with solutions in lecture 10 notes **)
+
+4.3 Bottom line: relational algebra, non-recursive datalog with
+   negation, and relational calculus all have the same expressive power!
+
+   These languages are of fundamental importance in DBMSs because
+   they are sufficiently expressive to be useful in practice yet
+   they are sufficiently simple to be efficiently implementable.
+
+5) Today: Datalog is used as intellectual foundation for all sort of
+   theoretical data management challenges including probabilistic
+   databases and large scale data analytics.
+
+-------------------------
+What is datalog missing ?
+
+-- Universal quantifiers !
+
+
+
+
+================================================================
+
+Relational Calculus = Predicate Calculus
+
+   Logic expressions that include:
+   AND, OR, NOT
+   Forall, Exists
+
+
+/***************************/
+/* Likes(drinker, beer)    */
+/* Frequents(drinker, bar) */
+/* Serves(bar, beer)       */
+/***************************/
+
+"Find all bars that serve some beer that Fred likes"
+
+In datalog:
+A(x) :- Likes('Fred',y), Serves(x,y)
+
+Now using relational calculus:
+A(x) = Exists y. Likes("Fred", y) AND Serves(x,y)
+
+Alternate, more common, notation for a query:
+{ x | Exists y. Likes("Fred", y) AND Serves(x,y) }
+
+---------
+
+"Find all bars that serve all beers that Fred likes"
+
+A(x) = Forall y. Likes("Fred", y) => Serves(x,y)
+
+Note:  P ==> Q (read P implies Q) is the same as (not P) OR Q
+In this query: If Fred likes a beer the bar must serve it (P ==> Q)
+In other words: Either Fred does not like the beer (not P) OR the bar
+serves that beer (Q).
+
+A(x) = Forall y. not(Likes("Fred", y)) OR Serves(x,y)
+
+
+---------
+
+*** In class:
+
+Average:
+"Find drinkers that frequent some bar that serves some beer they like"
+
+A(x) = Exists y. Exists z. Frequents(x, y) AND Serves(y,z) AND Likes(x,z)
+
+
+Prudents:
+"Find drinkers that frequent only bars that serve some beer they like"
+
+A(x) = Forall y, Frequents(x,y) ==> ( Exists z. Serves(y,z) AND Likes(x,z)) 
+
+Paranoic:
+"Find drinkers that frequent only bars that server only beers they like"
+
+A(x) = Forall y. Frequents(x,y) ==> ( Forall z. Serves(y,z) ==> Likes(x,z) )
+
+*** At home:
+
+Sad:
+"Find drinkers that frequent some bar that serve only beer they don't like"
+
+A(x) = Exists y. Frequents(x,y).  Forall z.( Serves(y,z) => not Likes(x,z))}
+
+Pessimists:
+"Find drinkers that frequent only bars that serve some beer they dont like"
+
+Depressed:
+"Find drinkers that frequent only bars that serve only beer they don't like"
+
+--> See "sql-practice-problems.txt" on course website (under "Exams")
+    for answers and more examples.
+
+================================================================
+
+What's wrong ?
+
+A(x) = not Likes("Fred", x)
+
+A(x,y) = Likes("Fred", x) OR Serves("Bar", y)
+
+----------------
+
+These are "domain dependent" queries.  They depend on the domain, and
+we don't accept such queries. 
+
+These queries are called "unsafe"
+
+A subtle example. This query is also unsafe:
+A(x) = forall y. Serves(x,y)
+
+The answer to this query is finite because it is a subset of 
+project_bar(Serves) but the query is not domain independent. To
+see why, note that if y is assumed to range over all
+of the domain of Serves.beer, then the answer is always empty.
+On the other hand, if y ranges over the active domain for
+Serves.beer, then the answer could be non-empty.
+
+================================================================
+
+TRASLATIONS.  THIS IS IMPORTANT !
+
+1. From Relational Calculus to non-recursive datalog with negation:
+
+Guideline 1: If the query is A  = Q1 or Q2  then:
+
+     A(...) :- translate_Q1
+     A(...) :- translate_Q2
+
+
+Guideline 2: If the query is A  = Q1 and Q2  then:
+
+     A(...) :- translate_Q1, translate_Q2
+
+
+Guideline 3: If the query is   A = exists x.Q then:
+
+     B(x, ...) :- translate_Q
+     A(...)    :- B(x, ...)   (just remove x from the head vars)
+
+Guideline 4: If the query is  A =  forall x.(Q1 ==> Q2) then
+
+     B(...) :- translate_Q1, not (translate_Q2)
+     A(...) :- translate_Q1, not B(...)
+
+Note: these are *guidelines* only !  Use judgment
+
+-------------
+
+2. From Non-recursive datalog to SQL
+
+    Single guideline: every "not" becomes a subquery.
+
+--------------
+
+Example:
+
+"Find all bars that serve all beers that Fred likes"
+
+Relational calculus:
+
+A(x) = Forall y. Likes("Fred", y) => Serves(x,y)
+
+Note: this query is actually domain dependent !  If Fred likes
+nothing, then EVERY x in the universe is a good answer.  Fix it to:
+
+A(x) = Serves(x,-) and [Forall y. Likes("Fred", y) => Serves(x,y)]
+
+Datalog notation:
+
+B(x) = Serves(x, -) and Likes("Fred", y) and not Serves(x,y)
+A(x) = Serves(x, -) and not B(x)
+
+SQL:
+
+    select s1.bar
+    from Serves s1
+    where s1.bar not in (select s2.bar
+                         from Serves s2, Likes l
+                         where l.drinker = 'Fred'
+                           and not exists 
+                                 (select * 
+                                  from Serves s3
+                                  where s2.bar = s3.bar
+                                    and l.beer = s3.beer)
+
+
+-------------
+
+Question: can you write the query above WITHOUT subqueries
+
+Answer: Remember "monontone queries"!
+

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+
+<head>
+<title>CSE 444: Connecting to IISQLSRV from home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<style type="text/css">
+h1, h2, h3, h4, h5, h6 {
+	font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+}
+</style>
+
+<style type="text/css" media="screen">
+ol#putty_tunnel div {
+	margin-left: 2.5em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Connecting to IISQLSRV from home</h1>
+<ul>
+	<li><a href="#intro">What are my options?</a></li>
+	<li><a href="#remote">Connecting via Remote Desktop</a></li>
+	<li><a href="#tunnel">Creating a tunnel to IISQLSRV</a><br>
+	<ul>
+		<li><a href="#studio">Connecting using Management Studio</a></li>
+		<li><a href="#jdbc">Connecting using JDBC</a></li>
+	</ul>
+	</li>
+</ul>
+<h2 id="intro">How can I connect to IISQLSRV from home?</h2>
+<p>
+If you are working on CSE 344 projects from home, you might need to connect to
+our SQL server, <a href="SQLServerInstructr.html">IISQLSRV</a>. However, for
+security reasons, it is not possible to directly connect to IISQLSRV from
+outside the CSE network.</p>
+<p>
+Despite this restriction, there are two ways you can connect to IISQLSRV. One is
+to connect to a computer in CSE that has Management Studio and access IISQLSRV
+from there. Another is to use <abbr title="Secure Shell">SSH</abbr>
+to create a TCP tunnel, which redirects a TCP connection to a local port on your
+computer to a remote IP and port, in this case IISQLSRV's port 1433. You can
+create the tunnel as part of a normal SSH connection to a CSE Linux computer.</p>
+
+<h2 id="remote">Connecting via Remote Desktop</h2>
+<p>
+You can use Remote Desktop to connect to a Windows machine in the CSE network,
+and use that computer to connect to IISQLSRV. This is much easier than setting
+up a TCP tunnel. However, you'll need a fast Internet connection to use Remote
+Desktop comfortably. In addition, in some projects you will be asked to write
+Java programs that connect to IISQLSRV with JDBC, and such programs will have to
+be run on the Windows machine you are connected to, rather than your own.</p>
+
+<p>CSE support maintains two
+<a href="http://www.cs.washington.edu/lab/sw/uwcsehydra.html">Remote Desktop
+servers</a>, <code>aria.cs</code> and <code>aqua.cs</code>, which both have
+Management Studio and thus are ready to connect to IISQLSRV. However, these
+computers <em>cannot</em> access IISQLSRV over JDBC. Support also
+discourages using <code>aria</code> and <code>aqua</code> for class assignments,
+because they are shared by many people and occasionally become overloaded.
+</p>
+
+
+<h2 id="tunnel">Connecting via an SSH tunnel to IISQLSRV</h2>
+<p>
+Creating a TCP tunnel to IISQLSRV has two advantages over using Remote Desktop:
+you can write a Java program and have it connect directly to IISQLSRV without
+having to rely on what's installed on the Remote Desktop machine, and you don't
+have to worry about the slowness of your Internet connection.
+</p>
+
+<p>However, setting up a TCP tunnel is a bit harder than using Remote Desktop.
+You need to do the following:</p>
+<ol>
+<li> Use an SSH client to login to a CSE Linux machine, but also set up the
+connection to tunnel IISQLSRV's port 1433, through the Linux machine, to your
+computer's port 1433.</li>
+<li>Set up programs that connect to IISQLSRV to talk to your local computer 
+(127.0.0.1) instead of IISQLSRV (iisqlsrv.cs.washington.edu).</li>
+</ol>
+<p>If you are running Windows, you can use
+<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a>, 
+a Windows SSH client.  If you have a Mac or Linux machine, you can use 
+the command line SSH command.</p>
+
+<h3>Creating a tunnel using PuTTY</h3>
+<ol id="putty_tunnel">
+	<li>
+	In the initial "PuTTY configuration" window, specify host name
+	<b>attu.cs.washington.edu</b> (or another CSE Linux host you can access):
+	  <div>
+	  <img src="putty_attu.png" alt="Host name: attu.cs.washington.edu">
+	  </div>
+	</li>
+
+	<li>
+	Select Connection &rarr; SSH &rarr; Tunnels in the left hand pane.
+	</li>
+
+	<li>
+	Enter "Source port": <b>1433</b> , and "Destination": 
+	<b>iisqlsrv.cs.washington.edu:1433</b> , then click "Add."
+	The window will now look like this:
+	  <div>
+	  <img src="putty_iisqlsrv_tunnel.png" 
+	  alt="Forwarded ports: L1433 -&gt; iisqlsrv.cs.washington.edu:1433">
+	  </div>
+	</li>
+
+	<li>
+	Select Connection &rarr; SSH, then check the box labeled 
+	"Don't start a shell or command at all":
+	  <div>
+	  <img src="putty_no_shell.png" 
+	  alt="Checked the box 'Don't start a shell or command at all'">
+	  </div>
+	</li>
+
+	<li>Click Open to connect, and enter your username and password.
+	If you get nothing in response, not even an error message, 
+	then you are connected:
+	  <div>
+	  <img src="attu_connection.png"
+	  alt="Connected to attu - no messages from server">
+	  </div>
+	</li>
+	
+	<li>Leave the window open until you want to close the tunnel.</li>
+
+</ol>
+
+<h3>Creating a tunnel using command-line SSH</h3>
+
+<p>Open a shell and run the following command:<br>
+	<span style="margin-left: 2.5em">
+	<b>ssh -N -L 1433:iisqlsrv.cs.washington.edu:1433 YOUR_CSE_USERNAME@attu.cs.washington.edu</b>
+	</span><br>
+Similar to PuTTY, the <code>ssh</code> program will appear to hang after 
+you type your password, with no messages (not even an error message).
+To close the tunnel, press Ctrl-C to exit <code>ssh</code>.</p>
+
+<p>If you'd like the tunnel to persist until you log out, add an extra -f 
+option to <code>ssh</code>:<br>
+	<span style="margin-left: 2.5em">
+	<b>ssh -f -N -L 1433:iisqlsrv.cs.washington.edu:1433 YOUR_CSE_USERNAME@attu.cs.washington.edu</b>
+	</span><br>
+The <code>ssh</code> program will now appear to exit immediately,
+but is actually running in the background and will keep running 
+even after you exit the shell.</p>
+
+<h3 id="studio">Connecting using SQL Server Management Studio</h3>
+<p>
+Now that you've set up the TCP tunnel, you can connect to IISQLSRV over the
+tunnel by pointing your client at the local machine (127.0.0.1). To connect
+using SQL Server Management Studio, you need to install SQL Server locally,
+since Management Studio comes with SQL Server. You can download an
+<a href="http://www.microsoft.com/sqlserver/2008/en/us/trial-software.aspx">
+evaluation version from Microsoft</a>, or you can download a perpetually
+licensed version through <a href="http://msdnaa.cs.washington.edu/">
+CSE's Microsoft software program</a>.
+</p>
+
+<p>
+You can then start SQL Server Management Studio locally and choose the following
+connection settings:
+</p>
+
+<div style="margin-left: 2.5em">
+	Server Name: <b>127.0.0.1</b><br>
+	Authentication: <b>SQL Server Authentication</b><br>
+	User: <em><b>YOUR IISQLSRV USERNAME</b></em><br>
+	Password: <em><b>YOUR IISQLSRV PASSWORD</b></em><br>
+</div>
+
+<p>
+Here, the server name changes from <code>iisqlsrv</code> to 
+<code>127.0.0.1</code>, but the other settings are the same as if you were
+<a href="SQLServerInstructr.html">connecting from within the CSE network</a>.</p>
+<p>
+Remember to keep your SSH connection open while you are using Management
+Studio.</p>
+
+<h3 id="jdbc">Connecting using JDBC</h3>
+
+<p>
+You can also connect to IISQLSRV using JDBC. Again, ensure that you have an SSH
+connection and set up a tunnel as explained above. You can now connect using 
+a JDBC connection URL like the following:</p>
+
+<pre style="margin-left: 2.5em;">jdbc:sqlserver://127.0.0.1;database=imdb</pre>
+
+<p>where the server name changes from <code>iisqlsrv</code>
+to <code>127.0.0.1</code>, but other parameters stay the same.</p>
+
+<p>
+You do not need to install Management Studio on your local machine, if you are
+connecting using JDBC; you only need the <a href="installing-software.html#mssql-jdbc">
+JDBC driver for SQL Server</a>.
+</p>
+
+</body>
+</html>

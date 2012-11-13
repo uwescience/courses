@@ -1,0 +1,44 @@
+====================================================================
+Saxon Instructions (Linux+Java only)
+=====================================================================
+Saxon comes in Java or .NET versions. The documentation for the command 
+line version of either is available at:
+http://www.saxonica.com/documentation/using-xquery/commandline.xml
+To download either version navigate to: http://sourceforge.net/projects/saxon/files/
+(The instructions below will download saxon Java version from
+scratch).
+
+Create a directory for the assignment and cd into that directory, then do the following:
+
+0.  Open a text editor of your own choice and save the following in q1.xq (uptil the end of </result>):
+    <result>
+      { 
+          for $x in doc("mondial.xml")/mondial/country//city/name/text()
+	  return <c> { $x } </c>
+      }
+    </result>
+   Similarly save the following in q2.xq.
+     <answer>
+       { 
+           for $x in doc("mondial.xml")/mondial/country[normalize-space(name)="Peru"]/province[count(city)>1]/name
+	   return <big-province> { fn:string($x) } </big-province>
+       }
+     </answer>
+   
+     (: Comment :)
+     (: !!! Note: Using "fn:string" is because $x is an attribute. This
+        is one way to return the value of an attribute.
+		
+		The normalize-space function takes any non-single-space 
+		whitespace (newline, tab, consecutive spaces, etc) and replaces them
+		with a single space, and removes all leading and trailing spaces.
+		You may want to consider using this function when dealing with 
+		strings you cannot control (like strings from variables).
+     :)
+1. Download the java version of the saxon home edition.
+   $ wget http://sourceforge.net/projects/saxon/files/Saxon-HE/9.3/saxonhe9-3-0-1j.zip/download
+2. Unzip saxon
+   $ unzip saxonhe9-3-0-1j.zip
+3. Get the mondial.xml and dtd by downloading and opening hw4.tar.gz.
+4. Run the program
+   $ java -cp saxon9he.jar net.sf.saxon.Query q1.xq

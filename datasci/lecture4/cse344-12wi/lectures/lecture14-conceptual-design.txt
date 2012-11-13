@@ -1,0 +1,64 @@
+================================================================
+CSE 344 -- Spring 2011
+Lecture 13:   Conceptual Design
+
+================================================================
+
+Goal: design the right schema for a database that will persist for a
+      long period of time.
+
+ENTITY-RELATIONSHIP DIAGRAMS
+
+   Entity Sets  = (draw box...)
+   Attribute    = (draw oval...)
+   Relationship = (draw diamond...)
+
+Example: Online Event Database
+
+*** In class:
+   Entity sets: Users, Events, Response..
+
+----------
+Multiplicities of Binary E/R Relationships
+
+   -- one-to-one
+   -- one-to-many
+   -- many-to-many
+
+*** Question: which type of relationship is naturally represented in
+    XML ?
+
+
+--------
+Multiway relationships
+
+    Response: 
+        - a relationship between User, User, Event
+        - attribute Date
+
+
+Converting a multiway relationship into binary relationships.
+
+
+--------
+Subclasses in E/R Diagrams
+
+   E.g.  Organizer ISA User
+         Invitee   ISA User
+
+
+*** In class: show union types using subclasses
+
+-------
+
+Constraints in E/R Diagrams  = are statements that must always hold on
+the data.  In E/R diagrams we have very limited constraints:
+
+-- Keys
+-- Referential integrity constraints
+-- Degree Constraints
+
+-----
+
+Weak Entity Sets = when the key includes the key of some other entity
+set

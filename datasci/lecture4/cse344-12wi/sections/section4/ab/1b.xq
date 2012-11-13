@@ -1,0 +1,1 @@
+  doc("mondial.xml")//country

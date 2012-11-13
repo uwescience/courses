@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Leaky abstraction - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Leaky abstraction</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p>A <b>leaky abstraction</b> is an unsatisfactory <a href="../../../../articles/i/m/p/Implementation.html" title="Implementation">implementation</a> of an <a href="../../../../articles/a/b/s/Abstraction.html" title="Abstraction">abstraction</a>. Unsatisfactory means any case when specific implementation details manifest themselves in some obstructive or counter-productive way, thus interfering with the abstraction. The implementation details are said to "leak through" and interfere with the simplifying assumptions supposedly enabled by the abstraction.</p>
+<p>Within the <a href="../../../../articles/s/o/f/Software_industry.html" title="Software industry">software industry</a>, leaky abstractions are a common source of <a href="../../../../articles/s/o/f/Software_bug.html" title="Software bug">software bugs</a>.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#Overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Technical_sense"><span class="tocnumber">1.1</span> <span class="toctext">Technical sense</span></a></li>
+<li class="toclevel-2"><a href="#Generalized_sense"><span class="tocnumber">1.2</span> <span class="toctext">Generalized sense</span></a></li>
+<li class="toclevel-2"><a href="#Philosophical_sense"><span class="tocnumber">1.3</span> <span class="toctext">Philosophical sense</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Examples"><span class="tocnumber">2</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Monetary_value"><span class="tocnumber">2.1</span> <span class="toctext">Monetary value</span></a></li>
+<li class="toclevel-2"><a href="#Computers"><span class="tocnumber">2.2</span> <span class="toctext">Computers</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#See_also"><span class="tocnumber">3</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1"><a href="#External_links"><span class="tocnumber">4</span> <span class="toctext">External links</span></a></li>
+<li class="toclevel-1"><a href="#Notes"><span class="tocnumber">5</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Overview" id="Overview"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: Overview">edit</a>]</span> <span class="mw-headline">Overview</span></h2>
+<p>The term is attributed to software commentator <a href="../../../../articles/j/o/e/Joel_Spolsky_8e78.html" title="Joel Spolsky">Joel Spolsky</a>, who published the concept as</p>
+<p><b>The Law of Leaky Abstractions</b>:</p>
+<table style="margin:auto; border-collapse:collapse; border-style:none; background-color:transparent;" class="cquote">
+<tr>
+<td width="20" valign="top" style="color:#B2B7F2;font-size:35px;font-family:'Times New Roman',serif;font-weight:bold;text-align:left;padding:10px 10px;">“</td>
+<td valign="top" style="padding:4px 10px;">All non-trivial abstractions, to some degree, are leaky.</td>
+<td width="20" valign="bottom" style="color:#B2B7F2;font-size:36px;font-family:'Times New Roman',serif;font-weight:bold;text-align:right;padding:10px 10px;">”</td>
+</tr>
+</table>
+<p>In the publication, Spolsky expresses this viewpoint, and supports it with reference to examples in <a href="../../../../articles/s/o/f/Software_engineering.html" title="Software engineering">software engineering</a>, which is why this term is customarily used in the context of computer software and hardware.</p>
+<p><a name="Technical_sense" id="Technical_sense"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: Technical sense">edit</a>]</span> <span class="mw-headline">Technical sense</span></h3>
+<p>When applying the term to a specific instance, it is a <a href="../../../../articles/m/i/s/Misnomer.html" title="Misnomer">misnomer</a>. The implementation is leaky, not the abstraction. Abstractions are conceptual and are not susceptible to leaks. Abstractions may have other faults, such as ambiguities or contradictions. The term 'leaky abstraction' refers not to faults in the abstraction itself, only to faults in its implementation.</p>
+<p><a name="Generalized_sense" id="Generalized_sense"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: Generalized sense">edit</a>]</span> <span class="mw-headline">Generalized sense</span></h3>
+<p>From the perspective of Spolsky's Law of Leaky Abstractions, all non-trivial abstractions resist complete implementation <i>by their very nature</i>. Consequently, implementation details will always leak through, regardless of how well-conceived, and no matter how rigorously they attempt to faithfully represent the abstraction. Sometimes the leaks are minor, other times they are significant, but they will always be present, because there is no such thing as a perfect implementation of an abstraction.</p>
+<p>In this context, the term isn't a misnomer, since it applies to all implementations of all abstractions.</p>
+<p>It is most likely this notion Spolsky intended to convey by expressing the viewpoint as a "law" and attributing the "leakiness" to abstractions, rather than to imprecise implementations.</p>
+<p><a name="Philosophical_sense" id="Philosophical_sense"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: Philosophical sense">edit</a>]</span> <span class="mw-headline">Philosophical sense</span></h3>
+<p>In an <a href="../../../../articles/e/p/i/Epistemology.html" title="Epistemology">epistemological</a> sense, the human concept of any abstraction is always an implementation of deeper abstractions, represented in mental concepts and verbal statements used to convey them. There is no generally agreed-upon deepest layer of abstraction. Much (if not most) of the field of philosophy is predicated upon searching for such a layer.</p>
+<p>The idea that all sufficiently interesting abstractions are leaky thus has profound philosophical ramifications.</p>
+<p>Consider the field of <a href="../../../../articles/p/h/y/Physics.html" title="Physics">physics</a>. A proton is an abstraction which is implemented, on a deeper level, by a set of quarks. The extent to which the nature of the quarks "leaks" through to the nature of the proton appears to depend largely on context such as temperature. However, there's no doubt that the quark implementation leaks through; otherwise, it would not be possible to know about quarks. Humans only know they exist based on the extent to which they leak through higher-level abstractions.</p>
+<p>In this way, the Law of Leaky Abstractions is a <a href="../../../../articles/t/a/u/Tautology_%28logic%29.html" title="Tautology (logic)">tautology</a>. Any abstraction that isn't leaky cannot be distinguished from a fundamental truth. A fundamental truth is not properly an abstraction. Therefore, no abstractions are not leaky.</p>
+<p><a name="Examples" id="Examples"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: Examples">edit</a>]</span> <span class="mw-headline">Examples</span></h2>
+<p><a name="Monetary_value" id="Monetary_value"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: Monetary value">edit</a>]</span> <span class="mw-headline">Monetary value</span></h3>
+<p>Paper currency implements the abstract <a href="../../../../articles/e/c/o/Economic.html" class="mw-redirect" title="Economic">economic</a> concept of monetary value. Conceptually, monetary value cannot be destroyed; yet a paper note can be. The physical nature of the implementation (the paper note) corrupts the conceptual nature of the abstraction (its monetary value). If a note is burned, the value is lost (to its owner, but gained prorata by the owners of all other notes), even though such a result shouldn't be possible from the perspective of monetary ownership.</p>
+<p><a name="Computers" id="Computers"></a></p>
+<h3><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: Computers">edit</a>]</span> <span class="mw-headline">Computers</span></h3>
+<p>Computer <a href="../../../../articles/h/a/r/Hardware.html" title="Hardware">hardware</a> and <a href="../../../../articles/s/o/f/Software.html" class="mw-redirect" title="Software">software</a> is heavily reliant on abstraction, and therefore subject to the consequences of leaky abstraction.</p>
+<p>For example, many different brands of <a href="../../../../articles/s/o/u/Sound_card.html" title="Sound card">sound card</a> exist, and each has different capabilities and methods of operation. It is the role of the <a href="../../../../articles/c/o/m/Computer.html" title="Computer">computer's</a> <a href="../../../../articles/o/p/e/Operating_system.html" title="Operating system">operating system</a> to implement a sound card abstraction for programs, so that a program need not have knowledge about every possible sound card that may be present. The program tells the operating system's sound card abstraction what sound to make, and the operating system then tells the sound card to make the sound using the mechanisms and capabilities unique to that sound card. If the abstraction isn't leaky, then a program can take advantage of any sound card with no problems. If the abstraction is leaky, however, the program may run into trouble - the sound may come out differently depending on the sound card, requiring the program to compensate by incorporating logic specific to the sound card installed in the computer.</p>
+<p>Any <a href="../../../../articles/a/p/i/API_db97.html" class="mw-redirect" title="API">API</a> which behaves differently depending on the underlying implementation is considered leaky. If a program fails to compensate for leaky APIs, bugs can result.</p>
+<p>Obscure <a href="../../../../articles/e/r/r/Error_message.html" title="Error message">error messages</a> are a common observable effect of leaky abstractions in software. A newfangled sound card, for example, may be able to reproduce the same sounds as old sound cards, but it also may have new ways of failing. If the operating system's sound card abstraction didn't anticipate the new <a href="../../../../articles/f/a/i/Failure_mode.html" class="mw-redirect" title="Failure mode">failure modes</a>, the program will encounter a failure it couldn't anticipate and can't understand. This can result in an "unknown error" or similar error message being presented to the user.</p>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<ul>
+<li><a href="../../../../articles/a/b/s/Abstraction_inversion.html" title="Abstraction inversion">Abstraction inversion</a></li>
+</ul>
+<p><a name="External_links" id="External_links"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: External links">edit</a>]</span> <span class="mw-headline">External links</span></h2>
+<ul>
+<li><a href="http://www.joelonsoftware.com/articles/LeakyAbstractions.html" class="external text" title="http://www.joelonsoftware.com/articles/LeakyAbstractions.html" rel="nofollow">The Law of Leaky Abstractions</a> - the original article by <a href="../../../../articles/j/o/e/Joel_Spolsky_8e78.html" title="Joel Spolsky">Joel Spolsky</a>, who coined the term</li>
+<li><a href="http://www.advogato.org/person/Bram/diary.html?start=43" class="external text" title="http://www.advogato.org/person/Bram/diary.html?start=43" rel="nofollow">Joel on API Apology</a> - see <a href="../../../../articles/b/r/a/Bram_Cohen_08af.html" title="Bram Cohen">Bram Cohen's</a> response to Joel.</li>
+<li><a href="http://www.codinghorror.com/blog/archives/000277.html" class="external text" title="http://www.codinghorror.com/blog/archives/000277.html" rel="nofollow">Coding Horror: Respecting Abstraction</a> - an article about abstractions by Jeff Atwood</li>
+<li><a href="http://c2.com/cgi/wiki?LeakyAbstraction" class="external text" title="http://c2.com/cgi/wiki?LeakyAbstraction" rel="nofollow">Article in Ward's Wiki (at c2.com)</a>- (includes several cross-references to other interesting "Patterns" in a very old - [perhaps the original] wiki)</li>
+</ul>
+<p><a name="Notes" id="Notes"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/l/e/a/Leaky_abstraction.html" title="Edit section: Notes">edit</a>]</span> <span class="mw-headline">Notes</span></h2>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 59/1000000
+Post-expand include size: 547/2048000 bytes
+Template argument size: 56/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/p/a/t/Category%7EPatterns_0290.html" title="Category:Patterns">Patterns</a></span> | <span dir='ltr'><a href="../../../../articles/a/b/s/Category%7EAbstraction_1a2f.html" title="Category:Abstraction">Abstraction</a></span> | <span dir='ltr'><a href="../../../../articles/p/r/o/Category%7EProgramming_bugs_a8ce.html" title="Category:Programming bugs">Programming bugs</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/l/e/a/Leaky_abstraction.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/l/e/a/Talk%7ELeaky_abstraction_05ef.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Leaky_abstraction">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 01:54, 21 May 2008 by Wikipedia user <a href="../../../../articles/m/i/k/User%7EMike_Schwartz_4f3e.html" title="User:Mike Schwartz">Mike Schwartz</a>. Based on work by Wikipedia user(s) <a href="../../../../articles/m/u/k/User%7EMukake_8136.html" title="User:Mukake">Mukake</a>, <a href="../../../../articles/a/l/a/User%7EAlamaison_f2b9.html" title="User:Alamaison">Alamaison</a>, <a href="../../../../articles/j/a/c/User%7EJacobolus_a4a3.html" title="User:Jacobolus">Jacobolus</a>, Jnutting512, <a href="../../../../articles/d/a/m/User%7EDamian_Yerrick_2a18.html" title="User:Damian Yerrick">Damian Yerrick</a>, <a href="../../../../articles/p/a/l/User%7EPalfrey_558d.html" title="User:Palfrey">Palfrey</a>, <a href="../../../../articles/d/r/e/User%7EDreftymac_20ab.html" title="User:Dreftymac">Dreftymac</a>, <a href="../../../../articles/m/i/s/User%7EMistercupcake_fb70.html" title="User:Mistercupcake">Mistercupcake</a>, <a href="../../../../articles/r/i/c/User%7ERich_Farmbrough_7642.html" title="User:Rich Farmbrough">Rich Farmbrough</a>, <a href="../../../../articles/x/e/z/User%7EXezbeth_c481.html" title="User:Xezbeth">Xezbeth</a>, <a href="../../../../articles/b/l/u/User%7EBluebot_e595.html" title="User:Bluebot">Bluebot</a>, <a href="../../../../articles/e/r/n/User%7EErnstRohlicek_02f3.html" title="User:ErnstRohlicek">ErnstRohlicek</a> and Dyeostyn and Anonymous user(s) of Wikipedia.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

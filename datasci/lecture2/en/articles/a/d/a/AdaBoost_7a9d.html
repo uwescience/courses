@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>AdaBoost - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">AdaBoost</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p><b>AdaBoost</b>, short for Adaptive <a href="../../../../articles/b/o/o/Boosting.html" title="Boosting">Boosting</a>, is a <a href="../../../../articles/m/a/c/Machine_learning.html" title="Machine learning">machine learning</a> algorithm, formulated by <a href="../../../../articles/y/o/a/Yoav_Freund_7885.html" title="Yoav Freund">Yoav Freund</a> and <a href="../../../../articles/r/o/b/Robert_Schapire_481f.html" title="Robert Schapire">Robert Schapire</a>. It is a <a href="../../../../articles/m/e/t/Meta-algorithm.html" class="mw-redirect" title="Meta-algorithm">meta-algorithm</a>, and can be used in conjunction with many other learning algorithms to improve their performance. AdaBoost is adaptive in the sense that subsequent classifiers built are tweaked in favor of those instances misclassified by previous classifiers. AdaBoost is sensitive to noisy data and <a href="../../../../articles/o/u/t/Outlier.html" title="Outlier">outliers</a>. Otherwise, it is less susceptible to the <a href="../../../../articles/o/v/e/Overfitting.html" title="Overfitting">overfitting</a> problem than most learning algorithms.</p>
+<p>AdaBoost calls a weak classifier repeatedly in a series of rounds <img class="tex" alt=" t = 1,\ldots,T" src="../../../../math/b/7/e/b7e19e8872b77eec52558e059f2ed8eb.png" />. For each call a distribution of weights <span class="texhtml"><i>D</i><sub><i>t</i></sub></span> is updated that indicates the importance of examples in the data set for the classification. On each round, the weights of each incorrectly classified example are increased (or alternatively, the weights of each correctly classified example are decreased), so that the new classifier focuses more on those examples.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#The_algorithm_for_the_binary_classification_task"><span class="tocnumber">1</span> <span class="toctext">The algorithm for the binary classification task</span></a></li>
+<li class="toclevel-1"><a href="#Statistical_Understanding_of_Boosting"><span class="tocnumber">2</span> <span class="toctext">Statistical Understanding of Boosting</span></a></li>
+<li class="toclevel-1"><a href="#See_also"><span class="tocnumber">3</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1"><a href="#External_links"><span class="tocnumber">5</span> <span class="toctext">External links</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="The_algorithm_for_the_binary_classification_task" id="The_algorithm_for_the_binary_classification_task"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/d/a/AdaBoost_7a9d.html" title="Edit section: The algorithm for the binary classification task">edit</a>]</span> <span class="mw-headline">The algorithm for the binary classification task</span></h2>
+<p>Given: <img class="tex" alt="(x_{1},y_{1}),\ldots,(x_{m},y_{m})" src="../../../../math/9/3/5/93592bfb9381cd7d9ff564bbc5010620.png" /> where <img class="tex" alt="x_{i} \in X,\, y_{i} \in Y = \{-1, +1\}" src="../../../../math/c/a/b/cab1576b5fe4064b5a797f918146da67.png" /></p>
+<p>Initialise <img class="tex" alt="D_{1}(i) = \frac{1}{m}, i=1,\ldots,m." src="../../../../math/0/d/b/0db56cfd1b2b53f805d3614c1a6dc515.png" /></p>
+<p>For <img class="tex" alt="t = 1,\ldots,T" src="../../../../math/b/7/e/b7e19e8872b77eec52558e059f2ed8eb.png" />:</p>
+<ul>
+<li>Find the classifier <img class="tex" alt="h_{t}&#160;: X \to \{-1,+1\}" src="../../../../math/3/d/3/3d3b6b7cc60850574395d6826855727d.png" /> that minimizes the error with respect to the distribution <span class="texhtml"><i>D</i><sub><i>t</i></sub></span>:<br />
+<img class="tex" alt="h_{t} = \arg \min_{h_{j} \in \mathcal{H}} \epsilon_{j}" src="../../../../math/9/b/5/9b5418f066ad5b2b322ccd72d5233c76.png" />, where <img class="tex" alt=" \epsilon_{j} = \sum_{i=1}^{m} D_{t}(i)[y_i \ne h_{j}(x_{i})]" src="../../../../math/4/4/d/44d8d3c98bbcb6f1c0d015334906fb77.png" /></li>
+<li>Prerequisite: <span class="texhtml">ε<sub><i>t</i></sub> &lt; 0.5</span>, otherwise stop.</li>
+<li>Choose <img class="tex" alt="\alpha_{t} \in \mathbf{R}" src="../../../../math/f/6/0/f60f6fc4a062d2701457183963421d9b.png" />, typically <img class="tex" alt="\alpha_{t}=\frac{1}{2}\textrm{ln}\frac{1-\epsilon_{t}}{\epsilon_{t}}" src="../../../../math/a/4/b/a4ba1877721cf4b501e24b13b935e51a.png" /> where <span class="texhtml">ε<sub><i>t</i></sub></span> is the weighted error rate of classifier <span class="texhtml"><i>h</i><sub><i>t</i></sub></span>.</li>
+<li>Update:<br /></li>
+</ul>
+<p><img class="tex" alt="D_{t+1}(i) = \frac{ D_{t}(i) \, e^{- \alpha_{t} y_{i} h_{t}(x_{i})} }{ Z_{t} }" src="../../../../math/3/2/8/328ff46163a55c3a6c3e397136304382.png" /><br />
+where <span class="texhtml"><i>Z</i><sub><i>t</i></sub></span> is a normalization factor (chosen so that <span class="texhtml"><i>D</i><sub><i>t</i> + 1</sub></span> will be a <a href="../../../../articles/p/r/o/Probability_distribution.html" title="Probability distribution">probability distribution</a>, i.e. sum one over all x).</p>
+<p>Output the final classifier:</p>
+<p><img class="tex" alt="H(x) = \textrm{sign}\left( \sum_{t=1}^{T} \alpha_{t}h_{t}(x)\right)" src="../../../../math/5/3/f/53fcaac2df8212761c1c60b6aa968653.png" /></p>
+<p>The equation to update the distribution <span class="texhtml"><i>D</i><sub><i>t</i></sub></span> is constructed so that:</p>
+<p><img class="tex" alt="e^{- \alpha_{t} y_{i} h_{t}(x_{i})} \begin{cases} &lt;1, &amp; y(i)=h_{t}(x_{i}) \\ &gt;1, &amp; y(i) \ne h_{t}(x_{i}) \end{cases}" src="../../../../math/f/e/6/fe6f081e87f4c1cb11254f67e1aaa7d5.png" /></p>
+<p>Thus, after selecting an optimal classifier <img class="tex" alt="h_{t} \," src="../../../../math/e/c/2/ec2ded76e5786a698167d909a0f460d3.png" /> for the distribution <img class="tex" alt="D_{t} \," src="../../../../math/5/e/1/5e14513b019c784a16611164990e38b5.png" />, the examples <img class="tex" alt="x_{i} \," src="../../../../math/6/0/9/60996f1d06e82d3d6227e0d7d3500558.png" /> that the classifier <img class="tex" alt="h_{t} \," src="../../../../math/e/c/2/ec2ded76e5786a698167d909a0f460d3.png" /> identified correctly are weighted less and those that it identified incorrectly are weighted more. Therefore, when the algorithm is testing the classifiers on the distribution <img class="tex" alt="D_{t+1} \," src="../../../../math/0/8/9/089ed4d9d69771952601b88bb13f2ffa.png" />, it will select a classifier that better identifies those examples that the previous classifer missed.</p>
+<p><a name="Statistical_Understanding_of_Boosting" id="Statistical_Understanding_of_Boosting"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/d/a/AdaBoost_7a9d.html" title="Edit section: Statistical Understanding of Boosting">edit</a>]</span> <span class="mw-headline">Statistical Understanding of Boosting</span></h2>
+<p>Boosting can be seen as minimization of a convex loss function over a <a href="../../../../articles/c/o/n/Convex_set.html" title="Convex set">convex set</a> of functions. <sup id="cite_ref-0" class="reference"><a href="#cite_note-0" title="">[1]</a></sup> Specifically, the loss being minimized is the exponential loss</p>
+<dl>
+<dd><img class="tex" alt="\sum_i e^{-y_i f(x_i)}" src="../../../../math/5/8/b/58b2ef07d4c4bae6cc02ccd9cf5a28f8.png" /></dd>
+</dl>
+<p>and we are seeking a function</p>
+<table>
+<tr style='text-align: center;'>
+<td><i>f</i> =</td>
+<td><span style='font-size: x-large; font-family: serif;'>∑</span></td>
+<td>α<sub><i>t</i></sub><i>h</i><sub><i>t</i></sub></td>
+</tr>
+<tr style='text-align: center; vertical-align: top;'>
+<td></td>
+<td><i>t</i></td>
+<td></td>
+</tr>
+</table>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/d/a/AdaBoost_7a9d.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<ul>
+<li><a href="../../../../articles/b/o/o/Bootstrap_aggregating.html" title="Bootstrap aggregating">Bootstrap aggregating</a></li>
+<li><a href="../../../../articles/l/p/b/LPBoost_d9d3.html" title="LPBoost">LPBoost</a></li>
+</ul>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/d/a/AdaBoost_7a9d.html" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<div class="references-small">
+<ol class="references">
+<li id="cite_note-0"><b><a href="#cite_ref-0" title="">^</a></b> T. Zhang, "Convex Risk Minimization", Annals of Statistics, 2004.</li>
+</ol>
+</div>
+<p><a name="External_links" id="External_links"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/a/d/a/AdaBoost_7a9d.html" title="Edit section: External links">edit</a>]</span> <span class="mw-headline">External links</span></h2>
+<ul>
+<li><a href="http://cmp.felk.cvut.cz/~sochmj1/adaboost_talk.pdf" class="external text" title="http://cmp.felk.cvut.cz/~sochmj1/adaboost_talk.pdf" rel="nofollow">AdaBoost</a> Presentation summarizing Adaboost (see page 9 for an illustrated example of performance)</li>
+<li><a href="http://www.site.uottawa.ca/~stan/csi5387/boost-tut-ppr.pdf" class="external text" title="http://www.site.uottawa.ca/~stan/csi5387/boost-tut-ppr.pdf" rel="nofollow">A Short Introduction to Boosting</a> Introduction to Adaboost by Freund and Schapire from 1999</li>
+<li><a href="http://citeseer.ist.psu.edu/cache/papers/cs/2215/http:zSzzSzwww.first.gmd.dezSzpersonszSzMueller.Klaus-RobertzSzseminarzSzFreundSc95.pdf/freund95decisiontheoretic.pdf" class="external text" title="http://citeseer.ist.psu.edu/cache/papers/cs/2215/http:zSzzSzwww.first.gmd.dezSzpersonszSzMueller.Klaus-RobertzSzseminarzSzFreundSc95.pdf/freund95decisiontheoretic.pdf" rel="nofollow">A decision-theoretic generalization of on-line learning and an application to boosting</a> <i>Journal of Computer and System Sciences</i>, no. 55. 1997 (Original paper of Yoav Freund and Robert E.Schapire where Adaboost is first introduced.)</li>
+<li><a href="http://www.cs.ucsd.edu/~yfreund/adaboost/index.html" class="external text" title="http://www.cs.ucsd.edu/~yfreund/adaboost/index.html" rel="nofollow">An applet demonstrating AdaBoost</a></li>
+<li><a href="http://engineering.rowan.edu/~polikar/RESEARCH/PUBLICATIONS/csm06.pdf" class="external text" title="http://engineering.rowan.edu/~polikar/RESEARCH/PUBLICATIONS/csm06.pdf" rel="nofollow">Ensemble Based Systems in Decision Making</a>, R. Polikar, IEEE Circuits and Systems Magazine, vol.6, no.3, pp. 21-45, 2006. A tutorial article on ensemble systems including pseudocode, block diagrams and implementation issues for AdaBoost and other ensemble learning algorithms.</li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 114/1000000
+Post-expand include size: 0/2048000 bytes
+Template argument size: 0/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/c/l/a/Category%7EClassification_algorithms_480d.html" title="Category:Classification algorithms">Classification algorithms</a></span> | <span dir='ltr'><a href="../../../../articles/e/n/s/Category%7EEnsemble_learning_c1c7.html" title="Category:Ensemble learning">Ensemble learning</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/a/d/a/AdaBoost_7a9d.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/a/d/a/Talk%7EAdaBoost_5bc0.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/AdaBoost">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	<div id="p-lang" class="portlet">
+	  <h5>Languages</h5>
+	  <div class="pBody">
+	    <ul>
+	      	      <li>
+	      <a href="../../../../../pl/articles/a/d/a/AdaBoost_7a9d.html">Polski</a>
+	      </li>
+	      	    </ul>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 08:44, 20 April 2008 by Anonymous user(s) of Wikipedia. Based on work by Wikipedia user(s) <a href="../../../../articles/s/e/b/User%7ESeba5618_99fa.html" title="User:Seba5618">Seba5618</a>, <a href="../../../../articles/m/o/n/User%7EMonkbel_aa4d.html" title="User:Monkbel">Monkbel</a>, <a href="../../../../articles/t/h/e/User%7EThe_Anome_61a9.html" title="User:The Anome">The Anome</a>, <a href="../../../../articles/m/a/l/User%7EMale1979_76fc.html" title="User:Male1979">Male1979</a>, <a href="../../../../articles/m/a/r/User%7EMartinBot_3f64.html" title="User:MartinBot">MartinBot</a>, <a href="../../../../articles/r/e/q/User%7ERequestion_f172.html" title="User:Requestion">Requestion</a>, JanSochman, <a href="../../../../articles/d/a/v/User%7EDavidFHoughton_3491.html" title="User:DavidFHoughton">DavidFHoughton</a>, Nowozin, Eng.ahmedm, <a href="../../../../articles/v/s/i/User%7EVsion_cd35.html" title="User:Vsion">Vsion</a>, <a href="../../../../articles/t/h/a/User%7EThadk_f9d5.html" title="User:Thadk">Thadk</a>, <a href="../../../../articles/p/a/u/User%7EPaulb42_fcb9.html" title="User:Paulb42">Paulb42</a>, <a href="../../../../articles/b/l/u/User%7EBluebot_e595.html" title="User:Bluebot">Bluebot</a>, <a href="../../../../articles/h/i/k/User%7EHike395_91ce.html" title="User:Hike395">Hike395</a>, <a href="../../../../articles/g/j/e/User%7EGJeffery_6806.html" title="User:GJeffery">GJeffery</a>, <a href="../../../../articles/t/r/i/User%7ETrifon_Triantafillidis_95f9.html" title="User:Trifon Triantafillidis">Trifon Triantafillidis</a>, <a href="../../../../articles/b/a/r/User%7EBarak_2a23.html" title="User:Barak">Barak</a>, <a href="../../../../articles/j/u/n/User%7EJung_dalglish_e6de.html" title="User:Jung dalglish">Jung dalglish</a> and Benbludget.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>

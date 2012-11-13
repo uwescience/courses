@@ -1,0 +1,569 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>CSE 344 Homework 5</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+dl dt { font-weight: bold; }
+.style1 {color: #006600}
+.red {
+	color: #F00;
+}
+.red {
+	color: #F00;
+}
+.red {
+	color: #F00;
+}
+</style>
+<body>
+<h1>CSE 344 Homework 5</h1>
+<dl>
+  <dt>Objectives:</dt>
+  <dd>To get experience with database application development
+  and transaction management.</dd>
+  
+  <dt>Assignment tools:</dt>
+  <dd><a href="http://www.microsoft.com/sqlserver" target="_new">SQL Server</a> through <a href="http://www.microsoft.com/windowsazure/sqlazure/" target="_new">SQL Azure</a>. </dd>
+  <dd><a href="hw5.tar.gz">starter code files</a></dd>
+  
+  <dt>Additional files (you normally don't need these):</dt>
+  <dd><a href="http://www.microsoft.com/downloads/info.aspx?na=41&srcfamilyid=a737000d-68d0-4531-b65d-da0f2a735707&srcdisplaylang=en&u=http://download.microsoft.com/download/D/6/A/D6A241AC-433E-4CD2-A1CE-50177E8428F0/1033/sqljdbc_3.0.1301.101_enu.tar.gz" target="_blank">SQL Server JDBC Jar files</a> (the JDBC driver for older versions of Java), <br>
+  <a href="http://www.cs.washington.edu/education/courses/cse344/imdb2010-ascii.tar.gz"> IMDB dataset ascii version</a> (in case you want to test your homework on your own database, before using SQL Azure)</dd>
+    <dt>Due date:</dt>
+  <dd>Monday, Nov. 19, at 11:59 pm 
+  <a href="https://catalyst.uw.edu/collectit/assignment/summary/shenz/23834/98464" target="_blank">in the dropbox</a>  </dd>
+  
+  <dt>What to turn in:</dt>
+  <dd>Customer database schema in <code>setup.sql</code>, 
+  completed version of the  <code> Query.java</code> starter code file  </dd>
+</dl>
+
+<p>
+<em>
+Read this whole document before starting this project. There is a lot of
+valuable information here, including the Final Comments section at the bottom.
+</em>
+
+<p>
+Congratulations, you've decided to start your very own video rental store!
+
+<p>
+You've just signed a contract with a content provider that has videos of all 
+the movies in the IMDB database, and you will resell this content to your customers.	
+Once you open for business, your customers will access your service online
+to search the IMDB movie database for movies they are interested in, 
+and then rent movies (which we assume are delivered by the content provider; 
+we don't do this part in the project).
+Once a customer rents a movie, she can watch it as many times as she wants, 
+until she decides to "return" it to your store. You need to keep track of 
+which customers are currently renting which movies.
+
+<p>
+There are two important restrictions:
+<ol>
+<li> Because your store is brand-new, your contract with the content provider 
+  will only allow you to rent each
+  movie to at most one customer at any one time.  The movie needs to be
+  first returned before you may rent it again to another customer (or
+  the same customer).  </li>
+<li>Your own business model imposes a second important restriction:
+  your store is based on subscriptions (much like Netflix), allowing
+  customers to rent up to a maximum number of movies for as long as
+  they want.  Once they reach
+  that number you will deny them more rentals, until they return a
+  movie. You offer a few different rental plans, each with its own
+  monthly fee and maximum number of movies.
+</li>
+</ol>
+
+<p>
+In this homework, you have two main tasks.  The first is to design a 
+database of your customers.
+<p>
+The second task
+is to complete a working prototype of your video store 
+ application.  This system consists of a command-line
+interface and a back end system.  The back end connects to your 
+database to update the customer database to rent and return movies.
+We have already provided code for a complete UI and partial back end; 
+you will implement the rest of the back end.
+<p>In real-life, you would develop a Web-based interface instead of a command-line interface. We use a command-line interface to simplify the assignment. 
+<h3>Task 0: Running the starter code (0 points)</h3>
+
+<p>
+  Your system will be a Java application. Download the <a href="hw5.tar.gz" target="_blank">starter code files</a>; you will see the following files:
+<ul>
+<li><code>VideoStore.java</code>: the command-line interface to your video store;
+  calls into <code>Query.java</code> to run customer transactions
+<li><code>Query.java</code>: code to run customer transactions against
+  your database, such as renting and returning movies
+<li><code>dbconn.properties</code>: a file containing settings to connect
+  to the customer and IMDB databases. You need to edit it before running the starter code.
+<li><code>sqljdbc4.jar</code>: the JDBC to SQL Server driver.  
+This tells Java how to connect to a SQL Azure database server, and needs to be 
+in your <code>CLASSPATH</code> (see below)
+<li><code>sqljdbc.jar</code>: the JDBC to SQL Server driver for older versions of Java. Use this driver only if the other one does not work for you. 
+</ul>
+
+<p>
+To run the starter code, you will need the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+the Java JDK</a>, if you don't already have it, or run javac and java from the command line.
+<p>You also need to access the <code>IMDB</code> database as in HW3. In this assignment, however, we will only use the IMDB database on SQL Azure. The reason for this is that IISQLSRV is behind a firewall and you cannot connect to it directly from home. Our instance on SQL Azure is also behind a firewall but it has no such restrictions (we enabled connections form everywhere). For your java application to connect to IMDB on SQL Azure , you   first need to modify <code>dbconn.properties</code> to indicate your username and password. These are the username and password for <strong>SQL Azure</strong>.  
+<p>You are now ready to try and run the starter code. Please follow the instructions for your platform as shown in the table below. The last command launches the starter code. Normally, you run it like this:</p>
+<p><code>java VideoStore Joe jopsswd</code> </p>
+<p>That is, you provide the username and password 
+  of the <strong>video store user</strong>. Your project should check that Joe is a valid user in the database 
+  and that his password is correct; the starter code does not authenticate the user, 
+  so <code>user</code> and <code>password</code> are ignored. You can put any strings you like. </p>
+<table border="1">
+<thead style="font-weight: bold">
+  <tr><th>Windows</th>
+      <th>Linux or Mac</th>
+  </tr>
+</thead>
+
+<tbody><tr>
+<td><pre>
+cd \where\you\unzipped\the\starter\code
+<em>[replace the directory below with your JDK's bin\ directory]</em>
+path C:\Program Files\Java\jdk1.6.0_25\bin;%path%
+set CLASSPATH=.;sqljdbc4.jar
+javac -g VideoStore.java Query.java
+java VideoStore user password
+</pre></td>
+
+<td><pre>
+cd /where/you/unzipped/the/starter/code
+
+
+export CLASSPATH=.:sqljdbc4.jar
+javac -g VideoStore.java Query.java
+java VideoStore user password
+</pre></td>
+</tr></tbody>
+</table>
+
+<p>If you got an error message about the JDBC driver when running the above, try to use the older driver <em>sqljdbc.jar</em> instead of sqljdbc4.jar.
+<p>Now you should see the command-line prompt for your video store:
+<pre>
+ *** Please enter one of the following commands ***
+> search &lt;movie title>
+> plan [&lt;plan id>]
+> rent &lt;movie id>
+> return &lt;movie id>
+> fastsearch &lt;movie title>
+> quit
+></pre>
+<p>The <code>search</code> command works (sort of).  Try typing:
+<pre>
+search Nixon
+</pre>
+
+<p>
+After a few seconds, you should start getting movie titles containing the word
+'Nixon', and their directors. (You don't yet get the actors: one of
+your jobs is to list the actors.)
+
+
+<h3>Task 1: Customer database design (20 points)</h3> 
+
+<p>
+Your first task is to design and create your <code>customer</code> database in SQL Azure. We already created a database for you on SQL Azure. What you need to do is design, create, and populate tables. 
+<p>The name of your customer database on SQL Azure is <em>yourloginCustomer </em>where <em>yourlogin</em> is your login.
+
+<p>Note that in SQL Azure, the IMDB database and all our Customer databases are hosted on different physical machines.  For this reason, your application needs to establish <strong>two</strong> JDBC connections: one to IMDB and one to your Customer database.
+<p>If you have not already done so above, modify the file <em>dbconn.properties</em> to indicate the name of your Customer database. You will use the same username and password to connect to that database as for IMDB. 
+
+<p><strong>What to turn in: </strong>
+a single text file called <em>setup.sql</em> with CREATE TABLE and INSERT statements for your customer database.
+
+<h4> Customer information</h4>
+
+<p>Your customer information database shoudl have the following entity sets:
+
+<p>
+   <b>E1. Customer</b>: a customer has an <b>id</b> (integer),
+   a <b>login</b>, a <b>password</b>, a <b>first name</b> and
+   a <b>last name</b>.
+</p>
+
+<p>
+   <b>E2. Plan</b>. Each plan has a <b>plan id</b> (integer),
+    a <b>name</b> (say: "Basic", "Rental Plus", "Super Access" -- you
+    can invent your own), the
+    <b>maximum number</b> of rentals allowed (e.g. "basic" allows one
+    movie; "rental plus" allows three; "super access" allows five;
+    again, these are your choices), and the <b>monthly fee</b>.  For
+    this project, you are asked to insert four different rental plans.
+</p>
+
+<p>
+   <b>E3.  Rental</b>: a "rental" entity represents the fact that a
+    movie was rented by a customer with a <b>customer id</b>.  The movie is identified by a
+    <b>movie id</b> (from the IMDB database).  The rental has
+    a <b>status</b> that can be open, or closed, and the <b>date and time</b>
+    the movie was checked out, to distinguish multiple rentals of the same
+    movie by the same customer.  When a customer
+    first rents a movie, then you create an <i>open</i> entry in
+    Rentals; when he returns it you update it to <i>closed</i> (you
+    don't delete it).  Keeping the rental history helps you improve
+    your business by doing data mining (but we don't do this in this
+    class.)
+
+</p>
+
+<p>
+In addition there are the following relationships:
+</p>
+
+<p>
+   <b>R1</b>. Each customer has exactly one rental plan.
+</p>
+
+<p>
+   <b>R2</b>. Each rental refers to exactly one customer.  (It also
+   refers to a single movie, but that's in a different database, so we
+   don't model that as a relationship.)
+</p>
+
+<p>
+Create a text file called <em>setup.sql</em> with CREATE TABLE statements and INSERT statements 
+that populate each table with a few tuples (minimum 8 tuples): 
+you will turn in this file.  
+This file should be runnable on SQL Azure through SQL Server Management Studio.
+Write a separate script file with DROP TABLE statements; it's useful to run it whenever you
+find a bug in your schema or data (don't turn in this file). <b>IMPORTANT
+NOTE:</b> SQL
+Azure requires that you <b>create a clustered index on each table before
+you can insert values</b>, see <a
+href="http://msdn.microsoft.com/en-us/library/windowsazure/ee336245.aspx#sscs"
+>this link</a> for details and an example. You will get an error
+message if you try to insert into a table without a clustered index!
+
+<p>To create your tables and insert your data do the following: 
+
+<ul>
+  <li>From SQL Server Management Studio, connect to<tt> xbn4slk6hn.database.windows.net</tt> using SQL Server Authentication.  </li>
+  <li>Once you are connected:
+    <ul>
+        <li>In the Object Explorer on the left, select Databases -&gt; yourloginCustomer </li>
+        <li>Click on New Query (at the top) </li>
+      <li>Copy and paste the content of <em>setup.sql</em> and press &quot;Execute&quot;. We recommend that you execute one statement at a time and examine its effects before moving on to the next statement. </li>
+    </ul>
+  </li>
+</ul>
+<h3>Task 2: Java customer application (80 points)</h3>
+
+<p>
+Your second task is to write the Java application that your customers will
+use, by completing the starter code.
+You need to modify only <code>Query.java</code>.  Do not modify <code>VideoStore.java</code>, 
+because we will test your homework using the current version of <code>VideoStore.java</code>.  
+<p> <b> What to turn in: </b> the Java file <code>Query.java</code>.</p>
+
+<p>
+The application is a simple
+command-line Java program.  A "real" application will have a Web
+interface instead, but such an interface is not the topic of this class.  Your Java application
+needs to connect to both the<code> imdb</code>  and the <code>customer </code>databases on SQL Azure.</p>
+
+<p>
+When your application starts, it reads a customer username and password
+from the command line.  It validates them against the database, then
+retains the customer id throughout the session.  All rentals/returns are
+on behalf of this single customer: to change the customer you must
+quit the application and restart it with another customer.  
+The authentication logic is not yet wired up in the starter code;
+as mentioned above, one of your tasks will be to make it work.
+
+<p>
+Once the application is started, the customer can select one of the
+following commands:
+<ul>
+<li>Search for movies by words or strings in the title name.
+<li>View a list of rental subscription plans, and change his/her plan.
+<li>Rent a movie by IMDB ID number.
+<li>Return a rented movie, again by IMDB ID number.
+</ul>
+
+<p>
+To complete your application, you will do the following:
+<ol>
+<li>Complete the provided IMDB movie search function, fixing a security
+    flaw in it along the way.
+<li>Write a new,   faster  
+  version of the search function.
+<li>Implement the remaining functions in <code>Query.java</code> to 
+read and write customer data from your database, taking care to 
+ensure atomic transaction semantics.
+</ol>
+
+<h4>Task 2A: Completing the search function (20 points)</h4>
+
+<p>In the search command, the user types in a string, and you return:
+<ul>
+	 <li> all movies whose title matches the string, case-insensitively
+	 <li> their director(s)
+	 <li> their actor(s)
+	 <li> an indication of whether the movie is available for rental
+            (remember that you can rent the movie to only one customer
+            at a time), or whether the movie is already rented by this
+            customer (some customers forget; be nice to them), or
+            whether it is unavailable (rented by someone else).
+</ul>
+<p>
+The starter code already returns the movies and directors.
+
+Your task to return all actors, and also to indicate whether the movie is available for rental.
+<h4>Task 2B: A faster version of search (20 points)</h4>
+
+<p>
+The search function in task 2A uses dependent joins, and can be slow sometimes. 
+(Note: the speed depends dramatically on whether you are running with 
+a cold cache, or a hot cache.) Your task here is to write a faster version of 
+search, called <code>fastsearch</code>, by using joins (or outer joins? 
+you need to determine that!) instead of dependent joins.  Your search should 
+return only (1) the movie information (id, title, year) and (2) its actors. 
+For extra credit you can also return (3) directors and availability information. 
+
+Instead of executing many queries as in the original search method, fastsearch should only perform two or three queries in total. 
+<p>
+How much better should you expect <code>fastsearch</code> to be?  
+With a hot cache, fastsearch typically increases the speed very little: 
+perhaps from 2-3 seconds to 1 second or so; with a cold cache the performance 
+increase may be larger, from minutes, to several seconds.
+<!--
+<p>
+   <b>NOTE 2</b>: Depending on the load on IISQLSRV, "fastsearch" may actually
+   run slower than regular "search": if that happens for the right
+   reason, then you are OK.  In "fastsearch", you are running upfront
+   three SQL queries, which are more complex than the single SQL query
+   executed in "search": this initial step will take longer.
+   Subsequently however, "fastsearch" no longer issues queries, and
+   iterates over all movies, actors, and directors exactly once,
+   while search needs to issue two new SQL queries for each movie (not
+   counting the computation of the availability status).  Thus, the
+   time it takes to the <em>first</em> answer may be longer in
+   "fastsearch", but subsequent answers should be returned "fast".
+   </p>
+-->
+<p>Interestingly, unlike with a local server, with SQL Azure, the performance bottleneck is typically the data transfer from the server to the client, hence you may not see any visible performance improvement.  For some queries, fastsearch may actually be slower than search! For example, we found that &quot;search nowhere&quot; took 1min12sec while &quot;fastsearch nowhere&quot; took only 34sec. In contrast, &quot;search Nixon&quot; took  21sec while &quot;fastsearch Nixon&quot; took 30sec. 
+<h4>Task 2C: Customer database transactions (30 points)</h4>
+
+<p>
+Now, complete the application by implementing each of the following
+transactions.  (We call each action a <em>transaction</em>.
+You will need to write <em>some</em> of them as SQL transactions.
+Others are interactions with the database that do not require transactions.)
+
+<ol>
+<li>
+   <p>The "login" transaction, which is run implicitly when you start
+   your command line program, authenticating the user by his/her username
+   and password.   Much of
+   the authentication logic is already provided in the starter code.  
+   For the most part, all you need to do is uncomment the code that 
+   performs the authentication and modify it to match your CUSTOMER schema.
+
+However, you must also establish a connection to your Customer database. You need to add code to do this. Look at how the starter code establishes a connection to the IMDB database. 
+<li>
+   <p>The "print customer info" transaction: To provide a minimum amount
+   of user-friendliness, at each iteration of the program's main loop,
+   you need to 
+    print the current customer's name, and tell them how many
+    additional movies they can rent (given their current plan and the
+    number of movies that they have already rented).
+
+<li>
+   <p>The "plan" transaction.  Here, the customer types the command
+   <code>plan PLAN_ID</code> and you set her new plan to that plan id.  
+   How does the customer know which plan id's are available?  
+   They type in <code>plan</code> without
+   any plan id, and then you will list all available plans, their
+   names, and their terms (maximum number of movies available for
+   rental and monthly fees).
+
+<li>
+   <p>The "rent" transaction.  The user types in <code>rent MOVIE_ID</code>,
+   and you will "rent" that movie to the customer.
+
+<li>
+   <p>The "return" transaction.  The user types in <code>return MOVIE_ID</code>.
+   You update your records to mark the return of that movie.
+
+</ol>
+
+<p>
+Be sure to use SQL transactions when appropriate to implement these 
+"transactions". See more on this below.
+
+<h4>Task 2D: Stop SQL Injection (10 points)</h4>
+<p>The <code>search</code> function in this simple application (and similarly
+<code>fastsearch</code>), provides only search by title keyword.  
+Now type this at the prompt:
+<pre>search ' and year=1899 -- </pre>
+<p>You get all movies in 1899!  Perhaps try this? 
+<code>search '; drop movie; drop casts; drop actor; -- </code>
+Actually, don't try it, you get the idea...
+<p>This is SQL injection: hackers like to do it on Website interfaces 
+to databases. Your task here is to fix the search and <code>fastsearch</code>
+function to prevent SQL injection attacks. Fix the security issue by changing
+the code in Query.java (only). 
+<em>Hint</em>: when fixing the issue,
+look at other parts of the starter code that execute SQL to see what 
+they do differently from the broken search code.
+
+<h3>Transaction management (for Task 2C)</h3>
+
+<p>
+  You must use SQL transactions
+in order to guarantee ACID properties: you must define begin- and end-transaction statements, 
+and insert them in appropriate places in <code>Query.java</code>. In particular, you must 
+ensure that the following two constraints are always satisfied, even if multiple instances of your 
+application talk to the database.
+<p><b>C1</b>. at any time a movie can be rented to at most one customer.</p>
+<p><b>C2</b>. at any time a customer can  have at most as many movies rented
+  as his/her plan allows.</p>
+<p>Concretely: (a) when a customer requests to rent a
+    movie, you may need to deny this request and (b) when a customer selects a
+  "lower" plan (with fewer allowed movies), you may also need to deny this request
+    (why?).  You can implement denying in many ways, but we strongly recommend the SQL ROLLBACK statement.  </p>
+<p>You must use transactions correctly such that users cannot cheat, nor can race conditions 
+introduced by concurrent execution lead to an inconsistent state of the database. For example, 
+  a user may try to
+  cheat and coerce your application to violate the constraint C2
+  above by running two instances of your application in parallel,
+  with the same user id: depending on how you write your application
+  and on race conditions, the malicious user may succeed in renting
+  more movies than he/she is allowed. Your properly designed transactions should prevent that.</p>
+<p> Design transactions correctly. Avoid including user interaction inside a 
+SQL transaction: that is,
+don't begin a transaction then wait for the user to decide what she
+wants to do (why?). The rule of thumb is that transactions need to be as short as possible, but not shorter.</p>
+<p>&nbsp;</p>
+<p>When one uses a DBMS, by default <strong>each statement executes in its own transaction</strong>. To group multiple statements into a transaction, we use 
+<pre>BEGIN TRANSACTION</pre>
+<p>....
+<pre>COMMIT or ROLLBACK </pre>
+<p>This is the same when executing transactions from Java, by default each SQL statement will be executed as its own transaction. To group multiple statements into one transaction in java, you can do one of three things:
+
+<p><strong>Approach 1:</strong>
+<p>We provide you with three helper methods. So before your first statement in the transaction, simply execute
+<pre>beginTransaction();</pre>
+<p>When you are done with the     transaction, then call:
+<pre>commitTransaction(); </pre>
+<p>OR
+<pre>rollbackTransaction(); </pre>
+<p><strong>Approach 2: </strong>
+<p>You can execute the SQL code for START TRANSACTION and friends
+  directly, using the SQL we have provided in the starter code (also
+  check out <a href="http://msdn.microsoft.com/en-us/library/windowsazure/ee336270.aspx" >SQL Azure's transactions documentation)</a>:
+<pre>
+// When you start the database up
+Connection conn = [...]
+conn.setAutoCommit(true); // This is the default setting, actually
+conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+
+// In each operation that is to be a multi-statement SQL transaction:
+conn.setAutoCommit(false); // You MUST do this in order to tell JDBC that you are starting a multi-statement transaction
+
+beginTransactionStatement.executeUpdate();
+
+[... execute updates and queries.]
+
+commitTransactionStatement.executeUpdate();
+[OR]
+rollbackTransactionStatement.executeUpdate();
+
+conn.setAutoCommit(true);  // To make sure that future statements execute as their own transactions.
+</pre>
+<p>
+<strong>Approach 3:</strong>
+
+<pre>
+// When you start the database up
+Connection conn = [...]
+conn.setAutoCommit(true); // This is the default setting, actually
+conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+
+
+// In each operation that is to be a multi-statement SQL transaction:
+
+conn.setAutoCommit(false);
+[... execute updates and queries.]
+conn.commit();
+[OR]
+conn.rollback();
+conn.setAutoCommit(true);
+ 
+
+</pre>
+
+<p>When auto comit is set to true, each statement executes in its own
+transaction. With auto-commit set to false, you can execute many
+statements within a single transaction. By default, on any new
+connection to a DB auto-commit is set to true.
+<p>To test that your transactions work correctly, we recommend the following 
+  (and this is how we will test your homework).  Place a break in the middle of 
+  your transaction, by reading and throwing away a line of the user's input.  
+  Run two (or more?) instances of VideoStore.java, say A and B.  
+  Let both reach the point when they read from the standard input; 
+  then you decide which one you allow to proceed, and thus control 
+  the order in which the transactions are interleaved. 
+<p>
+<!-- kmorton: none of these points hold for SQL Azure.
+<strong>IMPORTANT:</strong>
+<ul>
+<li>
+ <p>Postgres does not actually support fully serializable transactions
+ - in many cases,it allows data to be read and written in a way
+ that is <a href="http://www.postgresql.org/docs/9.0/interactive/transaction-iso.html#MVCC-SERIALIZABILITY">
+ not allowed in a serial transaction schedule</a>.  
+We will discuss these issues in class, along with some workarounds
+you can use for this homework.
+<li><p>
+Don't try to start a transaction inside another transaction!
+Postgres doesn't support nesting transactions, and will ignore
+attempts to run START TRANSACTION while already in a transaction.
+It will not ignore COMMIT or ROLLBACK, however, which means that 
+if you (accidentally or purposefully) nest transactions, you could 
+end up committing or aborting a transaction earlier than you intended.
+
+</ul>
+-->
+
+<p>
+<b>FINAL COMMENTS</b>:
+<ul>
+<li><p>The starter code is designed to give you a gentle introduction
+   to embedding SQL into Java.  Start by running the starter code,
+   examine it and make sure you understand the part that works.
+   You will need to create (and connect to) your new customer database before 
+   uncommenting and running the query statements. Then you should
+   insert 1-2 customers and uncomment
+   the few lines of code in the starter code that do the user
+   authentication and that greet the user with her/his name and plan
+   details.  This should all work flawlessly (if not, talk to the instructor
+   or TA).  Then, complete the first (the "search") transaction,
+   i.e. return the actors.  Then continue with the other functions.
+</p>
+<li><p> The completed project has about 20 quite simple SQL queries
+   embedded in the Java code.  Some queries are <em>parameterized</em>:
+   a parameter is a constant that is known only at runtime, and
+   therefore appears as a '?' in the SQL code in Java: you already
+   have examples in the started code.
+   </p>
+<li> We won't use recovery in this homework.  Instead you will rely on
+   the script file that you need to prepare for Task 1.  This file
+   contains all the CREATE TABLE and INSERT statements that are needed
+   to start your project.
+</ul>
+
+
+
+</body>
+</html>
+

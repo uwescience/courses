@@ -1,0 +1,173 @@
+PLEASE DO ***NOT*** READ THESE SOLUTIONS BEFORE YOU MAKE A SERIOUS
+ATTEMPT TO SOLVE THE QUESTIONS YOURSELF.
+
+If you need help with any of them, please come to office hours, or
+make a separate appointment.
+
+Schema:
+
+Likes(drinker, beer)
+Frequents(drinker, bar)
+Serves(bar, beer)
+
+AGGREGATE QUERIES
+
+* for each bar, count the number of drinkers that frequent that bar
+  and that like both 'heineken' and 'bud'
+
+
+select x.bar, count(distinct x.drinker)
+from frequents x, likes y, likes z
+where x.drinker = y.drinker and x.drinker = z.drinker
+  and y.beer = 'heineken' and z.beer = 'bud'
+group by x.bar
+
+
+* for each bar that serve both 'heineken' and 'bud' count the number
+  of drinkers that frequent that bar
+
+select x.bar, count(distinct x.drinker)
+from frequents x, serves y, serves z
+where x.bar = y.bar and x.bar = z.bar
+  and y.beer = 'heineken' and z.beer = 'bud'
+group by x.bar
+
+
+* for each bar that serve 'heineken' count the number of drinkers that
+  frequent that bar and that like 'bud'
+
+select x.bar, count(distinct x.drinker)
+from frequents x, serves y, likes z
+where x.bar = y.bar and x.drinker = z.drinker
+  and y.beer = 'heineken' and z.beer = 'bud'
+group by x.bar
+
+
+EXISTENTIAL AND UNIVERSAL QUANTIFIER
+
+* find all drinkers that frequent some bar that serves some beer that
+  they like
+
+select distinct x.drinker
+from frequents x, serves y, likes z
+where x.bar = y.bar and y.beer = z.beer and x.drinker = z.drinker
+
+
+* find all drinkers that frequent only bars that serve some beer that
+  they like
+
+{d | forall bar. frequents(d,bar) => exists beer.serves(bar,beer) and
+      likes(d,beer)}
+=
+{d | "d is a drinker"} -
+{d | exists bar.frequents(d,bar) 
+            and not (exists beer.(serves(bar,beer)  and likes(d,beer)))}
+
+
+select x.drinker
+from frequents x  -- any collection that returns all drinkers
+where x.drinker not in
+        (select y.drinker
+         from frequents y
+         where not exists (select * from serves z, likes u
+                           where y.bar=z.bar and y.drinker=u.drinker
+                             and z.beer = u.beer))
+
+
+* find all drinkers that frequent some bar that serves only beer that
+  they like
+
+{d | exists bar.frequents(d,bar) and 
+            forall beer.(serves(bar,beer)=>likes(d,beer))}
+=
+{d | exists bar.frequents(d,bar) and 
+            not exists beer.(serves(bar,beer) and not likes(d,beer))}
+
+select x.drinker
+from frequents x
+where not exists(select * from serves y
+                 where x.bar = y.bar
+                   and not exists (select * from likes z
+                                   where z.drinker=x.drinker
+                                     and y.beer = z.beer))
+
+
+* find all drinkers that frequent some bar that serves some beer that
+  they don't like
+
+{d | exists bar.exists beer.frequents(d,bar) and serves(bar,beer) and not likes(d,beer)}
+
+select x.drinker
+from frequents x, serves y
+where x.bar = y.bar
+  and not exists (select * from likes z
+                  where x.drinker=z.drinker and y.beer = z.beer)
+
+
+* find all drinkers that frequent some bar that serves only beer that
+  they don't like
+
+
+{d | exists bar.frequents(d,bar) 
+            forall beer.(serves(bar,beer)=>not likes(d,beer))}
+
+=
+
+{d | exists bar.frequents(d,bar) 
+            not exists beer. serves(bar,beer) and likes(d,beer)}
+
+select x.drinker
+from frequents x
+where not exists (select * from serves y, likes z 
+                  where x.bar=y.bar 
+                    and y.beer = z.beer
+                    and z.drinker = x.drinker)
+
+
+* find all drinkers that frequent only bars that serve some beer that
+  they don't like
+
+{d | "d is a drinker" and
+     forall bar.frequents(d,bar) ==>  
+              exists beer. serves(bar,beer) and not likes(d,beer)}
+
+=
+{d | "d is a drinker" and
+     not exists bar.( frequents(d,bar) 
+                      and not exists beer. serves(bar,beer) and not likes(d,beer))}
+
+select x.drinker
+from frequents x  -- any relation that gives all drinkers
+where not exists
+        (select * from frequents y
+         where x.drinker = y.drinker
+          and not exists (select * from serves z
+                          where z.bar = y.bar and
+                            not exists (select * from likes u
+                                        where u.drinker = y.drinker
+                                        and u.beer = z.beer)))
+
+
+* find all drinkers that frequent only bars that serve only beer that
+  they don't like
+
+{d | "d is a drinker" and
+     forall bar.frequents(d,bar) ==> 
+              forall beer. serves(bar,beer) ==> not likes(d,beer)}
+=
+{d | "d is a drinker" and
+     not exists bar.(frequents(d,bar) and
+          not(forall beer. serves(bar,beer) ==> not likes(d,beer)))}
+=
+{d | "d is a drinker" and
+     not exists bar.(frequents(d,bar) and
+          exists beer. serves(bar,beer) and likes(d,beer)))}
+
+select x.drinker
+from frequents x
+where not exists (select * from frequents y, serves z, likes u
+                  where x.drinker=y.drinker
+                   and  y.bar = z.bar and z.beer = u.beer
+                   and y.drinker = u.drinker)
+
+

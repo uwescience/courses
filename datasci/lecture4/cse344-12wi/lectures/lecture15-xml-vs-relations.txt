@@ -1,0 +1,62 @@
+================================================================
+CSE 344 -- Spring 2011
+Lecture 14:   Midterm Review and Discussion of Mapping XML to Relations
+
+================================================================
+
+Midterm:
+
+   -- Friday, 9:30, in class
+
+   -- closed book
+
+   -- Four problems:
+
+       1. SQL/Relational-calculus/Datalog
+       2. Relational Algebra
+       3. XML/XPath/XQuery
+       4. E/R Diagrams
+
+================================================================
+
+Today: 
+
+  finish discussion of E/R diagrams, 
+ 
+  mapping XML to relations
+
+================================================================
+
+Suppose we have XML documents conforming to this DTD:
+
+<!DOCTYPE bib [
+	<!ELEMENT bib  (book* )>
+	<!ELEMENT book  (title,  (author+ | editor+ ), publisher?, price )>
+	<!ATTLIST book  year CDATA  #REQUIRED >
+	<!ELEMENT author  (last, first )>
+	<!ELEMENT editor  (last, first, affiliation )>
+	<!ELEMENT title  (#PCDATA )>
+	<!ELEMENT last  (#PCDATA )>
+	<!ELEMENT first  (#PCDATA )>
+	<!ELEMENT affiliation  (#PCDATA )>
+	<!ELEMENT publisher  (#PCDATA )>
+	<!ELEMENT price  (#PCDATA )>
+]>
+
+
+****  In Class: design an E/R Diagram, design relations
+
+****  In Class: Translate the following  XPath expressions to SQL
+
+XPath = /bib/book[author[last="Ullman"][first="Jeff"]]
+SQL   = ?
+
+XPath = /bib/book[author/last="Ullman"][author/first="Jeff"]
+SQL   = ?
+
+**** In class: Suppose we want to design a relational schema that can
+     store ANY XML document.  How do we do this ?  Now translate the
+     queries above to SQL.
+
+[This problem will be continued in the sections on Thursday]
+

@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- headlinks removed -->
+	<link rel="shortcut icon" href="../../../../misc/favicon.ico"/>
+    <title>Growth rate (group theory) - Wikipedia, the free encyclopedia</title>
+    <style type="text/css">/*<![CDATA[*/ @import "../../../../skins/offline/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="../../../../skins/common/commonPrint.css" />
+    <!--[if lt IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE50Fixes.css";</style><![endif]-->
+    <!--[if IE 5.5000]><style type="text/css">@import "../../../../skins/monobook/IE55Fixes.css";</style><![endif]-->
+    <!--[if IE 6]><style type="text/css">@import "../../../../skins/monobook/IE60Fixes.css";</style><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="../../../../skins/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    <script type="text/javascript" src="../../../../skins/common/wikibits.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/md5.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/utf8.js"></script>
+    <script type="text/javascript" src="../../../../skins/offline/lookup.js"></script>
+    <script type="text/javascript" src="../../../../raw/gen.js"></script>        <style type="text/css">/*<![CDATA[*/
+@import "../../../../raw/MediaWiki%7ECommon.css";
+@import "../../../../raw/MediaWiki%7EMonobook.css";
+@import "../../../../raw/gen.css";
+/*]]>*/</style>          </head>
+  <body
+    class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	        <h1 class="firstHeading">Growth rate (group theory)</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">From Wikipedia, the free encyclopedia</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <p>In <a href="../../../../articles/g/r/o/Group_theory.html" title="Group theory">group theory</a>, the <b>growth rate</b> of a <a href="../../../../articles/g/r/o/Group_%28mathematics%29.html" title="Group (mathematics)">group</a> with respect to a symmetric <a href="../../../../articles/g/e/n/Generating_set.html" title="Generating set">generating set</a> describes the size of balls in the group. Every element in the group can be written as a product of generators, and the growth rate counts the number of elements that can be written as a product of length <i>n</i>.</p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#Definition"><span class="tocnumber">1</span> <span class="toctext">Definition</span></a></li>
+<li class="toclevel-1"><a href="#Polynomial_and_exponential_growth"><span class="tocnumber">2</span> <span class="toctext">Polynomial and exponential growth</span></a></li>
+<li class="toclevel-1"><a href="#Examples"><span class="tocnumber">3</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1"><a href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1"><a href="#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Definition" id="Definition"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/g/r/o/Growth_rate_%28group_theory%29.html" title="Edit section: Definition">edit</a>]</span> <span class="mw-headline">Definition</span></h2>
+<p>Suppose <i>G</i> is a finitely generated group; and <i>T</i> is a finite <i>symmetric</i> set of <a href="../../../../articles/g/e/n/Generating_set_of_a_group.html" title="Generating set of a group">generators</a> (symmetric means that if <img class="tex" alt=" x \in T " src="../../../../math/b/a/5/ba502c7721edfbe0fa14168da84b4f95.png" /> then <img class="tex" alt=" x^{-1} \in T " src="../../../../math/7/b/c/7bc6d97abc54257a4ea5f0fb5859a1e0.png" />). Any element <img class="tex" alt=" x \in G " src="../../../../math/1/d/6/1d64984a7a683797abea41747cb33ac0.png" /> can be expressed as a <a href="../../../../articles/a/u/t/Automata_theory.html#Definitions" title="Automata theory">word</a> in the <i>T</i>-alphabet</p>
+<dl>
+<dd><img class="tex" alt=" x = a_1 \cdot a_2 \cdot
+\ldots \cdot a_k \mbox{ where } a_i\in T " src="../../../../math/7/0/d/70dae809fe837cc5fe3e4533d119744a.png" /></dd>
+</dl>
+<p>Let us consider the subset of all elements of <i>G</i> which can be presented by such a word of length ≤<i>n</i></p>
+<dl>
+<dd><img class="tex" alt="B_n(G,T) = \{x\in G | x = a_1 \cdot a_2 \cdot
+\ldots \cdot a_k \mbox{ where } a_i\in T \mbox{ and } k\le n\}" src="../../../../math/8/3/7/837ca92125bbe79f7f0126e3a4616e18.png" /></dd>
+</dl>
+<p>This set is just the <a href="../../../../articles/b/a/l/Ball_%28mathematics%29.html" title="Ball (mathematics)">closed ball</a> of radius <i>n</i> in the <a href="../../../../articles/w/o/r/Word_metric.html" title="Word metric">word metric</a> <i>d</i> on <i>G</i> with respect to the generating set <i>T</i>:</p>
+<dl>
+<dd><img class="tex" alt="B_n(G,T) = \{x\in G | d(x, e)\le n\}" src="../../../../math/e/7/7/e7795c3bc22761d41aec1bb637c11ae7.png" /></dd>
+</dl>
+<p>More geometrically, <span class="texhtml"><i>B</i><sub><i>n</i></sub>(<i>G</i>,<i>T</i>)</span> is the set of vertices in the <a href="../../../../articles/c/a/y/Cayley_graph.html" title="Cayley graph">Cayley graph</a> with respect to <i>T</i> which are within distance <i>n</i> of the identity.</p>
+<p>Given two nondecreasing positive functions <i>a</i> and <i>b</i> one can say that they are equivalent (<img class="tex" alt="a\sim b" src="../../../../math/0/5/0/05073a04fe1376c3b0c45106273f9187.png" />) if there is a constant <i>C</i> such that</p>
+<dl>
+<dd><img class="tex" alt=" a(n/ C) \leq b(n) \leq a(Cn), " src="../../../../math/2/8/e/28e30d3c5b175a5e3d284cc0b3ba44fd.png" /></dd>
+</dl>
+<p>for example <img class="tex" alt=" p^n\sim q^n " src="../../../../math/6/8/2/682330a5f953f38318941a96e06b7d21.png" /> if <span class="texhtml"><i>p</i>,<i>q</i> &gt; 1</span>.</p>
+<p>Then the growth rate of the group <i>G</i> can be defined as the corresponding <a href="../../../../articles/e/q/u/Equivalence_class.html" title="Equivalence class">equivalence class</a> of the function</p>
+<dl>
+<dd><img class="tex" alt="\#(n)=|B_n(G,T)|, " src="../../../../math/d/b/3/db3688f3f0d5eeebaab04b8176a201d8.png" /></dd>
+</dl>
+<p>where <span class="texhtml">| <i>B</i><sub><i>n</i></sub>(<i>G</i>,<i>T</i>) |</span> denotes the number of elements in the set <span class="texhtml"><i>B</i><sub><i>n</i></sub>(<i>G</i>,<i>T</i>)</span>. Although the function <img class="tex" alt="\#(n)" src="../../../../math/b/3/1/b312fdfec89ba8e8105e162ca2201fcf.png" /> depends on the set of generators <i>T</i> its rate of growth does not (see below) and therefore the rate of growth gives an invariant of a group.</p>
+<p>The word metric <i>d</i> and therefore sets <span class="texhtml"><i>B</i><sub><i>n</i></sub>(<i>G</i>,<i>T</i>)</span> depend on the generating set <i>T</i>. However, any two such metrics are <a href="../../../../articles/l/i/p/Lipschitz_continuity.html#Lipschitz_continuity_in_metric_spaces" title="Lipschitz continuity"><i>bilipschitz</i></a> <a href="../../../../articles/e/q/u/Equivalence_class.html" title="Equivalence class"><i>equivalent</i></a> in the following sense: for finite symmetric generating sets <i>E</i>, <i>F</i>, there is a positive constant <i>C</i> such that</p>
+<dl>
+<dd><img class="tex" alt=" {1\over C} \ d_F(x,y) \leq d_{E}(x,y) \leq C \ d_F(x,y). " src="../../../../math/b/0/5/b05ca314fe9e30d07b8080ef1cf49940.png" /></dd>
+</dl>
+<p>As an immediate corollary of this inequality we get that the growth rate does not depend on the choice of generating set.</p>
+<p><a name="Polynomial_and_exponential_growth" id="Polynomial_and_exponential_growth"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/g/r/o/Growth_rate_%28group_theory%29.html" title="Edit section: Polynomial and exponential growth">edit</a>]</span> <span class="mw-headline">Polynomial and exponential growth</span></h2>
+<p>If</p>
+<dl>
+<dd><img class="tex" alt="\#(n)\le C(n^k+1)" src="../../../../math/b/1/d/b1d64b54b30bee77920f191bd706edc2.png" /></dd>
+</dl>
+<p>for some <img class="tex" alt="C,k&lt;\infty" src="../../../../math/d/8/2/d82dabd71e8ced69b46420b36c9aa8d5.png" /> we say that <i>G</i> has a <b>polynomial growth rate</b>. The infimum <span class="texhtml"><i>k</i><sub>0</sub></span> of such <i>k'</i>s is called the <b>order of polynomial growth</b>. According to <a href="../../../../articles/g/r/o/Gromov%27s_theorem_on_groups_of_polynomial_growth.html" title="Gromov's theorem on groups of polynomial growth">Gromov's theorem</a>, a group of polynomial growth is almost nilpotent, i.e. it has a <a href="../../../../articles/n/i/l/Nilpotent_group.html" title="Nilpotent group">nilpotent</a> <a href="../../../../articles/s/u/b/Subgroup.html" title="Subgroup">subgroup</a> of finite <a href="../../../../articles/c/o/s/Coset.html" title="Coset">index</a>. In particular, the order of polynomial growth <span class="texhtml"><i>k</i><sub>0</sub></span> has to be a <a href="../../../../articles/n/a/t/Natural_numbers.html" class="mw-redirect" title="Natural numbers">natural number</a> and in fact <img class="tex" alt="\#(n)\sim n^{k_0}" src="../../../../math/d/8/c/d8ca1bd49b96916b0090b600dd3b9f3e.png" />.</p>
+<p>If <img class="tex" alt="\#(n)\ge a^n" src="../../../../math/1/9/f/19f1139ecb7e65f637206231fa700fa2.png" /> for some <span class="texhtml"><i>a</i> &gt; 1</span> we say that <i>G</i> has an <b><a href="../../../../articles/e/x/p/Exponential_growth.html" title="Exponential growth">exponential growth</a> rate</b>. Every <a href="../../../../articles/f/i/n/Finitely_generated.html" title="Finitely generated">finitely generated</a> <i>G</i> has at most exponential growth, i.e. for some <span class="texhtml"><i>b</i> &gt; 1</span> we have <img class="tex" alt="\#(n)\le b^n" src="../../../../math/b/2/f/b2f0fadd1f0b217fc94629df6f7fb1db.png" />.</p>
+<p>If <img class="tex" alt="\#(n)" src="../../../../math/b/3/1/b312fdfec89ba8e8105e162ca2201fcf.png" /> grows more slowly than any exponential function, <i>G</i> has a <b>subexponential growth rate</b>. Any such group is <a href="../../../../articles/a/m/e/Amenable_group.html" title="Amenable group">amenable</a>.</p>
+<p><a name="Examples" id="Examples"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/g/r/o/Growth_rate_%28group_theory%29.html" title="Edit section: Examples">edit</a>]</span> <span class="mw-headline">Examples</span></h2>
+<ul>
+<li>A <a href="../../../../articles/f/r/e/Free_group.html" title="Free group">free group</a> with a finite rank <i>k</i> &gt; 1 has an exponential growth rate.</li>
+</ul>
+<ul>
+<li>If M is a closed negatively curved <a href="../../../../articles/r/i/e/Riemannian_manifold.html" title="Riemannian manifold">Riemannian manifold</a> then its <a href="../../../../articles/f/u/n/Fundamental_group.html" title="Fundamental group">fundamental group</a> <span class="texhtml">π<sub>1</sub>(<i>M</i>)</span> has exponential growth rate. <a href="../../../../articles/j/o/h/John_Milnor_7378.html" title="John Milnor">Milnor</a> proved this using the fact that the <a href="../../../../articles/w/o/r/Word_metric.html" title="Word metric">word metric</a> on <span class="texhtml">π<sub>1</sub>(<i>M</i>)</span> is <a href="../../../../articles/g/l/o/Glossary_of_Riemannian_and_metric_geometry_1d26.html#Q" title="Glossary of Riemannian and metric geometry">quasi-isometric</a> to the <a href="../../../../articles/c/o/v/Covering_map.html" class="mw-redirect" title="Covering map">universal cover</a> of M.</li>
+</ul>
+<ul>
+<li><b>Z</b><sup>d</sup> has a polynomial growth rate of order d.</li>
+</ul>
+<ul>
+<li>The <a href="../../../../articles/d/i/s/Discrete_Heisenberg_group_7018.html" class="mw-redirect" title="Discrete Heisenberg group">discrete Heisenberg group</a> <i>H<sub>3</sub></i> has a polynomial growth rate of order 4. This fact is a special case of the general theorem of <a href="../../../../articles/h/y/m/Hyman_Bass_bbdf.html" title="Hyman Bass">Bass</a> that is discussed in the article on <a href="../../../../articles/g/r/o/Gromov%27s_theorem_on_groups_of_polynomial_growth.html" title="Gromov's theorem on groups of polynomial growth">Gromov's theorem</a>.</li>
+</ul>
+<ul>
+<li>The <a href="../../../../articles/l/a/m/Lamplighter_group.html" title="Lamplighter group">lamplighter group</a> has an exponential growth. This is a rare example of a solvable group with exponential growth.</li>
+</ul>
+<ul>
+<li>The existence of groups with <b>intermediate growth</b>, i.e. subexponential but not polynomial was open for many years. It was asked by <a href="../../../../articles/j/o/h/John_Milnor_7378.html" title="John Milnor">Milnor</a> in 1968 and was finally answered in the positive by Grigorchuk in 1984. There are still open questions in this area and a complete picture of which orders of growth are possible and which are not is missing.</li>
+</ul>
+<p><a name="See_also" id="See_also"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/g/r/o/Growth_rate_%28group_theory%29.html" title="Edit section: See also">edit</a>]</span> <span class="mw-headline">See also</span></h2>
+<p><a href="../../../../articles/i/s/o/Isoperimetric_dimension.html#Consequences_of_isoperimetry" title="Isoperimetric dimension">Connections to isoperimetric inequalities</a></p>
+<p><a name="References" id="References"></a></p>
+<h2><span class="editsection">[<a href="../../../../articles/g/r/o/Growth_rate_%28group_theory%29.html" title="Edit section: References">edit</a>]</span> <span class="mw-headline">References</span></h2>
+<ul>
+<li><a href="../../../../articles/j/o/h/John_Milnor_7378.html" title="John Milnor">J. Milnor</a>, <i>A note on curvature and fundamental group</i>, J. Differential Geometry <b>2</b> (1968), 1-7.</li>
+<li>R. I. Grigorchuk, <i>Degrees of growth of finitely generated groups and the theory of invariant means.</i>, Izv. Akad. Nauk SSSR Ser. Mat. <b>48:5</b> (1984), 939-985 (Russian).</li>
+<li>Rostislav Grigorchuk and <a href="../../../../articles/i/g/o/Igor_Pak_4a3c.html" title="Igor Pak">Igor Pak</a> (2006). <a href="http://arxiv.org/abs/math.GR/0607384" class="external text" title="http://arxiv.org/abs/math.GR/0607384" rel="nofollow">Groups of Intermediate Growth: an Introduction for Beginners</a>. <a href="../../../../articles/a/r/x/ArXiv_671d.html" title="ArXiv">arXiv</a>.</li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 200/1000000
+Post-expand include size: 644/2048000 bytes
+Template argument size: 573/2048000 bytes
+Expensive parser function count: 0/500
+-->
+<div class="printfooter">
+</div>
+	    <div id="catlinks"><div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="../../../../articles/c/a/t/Special%7ECategories_101d.html" title="Special:Categories">Categories</a>:&#32;<span dir='ltr'><a href="../../../../articles/i/n/f/Category%7EInfinite_group_theory_1841.html" title="Category:Infinite group theory">Infinite group theory</a></span> | <span dir='ltr'><a href="../../../../articles/m/e/t/Category%7EMetric_geometry_3761.html" title="Category:Metric geometry">Metric geometry</a></span></div></div></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main"
+	       class="selected"	       ><a href="../../../../articles/g/r/o/Growth_rate_%28group_theory%29.html">Article</a></li><li id="ca-talk"
+	       	       ><a href="../../../../articles/g/r/o/Talk%7EGrowth_rate_%28group_theory%29_570d.html">Discussion</a></li><li id="ca-current"
+	       	       ><a href="http://en.wikipedia.org/wiki/Growth_rate_%28group_theory%29">Current revision</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(../../../../misc/Wiki.png);"
+	    href="../../../../index.html"
+	    title="Main Page"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+	  <h5>Navigation</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-mainpage"><a href="../../../../index.html">Main Page</a></li>
+	     	      <li id="n-Contents"><a href="../../../../articles/c/o/n/Portal%7EContents_b878.html">Contents</a></li>
+	     	      <li id="n-featuredcontent"><a href="../../../../articles/f/e/a/Portal%7EFeatured_content_5442.html">Featured content</a></li>
+	     	      <li id="n-currentevents"><a href="../../../../articles/c/u/r/Portal%7ECurrent_events_bb60.html">Current events</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div class='portlet' id='p-interaction'>
+	  <h5>Interaction</h5>
+	  <div class='pBody'>
+	    <ul>
+	    	      <li id="n-aboutsite"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html">About Wikipedia</a></li>
+	     	      <li id="n-portal"><a href="../../../../articles/c/o/m/Wikipedia%7ECommunity_Portal_6a3c.html">Community portal</a></li>
+	     	      <li id="n-recentchanges"><a href="../../../../articles/r/e/c/Special%7ERecentChanges_e0d0.html">Recent changes</a></li>
+	     	      <li id="n-contact"><a href="../../../../articles/c/o/n/Wikipedia%7EContact_us_afd6.html">Contact Wikipedia</a></li>
+	     	      <li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate">Donate to Wikipedia</a></li>
+	     	      <li id="n-help"><a href="../../../../articles/c/o/n/Help%7EContents_22de.html">Help</a></li>
+	     	    </ul>
+	  </div>
+	</div>
+		<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Search</label></h5>
+	  <div id="searchBody" class="pBody">
+	    <form action="javascript:goToStatic(3)" id="searchform"><div>
+	      <input id="searchInput" name="search" type="text"
+	        accesskey="f" value="" />
+	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
+	        value="Go" />
+	    </div></form>
+	  </div>
+	</div>
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="../../../../skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>	<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="../../../../misc/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>	<ul id="f-list">
+	  	  	  <li id="f-credits">This page was last modified 02:51, 2 July 2007 by Wikipedia user <a href="../../../../articles/a/n/c/User%7EAnchor_Link_Bot_fcb1.html" title="User:Anchor Link Bot">Anchor Link Bot</a>. Based on work by Wikipedia user(s) <a href="../../../../articles/c/h/a/User%7ECharles_Matthews_cceb.html" title="User:Charles Matthews">Charles Matthews</a>, <a href="../../../../articles/b/o/n/User%7EBongwarrior_af99.html" title="User:Bongwarrior">Bongwarrior</a>, Lemonpieman, <a href="../../../../articles/m/h/y/User%7EMhym_f8c3.html" title="User:Mhym">Mhym</a>, <a href="../../../../articles/t/o/s/User%7ETosha_2812.html" title="User:Tosha">Tosha</a>, <a href="../../../../articles/m/e/l/User%7EMelchoir_2750.html" title="User:Melchoir">Melchoir</a>, <a href="../../../../articles/m/o/s/User%7EMosher_8951.html" title="User:Mosher">Mosher</a>, <a href="../../../../articles/o/l/e/User%7EOleg_Alexandrov_8bb5.html" title="User:Oleg Alexandrov">Oleg Alexandrov</a>, <a href="../../../../articles/g/a/d/User%7EGadykozma_c7d7.html" title="User:Gadykozma">Gadykozma</a>, <a href="../../../../articles/m/i/c/User%7EMichael_Hardy_e932.html" title="User:Michael Hardy">Michael Hardy</a>, <a href="../../../../articles/c/s/t/User%7ECSTAR_0140.html" title="User:CSTAR">CSTAR</a>, <a href="../../../../articles/z/u/n/User%7EZundark_7566.html" title="User:Zundark">Zundark</a> and <a href="../../../../articles/i/o/r/User%7EIorsh_483b.html" title="User:Iorsh">Iorsh</a> and Anonymous user(s) of Wikipedia.</li>	  <li id="f-copyright">All text is available under the terms of the <a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License" title="Wikipedia:Text of the GNU Free Documentation License">GNU Free Documentation License</a>. (See <b><a class='internal' href="http://en.wikipedia.org/wiki/Wikipedia:Copyrights" title="Wikipedia:Copyrights">Copyrights</a></b> for details.) <br /> Wikipedia&reg; is a registered trademark of the <a href="http://www.wikimediafoundation.org">Wikimedia Foundation, Inc</a>., a U.S. registered <a class='internal' href="http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29" title="501(c)(3)">501(c)(3)</a> <a href="http://wikimediafoundation.org/wiki/Deductibility_of_donations">tax-deductible</a> <a class='internal' href="http://en.wikipedia.org/wiki/Non-profit_organization" title="Non-profit organization">nonprofit</a> <a href="http://en.wikipedia.org/wiki/Charitable_organization" title="Charitable organization">charity</a>.<br /></li>	  <li id="f-about"><a href="../../../../articles/a/b/o/Wikipedia%7EAbout_8d82.html" title="Wikipedia:About">About Wikipedia</a></li>	  <li id="f-disclaimer"><a href="../../../../articles/g/e/n/Wikipedia%7EGeneral_disclaimer_3e44.html" title="Wikipedia:General disclaimer">Disclaimers</a></li>	  	</ul>
+      </div>
+    </div>
+  </body>
+</html>
