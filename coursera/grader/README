@@ -1,0 +1,124 @@
+*Coursera Auto-Grader Harness*
+
+* Requirements
+ - Python 3.3
+ - make
+
+  Don't forget to look at the requirements of the assignment graders as
+well.  Usually, at least the GNU coreutils are required.
+
+* Purpose
+This harness is meant to
+ - continually poll a Coursera grading queue,
+ - grab an student submission,
+ - run a Makefile based on the part_id to grade the submission,
+ - parse a resulting output for test results, and
+ - send the results back to Coursera.
+
+  This harness also allows for local grading, skipping any Coursera
+communication, of submissions in bulk as a convenience.
+
+* Command-line Usage
+  Command-line arguments are set to initialize the polling of the
+Coursera queue.  These must be set so as to poll the correct location:
+ + --session <NAME>:  This is the session url name.  If the admin url
+      is https://class.coursera.org/playspace-uw/admin then this
+      argument should be 'playspace-uw'.
+ + --queue <QUEUE_NAME>:  The queue to poll from.  This is listed
+      under Coursera's Queue Administration page.  Only the short
+      version of the queue name listed should be used.  For
+      instance, Coursera will list 'course_XXX_queue_splitsums' as
+      the full name and this parameter should be only the
+      'splitsums' part.
+ + --api-key <API_KEY>:  The key listed under Course Settings ->
+      course.auth.api_key on the Course's administration page.
+      *THE KEY CAN ALSO BE SET BY STDIN IF THIS FlAG IS NOT USED*
+
+  To do local grading, none of the prior three flags should be
+specified.  Instead, --local should be used.
+
+The script will also need paths to two directories:
+ + --submissions <SUBMISSIONS_DIR>:  This path should be to the
+      working directory where student submissions should be saved,
+      binaries should be compiled, and testing outputs should be
+      placed.  The default, which should work fine, is to simply use
+      the 'submissions' directory in the current working directory.
+ + --resources <RESOURCES_DIR>: This tells the auto-grader where
+      the resources for each assignment is placed.  Each submission
+      in the queue has a corresponding part ID which says for which
+      part of an assignment the submission is.  For every part ID,
+      there should exist a corresponding subdirectory in the
+      resources directory.  The default location is '~/resources'.
+
+      An easy way to handle this without disrupting your existing
+      file structure is by using symlinks to structure the resource
+      directory's subdirectories.  For instance, for HW1, part_id = 14:
+  |-- ~/resources/
+      |-- 14
+      |   |-- Makefile -> ~/coursera/code/auto-grader/sml_resources/Makefile
+      |   |-- config -> ~/coursera/code/auto-grader/sml_resources/hw1/config
+      |   |-- testing-framework.sml -> ~/coursera/code/auto-grader/sml_resources/testing-framework.sml
+      |   |-- tests -> ~/coursera/code/auto-grader/sml_resources/hw1/tests/
+
+  Finally, there are many other command-line arguments that can be
+read about by running the script with the '-h' argument: `./harness.py -h`.
+
+* Submissions
+  When the harness receives a submission, it creates a directory
+structure for that student and part combination.  This will lead to a
+subdirectory for every part ID within the submissions directory and
+then a subdirectory for every student within each part ID.  The
+student's directory will consist of three directories, src, out, and
+bin, which should contain the student's submission, any grading
+output, and the student's compiled binaries.  The harness will only
+place the student's code within 'src' while creating empty bin/out
+folders; the rest is left up to the part's Makefile (see below).
+
+** Local Submissions
+  If doing local grading, the structure of the submissions directory
+will be exactly the same except the src files will already be present.
+However, the bin and out folders for each student do not need to be
+present.  A sample structure is shown below:
+
+ |-- submissions
+     |-- 14
+         |-- student
+         |   |-- src
+         |       |-- hw.sml
+         |-- student2
+         |   |-- src
+         |       |-- hw.sml
+     |-- hw2
+         |-- student
+         |   |-- src
+         |       |-- hw.rkt
+         |-- student3
+             |-- src
+                 |-- hw.rkt
+
+* Resources
+  As stated before, each submission in the queue declares for which
+part of assignment it was submitted.  A part ID is simply a unique
+alphanumerical identifier for every part of every assignment of a
+course session.  On Coursera these are integers and can be found by
+going to the assignment's edit page and looking the url.
+
+  Each part can, and probably will be, graded differently so the
+auto-grader looks for two files in a part's subdirectory within
+the resources directory:
+ + config:  A simple ini formatted file to tell the script what to
+      name the student's file, max filesize to allow for a
+      submission, and the time-limit for grading that part, and a
+      final score multiplier.  The only required configuration is
+      the filename to save a submission.
+ + Makefile:  The harness will use this to both compile a
+      submission and grade it.  These actions should be the
+      'compile' and 'run' targets, respectively.  If either step
+      fails, the student submission will receive a 0.  Once
+      completed, the harness will look for a file named 'tests.log'
+      in the student's 'out' subdirectory (see Submissions).  This
+      should contain test results in the format
+      "<score>;<feedback>\n" for each test.  The harness will then
+      sum the score (which will then be multiplied by the configured
+      score multiplier) and collect the feedback to be sent to
+      Coursera.
