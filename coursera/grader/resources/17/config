@@ -1,2 +1,3 @@
 [config]
-filename = hw.py
+filename = freq.py
+timelimit = 20

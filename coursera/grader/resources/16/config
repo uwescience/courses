@@ -1,2 +1,3 @@
 [config]
-filename = hw.py
+filename = sent.py
+timelimit = 20

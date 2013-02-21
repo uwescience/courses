@@ -1,2 +1,4 @@
 [config]
-filename = hw.py
+filename = hap.py
+timelimit = 10
+max-filesize = 10
