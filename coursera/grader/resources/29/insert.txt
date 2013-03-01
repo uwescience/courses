@@ -1,3 +1,0 @@
-.mode csv 
-.import bin/stdn.txt stdn 
-.import bin/mult_soln.txt c
