@@ -1,11 +1,11 @@
 import json
 import sys
 
-sys.path.append('../lib/')
+sys.path.append('../../../resources/lib/')
 import parse_afinn
 import grade_helper
 
-sys.path.append('../16/')
+sys.path.append('../../../resources/16/')
 import sent_grader
 
 def parse_tweets(tweet_file):
@@ -86,7 +86,7 @@ def main():
     tweet_file.seek(0)
     soln_hap_state = compute_happiest(sentiments, parse_tweets(tweet_file))
 
-    if stdn_hap_state != soln_hap_state:
+    if stdn_hap_state.lower() != soln_hap_state.lower():
         grade_helper.fail('Student solution returns ' + stdn_hap_state + ' while grader solution returns ' + soln_hap_state)
     else:
         grade_helper.success()

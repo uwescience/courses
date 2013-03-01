@@ -1,7 +1,7 @@
 import json
 import sys
 
-sys.path.append('../lib/')
+sys.path.append('../../../resources/lib/')
 
 import parse_afinn
 import grade_helper

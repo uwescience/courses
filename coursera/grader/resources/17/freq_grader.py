@@ -1,6 +1,6 @@
 import json
 import sys
-sys.path.append('../lib')
+sys.path.append('../../../resources/lib')
 import grade_helper
 
 def get_term_count_dict(tweet):
