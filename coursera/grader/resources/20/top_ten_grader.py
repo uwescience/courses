@@ -47,7 +47,7 @@ def grade(stdn_ten, soln_ten):
         stdn_val = sort_stdn[i][1]
         soln_val = sort_soln[i][1]
         if stdn_val != soln_val:
-            grade_helper.fail('Expected a count of ' + soln_val + ' at rank ' + str(i) + ', got ' + stdn_val)
+            grade_helper.fail('Expected a count of ' + str(soln_val) + ' at rank ' + str(i) + ', got ' + str(stdn_val))
 
     grade_helper.success()
         

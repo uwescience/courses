@@ -1,5 +1,7 @@
 import sys
 import sqlite3
+sys.path.append('../../../resources/lib/')
+import grade_helper
 
 def main():
     con = sqlite3.connect(sys.argv[1])
@@ -14,10 +16,9 @@ def main():
     row = c.fetchone()
 
     if row:
-        print '0;Expected ' + row[2] + ' for (' + row[0] + ',' + row[1] + '), got: ' + row[3]
+        grade_helper.fail('Expected ' + str(row[2]) + ' for (' + str(row[0]) + ',' + str(row[1]) + '), got: ' + str(row[3]))
     else:
-        print '1;Good Job!'
+        grade_helper.success()
     
-
 if __name__ == '__main__':
     main()

@@ -15,7 +15,7 @@ def parse_str_float_line(line):
     try:
        float(parts[1]) 
     except ValueError:
-        fail('value is not a float: ' + line)
+        fail('value is not parseable as float: ' + line)
         
     return parts[0].decode('utf-8'), float(parts[1])
     
@@ -34,7 +34,12 @@ def parse_state(state_file):
     if len(state) != 1:
         fail('Input contains multiple lines')
 
-    return state[0].strip()
+    state_code = state[0].strip()
+
+    if len(state_code) != 2:
+        fail(state_code + ' is not a 2 character state abbreviation')
+
+    return state_code
 
 def parse_top_ten_line(line):
     parts = line.split()
@@ -55,4 +60,3 @@ def parse_top_ten_file(top_file):
     parsed_pairs = map(parse_top_ten_line, lines)
     top_ten = dict(parsed_pairs)
     return top_ten
-

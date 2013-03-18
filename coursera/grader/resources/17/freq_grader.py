@@ -40,7 +40,7 @@ def compute_soln_freq(stream_data):
     for term_dict in term_count_dicts:
         for term in term_dict:
             term_counts.setdefault(term, 0)
-            term_counts[term] = term_counts[term] + 1
+            term_counts[term] = term_counts[term] + term_dict[term]
 
     return generate_histogram(term_counts)
 
@@ -53,10 +53,10 @@ def grade(stdn, soln):
     stdn_max_score = stdn[soln_max_term]
 
     if not (stdn_max_score >= stdn_mid_score):
-        grade_helper.fail(soln_mid_term + '(' + str(stdn_mid_freq) + ') has a greater frequency than ' + soln_max_term + '(' + str(stdn_max_freq) + ')')
+        grade_helper.fail(soln_mid_term + '(' + str(stdn_mid_score) + ') has a greater frequency than ' + soln_max_term + '(' + str(stdn_max_score) + ')')
 
     if not (stdn_mid_score >= stdn_min_score):
-        grade_helper.fail(soln_min_term + '(' + str(stdn_min_freq) + ') has a greater frequency than ' + soln_mid_term + '(' + str(stdn_mid_freq) + ')')
+        grade_helper.fail(soln_min_term + '(' + str(stdn_min_score) + ') has a greater frequency than ' + soln_mid_term + '(' + str(stdn_mid_score) + ')')
 
     grade_helper.success()
 

@@ -8,8 +8,10 @@ soln = ".import $(RESOURCE_HOME)/add_soln.txt c"
 
 compile:
 	cp $(lib)/matrix.db $(db)
+	# execute student solution
 	sqlite3 -csv $(db) < src/add.sql > bin/stdn.txt
 
 run:
+	# import student and master solution into db
 	echo $(mode)$(stdn)$(soln) | sqlite3 $(db)
 	python2.7 $(RESOURCE_HOME)/add_grader.py $(db) > out/tests.log

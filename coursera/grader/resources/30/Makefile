@@ -8,9 +8,12 @@ soln = ".import $(RESOURCE_HOME)/tf-idf_soln.txt tfidf"
 
 compile:
 	cp $(lib)/reuters.db $(db)
+	# Execute student solution and collect output
 	python2.7 src/tf-idf.py $(db) > bin/stdn.txt
 
 run:
+	# Import student and instructor solution into tables 
 	echo $(mode)$(stdn)$(soln) | sqlite3 $(db)
 	python2.7 $(RESOURCE_HOME)/tfidf_grader.py $(db) > out/tests.log
+	# The copied db is kind of big, so delete it
 	rm $(db)

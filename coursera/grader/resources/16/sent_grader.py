@@ -88,7 +88,7 @@ def grade(student, solution):
     student_max_sent = student[soln_max_term]
     student_mid_sent = student[soln_mid_term]
     student_min_sent = student[soln_min_term]
-
+    
     if not (student_max_sent >= student_mid_sent):
         grade_helper.fail(soln_mid_term + '(' + str(student_mid_sent) + ') has a greater sentiment score than ' + soln_max_term + '(' + str(student_max_sent) + ')')
 

@@ -8,9 +8,11 @@ soln = ".import $(RESOURCE_HOME)/mult_soln.txt c"
 
 compile:
 	cp $(lib)/matrix.db $(db)
+	# execute student soltuion and save output
 	sqlite3 -csv $(db) < src/mult.sql > bin/stdn.txt
 
 run:
+	# dump student and master solution into tables
 	echo $(mode)$(stdn)$(soln) | sqlite3 $(db)
 	python2.7 $(RESOURCE_HOME)/mult_grader.py $(db) > out/tests.log
 	
