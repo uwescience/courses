@@ -1,3 +1,5 @@
+import json
+
 class MapReduce:
     def __init__(self):
         self.intermediate = {}
@@ -17,8 +19,9 @@ class MapReduce:
         for key in self.intermediate:
             reducer(self, key, self.intermediate[key])
 
+        jenc = json.JSONEncoder(ensure_ascii=False)
         for item in self.result:
-            print item
+            print jenc.encode(item)
 
 def execute(data, mapper, reducer):
     mr = MapReduce()

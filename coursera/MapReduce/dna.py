@@ -16,7 +16,7 @@ def mapper(mr, seq_id, seq):
     mr.emit_intermediate(trim_seq, seq_id)
 
 def reducer(mr, trim_seq, seq_ids):
-    mr.emit(trim_seq)
+    mr.emit(trim_seq.tostring())
 
 def main():
     dna_file_handle = open(sys.argv[1])
