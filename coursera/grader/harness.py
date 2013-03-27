@@ -262,17 +262,16 @@ def execute_make_cmd(cmd, timeout=None, log_file='make.log'):
     def preexec():
         os.setpgrp()
     with open(log_file, 'w') as outf:
-        with open(os.devnull, 'w') as null:
-            with subprocess.Popen(cmd, stdout=outf, stderr=null, preexec_fn=preexec) as proc:
-                try:
-                    returncode = proc.wait(timeout=timeout)
-                    if returncode != 0:
-                        raise subprocess.CalledProcessError(returncode, cmd)
-                except subprocess.CalledProcessError: raise
-                except:
-                    os.killpg(proc.pid, signal.SIGKILL)
-                    proc.wait()
-                    raise
+        with subprocess.Popen(cmd, stdout=outf, stderr=stderr, preexec_fn=preexec) as proc:
+            try:
+                returncode = proc.wait(timeout=timeout)
+                if returncode != 0:
+                    raise subprocess.CalledProcessError(returncode, cmd)
+            except subprocess.CalledProcessError: raise
+            except:
+                os.killpg(proc.pid, signal.SIGKILL)
+                proc.wait()
+                raise
 
 def grade_remote_submissions(num_to_grade=False, cleanup=False):
     queue = CourseraQueue(args.queue, args.session, args.api_key)
@@ -291,7 +290,7 @@ def grade_remote_submissions(num_to_grade=False, cleanup=False):
     while (not num_to_grade) or (number_graded < num_to_grade):
         try:
             submission = queue.pull_submission()
-        except HTTPError:
+        except:
             print('ERROR: %s' % sys.exc_info()[1], file=stderr)
             submission = False # We'll just wait and try again
 

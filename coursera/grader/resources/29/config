@@ -1,0 +1,3 @@
+[config]
+filename = mult.sql
+timelimit = 20
