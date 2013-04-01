@@ -2,7 +2,7 @@
 
 for e in `ls`
 do
-    if [ -d $e ]
+    if [ -d $e ] && [ $e != "lib" ]
     then
         cd $e
         python *tests.py

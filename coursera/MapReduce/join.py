@@ -1,27 +1,15 @@
 import sys
+import json
 import MapReduce
 
-
-def data(orders, line_items):
-    records = {}
-
-    for order in orders:
-        record = order.strip().split('|')
-        records.setdefault(record[0], [])
-        records[record[0]].append(record[:9])
-        
-    for line_item in line_items:
-        record = line_item.strip().split('|')
-        records.setdefault(record[0], [])
-        records[record[0]].append(record[:16])
-
-    return records
-
 def is_order(record):
-    return len(record) == 9 
+    return record[0] == 'order'
 
 def is_line_item(record):
-    return len(record) == 16
+    return record[0] == 'line_item'
+
+def strip_tag(record):
+    return record[1:]
 
 def cross(orders, line_items):
     results = []
@@ -32,22 +20,23 @@ def cross(orders, line_items):
 
     return results
 
-def mapper(mr, key, records):
-    for record in records:
-        mr.emit_intermediate(key, record)
+def mapper(mr, dataline):
+    record = json.loads(dataline)
+    mr.emit_intermediate(record[1], record)
 
 def reducer(mr, key, records):
     records = list(records)
     orders = filter(is_order, records)
+    orders = map(strip_tag, orders)
     line_items = filter(is_line_item, records)
+    line_items = map(strip_tag, line_items)
     join = cross(orders, line_items)
     for record in join:
         mr.emit(record)
 
 def main():
-    orders = open(sys.argv[1])
-    line_items = open(sys.argv[2])
-    MapReduce.execute(data(orders, line_items), mapper, reducer)
+    data = open(sys.argv[1])
+    MapReduce.execute(data, mapper, reducer)
 
 if __name__ == '__main__':
     main()
