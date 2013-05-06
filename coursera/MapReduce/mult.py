@@ -1,41 +1,44 @@
 import sys
-import sqlite3    
+import json
 import MapReduce
 
+i_range = 10
+j_range = 10
 
-def data(db_conn):
-    curs = db_conn.cursor()
-    records = {}
-    
-    curs.execute('select * from a where a.row_num <= 10 and a.col_num <= 10')
-    a_rows = curs.fetchall()
-    curs.execute('select * from b where b.row_num <= 10 and b.col_num <= 10')
-    b_rows = curs.fetchall()
+# record = (matrix, i, j, value)
+def mapper(mr, dataline):
+    global i_range
+    global j_range
 
-    for ai, aj, avalue in a_rows:
-        for bi, bj, bvalue in b_rows:
-            records[(ai, aj, bi, bj)] = (avalue, bvalue) # from
+    record = json.loads(dataline)
+    if record[0] == 'a':
+        i = record[1]
+        for j in range(j_range + 1):
+            mr.emit_intermediate((i, j), record)
+    elif record[0] == 'b':
+        j = record[2]
+        for i in range(i_range + 1):
+            mr.emit_intermediate((i, j), record)
+    else:
+        raise Exception
 
-    return records # joined rows
-
-# key = (ai, aj, bi, bj)
-# val = (aval,  bval)
-def mapper(mr, key, val):
-    if key[1] == key[2]: # where filter
-        mr.emit_intermediate((key[0], key[3]), val) # group by
-
-#keys should be in the form (a.row, b.col)
-#records shuld be (a.row, a.col, a.val, b.row, b.col, b.val)
-#for all records, a.col == b.row
+# key should be the target bucket, values should be a list of records
 def reducer(mr, key, values):
+    values = list(values)
+    a_rows = filter(lambda x : x[0] == 'a', values)
+    b_rows = filter(lambda x : x[0] == 'b', values)
+
     result = 0
-    for aval, bval in values:
-        result = result + aval * bval
+    for a in a_rows:
+        for b in b_rows:
+            if a[2] == b[1]:
+                result = result + a[3] * b[3]
+
     mr.emit((key[0], key[1], result))
 
 def main():
-    conn = sqlite3.connect(sys.argv[1])
-    MapReduce.execute(data(conn), mapper, reducer)
+    records_file = open(sys.argv[1])
+    MapReduce.execute(records_file, mapper, reducer)
 
 if __name__ == '__main__':
     main()

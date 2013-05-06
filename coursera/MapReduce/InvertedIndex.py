@@ -1,22 +1,20 @@
 import MapReduce
-import nltk
+import json
+import sys
 
-def data():
-    books = {}
-    book_titles = nltk.corpus.gutenberg.fileids()
-    for title in book_titles:
-        books[title] = nltk.corpus.gutenberg.words(title)
-    return books
-
-def mapper(mr, book, words):
-    for word in words:
-        mr.emit_intermediate(word, book)
+#Dataline contains a json formatted key value pair associating a book to 
+#a list of words
+def mapper(mr, dataline):
+    pairs = json.loads(dataline, encoding='latin-1')
+    for book in pairs:
+        for word in pairs[book]:
+            mr.emit_intermediate(word, book)
 
 def reducer(mr, word, books):
     mr.emit({word : list(set(books))})
 
 def main():
-    MapReduce.execute(data(), mapper, reducer)
+    MapReduce.execute(open(sys.argv[1]), mapper, reducer)
 
 if __name__ == '__main__':
     main()
