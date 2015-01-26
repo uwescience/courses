@@ -1,4 +1,0 @@
-Also Amazon just upgraded hadoop and pig so the answers will differ.
-One student found that for problem 3, the FLATTEN operator was not necessary (i.e. produces same results with or without).  Need to double-check why we use it in our solutions for next time.
-Running example.pig takes too long. Need to create
-a smaller sample for debugging.

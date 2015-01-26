@@ -1,5 +1,0 @@
-Tell students about tokenize.
-Practice more grouping in sections.
-Check "group by" clause in new version of XQuery. We don't use it but 
-it is available.
-
